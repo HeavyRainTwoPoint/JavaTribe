@@ -16,6 +16,7 @@
     <modules>
         <module>api-demo</module>
         <module>api-starter</module>
+        <module>api-common</module>
     </modules>
 
     <properties>

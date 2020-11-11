@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6721e80d-a39a-4b2d-9552-68ed7947da36" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/build.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/api-parent-0.0.1-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/api-parent-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-    </list>
+    <list default="true" id="6721e80d-a39a-4b2d-9552-68ed7947da36" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -133,7 +128,7 @@
       <updated>1605068029385</updated>
       <workItem from="1605068032120" duration="2258000" />
       <workItem from="1605083916746" duration="385000" />
-      <workItem from="1605084305980" duration="99000" />
+      <workItem from="1605084305980" duration="155000" />
     </task>
     <servers />
   </component>
@@ -141,10 +136,10 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="403" y="6" key="#ApiStarterApplication" timestamp="1605084373624">
+    <state x="403" y="6" key="#ApiStarterApplication" timestamp="1605084454354">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="403" y="6" key="#ApiStarterApplication/0.0.1536.824@0.0.1536.824" timestamp="1605084373624" />
+    <state x="403" y="6" key="#ApiStarterApplication/0.0.1536.824@0.0.1536.824" timestamp="1605084454354" />
     <state x="498" y="201" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1605084372630">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
