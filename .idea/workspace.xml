@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6721e80d-a39a-4b2d-9552-68ed7947da36" name="Default Changelist" comment="" />
+    <list default="true" id="6721e80d-a39a-4b2d-9552-68ed7947da36" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/build.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/api-parent-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/api-parent-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,9 +56,9 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="show.run.dashboard.notification" value="false" />
@@ -127,6 +132,8 @@
       <option name="presentableId" value="Default" />
       <updated>1605068029385</updated>
       <workItem from="1605068032120" duration="2258000" />
+      <workItem from="1605083916746" duration="385000" />
+      <workItem from="1605084305980" duration="99000" />
     </task>
     <servers />
   </component>
@@ -134,6 +141,18 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="403" y="6" key="#ApiStarterApplication" timestamp="1605084373624">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="403" y="6" key="#ApiStarterApplication/0.0.1536.824@0.0.1536.824" timestamp="1605084373624" />
+    <state x="498" y="201" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1605084372630">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="498" y="201" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1605084372630" />
+    <state x="799" y="222" key="FileChooserDialogImpl" timestamp="1605084145069">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="799" y="222" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605084145069" />
     <state width="1492" height="238" key="GridCell.Tab.0.bottom" timestamp="1605070296448">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -166,6 +185,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1492" height="238" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1605070296448" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1605084405459">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1605084405459" />
+    <state x="718" y="198" width="600" height="536" key="find.popup" timestamp="1605084111152">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="718" y="198" width="600" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1605084111152" />
     <state x="356" y="119" key="new project wizard" timestamp="1605068783343">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
