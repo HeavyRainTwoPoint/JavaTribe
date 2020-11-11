@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://4xxx/xxx?useUnicode=true&characterEncoding=UTF-8
-    password: xxxxxxx
-    username: root
+    url: jdbc:mysql://47.92.200.8:3306/javatribe?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    password: pBcrDNAMFr7ifb7e
+    username: javatribe
     driver-class-name: com.mysql.jdbc.Driver
   servlet:
     multipart:
