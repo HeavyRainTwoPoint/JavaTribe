@@ -2,8 +2,57 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6721e80d-a39a-4b2d-9552-68ed7947da36" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/api-demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-demo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-starter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-starter/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/config/resolver/AttrResolver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/config/resolver/PageAndSizeResolver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/annontation/AttrData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/annontation/Page.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/annontation/Size.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/constant/DateFormat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/constant/PatternsConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/constant/SystemConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/constant/enums/ApiInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/constant/enums/CommentLevel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/constant/enums/DeleteStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/constant/enums/SexType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/constant/enums/ShiroConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/constant/enums/TreeLevel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/constant/enums/YesOrNo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/validator/DeleteGroup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/validator/InsertGroup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/validator/LoginGroup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/validator/QueryGroup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/validator/RegisterGroup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/validator/UpdateGroup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/validator/support/phone/Phone.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/validator/support/phone/PhoneValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/validator/support/value/EnumValue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/validator/support/value/EnumValueValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/validator/support/value/NumMustIn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/validator/support/value/NumMustInValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/dto/BaseEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/dto/IQuery.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/dto/PageEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/dto/PageParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/dto/QueryInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/dto/Result.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/dto/StatusCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/dto/ViewObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/exception/BusinessException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/exception/NoDataException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/exception/NoTokenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/exception/RequestBodyErrorException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/exception/ServiceException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/handler/ExHandlerAdvice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/shiro/JwtShiroConf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/shiro/entity/JwtToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/shiro/filter/JwtFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/shiro/realm/JwtRealm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/util/JwtAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/util/JwtUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/util/WebUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-competition/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,6 +101,8 @@
     <property name="android.sdk.path" value="$PROJECT_DIR$/../../../../../../androidTool/android-sdk-windows" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/config" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -64,6 +115,18 @@
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="show.run.dashboard.notification" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.javatribe.apicommon.handler" />
+      <recent name="com.javatribe.apicommon.util" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ASUS\Desktop\个人项目\server\部落官网\api-parent\api-common\src\main\java\com\javatribe\apicommon\config" />
+      <recent name="D:\ASUS\Desktop\个人项目\server\部落官网\api-parent\api-common\src\main\java\com\javatribe\apicommon\core" />
+      <recent name="D:\ASUS\Desktop\个人项目\server\部落官网\api-parent\api-common\src\main\java\com\javatribe\apicommon" />
+      <recent name="D:\ASUS\Desktop\个人项目\server\部落官网\api-parent\api-common\src\main\java\com\javatribe\apicommon\util" />
+    </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ApiStarterApplication">
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -143,7 +206,9 @@
       <workItem from="1605068032120" duration="2258000" />
       <workItem from="1605083916746" duration="385000" />
       <workItem from="1605084305980" duration="155000" />
-      <workItem from="1605084465391" duration="1178000" />
+      <workItem from="1605084465391" duration="2529000" />
+      <workItem from="1605095516686" duration="30000" />
+      <workItem from="1605964974773" duration="1854000" />
     </task>
     <servers />
   </component>
@@ -166,22 +231,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="799" y="222" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605084145069" />
-    <state width="1492" height="215" key="GridCell.Tab.0.bottom" timestamp="1605085301957">
+    <state width="1492" height="340" key="GridCell.Tab.0.bottom" timestamp="1605094481944">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1492" height="215" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605085301957" />
-    <state width="1492" height="215" key="GridCell.Tab.0.center" timestamp="1605085301957">
+    <state width="1492" height="340" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605094481944" />
+    <state width="1492" height="340" key="GridCell.Tab.0.center" timestamp="1605094481944">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1492" height="215" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605085301957" />
-    <state width="1492" height="215" key="GridCell.Tab.0.left" timestamp="1605085301957">
+    <state width="1492" height="340" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605094481944" />
+    <state width="1492" height="340" key="GridCell.Tab.0.left" timestamp="1605094481944">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1492" height="215" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605085301957" />
-    <state width="1492" height="215" key="GridCell.Tab.0.right" timestamp="1605085301957">
+    <state width="1492" height="340" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605094481944" />
+    <state width="1492" height="340" key="GridCell.Tab.0.right" timestamp="1605094481944">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1492" height="215" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605085301957" />
+    <state width="1492" height="340" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605094481944" />
     <state width="1492" height="75" key="GridCell.Tab.1.bottom" timestamp="1605085293583">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -206,9 +271,16 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="718" y="198" width="600" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1605084111152" />
-    <state x="221" y="102" key="new project wizard" timestamp="1605084608787">
+    <state x="286" y="107" key="new project wizard" timestamp="1605966737546">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="221" y="102" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1605084608787" />
+    <state x="286" y="107" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1605966737546" />
+    <state x="583" y="168" key="refactoring.ChangeSignatureDialog" timestamp="1605965924131">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="583" y="168" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1605965924131" />
+  </component>
+  <component name="se.expertsystem.intellij.aop.aspectj.AspectJProjectComponent">
+    <setting name="isActivated" value="false" />
   </component>
 </project>
