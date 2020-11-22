@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6721e80d-a39a-4b2d-9552-68ed7947da36" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api-introduction/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-introduction/src/main/java/com/javatribe/introduction/config/IntroductionMapperConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-introduction/src/main/java/com/javatribe/introduction/config/MyMetaObjectHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-introduction/src/main/java/com/javatribe/introduction/ddd.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-introduction/src/test/java/com/javatribe/introduction/CodeGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-common/src/test/java/com/javatribe/apicommon/ApiCommonApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-starter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-starter/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-starter/src/main/java/com/javatribe/apistarter/ApiStarterApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-starter/src/main/java/com/javatribe/apistarter/ApiStarterApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-starter/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-starter/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,8 +167,16 @@
       <workItem from="1605084465391" duration="2529000" />
       <workItem from="1605095516686" duration="30000" />
       <workItem from="1605964974773" duration="5284000" />
-      <workItem from="1606017311427" duration="6218000" />
+      <workItem from="1606017311427" duration="6758000" />
     </task>
+    <task id="LOCAL-00001" summary="创建了部落介绍模块">
+      <created>1606047845626</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1606047845626</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,6 +184,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="创建了部落介绍模块" />
+    <option name="LAST_COMMIT_MESSAGE" value="创建了部落介绍模块" />
   </component>
   <component name="WindowStateProjectService">
     <state x="403" y="6" key="#ApiStarterApplication" timestamp="1605084454354">
@@ -204,6 +204,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="201" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1605084372630" />
+    <state x="205" y="0" key="CommitChangelistDialog2" timestamp="1606047842998">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="205" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1606047842998" />
     <state x="459" y="172" key="FileChooserDialogImpl" timestamp="1606018703730">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -254,6 +258,10 @@
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1605084405459" />
     <state x="-18" y="0" width="1527" height="864" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1606018717587" />
+    <state x="260" y="100" key="Vcs.Push.Dialog.v2" timestamp="1606047854616">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="260" y="100" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1606047854616" />
     <state x="718" y="198" width="600" height="536" key="find.popup" timestamp="1605084111152">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
