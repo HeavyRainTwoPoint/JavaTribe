@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6721e80d-a39a-4b2d-9552-68ed7947da36" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/api-starter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-starter/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-starter/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-starter/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +167,7 @@
       <workItem from="1605977921522" duration="17000" />
       <workItem from="1606018349457" duration="975000" />
       <workItem from="1606019730619" duration="1130000" />
-      <workItem from="1606045416610" duration="360000" />
+      <workItem from="1606045416610" duration="1275000" />
     </task>
     <servers />
   </component>

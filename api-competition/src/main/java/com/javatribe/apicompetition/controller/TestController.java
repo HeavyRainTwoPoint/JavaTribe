@@ -20,6 +20,8 @@ public class TestController {
 
     @Resource
     private OSS oss;
+
+
     @GetMapping("/h")
     public Result ok() {
         return Result.success();
