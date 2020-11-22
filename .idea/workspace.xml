@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="6721e80d-a39a-4b2d-9552-68ed7947da36" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="6721e80d-a39a-4b2d-9552-68ed7947da36" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/api-starter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-starter/pom.xml" afterDir="false" />
+    </list>
+>>>>>>> ce4bec624d93a27f2937d0c28a7c0424c44c05c8
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,7 +63,11 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../小demo/demo333/some-wa-tribe" />
+>>>>>>> ce4bec624d93a27f2937d0c28a7c0424c44c05c8
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -144,6 +154,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.ApiCommonApplication" />
+      <item itemvalue="Spring Boot.ApiDemoApplication" />
+      <item itemvalue="Spring Boot.ApiStarterApplication" />
+    </list>
   </component>
   <component name="SshConsoleOptionsProvider">
     <option name="myEncoding" value="UTF-8" />
@@ -164,6 +179,7 @@
       <workItem from="1605084305980" duration="155000" />
       <workItem from="1605084465391" duration="2529000" />
       <workItem from="1605095516686" duration="30000" />
+<<<<<<< HEAD
       <workItem from="1605964974773" duration="5284000" />
       <workItem from="1606017311427" duration="7302000" />
     </task>
@@ -173,6 +189,13 @@
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
       <updated>1606047845626</updated>
+=======
+      <workItem from="1605964974773" duration="5491000" />
+      <workItem from="1605977921522" duration="17000" />
+      <workItem from="1606018349457" duration="975000" />
+      <workItem from="1606019730619" duration="1130000" />
+      <workItem from="1606045416610" duration="360000" />
+>>>>>>> ce4bec624d93a27f2937d0c28a7c0424c44c05c8
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -190,6 +213,7 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="403" y="6" key="#ApiStarterApplication/0.0.1536.824@0.0.1536.824" timestamp="1605084454354" />
+<<<<<<< HEAD
     <state x="260" y="7" key="#Project_Structure" timestamp="1606044980240">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -198,10 +222,17 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="529" y="74" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1606046395623" />
+=======
+    <state x="269" y="64" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606019916115">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="269" y="64" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1606019916115" />
+>>>>>>> ce4bec624d93a27f2937d0c28a7c0424c44c05c8
     <state x="498" y="201" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1605084372630">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="201" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1605084372630" />
+<<<<<<< HEAD
     <state x="205" y="0" key="CommitChangelistDialog2" timestamp="1606047842998">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -253,6 +284,46 @@
     <state width="1481" height="329" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1606047304975" />
     <state x="-18" y="0" width="1527" height="864" key="SettingsEditor" timestamp="1606018717587">
       <screen x="0" y="0" width="1536" height="864" />
+=======
+    <state x="799" y="222" key="FileChooserDialogImpl" timestamp="1606020859015">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="799" y="222" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606020859015" />
+    <state width="1021" height="391" key="GridCell.Tab.0.bottom" timestamp="1606020860555">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1021" height="391" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606020860555" />
+    <state width="1021" height="391" key="GridCell.Tab.0.center" timestamp="1606020860554">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1021" height="391" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606020860554" />
+    <state width="1021" height="391" key="GridCell.Tab.0.left" timestamp="1606020860554">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1021" height="391" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606020860554" />
+    <state width="1021" height="391" key="GridCell.Tab.0.right" timestamp="1606020860554">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1021" height="391" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606020860554" />
+    <state width="1492" height="218" key="GridCell.Tab.1.bottom" timestamp="1605970714062">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="218" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605970714062" />
+    <state width="1492" height="218" key="GridCell.Tab.1.center" timestamp="1605970714062">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="218" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1605970714062" />
+    <state width="1492" height="218" key="GridCell.Tab.1.left" timestamp="1605970714062">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="218" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1605970714062" />
+    <state width="1492" height="218" key="GridCell.Tab.1.right" timestamp="1605970714062">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="218" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1605970714062" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1605084405459">
+      <screen x="0" y="0" width="1536" height="824" />
+>>>>>>> ce4bec624d93a27f2937d0c28a7c0424c44c05c8
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1605084405459" />
     <state x="-18" y="0" width="1527" height="864" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1606018717587" />
