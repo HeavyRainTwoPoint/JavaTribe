@@ -19,11 +19,11 @@
         <module>api-starter</module>
         <module>api-common</module>
         <module>api-competition</module>
+        <module>api-introduction</module>
     </modules>
 
     <properties>
         <java.version>1.8</java.version>
-
         <org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
         <mysql-connector-java.version>5.1.6</mysql-connector-java.version>
         <hutool-all.version>5.4.4</hutool-all.version>
@@ -75,27 +75,23 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-
-
-
     </dependencies>
 
 
     <!--    父依赖配置   -->
     <dependencyManagement>
         <dependencies>
-
-            <dependency>
-                <groupId>org.mapstruct</groupId>
-                <artifactId>mapstruct-jdk8</artifactId>
-                <version>${org.mapstruct.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mapstruct</groupId>
-                <artifactId>mapstruct-processor</artifactId>
-                <version>${org.mapstruct.version}</version>
-                <scope>provided</scope>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>org.mapstruct</groupId>-->
+<!--                <artifactId>mapstruct-jdk8</artifactId>-->
+<!--                <version>${org.mapstruct.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.mapstruct</groupId>-->
+<!--                <artifactId>mapstruct-processor</artifactId>-->
+<!--                <version>${org.mapstruct.version}</version>-->
+<!--                <scope>provided</scope>-->
+<!--            </dependency>-->
             <!--  依赖库,生成代码时需要数据库驱动  -->
             <dependency>
                 <groupId>mysql</groupId>
