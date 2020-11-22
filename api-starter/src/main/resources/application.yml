@@ -16,7 +16,8 @@ spring:
   profiles:
     active: dev
 
-
+mybatis-plus:
+  mapper-locations: com/javatribe/introduction/mapper/xml/*.xml
 
 oss:
   access-key-id: LTAI4GL5YbDREf9WSAv6xo5a
