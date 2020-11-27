@@ -10,7 +10,13 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum DeleteStatus {
+    /**
+     * 没有删除
+     */
     no_deleted(0),
+    /**
+     * 被删除了
+     */
     deleted(1);
 
     public int type;

@@ -1,6 +1,7 @@
 package com.javatribe.apicommon.core.constant;
 
 /**
+ * 正则表达式 常量管理
  * 注意Object 为 null时候，@Pattern 校验不会生效
  * @Author lyr
  * @create 2020/11/5 11:41

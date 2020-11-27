@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * OSS 对象 配置
  * @Author lyr
  * @create 2020/11/21 22:38
  */
