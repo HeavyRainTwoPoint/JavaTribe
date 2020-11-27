@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
+ * 业务层 手动抛出的异常
  * @Author lyr
  * @create 2020/10/11 16:14
  */

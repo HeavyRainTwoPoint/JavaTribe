@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
+ * 逻辑删除状态码 管理
  * @Author lyr
  * @create 2020/11/4 21:42
  */

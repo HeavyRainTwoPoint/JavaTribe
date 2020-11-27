@@ -5,6 +5,7 @@ package com.javatribe.apicommon.exception;
 import com.javatribe.apicommon.core.constant.enums.ApiInfo;
 
 /**
+ * 请求体 有异常
  * @Author lyr
  * @create 2020/11/10 23:22
  */

@@ -8,6 +8,8 @@ import javax.validation.constraints.Null;
 import java.io.Serializable;
 
 /**
+ * mybatis 分页查询参数
+ *
  * @Author lyr
  * @create 2020/11/3 11:38
  */

@@ -4,7 +4,7 @@ package com.javatribe.apicommon.exception;
 import com.javatribe.apicommon.core.constant.enums.ApiInfo;
 
 /**
- * 没有 token
+ * 没有 token 异常
  * @Author lyr
  * @create 2020/10/31 12:35
  */

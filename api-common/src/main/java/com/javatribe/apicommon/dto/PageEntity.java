@@ -9,6 +9,8 @@ import lombok.NonNull;
 import java.util.List;
 
 /**
+ * 将 mybatis 返回的 分页数据 包装的类
+ *
  * 将 pageInfo 转 pageEntity
  * @Author lyr
  * @create 2020/10/11 16:06
