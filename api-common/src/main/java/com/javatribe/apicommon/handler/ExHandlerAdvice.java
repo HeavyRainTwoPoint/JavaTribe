@@ -24,6 +24,7 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 /**
+ * 统一异常 处理
  * @Author lyr
  * @create 2020/10/24 10:50
  */
