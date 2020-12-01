@@ -2,25 +2,21 @@ package com.javatribe.apilife.service.impl;
 
 import com.javatribe.apilife.service.PriorityService;
 import lombok.SneakyThrows;
-import org.springframework.stereotype.Service;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * 优先级管理
+ * 对象排序
+ * ！线程不安全
  * <p>
- * 管理数据结构：map + 链表
+ * 数据结构：map + 链表
  * <p>
- * 相比于直接对数据库直接order by操作获取排序列表，增加了差错处理逻辑：
- * 1、id是否合法
- * 2、对象优先级是否为极值
- * 3、不允许同时对队列进行操作
  *
  * @author yitao.wu
  */
@@ -49,13 +45,20 @@ public class PriorityServiceImpl<T> implements PriorityService<T> {
             idSet = clazz.getDeclaredMethod("set" + idAttr, Integer.class);
             priorityGet = clazz.getDeclaredMethod("get" + priorityAttr);
             prioritySet = clazz.getDeclaredMethod("set" + priorityAttr, Integer.class);
+            idGet.setAccessible(true);
+            idSet.setAccessible(true);
+            priorityGet.setAccessible(true);
+            prioritySet.setAccessible(true);
             if (parentAttr != null) {
                 parentAttr = parentAttr.substring(0, 1).toUpperCase() + parentAttr.substring(1);
                 parentGet = clazz.getDeclaredMethod("get" + parentAttr);
                 parentSet = clazz.getDeclaredMethod("set" + parentAttr, Integer.class);
+                parentGet.setAccessible(true);
+                parentSet.setAccessible(true);
             }
             initial(initialData);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new RuntimeException("反射失败", e);
         }
     }
@@ -68,12 +71,19 @@ public class PriorityServiceImpl<T> implements PriorityService<T> {
      * |         header -> a -> b -> c
      * header -> I -> II -> III
      */
-    private Node<T> header = new Node<>(null);
-    private HashMap<Integer, Node<T>> map = new HashMap<>(10);
-    private ConcurrentHashMap<Integer, List<T>> queues;
+    private Node<T> header;
+    private HashMap<Integer, Node<T>> map;
+    private HashMap<Integer, List<T>> queues;
 
     private void initial(List<T> initialData) throws InvocationTargetException, IllegalAccessException {
-        queues = new ConcurrentHashMap<>(1);
+        header = new Node<>(null);
+        map = new HashMap<>(10);
+        queues = setQueue(initialData);
+    }
+
+    @SneakyThrows
+    private HashMap<Integer, List<T>> setQueue(List<T> initialData) {
+        HashMap<Integer, List<T>> temp = new HashMap<>(1);
         if (parentGet != null) {
             for (T t :
                     initialData) {
@@ -82,7 +92,7 @@ public class PriorityServiceImpl<T> implements PriorityService<T> {
                     h.down = new Node<>(null);
                 }
             }
-            updateObjectsList(header);
+            updateObjectsList(temp, header);
             for (T t :
                     initialData) {
                 int parentId = (Integer) parentGet.invoke(t);
@@ -91,19 +101,20 @@ public class PriorityServiceImpl<T> implements PriorityService<T> {
                     insertNode(h, t);
                 }
             }
-            for (T t:
-                 queues.get(TOP)) {
-                final Integer id = (Integer)idGet.invoke(t);
+            for (T t :
+                    temp.get(TOP)) {
+                final Integer id = (Integer) idGet.invoke(t);
                 final Node<T> node = map.get(id);
-                updateObjectsList(node.down, id);
+                updateObjectsList(temp, node.down, id);
             }
         } else {
             for (T t :
                     initialData) {
                 insertNode(header, t);
             }
-            updateObjectsList(header);
+            updateObjectsList(temp, header);
         }
+        return temp;
     }
 
     private Node<T> insertNode(Node<T> header, T t) throws InvocationTargetException, IllegalAccessException {
@@ -125,6 +136,7 @@ public class PriorityServiceImpl<T> implements PriorityService<T> {
                     node.pre.next = node;
                     return node;
                 }
+                temp = temp.next;
             }
             temp.next = node;
             node.pre = temp;
@@ -137,9 +149,21 @@ public class PriorityServiceImpl<T> implements PriorityService<T> {
         return queues.get(TOP);
     }
 
+    @SneakyThrows
+    @Override
+    public HashMap<Integer, List<T>> afreshQueue(List<T> list) {
+        initial(list);
+        return queues;
+    }
+
     @Override
     public List<T> getQueue(Integer parentId) {
         return queues.get(parentId);
+    }
+
+    @Override
+    public HashMap<Integer, List<T>> getAllQueue() {
+        return queues;
     }
 
     /**
@@ -164,30 +188,78 @@ public class PriorityServiceImpl<T> implements PriorityService<T> {
         Node<T> node = header;
         if (parentGet != null) {
             parentId = checkClass(a, b);
-            node = map.get(parentId).down;
+            if (parentId != TOP) {
+                node = map.get(parentId).down;
+            }
         }
         final Node<T> x = map.get(a);
         final Node<T> y = map.get(b);
-        final Node<T> preX = x.pre;
-        final Node<T> nextX = x.next;
-        x.pre = y.pre;
-        x.next = y.next;
-        y.pre = preX;
-        y.next = nextX;
+        prioritySwap(x.object, y.object);
+        swapNode(x, y);
         updateObjectsList(node, parentId);
     }
 
     @SneakyThrows
-    private Integer checkClass(int a, int b) {
-        lock.lock();
-        try {
-            if (map.get(a) != map.get(b)) {
-                throw new RuntimeException("不属于同类别");
+    private void prioritySwap(T a, T b) {
+        int temp = (int) priorityGet.invoke(a);
+        prioritySet.invoke(a, priorityGet.invoke(b));
+        prioritySet.invoke(b, temp);
+    }
+
+    private void swapNode(Node<T> x, Node<T> y) {
+        final Node<T> preX = x.pre;
+        final Node<T> nextX = x.next;
+        if (preX == y) {
+            if (y.pre != null) {
+                y.pre.next = x;
             }
-            return (Integer) parentGet.invoke(map.get(a).object);
-        } finally {
-            lock.unlock();
+            x.pre = y.pre;
+            x.next = y;
+            y.pre = x;
+            y.next = nextX;
+            if (nextX != null) {
+                nextX.pre = y;
+            }
+        } else if (nextX == y) {
+            if (y.next != null) {
+                y.next.pre = x;
+            }
+            x.pre = y;
+            x.next = y.next;
+            y.pre = preX;
+            y.next = x;
+            if (preX != null) {
+                preX.next = y;
+            }
+        } else {
+            if (y.pre != null) {
+                y.pre.next = x;
+            }
+            if (y.next != null) {
+                y.next.pre = x;
+            }
+            x.pre = y.pre;
+            x.next = y.next;
+            if (preX != null) {
+                preX.next = y;
+            }
+            if (nextX != null) {
+                nextX.pre = y;
+            }
+            y.pre = preX;
+            y.next = nextX;
         }
+    }
+
+    @SneakyThrows
+    private Integer checkClass(int a, int b) {
+        int aa = (Integer) parentGet.invoke(map.get(a).object);
+        int bb = (Integer) parentGet.invoke(map.get(b).object);
+
+        if (aa != bb) {
+            throw new RuntimeException("不属于同类别");
+        }
+        return aa;
     }
 
     @Override
@@ -209,25 +281,30 @@ public class PriorityServiceImpl<T> implements PriorityService<T> {
     }
 
     private boolean checkId(int objectId) {
-        lock.lock();
-        try {
-            return map.containsKey(objectId);
-        } finally {
-            lock.unlock();
-        }
+        return map.containsKey(objectId);
     }
 
     @Override
     public void delNode(int objectId) {
+        if (parentGet != null && checkChildren(objectId)) {
+            throw new RuntimeException("有子节点");
+        }
         final Node<T> node = map.get(objectId);
         node.pre.next = node.next;
-        node.next.pre = node.pre;
-        node.next = null;
-        map.remove(objectId);
-        if (parentGet == null){
-
-            updateObjectsList(findQueueHeader((T) map.get(objectId)));
+        if (node.next != null) {
+            node.next.pre = node.pre;
         }
+        node.pre = null;
+        node.next = null;
+        final Node<T> n = map.remove(objectId);
+        updateObjectsList(findQueueHeader(n.object));
+        queues.remove(objectId);
+    }
+
+    @SneakyThrows
+    private boolean checkChildren(int objectId) {
+        Node<T> h = map.get(objectId).down;
+        return h != null && h.next != null;
     }
 
     /**
@@ -240,16 +317,25 @@ public class PriorityServiceImpl<T> implements PriorityService<T> {
     @Override
     public void addNode(T t) {
         try {
-            Node<T> temp = findQueueHeader(t);
+            Node<T> h = findQueueHeader(t);
+            Node<T> temp = h;
             Node<T> node = new Node<>(t);
             map.put((Integer) idGet.invoke(t), node);
             while (temp.next != null) {
                 temp = temp.next;
             }
             temp.next = node;
-            updateObjectsList(temp);
+            node.pre = temp;
+            if (parentGet != null) {
+                if (h == header) {
+                    queues.put((Integer) idGet.invoke(t), new ArrayList<T>());
+                }
+                updateObjectsList(h, (Integer) parentGet.invoke(t));
+            } else {
+                updateObjectsList(h);
+            }
         } catch (Exception e) {
-            throw new RuntimeException("反射出错");
+            throw new RuntimeException("反射出错", e);
         }
 
     }
@@ -267,19 +353,15 @@ public class PriorityServiceImpl<T> implements PriorityService<T> {
      */
     @Override
     public int nextPriority(int parentId) {
-        lock.lock();
+        Node<T> h = parentId == TOP ? header : map.get(parentId).down;
+        Node<T> node = h;
+        while (node.next != null) {
+            node = node.next;
+        }
         try {
-            Node<T> node = parentId == TOP ? header : map.get(parentId).down;
-            while (node.next != null) {
-                node = node.next;
-            }
-            try {
-                return (Integer) priorityGet.invoke(node.object) + 1;
-            } catch (Exception e) {
-                throw new RuntimeException("反射失败");
-            }
-        } finally {
-            lock.unlock();
+            return h == node ? 1 : (Integer) priorityGet.invoke(node.object) + 1;
+        } catch (Exception e) {
+            throw new RuntimeException("反射失败", e);
         }
     }
 
@@ -287,23 +369,32 @@ public class PriorityServiceImpl<T> implements PriorityService<T> {
         updateObjectsList(header, TOP);
     }
 
+    private void updateObjectsList(Map<Integer, List<T>> queues, Node<T> header) {
+        updateObjectsList(queues, header, TOP);
+    }
+
     private void updateObjectsList(Node<T> header, Integer parentId) {
+        updateObjectsList(queues, header, parentId);
+    }
+
+    private void updateObjectsList(Map<Integer, List<T>> queues, Node<T> header, Integer parentId) {
         Node<T> node = header.next;
         List<T> arr = new ArrayList<>();
         while (node != null) {
             arr.add(node.object);
+            node = node.next;
         }
         queues.put(parentId, arr);
     }
 
     private boolean isMaxPriority(int objectId) {
         final Node<T> cur = map.get(objectId);
-        return cur != null && cur.pre != header;
+        return cur != null && cur.pre == header;
     }
 
     private boolean isMinPriority(int objectId) {
         final Node<T> cur = map.get(objectId);
-        return cur != null && cur.next != null;
+        return cur != null && cur.next == null;
     }
 
     /**
@@ -322,7 +413,7 @@ public class PriorityServiceImpl<T> implements PriorityService<T> {
         try {
             return (int) idGet.invoke(object);
         } catch (Exception e) {
-            throw new RuntimeException("反射出错");
+            throw new RuntimeException("反射出错", e);
         }
     }
 
@@ -335,7 +426,7 @@ public class PriorityServiceImpl<T> implements PriorityService<T> {
         try {
             return (int) idGet.invoke(object);
         } catch (Exception e) {
-            throw new RuntimeException("反射出错");
+            throw new RuntimeException("反射出错", e);
         }
     }
 
@@ -372,7 +463,7 @@ public class PriorityServiceImpl<T> implements PriorityService<T> {
             }
             return null;
         } catch (Exception e) {
-            throw new RuntimeException("反射出错");
+            throw new RuntimeException("反射出错", e);
         }
     }
 
@@ -380,7 +471,6 @@ public class PriorityServiceImpl<T> implements PriorityService<T> {
 
         Node<T> pre;
         Node<T> next;
-        Node<T> up;
         Node<T> down;
         T object;
 
