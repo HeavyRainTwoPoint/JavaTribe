@@ -29,4 +29,5 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
         log.info("update fill...");
         this.strictUpdateFill(metaObject, "gmtModified", LocalDateTime.class, LocalDateTime.now());
     }
+
 }
