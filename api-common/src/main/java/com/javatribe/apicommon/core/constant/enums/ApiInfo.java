@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
+ * 常用 API 状态码
  * @Author lyr
  * @create 2020/10/12 21:49
  */

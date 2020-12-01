@@ -15,6 +15,7 @@ import java.lang.reflect.Field;
 import java.net.URLEncoder;
 
 /**
+ * IO 工具类
  * @Author lyr
  * @create 2020/7/30 10:37
  */
@@ -78,6 +79,11 @@ public class WebUtil {
         }
     }
 
+    /**
+     * 设置请求头
+     * @param type
+     * @param response
+     */
     private static void setResponseType(RenderType type, HttpServletResponse response) {
         switch (type) {
             case JSON: {
@@ -161,6 +167,11 @@ public class WebUtil {
         return responseStrBuilder.toString();
     }
 
+    /**
+     * 获取 json字符串
+     * @param req
+     * @return
+     */
     public static JSONObject getJson(HttpServletRequest req) {
         try {
             BufferedReader streamReader = new BufferedReader(new InputStreamReader(req.getInputStream(), "UTF-8"));
@@ -204,6 +215,12 @@ public class WebUtil {
     //    return null;
     // }
 
+    /**
+     * 写出文件
+     * @param fromStream
+     * @param response
+     * @param filename
+     */
     public static void writeFile(InputStream fromStream, HttpServletResponse response,String filename)  {
         response.setContentType("application/binary;charset=UTF-8");
         try {

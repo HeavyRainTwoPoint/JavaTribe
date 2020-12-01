@@ -24,6 +24,7 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 /**
+ * 统一异常 处理
  * @Author lyr
  * @create 2020/10/24 10:50
  */
@@ -33,14 +34,11 @@ import java.util.stream.Collectors;
 public class ExHandlerAdvice {
     public static final String ERROR_INFO = "errorInfo";
 
-    // @ExceptionHandler(value = NotFoundException.class)
-    // public String dealExceptin(Exception ex, HttpServletRequest request) {
-    //     Result apiInfo = Result.of(ApiInfo.NO_RESOURCE);
-    //     apiInfo.setMessage(ex.getMessage());
-    //     request.setAttribute("javax.servlet.error.status_code",400);
-    //     return "forward:/error";
-    // }
 
+
+    /**
+     * 参数校验异常
+     */
     @ExceptionHandler(value = {MethodArgumentNotValidException.class})
     public ViewObject validateException(MethodArgumentNotValidException ex) {
         String frontInfo = ex.getBindingResult()
@@ -53,6 +51,11 @@ public class ExHandlerAdvice {
                 .put(ERROR_INFO,frontInfo);
     }
 
+    /**
+     * 参数校验异常
+     * @param e
+     * @return
+     */
     @ExceptionHandler(ConstraintViolationException.class)
     public ViewObject ConstraintViolationExceptionHandler(ConstraintViolationException e) {
         String message = e.getConstraintViolations()
@@ -63,6 +66,11 @@ public class ExHandlerAdvice {
                 .put(ERROR_INFO,message);
     }
 
+    /**
+     * 前端 json报文有问题
+     * @param e
+     * @return
+     */
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ViewObject notReadable(HttpMessageNotReadableException e) {
 
@@ -72,6 +80,11 @@ public class ExHandlerAdvice {
     }
 
 
+    /**
+     * 不支持对应的 url 方法
+     * @param ex
+     * @return
+     */
     @ExceptionHandler(value = HttpRequestMethodNotSupportedException.class)
     public ViewObject validateExceptionsss(HttpRequestMethodNotSupportedException ex) {
         log.info("http method not support");
@@ -82,6 +95,11 @@ public class ExHandlerAdvice {
                 ;
     }
 
+    /**
+     *  基本异常，不知道什么异常
+     * @param ex
+     * @return
+     */
     @ExceptionHandler(value = Exception.class)
     public ViewObject validateExceptionsssss(Exception ex) {
 
@@ -90,6 +108,11 @@ public class ExHandlerAdvice {
     }
 
 
+    /**
+     * 业务层 手动抛的异常
+     * @param e
+     * @return
+     */
     @ExceptionHandler(BusinessException.class)
     public  ViewObject bussiness(BusinessException e) {
 
@@ -103,7 +126,11 @@ public class ExHandlerAdvice {
     }
 
 
-
+    /**
+     * 运行时异常
+     * @param e
+     * @return
+     */
     @ExceptionHandler(RuntimeException.class)
     public  ViewObject runtimeEx(RuntimeException e) {
 
@@ -118,6 +145,11 @@ public class ExHandlerAdvice {
     }
 
 
+    /**
+     * 空指针异常
+     * @param e
+     * @return
+     */
     @ExceptionHandler(NullPointerException.class)
     public  ViewObject nullPointerEx(Exception e) {
         if( AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class)!=null) {
@@ -135,6 +167,7 @@ public class ExHandlerAdvice {
     }
 
     /**
+     * shiro 权限校验异常
      * 权限不足
      * @param exception
      * @return
@@ -160,6 +193,11 @@ public class ExHandlerAdvice {
     }
 
 
+    /**
+     * json 格式异常
+     * @param e
+     * @return
+     */
     @ExceptionHandler(RequestBodyErrorException.class)
     public ViewObject jsonBodyErr(RequestBodyErrorException e) {
 

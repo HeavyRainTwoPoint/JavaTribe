@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * OSS 对象 配置
  * @Author lyr
  * @create 2020/11/21 22:38
  */
@@ -26,6 +27,10 @@ public class AliOssProperties {
 
     private String host;
 
+    /**
+     * 返回 OSS api 操作对象
+     * @return
+     */
     @Bean
     public OSS getOOSClient() {
         return new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);

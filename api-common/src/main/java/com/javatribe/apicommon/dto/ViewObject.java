@@ -6,6 +6,7 @@ import lombok.Data;
 import java.util.HashMap;
 
 /**
+ * 统一返回数据  DTO 类
  * 结合 hashmap
  * @Author lyr
  * @create 2020/9/20 11:01

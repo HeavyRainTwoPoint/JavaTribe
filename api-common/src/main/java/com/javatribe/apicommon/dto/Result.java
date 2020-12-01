@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 
 /**
+ * 统一返回 数据DTO类
  * @Author lyr
  * @create 2020/7/14 0:53
  * @description 统一返回数据 Result
