@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javatribe.mapper.ArticleMapper">
+  <resultMap id="BaseResultMap" type="com.javatribe.pojo.Article">
+    <id column="art_id" jdbcType="INTEGER" property="artId" />
+    <result column="art_gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="art_gmt_modify" jdbcType="TIMESTAMP" property="gmtModify" />
+    <result column="art_delete_status" jdbcType="INTEGER" property="deleteStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    article.art_id, article.art_title, article.art_Summary, article.art_content,
+    article.art_viewcount, article.art_tag_name
+  </sql>
+
+  <select id="selectOneById" parameterType="int" resultType="com.javatribe.pojo.Article">
+    select
+    <include refid="Base_Column_List" />
+    from article where art_id = #{id} and delete_status = 0;
+  </select>
+
+  <insert id="insertArticle" parameterType="com.javatribe.pojo.Article">
+    insert into art_tag (art_title, art_content, art_summary, art_tag_name)
+    values (#{artTitle}, #{artContent}, #{artSummary}, #{artTagName})
+  </insert>
+</mapper>
