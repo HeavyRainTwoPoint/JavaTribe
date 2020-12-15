@@ -6,7 +6,6 @@
         <groupId>com.javatribe</groupId>
         <artifactId>api-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-
     </parent>
     <artifactId>api-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
