@@ -19,6 +19,7 @@
         <module>api-starter</module>
         <module>api-common</module>
         <module>api-competition</module>
+        <module>api-direction</module>
         <module>api-introduction</module>
         <module>api-life</module>
         <module>api-share</module>
