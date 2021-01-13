@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javatribe.apicompetition.mapper.WinnerTeamMapper">
+  <resultMap id="BaseResultMap" type="com.javatribe.apicompetition.pojo.po.WinnerTeam">
+    <result column="team_id" jdbcType="BIGINT" property="teamId" />
+    <result column="team_name" jdbcType="VARCHAR" property="teamName" />
+    <result column="team_user_list" jdbcType="VARCHAR" property="teamUserList" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="the_year" jdbcType="VARCHAR" property="theYear" />
+    <result column="team_begin_time" jdbcType="TIMESTAMP" property="teamBeginTime" />
+    <result column="team_end_time" jdbcType="TIMESTAMP" property="teamEndTime" />
+    <result column="delete_status" jdbcType="BIT" property="deleteStatus" />
+    <result column="competition_id" jdbcType="BIGINT" property="competitionId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.javatribe.apicompetition.pojo.po.WinnerTeam">
+    <selectKey keyProperty="teamId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_winner_team (team_name, team_user_list, gmt_create, 
+      gmt_modified, the_year, team_begin_time, 
+      team_end_time, delete_status, competition_id
+      )
+    values (#{teamName,jdbcType=VARCHAR}, #{teamUserList,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{theYear,jdbcType=VARCHAR}, #{teamBeginTime,jdbcType=TIMESTAMP}, 
+      #{teamEndTime,jdbcType=TIMESTAMP}, #{deleteStatus,jdbcType=BIT}, #{competitionId,jdbcType=BIGINT}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select team_id, team_name, team_user_list, gmt_create, gmt_modified, the_year, team_begin_time, 
+    team_end_time, delete_status, competition_id
+    from t_winner_team
+  </select>
+</mapper>

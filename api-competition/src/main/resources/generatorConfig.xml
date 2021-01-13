@@ -69,5 +69,10 @@
             <generatedKey column="show_id"  sqlStatement="Mysql"  identity="true" />
         </table>
 
+
+        <table tableName="t_winner_team" domainObjectName="WinnerTeam" >
+
+            <generatedKey column="team_id"  sqlStatement="Mysql"  identity="true" />
+        </table>
     </context>
 </generatorConfiguration>
