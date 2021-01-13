@@ -1,24 +1,30 @@
-package com.javatribe.apistarter;
 
+import com.javatribe.apicompetition.WebTest;
 import com.javatribe.apicompetition.mapper.StyleShowMapper;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
-@SpringBootTest
-class ApiStarterApplicationTests {
+
+/**
+ * @Author lyr
+ * @create 2021/1/13 22:19
+ */
+
+@SpringBootTest(classes = WebTest.class)
+public class AAATEST {
 
     @Resource
     private StyleShowMapper styleShowMapper;
+
     @Test
-    void contextLoads() {
+    public void ss() {
+        System.out.println(styleShowMapper);
         Assertions.assertNotNull(styleShowMapper);
+        // System.out.println("hhh");
     }
 
 

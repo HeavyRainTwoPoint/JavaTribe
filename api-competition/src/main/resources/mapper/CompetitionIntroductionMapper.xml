@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javatribe.apicompetition.mapper.CompetitionIntroductionMapper">
+  <resultMap id="BaseResultMap" type="com.javatribe.apicompetition.pojo.po.CompetitionIntroduction">
+    <id column="competition_id" jdbcType="BIGINT" property="competitionId" />
+    <result column="competition_name" jdbcType="VARCHAR" property="competitionName" />
+    <result column="show_content" jdbcType="VARCHAR" property="showContent" />
+    <result column="delete_status" jdbcType="BIT" property="deleteStatus" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_competition_introduction
+    where competition_id = #{competitionId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.javatribe.apicompetition.pojo.po.CompetitionIntroduction">
+    <selectKey keyProperty="competitionId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_competition_introduction (competition_name, show_content, delete_status, 
+      gmt_create, gmt_modified)
+    values (#{competitionName,jdbcType=VARCHAR}, #{showContent,jdbcType=VARCHAR}, #{deleteStatus,jdbcType=BIT}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.javatribe.apicompetition.pojo.po.CompetitionIntroduction">
+    update t_competition_introduction
+    set competition_name = #{competitionName,jdbcType=VARCHAR},
+      show_content = #{showContent,jdbcType=VARCHAR},
+      delete_status = #{deleteStatus,jdbcType=BIT},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+    where competition_id = #{competitionId,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select competition_id, competition_name, show_content, delete_status, gmt_create, 
+    gmt_modified
+    from t_competition_introduction
+    where competition_id = #{competitionId,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select competition_id, competition_name, show_content, delete_status, gmt_create, 
+    gmt_modified
+    from t_competition_introduction
+  </select>
+</mapper>

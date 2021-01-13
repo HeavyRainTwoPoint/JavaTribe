@@ -17,15 +17,15 @@ import java.io.IOException;
  */
 @RestController
 public class TestController {
-
-    @Resource
-    private OSS oss;
-
     //
-    // @GetMapping("/h")
-    // public Result ok() {
-    //     return Result.success();
-    // }
+    // @Resource
+    // private OSS oss;
+
+
+    @GetMapping("/h")
+    public Result ok() {
+        return Result.success();
+    }
     //
     // @PostMapping("/file")
     // public Result okkk(@RequestPart MultipartFile file) throws IOException {

@@ -35,7 +35,7 @@
             <property name="nullCatalogMeansCurrent" value="true"/>
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="com.example.demo.pojo"
+        <javaModelGenerator targetPackage="com.javatribe.apicompetition.pojo.po"
                             targetProject="./src/main/java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
@@ -48,7 +48,7 @@
         </sqlMapGenerator>
 
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.example.demo.mapper"
+                             targetPackage="com.javatribe.apicompetition.mapper"
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
@@ -56,9 +56,17 @@
 
 
 
-        <table tableName="t_advertisement" domainObjectName="Advertisement" >
+        <table tableName="t_competition_introduction" domainObjectName="CompetitionIntroduction" >
 
-            <generatedKey column="advertisement_id"  sqlStatement="Mysql"  identity="true" />
+            <generatedKey column="competition_id"  sqlStatement="Mysql"  identity="true" />
+        </table>
+        <table tableName="t_register_team" domainObjectName="RegisterTeam" >
+
+            <generatedKey column="register_id"  sqlStatement="Mysql"  identity="true" />
+        </table>
+        <table tableName="t_style_show" domainObjectName="StyleShow" >
+
+            <generatedKey column="show_id"  sqlStatement="Mysql"  identity="true" />
         </table>
 
     </context>
