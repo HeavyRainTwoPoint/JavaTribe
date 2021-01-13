@@ -21,16 +21,16 @@ public class TestController {
     @Resource
     private OSS oss;
 
-
-    @GetMapping("/h")
-    public Result ok() {
-        return Result.success();
-    }
-
-    @PostMapping("/file")
-    public Result okkk(@RequestPart MultipartFile file) throws IOException {
-        oss.putObject("javatribe","xxx.xxx",file.getInputStream());
-        return Result.success();
-    }
+    //
+    // @GetMapping("/h")
+    // public Result ok() {
+    //     return Result.success();
+    // }
+    //
+    // @PostMapping("/file")
+    // public Result okkk(@RequestPart MultipartFile file) throws IOException {
+    //     oss.putObject("javatribe","xxx.xxx",file.getInputStream());
+    //     return Result.success();
+    // }
 
 }
