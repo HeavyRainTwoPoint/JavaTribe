@@ -19,6 +19,7 @@ spring:
 mybatis-plus:
   mapper-locations: com/javatribe/introduction/mapper/xml/*.xml
 
+
 oss:
   access-key-id: LTAI4GL5YbDREf9WSAv6xo5a
   access-key-secret: L5QB1ls2XSBfAnTq1I1naG6RRG1cFT
@@ -26,5 +27,9 @@ oss:
   endpoint: oss-cn-guangzhou.aliyuncs.com
   host: https://${oss.bucket-name}.${oss.endpoint}
 
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:share/*.xml
 
 

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.javatribe.mapper.ArtTagMapper">
   <insert id="insertTags" parameterType="com.javatribe.vo.TagsRelationship" >
-    insert into art_tag(art_id, tag_id)
+    insert into t_art_tag(art_id, tag_id)
     values
     <foreach collection="tagIds" item="tag" separator=",">
       (artId, tag)

@@ -15,11 +15,16 @@
   <select id="selectOneById" parameterType="int" resultType="com.javatribe.pojo.Article">
     select
     <include refid="Base_Column_List" />
-    from article where art_id = #{id} and delete_status = 0;
+    from t_article where art_id = #{id} and delete_status = 0;
   </select>
 
   <insert id="insertArticle" parameterType="com.javatribe.pojo.Article">
-    insert into art_tag (art_title, art_content, art_summary, art_tag_name)
+    insert into t_art_tag (art_title, art_content, art_summary, art_tag_name)
     values (#{artTitle}, #{artContent}, #{artSummary}, #{artTagName})
   </insert>
+
+  <update id="deleteOneById" parameterType="int">
+    update t_article set delete_status = 1 where id = #{id}
+  </update>
+
 </mapper>

@@ -1,7 +1,9 @@
 package com.javatribe.mapper;
 
 import com.javatribe.pojo.Tag;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface TagMapper {
     /**
      * 插入一个新的标签
