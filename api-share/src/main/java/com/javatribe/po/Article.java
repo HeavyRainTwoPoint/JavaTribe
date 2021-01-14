@@ -1,12 +1,11 @@
-package com.javatribe.pojo;
-
-import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.Date;
+package com.javatribe.po;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.sql.Timestamp;
 
 /**
  * art_tag
@@ -15,12 +14,18 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ArtTag implements Serializable {
-    private Integer id;
-
+public class Article implements Serializable {
     private Integer artId;
 
-    private Integer tagId;
+    private String artTitle;
+
+    private String artContent;
+
+    private String artSummary;
+
+    private Integer artViewcount;
+
+    private String artTagName;
 
     private Timestamp gmtCreate;
 

@@ -21,7 +21,7 @@ mybatis-plus:
 
 
 mybatis:
-  mapper-locations: classpath:/mapper/**/*.xml
+  mapper-locations: classpath:/mapper/**/*.xml, classpath:mappers/*.xml
   type-aliases-package: com.javatribe.apicompetition.pojo.po
   configuration:
     map-underscore-to-camel-case: true

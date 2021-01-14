@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.javatribe.mapper.TagMapper">
-  <insert id="insertTag" parameterType="com.javatribe.pojo.Tag" >
+  <insert id="insertTag" parameterType="com.javatribe.po.Tag" >
     insert into t_tag(tag_id, tag_name, tag_parent)
     values (#{tagId}. #{tagName}, #{tagParent})
   </insert>

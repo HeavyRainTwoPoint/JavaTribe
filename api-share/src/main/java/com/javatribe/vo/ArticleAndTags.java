@@ -1,6 +1,6 @@
 package com.javatribe.vo;
 
-import com.javatribe.pojo.Article;
+import com.javatribe.po.Article;
 import lombok.Data;
 
 import java.util.List;

@@ -1,12 +1,11 @@
 package com.javatribe.mapper;
 
-import com.javatribe.pojo.Article;
+import com.javatribe.po.Article;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
  * @author 小胖五
  */
-@Mapper
 public interface ArticleMapper {
     /**
      * 根据文章id对文章进行逻辑删除

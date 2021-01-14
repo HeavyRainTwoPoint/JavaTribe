@@ -1,4 +1,4 @@
-package com.javatribe.pojo;
+package com.javatribe.po;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
