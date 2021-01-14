@@ -51,7 +51,7 @@ public class ShareTestController {
 
     @GetMapping("/del")
     public String del(@PathParam("id") int id) {
-        logger.info("测试：" + articleMapper == null ? "null": "no");
+        logger.info("测试：" + articleMapper == null ? "null": "nogit ");
         int result = articleMapper.deleteOneById(id);
         return result == 1 ? "删除成功！！！" : "删除失败！！！";
     }

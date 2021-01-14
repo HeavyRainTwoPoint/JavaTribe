@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javatribe.apicompetition.mapper.StyleShowMapper">
+  <resultMap id="BaseResultMap" type="com.javatribe.apicompetition.pojo.po.StyleShow">
+    <id column="show_id" jdbcType="BIGINT" property="showId" />
+    <result column="competition_id" jdbcType="BIGINT" property="competitionId" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="show_status" jdbcType="BIT" property="showStatus" />
+    <result column="delete_status" jdbcType="BIT" property="deleteStatus" />
+    <result column="show_order" jdbcType="INTEGER" property="showOrder" />
+    <result column="imgs" jdbcType="VARCHAR" property="imgs" />
+    <result column="project_name" jdbcType="VARCHAR" property="projectName" />
+    <result column="team_name" jdbcType="VARCHAR" property="teamName" />
+    <result column="team_members" jdbcType="VARCHAR" property="teamMembers" />
+    <result column="team_begin_time" jdbcType="TIMESTAMP" property="teamBeginTime" />
+    <result column="team_end_time" jdbcType="TIMESTAMP" property="teamEndTime" />
+    <result column="the_year" jdbcType="VARCHAR" property="theYear" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_style_show
+    where show_id = #{showId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.javatribe.apicompetition.pojo.po.StyleShow">
+    <selectKey keyProperty="showId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_style_show (competition_id, gmt_create, gmt_modified, 
+      show_status, delete_status, show_order, 
+      imgs, project_name, team_name, 
+      team_members, team_begin_time, team_end_time, 
+      the_year)
+    values (#{competitionId,jdbcType=BIGINT}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
+      #{showStatus,jdbcType=BIT}, #{deleteStatus,jdbcType=BIT}, #{showOrder,jdbcType=INTEGER}, 
+      #{imgs,jdbcType=VARCHAR}, #{projectName,jdbcType=VARCHAR}, #{teamName,jdbcType=VARCHAR}, 
+      #{teamMembers,jdbcType=VARCHAR}, #{teamBeginTime,jdbcType=TIMESTAMP}, #{teamEndTime,jdbcType=TIMESTAMP}, 
+      #{theYear,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.javatribe.apicompetition.pojo.po.StyleShow">
+    update t_style_show
+    set competition_id = #{competitionId,jdbcType=BIGINT},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      show_status = #{showStatus,jdbcType=BIT},
+      delete_status = #{deleteStatus,jdbcType=BIT},
+      show_order = #{showOrder,jdbcType=INTEGER},
+      imgs = #{imgs,jdbcType=VARCHAR},
+      project_name = #{projectName,jdbcType=VARCHAR},
+      team_name = #{teamName,jdbcType=VARCHAR},
+      team_members = #{teamMembers,jdbcType=VARCHAR},
+      team_begin_time = #{teamBeginTime,jdbcType=TIMESTAMP},
+      team_end_time = #{teamEndTime,jdbcType=TIMESTAMP},
+      the_year = #{theYear,jdbcType=VARCHAR}
+    where show_id = #{showId,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select show_id, competition_id, gmt_create, gmt_modified, show_status, delete_status, 
+    show_order, imgs, project_name, team_name, team_members, team_begin_time, team_end_time, 
+    the_year
+    from t_style_show
+    where show_id = #{showId,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select show_id, competition_id, gmt_create, gmt_modified, show_status, delete_status, 
+    show_order, imgs, project_name, team_name, team_members, team_begin_time, team_end_time, 
+    the_year
+    from t_style_show
+  </select>
+</mapper>
