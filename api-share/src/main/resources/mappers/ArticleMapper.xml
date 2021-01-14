@@ -8,8 +8,8 @@
     <result column="art_delete_status" jdbcType="INTEGER" property="deleteStatus" />
   </resultMap>
   <sql id="Base_Column_List">
-    article.art_id, article.art_title, article.art_Summary, article.art_content,
-    article.art_viewcount, article.art_tag_name
+    t_article.art_id, t_article.art_title, t_article.art_Summary, t_article.art_content,
+    t_article.art_viewcount, t_article.art_tag_name
   </sql>
 
   <select id="selectOneById" parameterType="int" resultType="com.javatribe.po.Article">
@@ -24,7 +24,7 @@
   </insert>
 
   <update id="deleteOneById" parameterType="int">
-    update t_article set delete_status = 1 where id = #{id}
+    update t_article set delete_status = 1 where art_id = #{id}
   </update>
 
 </mapper>

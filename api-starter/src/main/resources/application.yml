@@ -17,14 +17,18 @@ spring:
     active: dev
 
 mybatis-plus:
-  mapper-locations: com/javatribe/introduction/mapper/xml/*.xml
+  mapper-locations: com/javatribe/introduction/mapper/xml/*.xml, classpath:/mappers/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 
 mybatis:
-  mapper-locations: classpath:/mapper/**/*.xml, classpath:mappers/*.xml
+  mapper-locations: classpath:/mapper/**/*.xml
   type-aliases-package: com.javatribe.apicompetition.pojo.po
   configuration:
     map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 oss:
   access-key-id: LTAI4GL5YbDREf9WSAv6xo5a

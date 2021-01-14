@@ -54,5 +54,8 @@ public class ShareTestController {
         logger.info("测试：" + articleService == null ? "null": "no");
         int result = articleService.deleteOneById(id);
         return result == 1 ? "删除成功！！！" : "删除失败！！！";
+
+
+
     }
 }
