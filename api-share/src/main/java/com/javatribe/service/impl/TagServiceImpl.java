@@ -28,7 +28,7 @@ public class TagServiceImpl implements TagService {
      * 插入之前先判断一下即将插入的标签是否已经存在
      * 如果已经存在则不执行插入
      * @param tag 标签实体
-     * @return 返回是否插入成功的结果，1表示成功，0表示失败
+     * @return 返回是否插入成功的结果，1表示成功，0表示失败, -1表示已经存在，不插入
      */
     @Override
     public int insertTag(Tag tag) {
@@ -36,7 +36,10 @@ public class TagServiceImpl implements TagService {
             return 0;
         }
         int count = tagMapper.checkTag(tag.getTagName());
-        return count > 0 ? count : tagMapper.insertTag(tag);
+        if (count > 0) {
+            return -1;
+        }
+        return tagMapper.insertTag(tag);
     }
 
     /**

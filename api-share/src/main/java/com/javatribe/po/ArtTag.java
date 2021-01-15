@@ -3,9 +3,7 @@ package com.javatribe.po;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 /**
  * art_tag
@@ -14,6 +12,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class ArtTag implements Serializable {
     private Integer id;
 

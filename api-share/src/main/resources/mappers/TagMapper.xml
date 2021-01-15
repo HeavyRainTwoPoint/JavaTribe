@@ -21,7 +21,7 @@
     </update>
 
     <update id="updateTag">
-        update t_tag set tag_name = #{tag.tagName}, gmt_modify = CURRENT_TIMESTAMP where tag_id = #{tag.tagId}
+        update t_tag set tag_name = #{tagName}, gmt_modify = CURRENT_TIMESTAMP where tag_id = #{tagId}
     </update>
 
 

@@ -1,7 +1,10 @@
 package com.javatribe.mapper;
 
+import com.javatribe.apicommon.dto.PageEntity;
 import com.javatribe.po.Article;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * @author 小胖五
@@ -22,17 +25,55 @@ public interface ArticleMapper {
     int insertArticle(Article article);
 
     /**
-     * 根据id获取一篇文章
-     * @param id 文章的id
+     * 获取文章的总数
      * @return
      */
-    Article selectOneById(int id);
+    int getTotalCount();
 
-//    int insertSelective(Article record);
+    /**
+     * 获取模糊查询命中的总数
+     * @param artTitle
+     * @return
+     */
+    int getCountLimitByTitle(String artTitle);
 
-//    Article selectByPrimaryKey(Integer id);
+    /**
+     * 获取某个一级标签下的所有文章
+     * @param category
+     * @return
+     */
+    int getCountLimitCategory(String category);
 
-//    int updateByPrimaryKeySelective(Article record);
+    /**
+     * 根据id获取一篇文章
+     * @param artNo 文章的id
+     * @return
+     */
+    Article selectOneByNo(String artNo);
 
-//    int updateByPrimaryKey(Article record);
+    /**
+     * 首页展示
+     * TODO 分页，而且默认显示所有分类
+     * @return
+     */
+    List<Article> getSummarys(PageEntity<Article> pageEntity);
+
+    /**
+     * 按照标签展示文章摘要
+     * TODO 分页显示
+     * @return
+     */
+    List<Article> getSummarysByParentTag(String category, int curPage, int size);
+//
+//
+//    /**
+//     * 按照输入标题进行模糊查找
+//     * TODO 分页
+//     * @param artTitle
+//     * @return
+//     */
+//    List<Article> searchByTitle(String artTitle);
+
+
+
 }

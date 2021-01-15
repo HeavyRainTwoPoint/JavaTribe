@@ -1,8 +1,6 @@
 package com.javatribe.po;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -15,6 +13,8 @@ import java.sql.Timestamp;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Tag implements Serializable {
     private int tagId;
 

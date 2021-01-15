@@ -1,8 +1,6 @@
 package com.javatribe.po;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -14,6 +12,8 @@ import java.sql.Timestamp;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Article implements Serializable {
     private Integer artId;
 
@@ -32,6 +32,8 @@ public class Article implements Serializable {
     private Timestamp gmtModify;
 
     private Integer deleteStatus;
+
+    private String artNo;
 
     private static final long serialVersionUID = 1L;
 }

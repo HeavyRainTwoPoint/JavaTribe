@@ -1,30 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.javatribe.mapper.ArticleMapper">
-  <resultMap id="BaseResultMap" type="com.javatribe.po.Article">
-    <id column="art_id" jdbcType="INTEGER" property="artId" />
-    <result column="art_gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
-    <result column="art_gmt_modify" jdbcType="TIMESTAMP" property="gmtModify" />
-    <result column="art_delete_status" jdbcType="INTEGER" property="deleteStatus" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    t_article.art_id, t_article.art_title, t_article.art_Summary, t_article.art_content,
-    t_article.art_viewcount, t_article.art_tag_name
+    <resultMap id="BaseResultMap" type="com.javatribe.po.Article">
+        <id column="art_id" jdbcType="INTEGER" property="artId"/>
+        <result column="art_gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="art_gmt_modify" jdbcType="TIMESTAMP" property="gmtModify"/>
+        <result column="art_delete_status" jdbcType="INTEGER" property="deleteStatus"/>
+    </resultMap>
+
+    <sql id="base_columns">
+    t_article.art_id, t_article.art_title, t_article.art_summary, t_article.art_content,
+    t_article.art_viewcount, t_article.art_tag_name, t_article.art_no
   </sql>
 
-  <select id="selectOneById" parameterType="int" resultType="com.javatribe.po.Article">
-    select
-    <include refid="Base_Column_List" />
-    from t_article where art_id = #{id} and delete_status = 0;
-  </select>
+    <sql id="index_columns">
+    art_id, art_title, art_summary, gmt_create, art_no
+  </sql>
 
-  <insert id="insertArticle" parameterType="com.javatribe.po.Article">
+    <sql id="get_condition">
+      delete_status = 0 and
+    </sql>
+
+    <insert id="insertArticle" parameterType="com.javatribe.po.Article">
     insert into t_art_tag (art_title, art_content, art_summary, art_tag_name)
     values (#{artTitle}, #{artContent}, #{artSummary}, #{artTagName})
   </insert>
 
-  <update id="deleteOneById" parameterType="int">
+    <update id="deleteOneById" parameterType="int">
     update t_article set delete_status = 1 where art_id = #{id}
   </update>
 
+    <select id="getTotalCount" resultType="int">
+        select count(*) from t_article where delete_status = 0
+    </select>
+
+    <select id="getCountLimitByTitle" resultType="int">
+        select count(*) from t_article where
+        <include refid="get_condition"/>
+        art_title like concat('%', #{artTitle}, '%')
+    </select>
+
+    <select id="getCountLimitCategory" resultType="int">
+        select count(*) from t_article where
+        <include refid="get_condition"/>
+        art_tag_name = #{category}
+    </select>
+
+    <select id="selectOneByNo" parameterType="int" resultType="com.javatribe.po.Article">
+        select
+        <include refid="base_columns"/>
+        from t_article where art_id = #{id} and delete_status = 0;
+    </select>
+
+    <select id="getSummarys" resultType="com.javatribe.po.Article">
+        select
+        <include refid="index_columns"/>
+        from t_article
+        where delete_status = 0
+        order by gmt_create desc
+        limit #{curPage}, #{size}
+    </select>
+
+    <select id="getSummarysByParentTag" resultType="com.javatribe.po.Article">
+        select
+        <include refid="index_columns"/>
+        from t_article
+        where
+        <include refid="get_condition"/> art_tag_name = #{param1}
+         order by gmt_create desc
+        limit #{param2}, #{param3}
+    </select>
+
+    <!--    <select id="searchByTitle" resultType="com.javatribe.po.Article">-->
+    <!--        select-->
+    <!--        <include refid="index_columns" />-->
+    <!--        from t_article-->
+    <!--        where <include refid="get_condition" />-->
+    <!--        art_title like concat('%', #{artTitle}, '%')-->
+    <!--        limit #{}, #{}-->
+    <!--    </select>-->
 </mapper>

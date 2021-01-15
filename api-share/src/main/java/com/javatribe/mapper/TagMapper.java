@@ -4,6 +4,9 @@ import com.javatribe.po.Tag;
 
 import java.util.List;
 
+/**
+ * @author 大雨两点
+ */
 public interface TagMapper {
     /**
      * 插入一个新的标签

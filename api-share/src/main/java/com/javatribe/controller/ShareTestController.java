@@ -1,5 +1,7 @@
 package com.javatribe.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.javatribe.apicommon.dto.Result;
 import com.javatribe.mapper.ArtTagMapper;
 import com.javatribe.mapper.ArticleMapper;
 import com.javatribe.po.Article;
@@ -31,6 +33,9 @@ public class ShareTestController {
     @Autowired
     private ArticleService articleService;
 
+    @Autowired
+    private ArticleMapper articleMapper;
+
     @GetMapping("/test")
     public String test() {
         TagsRelationship tags = new TagsRelationship();
@@ -45,8 +50,8 @@ public class ShareTestController {
     }
 
     @GetMapping("/get")
-    public Article get(@PathParam("id") int id) {
-        return articleService.selectOneById(id);
+    public Article get(@PathParam("artNo") String artNo) {
+        return articleService.selectOneByNo(artNo);
     }
 
     @GetMapping("/del")
@@ -54,8 +59,6 @@ public class ShareTestController {
         logger.info("测试：" + articleService == null ? "null": "no");
         int result = articleService.deleteOneById(id);
         return result == 1 ? "删除成功！！！" : "删除失败！！！";
-
-
-
     }
+
 }
