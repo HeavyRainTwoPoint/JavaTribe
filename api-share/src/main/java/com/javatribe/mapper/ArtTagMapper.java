@@ -16,4 +16,5 @@ public interface ArtTagMapper {
      * @return
      */
     int checkTag(int tagId);
+
 }

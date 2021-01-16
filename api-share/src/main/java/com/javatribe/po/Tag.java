@@ -15,6 +15,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class Tag implements Serializable {
     private int tagId;
 
