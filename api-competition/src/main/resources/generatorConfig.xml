@@ -5,13 +5,7 @@
 
 <generatorConfiguration>
 
-    <!--    &lt;!&ndash; 引入配置文件 &ndash;&gt;-->
-    <!--    <properties resource="db.properties">-->
-    <!--    </properties>-->
 
-    <!-- 放到resources目录下，点击 plugin -> mybatis:generate    -->
-
-    <!-- 记得修改默认的密码    -->
     <context id="mysqlTable" targetRuntime="MyBatis3Simple"     defaultModelType="flat">
         <plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin" />
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
