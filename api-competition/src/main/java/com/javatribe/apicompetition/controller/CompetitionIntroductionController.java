@@ -5,6 +5,7 @@ import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
 import com.javatribe.apicompetition.service.CompetitionIntroductionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  * @create 2021/1/16 15:44
  */
 @RestController
+@RequestMapping("/competition/")
 @RequiredArgsConstructor
 public class CompetitionIntroductionController {
     final CompetitionIntroductionService competitionIntroductionService;
