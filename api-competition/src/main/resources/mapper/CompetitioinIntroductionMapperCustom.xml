@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javatribe.apicompetition.mapper.CompetitionIntroductionMapperCustom">
+    <resultMap id="BaseResultMap" type="com.javatribe.apicompetition.pojo.po.CompetitionIntroduction" extends="com.javatribe.apicompetition.mapper.CompetitionIntroductionMapper.BaseResultMap">
+    </resultMap>
+    <update id="updateSelective">
+        update t_competition_introduction
+        <set>
+
+            <if test="competitionName != null ">
+                competition_name= #{ competitionName }
+            </if>
+            <if test="showContent != null ">
+                show_content= #{ showContent }
+            </if>
+            <if test="deleteStatus != null ">
+                delete_status= #{ deleteStatus }
+            </if>
+            <if test="gmtModified != null ">
+                gmt_modified= #{ gmtModified }
+            </if>
+            <if test="signUp != null ">
+                sign_up= #{ signUp }
+            </if>
+
+        </set>
+        where  competition_id= #{ competitionId }
+    </update>
+
+</mapper>
