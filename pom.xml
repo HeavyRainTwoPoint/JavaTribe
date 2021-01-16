@@ -40,10 +40,11 @@
         <mybatis-plus-boot-starter.version>3.3.0</mybatis-plus-boot-starter.version>
         <velocity-engine-core.version>2.1</velocity-engine-core.version>
         <springfox-swagger2.version>2.7.0</springfox-swagger2.version>
-        <druid.version>1.1.21</druid.version>
+
         <mybatis-spring-boot-starter.version>2.1.3</mybatis-spring-boot-starter.version>
         <mybatis-generator-core.version>1.3.5</mybatis-generator-core.version>
         <common-lang.version>2.6</common-lang.version>
+        <druid.version>1.2.4</druid.version>
     </properties>
 
     <dependencies>
@@ -81,11 +82,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>${druid.version}</version>
-        </dependency>
+
     </dependencies>
 
 
@@ -165,6 +162,15 @@
                 <artifactId>commons-lang</artifactId>
                 <version>${common-lang.version}</version>
             </dependency>
+
+
+            <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>

@@ -8,6 +8,7 @@
     <result column="delete_status" jdbcType="BIT" property="deleteStatus" />
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
     <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="sign_up" jdbcType="INTEGER" property="signUp" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_competition_introduction
@@ -18,9 +19,11 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into t_competition_introduction (competition_name, show_content, delete_status, 
-      gmt_create, gmt_modified)
+      gmt_create, gmt_modified, sign_up
+      )
     values (#{competitionName,jdbcType=VARCHAR}, #{showContent,jdbcType=VARCHAR}, #{deleteStatus,jdbcType=BIT}, 
-      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{signUp,jdbcType=INTEGER}
+      )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.javatribe.apicompetition.pojo.po.CompetitionIntroduction">
     update t_competition_introduction
@@ -28,18 +31,19 @@
       show_content = #{showContent,jdbcType=VARCHAR},
       delete_status = #{deleteStatus,jdbcType=BIT},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
-      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      sign_up = #{signUp,jdbcType=INTEGER}
     where competition_id = #{competitionId,jdbcType=BIGINT}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select competition_id, competition_name, show_content, delete_status, gmt_create, 
-    gmt_modified
+    gmt_modified, sign_up
     from t_competition_introduction
     where competition_id = #{competitionId,jdbcType=BIGINT}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select competition_id, competition_name, show_content, delete_status, gmt_create, 
-    gmt_modified
+    gmt_modified, sign_up
     from t_competition_introduction
   </select>
 </mapper>

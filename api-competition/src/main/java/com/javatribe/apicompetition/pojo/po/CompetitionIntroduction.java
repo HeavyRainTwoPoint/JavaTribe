@@ -16,6 +16,8 @@ public class CompetitionIntroduction implements Serializable {
 
     private Date gmtModified;
 
+    private Integer signUp;
+
     private static final long serialVersionUID = 1L;
 
     public Long getCompetitionId() {
@@ -96,6 +98,19 @@ public class CompetitionIntroduction implements Serializable {
         this.gmtModified = gmtModified;
     }
 
+    public Integer getSignUp() {
+        return signUp;
+    }
+
+    public CompetitionIntroduction withSignUp(Integer signUp) {
+        this.setSignUp(signUp);
+        return this;
+    }
+
+    public void setSignUp(Integer signUp) {
+        this.signUp = signUp;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -108,6 +123,7 @@ public class CompetitionIntroduction implements Serializable {
         sb.append(", deleteStatus=").append(deleteStatus);
         sb.append(", gmtCreate=").append(gmtCreate);
         sb.append(", gmtModified=").append(gmtModified);
+        sb.append(", signUp=").append(signUp);
         sb.append("]");
         return sb.toString();
     }
