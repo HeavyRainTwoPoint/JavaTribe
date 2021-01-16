@@ -12,4 +12,5 @@
     <select id="checkTag" resultType="java.lang.Integer">
         select count(*) from t_art_tag where tag_id = #{tagId}
     </select>
+
 </mapper>

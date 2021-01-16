@@ -4,10 +4,13 @@ import com.javatribe.apicommon.dto.PageEntity;
 import com.javatribe.mapper.ArticleMapper;
 import com.javatribe.po.Article;
 import com.javatribe.service.ArticleService;
+import com.javatribe.vo.ArticleAndTags;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 大雨两点
@@ -41,33 +44,12 @@ public class ArticleServiceImpl implements ArticleService {
         return articleMapper.insertArticle(article);
     }
 
-    /**
-     * 获取文章的总数
-     *
-     * @return
-     */
-    @Override
-    public int getTotalCount() {
-        return articleMapper.getTotalCount();
-    }
-
-    /**
-     * 获取模糊查询命中的总数
-     *
-     * @param artTitle
-     * @return
-     */
-    @Override
-    public int getCountLimitByTitle(String artTitle) {
-        return articleMapper.getCountLimitByTitle(artTitle);
-    }
 
     /**
      * 首页展示
-     * TODO 分页，而且默认显示所有分类
      *
      * @param curPage 当前页
-     * @param size 页面大小
+     * @param size    页面大小
      * @return
      */
     @Override
@@ -81,12 +63,12 @@ public class ArticleServiceImpl implements ArticleService {
         }
         List<Article> list = articleMapper.getSummarys(entity);
         entity.setList(list);
+        entity.setCurPage(curPage);
         return entity;
     }
 
     /**
      * 按照标签展示文章摘要
-     * TODO 分页显示
      *
      * @param category
      * @param curPage
@@ -103,9 +85,37 @@ public class ArticleServiceImpl implements ArticleService {
             entity.setList(null);
             return entity;
         }
-        System.out.println("category:" + category);
         List<Article> list = articleMapper.getSummarysByParentTag(category, entity.getCurPage(), size);
         entity.setList(list);
+        entity.setCurPage(curPage);
+        return entity;
+    }
+
+    /**
+     * 获取某标签下的所有文章，分页返回
+     *
+     * @param tagId   给定的标签tagId
+     * @param curPage 当前页
+     * @param size    页面大小
+     * @return
+     */
+    @Override
+    public PageEntity<Article> getSummarysByTagId(int tagId, int curPage, int size) {
+        int totalCount = articleMapper.getCountLimitByTagId(tagId);
+        PageEntity<Article> entity = init(curPage, size, totalCount);
+        if (curPage > entity.getPages()) {
+            curPage = entity.getPages();
+            entity.setCurPage(curPage);
+            entity.setList(null);
+            return entity;
+        }
+        Map<String, Integer> map = new HashMap<>(3);
+        map.put("tagId", tagId);
+        map.put("curPage", entity.getCurPage());
+        map.put("size", size);
+        List<Article> list = articleMapper.getSummarysByTagId(map);
+        entity.setList(list);
+        entity.setCurPage(curPage);
         return entity;
     }
 
@@ -120,6 +130,47 @@ public class ArticleServiceImpl implements ArticleService {
         return articleMapper.selectOneByNo(artNo);
     }
 
+    /**
+     * 根据文章编号获取文章详情
+     *
+     * @param artNo 文章编号
+     * @return
+     */
+    @Override
+    public ArticleAndTags selectOneByArtNo(String artNo) {
+        return articleMapper.selectOneByArtNo(artNo);
+    }
+
+    /**
+     * 按照输入标题进行模糊查找
+     *
+     * @param artTitle 需要查找的标题
+     * @return
+     */
+    @Override
+    public PageEntity<Article> searchByTitle(String artTitle, int curPage, int size) {
+        int totalCount = articleMapper.getCountLimitByTitle(artTitle);
+        PageEntity<Article> entity = init(curPage, size, totalCount);
+        if (curPage > entity.getPages()) {
+            curPage = entity.getPages();
+            entity.setCurPage(curPage);
+            entity.setList(null);
+            return entity;
+        }
+        List<Article> list = articleMapper.searchByArtTitle(artTitle, entity.getCurPage(), size);
+        entity.setList(list);
+        entity.setCurPage(curPage);
+        return entity;
+    }
+
+    /**
+     * 只是所有返回PageEntity的方法都需要经过同样的封装
+     * 所以将一些重复代码封装一下
+     * @param curPage 当前页
+     * @param size 页面大小
+     * @param totalCount 某个条件下的记录条数
+     * @return
+     */
     private PageEntity<Article> init(int curPage, int size, int totalCount) {
         PageEntity<Article> entity = new PageEntity<>();
         entity.setCurPage((curPage - 1) * size);
