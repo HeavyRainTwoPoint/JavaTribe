@@ -14,6 +14,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class Article implements Serializable {
     private Integer artId;
 

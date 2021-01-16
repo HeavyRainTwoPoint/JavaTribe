@@ -2,9 +2,11 @@ package com.javatribe.mapper;
 
 import com.javatribe.apicommon.dto.PageEntity;
 import com.javatribe.po.Article;
+import com.javatribe.vo.ArticleAndTags;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 小胖五
@@ -45,6 +47,13 @@ public interface ArticleMapper {
     int getCountLimitCategory(String category);
 
     /**
+     * 统计某标签的文章总数
+     * @param tagId 某个标签的tagId
+     * @return
+     */
+    int getCountLimitByTagId(int tagId);
+
+    /**
      * 根据id获取一篇文章
      * @param artNo 文章的id
      * @return
@@ -53,27 +62,40 @@ public interface ArticleMapper {
 
     /**
      * 首页展示
-     * TODO 分页，而且默认显示所有分类
      * @return
      */
     List<Article> getSummarys(PageEntity<Article> pageEntity);
 
     /**
-     * 按照标签展示文章摘要
-     * TODO 分页显示
+     * 按照标签显示文章摘要
+     * @param category
+     * @param curPage 默认是第一页
+     * @param size
      * @return
      */
     List<Article> getSummarysByParentTag(String category, int curPage, int size);
-//
-//
-//    /**
-//     * 按照输入标题进行模糊查找
-//     * TODO 分页
-//     * @param artTitle
-//     * @return
-//     */
-//    List<Article> searchByTitle(String artTitle);
 
+    /**
+     * 获取某标签下的所有文章，分页返回
+     * @param map 包含某个标签的tagId，当前页curPage, 页面大小size
+     * @return
+     */
+    List<Article> getSummarysByTagId(Map<String, Integer> map);
 
+    /**
+     * 根据文章编号获取文章详情
+     * @param artNo 文章编号
+     * @return
+     */
+    ArticleAndTags selectOneByArtNo(String artNo);
+
+    /**
+     * 根据标题模糊查询
+     * @param artTitle 标题
+     * @param curPage 想要查询的页面
+     * @param size 页面大小
+     * @return
+     */
+    List<Article> searchByArtTitle(String artTitle, int curPage, int size);
 
 }

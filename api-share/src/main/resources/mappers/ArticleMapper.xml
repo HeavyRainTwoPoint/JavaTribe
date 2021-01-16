@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.javatribe.mapper.ArticleMapper">
-    <resultMap id="BaseResultMap" type="com.javatribe.po.Article">
-        <id column="art_id" jdbcType="INTEGER" property="artId"/>
-        <result column="art_gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
-        <result column="art_gmt_modify" jdbcType="TIMESTAMP" property="gmtModify"/>
-        <result column="art_delete_status" jdbcType="INTEGER" property="deleteStatus"/>
+    <resultMap id="ActTags" type="com.javatribe.vo.ArticleAndTags">
+        <id column="art_id" property="article.artId"/>
+        <result column="art_no" property="article.artNo" />
+        <result column="art_title" property="article.artTitle"/>
+        <result column="art_summary" property="article.artSummary" />
+        <result column="art_content" property="article.artContent" />
+        <result column="art_viewcount" property="article.artViewcount" />
+        <result column="gmt_create" property="article.gmtCreate" />
+        <collection property="tags" ofType="com.javatribe.po.Tag" >
+            <result column="tag_id" property="tagId"/>
+            <result column="tag_name" property="tagName"/>
+            <result column="tag_parent" property="tagParent" />
+        </collection>
     </resultMap>
 
     <sql id="base_columns">
@@ -35,8 +43,9 @@
     </select>
 
     <select id="getCountLimitByTitle" resultType="int">
-        select count(*) from t_article where
-        <include refid="get_condition"/>
+        select count(*)
+        from t_article
+        where <include refid="get_condition"/>
         art_title like concat('%', #{artTitle}, '%')
     </select>
 
@@ -46,10 +55,18 @@
         art_tag_name = #{category}
     </select>
 
-    <select id="selectOneByNo" parameterType="int" resultType="com.javatribe.po.Article">
+    <select id="getCountLimitByTagId" resultType="int">
+        select count(*) from t_art_tag
+        where <include refid="get_condition"/>
+        tag_id = #{tagId}
+    </select>
+
+    <select id="selectOneByNo" parameterType="string" resultType="com.javatribe.po.Article">
         select
         <include refid="base_columns"/>
-        from t_article where art_id = #{id} and delete_status = 0;
+        from t_article
+        where <include refid="get_condition"/>
+        art_no = #{artNo}
     </select>
 
     <select id="getSummarys" resultType="com.javatribe.po.Article">
@@ -71,12 +88,34 @@
         limit #{param2}, #{param3}
     </select>
 
-    <!--    <select id="searchByTitle" resultType="com.javatribe.po.Article">-->
-    <!--        select-->
-    <!--        <include refid="index_columns" />-->
-    <!--        from t_article-->
-    <!--        where <include refid="get_condition" />-->
-    <!--        art_title like concat('%', #{artTitle}, '%')-->
-    <!--        limit #{}, #{}-->
-    <!--    </select>-->
+    <select id="getSummarysByTagId" resultType="com.javatribe.po.Article" parameterType="map">
+        select
+        <include refid="index_columns" />
+        from t_article
+        where
+        <include refid="get_condition" />
+        art_id in
+        (select art_id from t_art_tag where <include refid="get_condition"/> tag_id = #{tagId})
+        order by gmt_create desc
+        limit #{curPage}, #{size}
+    </select>
+
+    <select id="selectOneByArtNo" resultMap="ActTags" parameterType="string">
+        select t_article.*, t_tag.tag_id, t_tag.tag_name, t_tag.tag_parent
+        from t_article, t_tag, t_art_tag
+        where t_article.delete_status = t_tag.delete_status
+        and t_article.delete_status = 0
+        and art_no = #{artNo}
+        and t_article.art_id = t_art_tag.art_id
+        and t_tag.tag_id = t_art_tag.tag_id
+    </select>
+
+    <select id="searchByArtTitle" resultType="com.javatribe.po.Article">
+        select <include refid="index_columns" />
+        from t_article
+        where <include refid="get_condition" />
+        art_title like concat('%', #{param1}, '%')
+        order by gmt_create desc
+        limit #{param2}, #{param3}
+    </select>
 </mapper>
