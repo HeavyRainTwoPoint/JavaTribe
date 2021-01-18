@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.javatribe.mapper.ArticleMapper">
-    <resultMap id="ActTags" type="com.javatribe.vo.ArticleAndTags">
+<mapper namespace="com.javatribe.apishare.mapper.ArticleMapper">
+    <resultMap id="ActTags" type="com.javatribe.apishare.vo.ArticleAndTags">
         <id column="art_id" property="article.artId"/>
         <result column="art_no" property="article.artNo" />
         <result column="art_title" property="article.artTitle"/>
@@ -9,7 +9,7 @@
         <result column="art_content" property="article.artContent" />
         <result column="art_viewcount" property="article.artViewcount" />
         <result column="gmt_create" property="article.gmtCreate" />
-        <collection property="tags" ofType="com.javatribe.po.Tag" >
+        <collection property="tags" ofType="com.javatribe.apishare.po.Tag" >
             <result column="tag_id" property="tagId"/>
             <result column="tag_name" property="tagName"/>
             <result column="tag_parent" property="tagParent" />
@@ -17,26 +17,28 @@
     </resultMap>
 
     <sql id="base_columns">
-    t_article.art_id, t_article.art_title, t_article.art_summary, t_article.art_content,
-    t_article.art_viewcount, t_article.art_tag_name, t_article.art_no
-  </sql>
-
-    <sql id="index_columns">
-    art_id, art_title, art_summary, gmt_create, art_no
-  </sql>
-
-    <sql id="get_condition">
-      delete_status = 0 and
+        t_article.art_id, t_article.art_title, t_article.art_summary, t_article.art_content,
+        t_article.art_viewcount, t_article.art_tag_name, t_article.art_no
     </sql>
 
-    <insert id="insertArticle" parameterType="com.javatribe.po.Article">
-    insert into t_art_tag (art_title, art_content, art_summary, art_tag_name)
-    values (#{artTitle}, #{artContent}, #{artSummary}, #{artTagName})
-  </insert>
+    <sql id="index_columns">
+        art_id, art_title, art_summary, gmt_create, art_no, art_viewcount
+    </sql>
 
-    <update id="deleteOneById" parameterType="int">
-    update t_article set delete_status = 1 where art_id = #{id}
-  </update>
+    <sql id="get_condition">
+        delete_status = 0 and
+    </sql>
+
+    <insert id="insertArticle" parameterType="com.javatribe.apishare.po.Article">
+        insert into t_art_tag (art_title, art_content, art_summary, art_tag_name)
+        values (#{artTitle}, #{artContent}, #{artSummary}, #{artTagName})
+    </insert>
+
+    <update id="deleteOneByArtNo" parameterType="string">
+        update t_article
+        set delete_status = 1, gmt_modify = CURRENT_TIMESTAMP
+        where <include refid="get_condition"/> art_id = #{id}
+    </update>
 
     <select id="getTotalCount" resultType="int">
         select count(*) from t_article where delete_status = 0
@@ -61,7 +63,7 @@
         tag_id = #{tagId}
     </select>
 
-    <select id="selectOneByNo" parameterType="string" resultType="com.javatribe.po.Article">
+    <select id="selectOneByNo" parameterType="string" resultType="com.javatribe.apishare.po.Article">
         select
         <include refid="base_columns"/>
         from t_article
@@ -69,7 +71,7 @@
         art_no = #{artNo}
     </select>
 
-    <select id="getSummarys" resultType="com.javatribe.po.Article">
+    <select id="getSummarys" resultType="com.javatribe.apishare.po.Article">
         select
         <include refid="index_columns"/>
         from t_article
@@ -78,7 +80,7 @@
         limit #{curPage}, #{size}
     </select>
 
-    <select id="getSummarysByParentTag" resultType="com.javatribe.po.Article">
+    <select id="getSummarysByParentTag" resultType="com.javatribe.apishare.po.Article">
         select
         <include refid="index_columns"/>
         from t_article
@@ -88,7 +90,7 @@
         limit #{param2}, #{param3}
     </select>
 
-    <select id="getSummarysByTagId" resultType="com.javatribe.po.Article" parameterType="map">
+    <select id="getSummarysByTagId" resultType="com.javatribe.apishare.po.Article" parameterType="map">
         select
         <include refid="index_columns" />
         from t_article
@@ -110,7 +112,7 @@
         and t_tag.tag_id = t_art_tag.tag_id
     </select>
 
-    <select id="searchByArtTitle" resultType="com.javatribe.po.Article">
+    <select id="searchByArtTitle" resultType="com.javatribe.apishare.po.Article">
         select <include refid="index_columns" />
         from t_article
         where <include refid="get_condition" />
@@ -118,4 +120,19 @@
         order by gmt_create desc
         limit #{param2}, #{param3}
     </select>
+
+    <select id="getViewCountByArtNo" resultType="int" parameterType="string">
+        select art_viewcount
+        from t_article
+        where <include refid="get_condition"/>
+        artNo = #{artNo}
+    </select>
+
+    <update id="updateViewCountByArtNo">
+        update t_article
+        set art_viewcount = #{param2}, gmt_modify = CURRENT_TIMESTAMP
+        where <include refid="get_condition"/>
+        artNo = #{param1}
+        and art_viewcount <![CDATA[<]]> #{param2}
+    </update>
 </mapper>

@@ -3,6 +3,7 @@ package com.javatribe.apicommon.config.properties;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -36,7 +37,7 @@ public class AliOssProperties {
      */
     @Bean
     @ConditionalOnBean(AliOssProperties.class)
-    public OSS getOOSClient() {
+    public OSS getOSSClient() {
         return new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
     }
 }
