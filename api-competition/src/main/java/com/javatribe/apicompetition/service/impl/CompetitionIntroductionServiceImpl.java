@@ -5,6 +5,8 @@ import com.javatribe.apicompetition.mapper.CompetitionIntroductionMapperCustom;
 import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
 import com.javatribe.apicompetition.service.CompetitionIntroductionService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -16,6 +18,7 @@ import java.util.List;
  */
 @Service
 @RequiredArgsConstructor
+// @CacheConfig(cacheNames = "competition_introduction")
 public class CompetitionIntroductionServiceImpl implements CompetitionIntroductionService {
 
     final CompetitionIntroductionMapper competitionIntroductionMapper;
@@ -28,6 +31,7 @@ public class CompetitionIntroductionServiceImpl implements CompetitionIntroducti
      * @return
      */
     @Override
+    // @Cacheable(key = "'first_page_competition'")
     public List<CompetitionIntroduction> firstPageShow() {
         return competitionIntroductionMapper.selectAll();
     }

@@ -12,6 +12,8 @@
     <result column="team_end_time" jdbcType="TIMESTAMP" property="teamEndTime" />
     <result column="delete_status" jdbcType="BIT" property="deleteStatus" />
     <result column="competition_id" jdbcType="BIGINT" property="competitionId" />
+    <result column="team_order_num" jdbcType="INTEGER" property="teamOrderNum" />
+    <result column="team_order_text" jdbcType="VARCHAR" property="teamOrderText" />
   </resultMap>
   <insert id="insert" parameterType="com.javatribe.apicompetition.pojo.po.WinnerTeam">
     <selectKey keyProperty="teamId" order="AFTER" resultType="java.lang.Long">
@@ -19,16 +21,16 @@
     </selectKey>
     insert into t_winner_team (team_name, team_user_list, gmt_create, 
       gmt_modified, the_year, team_begin_time, 
-      team_end_time, delete_status, competition_id
-      )
+      team_end_time, delete_status, competition_id, 
+      team_order_num, team_order_text)
     values (#{teamName,jdbcType=VARCHAR}, #{teamUserList,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
       #{gmtModified,jdbcType=TIMESTAMP}, #{theYear,jdbcType=VARCHAR}, #{teamBeginTime,jdbcType=TIMESTAMP}, 
-      #{teamEndTime,jdbcType=TIMESTAMP}, #{deleteStatus,jdbcType=BIT}, #{competitionId,jdbcType=BIGINT}
-      )
+      #{teamEndTime,jdbcType=TIMESTAMP}, #{deleteStatus,jdbcType=BIT}, #{competitionId,jdbcType=BIGINT}, 
+      #{teamOrderNum,jdbcType=INTEGER}, #{teamOrderText,jdbcType=VARCHAR})
   </insert>
   <select id="selectAll" resultMap="BaseResultMap">
     select team_id, team_name, team_user_list, gmt_create, gmt_modified, the_year, team_begin_time, 
-    team_end_time, delete_status, competition_id
+    team_end_time, delete_status, competition_id, team_order_num, team_order_text
     from t_winner_team
   </select>
 </mapper>

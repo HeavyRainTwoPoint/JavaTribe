@@ -11,6 +11,8 @@
     <result column="team_leader_wechat" jdbcType="VARCHAR" property="teamLeaderWechat" />
     <result column="team_leader_college" jdbcType="VARCHAR" property="teamLeaderCollege" />
     <result column="team_user_list" jdbcType="VARCHAR" property="teamUserList" />
+    <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
+    <result column="register_time" jdbcType="TIMESTAMP" property="registerTime" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_register_team
@@ -22,10 +24,12 @@
     </selectKey>
     insert into t_register_team (competition_id, team_name, team_leader_name, 
       team_leader_phone, team_leader_student_id, team_leader_wechat, 
-      team_leader_college, team_user_list)
+      team_leader_college, team_user_list, delete_status, 
+      register_time)
     values (#{competitionId,jdbcType=BIGINT}, #{teamName,jdbcType=VARCHAR}, #{teamLeaderName,jdbcType=VARCHAR}, 
       #{teamLeaderPhone,jdbcType=VARCHAR}, #{teamLeaderStudentId,jdbcType=VARCHAR}, #{teamLeaderWechat,jdbcType=VARCHAR}, 
-      #{teamLeaderCollege,jdbcType=VARCHAR}, #{teamUserList,jdbcType=VARCHAR})
+      #{teamLeaderCollege,jdbcType=VARCHAR}, #{teamUserList,jdbcType=VARCHAR}, #{deleteStatus,jdbcType=INTEGER}, 
+      #{registerTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.javatribe.apicompetition.pojo.po.RegisterTeam">
     update t_register_team
@@ -36,18 +40,22 @@
       team_leader_student_id = #{teamLeaderStudentId,jdbcType=VARCHAR},
       team_leader_wechat = #{teamLeaderWechat,jdbcType=VARCHAR},
       team_leader_college = #{teamLeaderCollege,jdbcType=VARCHAR},
-      team_user_list = #{teamUserList,jdbcType=VARCHAR}
+      team_user_list = #{teamUserList,jdbcType=VARCHAR},
+      delete_status = #{deleteStatus,jdbcType=INTEGER},
+      register_time = #{registerTime,jdbcType=TIMESTAMP}
     where register_id = #{registerId,jdbcType=BIGINT}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select register_id, competition_id, team_name, team_leader_name, team_leader_phone, 
-    team_leader_student_id, team_leader_wechat, team_leader_college, team_user_list
+    team_leader_student_id, team_leader_wechat, team_leader_college, team_user_list, 
+    delete_status, register_time
     from t_register_team
     where register_id = #{registerId,jdbcType=BIGINT}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select register_id, competition_id, team_name, team_leader_name, team_leader_phone, 
-    team_leader_student_id, team_leader_wechat, team_leader_college, team_user_list
+    team_leader_student_id, team_leader_wechat, team_leader_college, team_user_list, 
+    delete_status, register_time
     from t_register_team
   </select>
 </mapper>

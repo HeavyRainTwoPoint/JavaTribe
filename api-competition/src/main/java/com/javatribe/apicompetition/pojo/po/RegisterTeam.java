@@ -1,6 +1,7 @@
 package com.javatribe.apicompetition.pojo.po;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class RegisterTeam implements Serializable {
     private Long registerId;
@@ -20,6 +21,10 @@ public class RegisterTeam implements Serializable {
     private String teamLeaderCollege;
 
     private String teamUserList;
+
+    private Integer deleteStatus;
+
+    private Date registerTime;
 
     private static final long serialVersionUID = 1L;
 
@@ -140,6 +145,32 @@ public class RegisterTeam implements Serializable {
         this.teamUserList = teamUserList == null ? null : teamUserList.trim();
     }
 
+    public Integer getDeleteStatus() {
+        return deleteStatus;
+    }
+
+    public RegisterTeam withDeleteStatus(Integer deleteStatus) {
+        this.setDeleteStatus(deleteStatus);
+        return this;
+    }
+
+    public void setDeleteStatus(Integer deleteStatus) {
+        this.deleteStatus = deleteStatus;
+    }
+
+    public Date getRegisterTime() {
+        return registerTime;
+    }
+
+    public RegisterTeam withRegisterTime(Date registerTime) {
+        this.setRegisterTime(registerTime);
+        return this;
+    }
+
+    public void setRegisterTime(Date registerTime) {
+        this.registerTime = registerTime;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -155,6 +186,8 @@ public class RegisterTeam implements Serializable {
         sb.append(", teamLeaderWechat=").append(teamLeaderWechat);
         sb.append(", teamLeaderCollege=").append(teamLeaderCollege);
         sb.append(", teamUserList=").append(teamUserList);
+        sb.append(", deleteStatus=").append(deleteStatus);
+        sb.append(", registerTime=").append(registerTime);
         sb.append("]");
         return sb.toString();
     }

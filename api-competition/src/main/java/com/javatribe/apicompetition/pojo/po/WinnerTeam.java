@@ -24,6 +24,10 @@ public class WinnerTeam implements Serializable {
 
     private Long competitionId;
 
+    private Integer teamOrderNum;
+
+    private String teamOrderText;
+
     private static final long serialVersionUID = 1L;
 
     public Long getTeamId() {
@@ -156,6 +160,32 @@ public class WinnerTeam implements Serializable {
         this.competitionId = competitionId;
     }
 
+    public Integer getTeamOrderNum() {
+        return teamOrderNum;
+    }
+
+    public WinnerTeam withTeamOrderNum(Integer teamOrderNum) {
+        this.setTeamOrderNum(teamOrderNum);
+        return this;
+    }
+
+    public void setTeamOrderNum(Integer teamOrderNum) {
+        this.teamOrderNum = teamOrderNum;
+    }
+
+    public String getTeamOrderText() {
+        return teamOrderText;
+    }
+
+    public WinnerTeam withTeamOrderText(String teamOrderText) {
+        this.setTeamOrderText(teamOrderText);
+        return this;
+    }
+
+    public void setTeamOrderText(String teamOrderText) {
+        this.teamOrderText = teamOrderText == null ? null : teamOrderText.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -172,6 +202,8 @@ public class WinnerTeam implements Serializable {
         sb.append(", teamEndTime=").append(teamEndTime);
         sb.append(", deleteStatus=").append(deleteStatus);
         sb.append(", competitionId=").append(competitionId);
+        sb.append(", teamOrderNum=").append(teamOrderNum);
+        sb.append(", teamOrderText=").append(teamOrderText);
         sb.append("]");
         return sb.toString();
     }
