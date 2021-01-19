@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties(prefix = "oss")
 @Data
-@ConditionalOnProperty(value = "oss")
+// @ConditionalOnProperty(value = "oss")
 public class AliOssProperties {
 
     private String accessKeyId;
@@ -36,7 +36,7 @@ public class AliOssProperties {
      * @return
      */
     @Bean
-    @ConditionalOnBean(AliOssProperties.class)
+    // @ConditionalOnBean(AliOssProperties.class)
     public OSS getOSSClient() {
         return new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
     }
