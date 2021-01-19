@@ -1,5 +1,7 @@
 package com.javatribe.apicompetition.pojo.po;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,13 +9,15 @@ public class CompetitionIntroduction implements Serializable {
     private Long competitionId;
 
     private String competitionName;
-
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String showContent;
 
     private Boolean deleteStatus;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Date gmtCreate;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Date gmtModified;
 
     private Integer signUp;

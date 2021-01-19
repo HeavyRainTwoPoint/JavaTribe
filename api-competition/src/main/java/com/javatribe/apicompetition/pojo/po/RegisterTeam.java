@@ -26,6 +26,17 @@ public class RegisterTeam implements Serializable {
 
     private Date registerTime;
 
+    public RegisterTeam(Long registerId, Long competitionId, String teamName, String teamLeaderName, String teamLeaderPhone, String teamLeaderStudentId, String teamLeaderWechat, String teamLeaderCollege) {
+        this.registerId = registerId;
+        this.competitionId = competitionId;
+        this.teamName = teamName;
+        this.teamLeaderName = teamLeaderName;
+        this.teamLeaderPhone = teamLeaderPhone;
+        this.teamLeaderStudentId = teamLeaderStudentId;
+        this.teamLeaderWechat = teamLeaderWechat;
+        this.teamLeaderCollege = teamLeaderCollege;
+    }
+
     private static final long serialVersionUID = 1L;
 
     public Long getRegisterId() {

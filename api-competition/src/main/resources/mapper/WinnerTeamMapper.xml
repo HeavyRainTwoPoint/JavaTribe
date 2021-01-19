@@ -33,4 +33,26 @@
     team_end_time, delete_status, competition_id, team_order_num, team_order_text
     from t_winner_team
   </select>
+
+  <select id="selectTeamOfCompetition" resultType="com.javatribe.apicompetition.pojo.po.WinnerTeamAndCompetition">
+    SELECT
+	tci.competition_id,
+	tci.competition_name,
+	twt.team_name,
+	twt.team_user_list,
+	twt.team_begin_time,
+	twt.team_end_time,
+	twt.the_year,
+	twt.team_order_num,
+	twt.team_order_text
+FROM
+	`t_winner_team` AS twt
+	INNER JOIN t_competition_introduction AS tci ON twt.competition_id = tci.competition_id
+WHERE
+	twt.delete_status = 0
+ORDER BY
+	twt.competition_id,
+	STR_TO_DATE( date_format( twt.team_begin_time, '%Y-%m-%d' ), '%Y-%c' ) DESC,
+	twt.team_order_num
+  </select>
 </mapper>
