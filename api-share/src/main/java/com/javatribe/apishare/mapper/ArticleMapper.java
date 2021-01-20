@@ -112,4 +112,18 @@ public interface ArticleMapper {
      * @return
      */
     int updateViewCountByArtNo(String artNo, int newViewCount);
+
+    /**
+     * 通过文章编号获取文章Id
+     * @param artNo 文章编号
+     * @return
+     */
+    Integer getArtIdByNo(String artNo);
+
+    /**
+     * 根据文章编号修改文章
+     * @param article 文章
+     * @return
+     */
+    int updateArtByNo(Article article);
 }
