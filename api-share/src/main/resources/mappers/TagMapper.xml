@@ -6,7 +6,7 @@
     </sql>
 
     <sql id="delete">
-        set delete_status = 1 and gmt_modify = CURRENT_TIMESTAMP where
+        set delete_status = 1, gmt_modify = CURRENT_TIMESTAMP
     </sql>
 
     <insert id="insertTag" parameterType="com.javatribe.apishare.po.Tag">
@@ -17,7 +17,8 @@
     <update id="deleteTagById">
         update t_tag
         <include refid="delete"/>
-        tag_id = #{tagId}
+        <include refid="condition"/>
+        and tag_id = #{tagId}
     </update>
 
     <update id="updateTag">

@@ -2,10 +2,7 @@ package com.javatribe.apishare.vo;
 
 import com.javatribe.apishare.po.Article;
 import com.javatribe.apishare.po.Tag;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 
@@ -19,6 +16,8 @@ import java.util.List;
 @ToString
 @Setter
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ArticleAndTags {
     private Article article;
     private List<Tag> tags;

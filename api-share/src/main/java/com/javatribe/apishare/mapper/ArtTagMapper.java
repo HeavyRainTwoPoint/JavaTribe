@@ -17,4 +17,11 @@ public interface ArtTagMapper {
      */
     int checkTag(int tagId);
 
+    /**
+     * 根据文章id删除文章与标签的关联记录
+     * @param artId
+     * @return
+     */
+    int deleteRelationshipByArtId(int artId);
+
 }
