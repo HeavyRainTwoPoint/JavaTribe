@@ -29,15 +29,22 @@
         delete_status = 0 and
     </sql>
 
-    <insert id="insertArticle" parameterType="com.javatribe.apishare.po.Article">
-        insert into t_art_tag (art_title, art_content, art_summary, art_tag_name)
-        values (#{artTitle}, #{artContent}, #{artSummary}, #{artTagName})
+    <insert id="insertArticle" parameterType="com.javatribe.apishare.po.Article" useGeneratedKeys="true" keyProperty="artId">
+        insert into t_article (art_title, art_content, art_summary, art_tag_name, art_no)
+        values (#{artTitle}, #{artContent}, #{artSummary}, #{artTagName}, #{artNo})
     </insert>
 
     <update id="deleteOneByArtNo" parameterType="string">
         update t_article
         set delete_status = 1, gmt_modify = CURRENT_TIMESTAMP
-        where <include refid="get_condition"/> art_id = #{id}
+        where <include refid="get_condition"/> art_no = #{artNo}
+    </update>
+
+    <update id="updateArtByNo" parameterType="com.javatribe.apishare.po.Article">
+        update t_article
+        set art_title = #{artTitle}, art_content = #{artContent}, art_summary = #{artSummary}, gmt_modify = CURRENT_TIMESTAMP
+        where <include refid="get_condition" />
+        art_no = #{artNo}
     </update>
 
     <select id="getTotalCount" resultType="int">
@@ -125,14 +132,20 @@
         select art_viewcount
         from t_article
         where <include refid="get_condition"/>
-        artNo = #{artNo}
+        art_no = #{artNo}
+    </select>
+
+    <select id="getArtIdByNo" parameterType="string" resultType="int">
+        select art_id from t_article
+        where <include refid="get_condition"/>
+        art_no = #{artNo}
     </select>
 
     <update id="updateViewCountByArtNo">
         update t_article
         set art_viewcount = #{param2}, gmt_modify = CURRENT_TIMESTAMP
         where <include refid="get_condition"/>
-        artNo = #{param1}
+        art_no = #{param1}
         and art_viewcount <![CDATA[<]]> #{param2}
     </update>
 </mapper>

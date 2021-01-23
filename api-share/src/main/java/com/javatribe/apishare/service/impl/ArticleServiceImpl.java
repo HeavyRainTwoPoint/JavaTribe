@@ -1,13 +1,17 @@
 package com.javatribe.apishare.service.impl;
 
 import com.javatribe.apicommon.dto.PageEntity;
+import com.javatribe.apishare.mapper.ArtTagMapper;
 import com.javatribe.apishare.mapper.ArticleMapper;
 import com.javatribe.apishare.po.Article;
 import com.javatribe.apishare.service.ArticleService;
+import com.javatribe.apishare.utils.ArticleNoGenerator;
 import com.javatribe.apishare.vo.ArticleAndTags;
+import com.javatribe.apishare.vo.TagsRelationship;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +26,9 @@ public class ArticleServiceImpl implements ArticleService {
     @Autowired(required = false)
     private ArticleMapper articleMapper;
 
+    @Autowired(required = false)
+    private ArtTagMapper artTagMapper;
+
     /**
      * 根据文章No对文章进行逻辑删除
      *
@@ -30,18 +37,37 @@ public class ArticleServiceImpl implements ArticleService {
      */
     @Override
     public int deleteOneByArtNo(String artNo) {
-        return articleMapper.deleteOneByArtNo(artNo);
+        int artId = articleMapper.getArtIdByNo(artNo);
+        int result = articleMapper.deleteOneByArtNo(artNo);
+        if (result == 1) {
+            artTagMapper.deleteRelationshipByArtId(artId);
+        }
+        return result;
     }
 
     /**
      * 插入一篇新的文章
      *
-     * @param article 文章
+     * @param articleAndTags 文章及其带的标签
      * @return 返回插入结果，1表示成功，0表示失败
      */
     @Override
-    public int insertArticle(Article article) {
-        return articleMapper.insertArticle(article);
+    public int insertArticle(ArticleAndTags articleAndTags) {
+        Article article = articleAndTags.getArticle();
+        String artNo = ArticleNoGenerator.createNo();
+        List<Integer> tags  = new ArrayList<>(articleAndTags.getTags().size());
+        article.setArtNo(artNo);
+        articleAndTags.getTags().forEach(tag -> {
+            if (tag.getTagParent() == 0) {
+                article.setArtTagName(tag.getTagName());
+            }
+            tags.add(tag.getTagId());
+        });
+        int result = articleMapper.insertArticle(article);
+        if (result == 1) {
+            artTagMapper.insertTags(new TagsRelationship(article.getArtId(), tags));
+        }
+        return result;
     }
 
 
@@ -205,5 +231,16 @@ public class ArticleServiceImpl implements ArticleService {
             entity.setPages((totalCount / size) + 1);
         }
         return entity;
+    }
+
+    /**
+     * 根据文章编号修改文章
+     *
+     * @param article 文章
+     * @return
+     */
+    @Override
+    public int updateArtByNo(Article article) {
+        return articleMapper.updateArtByNo(article);
     }
 }

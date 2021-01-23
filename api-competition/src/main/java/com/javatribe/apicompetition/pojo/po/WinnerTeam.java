@@ -24,6 +24,16 @@ public class WinnerTeam implements Serializable {
 
     private Long competitionId;
 
+    private String teamOrder;
+
+    public String getTeamOrder() {
+        return teamOrder;
+    }
+
+    public void setTeamOrder(String teamOrder) {
+        this.teamOrder = teamOrder;
+    }
+
     private Integer teamOrderNum;
 
     private String teamOrderText;

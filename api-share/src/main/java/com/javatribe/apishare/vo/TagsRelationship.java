@@ -1,6 +1,9 @@
 package com.javatribe.apishare.vo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
@@ -11,11 +14,14 @@ import java.util.List;
  * 视图类，封装了父标签与去子标签（们）
  */
 @Data
+@AllArgsConstructor
+@Getter
+@Setter
 public class TagsRelationship {
     /**
      * 文章ID
      */
-    private int ArtId;
+    private int artId;
     /**
      * 标签ID集
      */

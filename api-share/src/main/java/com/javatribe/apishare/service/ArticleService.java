@@ -22,10 +22,10 @@ public interface ArticleService {
     /**
      * 插入一篇新的文章
      *
-     * @param article 文章
+     * @param articleAndTags 文章以及标签
      * @return 返回插入结果，1表示成功，0表示失败
      */
-    int insertArticle(Article article);
+    int insertArticle(ArticleAndTags articleAndTags);
 
     /**
      * 根据id获取一篇文章
@@ -90,4 +90,11 @@ public interface ArticleService {
      * @return
      */
     int updateViewCountByArtNo(String artNo, int newViewCount);
+
+    /**
+     * 根据文章编号修改文章
+     * @param article 文章
+     * @return
+     */
+    int updateArtByNo(Article article);
 }

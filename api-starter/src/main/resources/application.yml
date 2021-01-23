@@ -44,4 +44,3 @@ oss:
   bucket-name: javatribe
   endpoint: oss-cn-guangzhou.aliyuncs.com
   host: https://${oss.bucket-name}.${oss.endpoint}
-

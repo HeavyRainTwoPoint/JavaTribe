@@ -58,4 +58,14 @@
     delete_status, register_time
     from t_register_team
   </select>
+
+  <select id="querySignUpKinds" resultType="com.javatribe.apicompetition.pojo.po.CompetitionIntroduction">
+    SELECT
+	    competition_id,competition_name
+    FROM
+	    t_competition_introduction
+    WHERE
+    	delete_status = 0
+	    AND sign_up=1
+  </select>
 </mapper>
