@@ -1,8 +1,10 @@
 package com.javatribe.apicompetition.service.impl;
 
+import com.aliyun.oss.OSS;
 import com.javatribe.apicompetition.WebTest;
 import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
 import com.javatribe.apicompetition.service.CompetitionIntroductionService;
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,6 +24,8 @@ class CompetitionIntroductionServiceImplTest {
     @Resource
     CompetitionIntroductionService competitionIntroductionService;
 
+    @Resource
+    OSS oss;
     @BeforeEach
     void setUp() {
     }
@@ -44,6 +48,7 @@ class CompetitionIntroductionServiceImplTest {
 
     @Test
     void deleteCompetitionInfoById() {
+        System.out.println(oss);
     }
 
     @Test
