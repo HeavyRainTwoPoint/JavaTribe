@@ -54,19 +54,19 @@
 
             <generatedKey column="competition_id"  sqlStatement="Mysql"  identity="true" />
         </table>
-        <table tableName="t_register_team" domainObjectName="RegisterTeam" >
+<!--        <table tableName="t_register_team" domainObjectName="RegisterTeam" >-->
 
-            <generatedKey column="register_id"  sqlStatement="Mysql"  identity="true" />
-        </table>
+<!--            <generatedKey column="register_id"  sqlStatement="Mysql"  identity="true" />-->
+<!--        </table>-->
         <table tableName="t_style_show" domainObjectName="StyleShow" >
 
             <generatedKey column="show_id"  sqlStatement="Mysql"  identity="true" />
         </table>
 
 
-        <table tableName="t_winner_team" domainObjectName="WinnerTeam" >
+<!--        <table tableName="t_winner_team" domainObjectName="WinnerTeam" >-->
 
-            <generatedKey column="team_id"  sqlStatement="Mysql"  identity="true" />
-        </table>
+<!--            <generatedKey column="team_id"  sqlStatement="Mysql"  identity="true" />-->
+<!--        </table>-->
     </context>
 </generatorConfiguration>

@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
+ *
+ * TODO:比赛介绍
+ *
  * @Author lyr
  * @create 2021/1/16 15:44
  */
