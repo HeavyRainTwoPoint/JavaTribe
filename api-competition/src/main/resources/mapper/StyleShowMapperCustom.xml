@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javatribe.apicompetition.mapper.StyleShowMapperCustom">
+    <resultMap id="BaseResultMap" extends="com.javatribe.apicompetition.mapper.StyleShowMapper.BaseResultMap" type="com.javatribe.apicompetition.pojo.po.StyleShow">
+
+    </resultMap>
+    <select id="getFirstPage" resultType="com.javatribe.apicompetition.pojo.po.StyleShow" >
+
+        select * from t_style_show
+
+            where show_status = 1
+            and delete_status = 0 limit 30
+    </select>
+
+</mapper>

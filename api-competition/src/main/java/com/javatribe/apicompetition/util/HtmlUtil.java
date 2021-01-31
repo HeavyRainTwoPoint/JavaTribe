@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.util.HtmlUtils;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 
 /**
  * @Author lyr
@@ -21,6 +22,12 @@ public class HtmlUtil {
         }
         try {
             for (Field field: pojo.getClass().getDeclaredFields()) {
+                int modi = field.getModifiers();
+                if (Modifier.isStatic(modi) || Modifier.isFinal(modi)) {
+                    //if  static or final  field ,continue
+                    continue;
+                }
+                //过滤 html 标签
                 field.setAccessible(true);
                 if (String.class.isAssignableFrom(field.getType())) {
                     String val = null;

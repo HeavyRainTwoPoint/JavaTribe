@@ -26,5 +26,10 @@
         </set>
         where  competition_id= #{ competitionId }
     </update>
+    <select id="selectFirstPageShow" resultType="com.javatribe.apicompetition.pojo.po.CompetitionIntroduction">
+        select * from t_competition_introduction
+
+            where  delete_status = 0 limit 30
+    </select>
 
 </mapper>

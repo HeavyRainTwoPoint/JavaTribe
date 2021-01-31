@@ -4,6 +4,7 @@ import com.javatribe.apicompetition.mapper.CompetitionIntroductionMapper;
 import com.javatribe.apicompetition.mapper.CompetitionIntroductionMapperCustom;
 import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
 import com.javatribe.apicompetition.service.CompetitionIntroductionService;
+import com.javatribe.apicompetition.util.InsertUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
@@ -35,7 +36,7 @@ public class CompetitionIntroductionServiceImpl implements CompetitionIntroducti
     @Override
     // @Cacheable(key = "'first_page_competition'")
     public List<CompetitionIntroduction> firstPageShow() {
-        return competitionIntroductionMapper.selectAll();
+        return competitionIntroductionMapperCustom.selectFirstPageShow();
     }
 
     /**
@@ -45,6 +46,8 @@ public class CompetitionIntroductionServiceImpl implements CompetitionIntroducti
      */
     @Override
     public void insertCompetitionInfo(CompetitionIntroduction dbRowInfo) {
+        //设置数据插入默认值
+        InsertUtil.setDefaultValue(dbRowInfo);
         competitionIntroductionMapper.insert(
                 dbRowInfo.withGmtCreate(new Date()).withGmtModified(new Date())
                 .withDeleteStatus(false)
@@ -68,6 +71,7 @@ public class CompetitionIntroductionServiceImpl implements CompetitionIntroducti
      */
     @Override
     public void updateCompetitionInfo(CompetitionIntroduction competitionIntroduction) {
-        competitionIntroductionMapperCustom.updateSelective(competitionIntroduction.withGmtModified(new Date()));
+        competitionIntroductionMapperCustom.updateSelective(
+                competitionIntroduction.withGmtModified(new Date()));
     }
 }
