@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:mysql://47.92.200.8:3306/javatribe?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    password: pBcrDNAMFr7ifb7e
+    username: javatribe
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+mybatis-plus:
+  mapper-locations: com/javatribe/introduction/mapper/xml/*.xml

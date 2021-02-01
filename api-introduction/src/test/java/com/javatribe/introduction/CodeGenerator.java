@@ -28,7 +28,7 @@ public class CodeGenerator {
         String projectPath = System.getProperty("user.dir");
         gc.setOutputDir("F:\\some-wa-tribe\\api-introduction" + "/src/main/java");
 
-        gc.setAuthor("javatribe");
+        gc.setAuthor("wzp");
         gc.setOpen(false); //生成后是否打开资源管理器
         gc.setFileOverride(false); //重新生成时文件是否覆盖
 
@@ -66,11 +66,11 @@ public class CodeGenerator {
         // 5、策略配置
         StrategyConfig strategy = new StrategyConfig();
         // 设置表名称
-        strategy.setInclude("statistics_daily");
+        strategy.setInclude("t_management");
 
         strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的命名策略
-        strategy.setTablePrefix(pc.getModuleName() + "_"); //生成实体时去掉表前缀
-//        strategy.setTablePrefix("t" + "_"); //生成实体时去掉t
+//        strategy.setTablePrefix(pc.getModuleName() + "_"); //生成实体时去掉表前缀
+        strategy.setTablePrefix("t" + "_"); //生成实体时去掉t
 
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);//数据库表字段映射到实体的命名策略
         strategy.setEntityLombokModel(true); // lombok 模型 @Accessors(chain = true) setter链式操作
