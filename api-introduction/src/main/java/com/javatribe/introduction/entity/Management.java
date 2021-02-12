@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.joda.time.DateTime;
 
 /**
  * <p>
@@ -43,14 +44,14 @@ public class Management implements Serializable {
 
     @ApiModelProperty(value = "创建时间")
     @TableField(value = "gmt_create", fill = FieldFill.INSERT)
-    private LocalDateTime gmtCreate;
+    private Date gmtCreate;
 
     @ApiModelProperty(value = "修改时间")
     @TableField(value = "gmt_modified", fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime gmtModified;
+    private Date gmtModified;
 
-    @ApiModelProperty(value = "逻辑删除 1（true）已删除， 0（false）未删除")
-    private Integer isDeleted;
-
+//    @ApiModelProperty(value = "逻辑删除 1（true）已删除， 0（false）未删除")
+//    @TableLogic
+//    private Integer isDeleted;
 
 }

@@ -12,7 +12,8 @@ spring:
     throw-exception-if-no-handler-found: true
   jackson:
     time-zone: GMT+8
-    serialization: {WRITE_DATES_AS_TIMESTAMPS: true}
+    date-format: yyyy-MM-dd HH:mm:ss
+#    serialization: {WRITE_DATES_AS_TIMESTAMPS: true}
   profiles:
     active: dev
   task:

@@ -7,6 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @author wzp
@@ -16,18 +17,34 @@ import java.time.LocalDateTime;
 @Component
 public class MyMetaObjectHandler implements MetaObjectHandler {
 
+    // mp高版本
+//    @Override
+//    public void insertFill(MetaObject metaObject) {
+//        log.info("insert fill...");
+//        // 属性名称，不是字段名称
+//        this.strictInsertFill(metaObject, "gmtCreate", LocalDateTime.class, LocalDateTime.now());
+//        this.strictInsertFill(metaObject, "gmtModified", LocalDateTime.class, LocalDateTime.now());
+//    }
+//
+//    @Override
+//    public void updateFill(MetaObject metaObject) {
+//        log.info("update fill...");
+//        this.strictUpdateFill(metaObject, "gmtModified", LocalDateTime.class, LocalDateTime.now());
+//    }
+
+    // mp低版本
     @Override
     public void insertFill(MetaObject metaObject) {
-        log.info("insert fill...");
-        // 属性名称，不是字段名称
-        this.strictInsertFill(metaObject, "gmtCreate", LocalDateTime.class, LocalDateTime.now());
-        this.strictInsertFill(metaObject, "gmtModified", LocalDateTime.class, LocalDateTime.now());
+        //插入时的填充策略
+        log.info("start insert fill ....");
+        this.setFieldValByName("gmtCreate", new Date(), metaObject);
+        this.setFieldValByName("gmtModified", new Date(), metaObject);
     }
 
+    //更新时的填充策略
     @Override
     public void updateFill(MetaObject metaObject) {
-        log.info("update fill...");
-        this.strictUpdateFill(metaObject, "gmtModified", LocalDateTime.class, LocalDateTime.now());
+        log.info("start update fill ....");
+        this.setFieldValByName("gmtModified", new Date(), metaObject);
     }
-
 }
