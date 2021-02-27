@@ -37,12 +37,22 @@
         </javaClientGenerator>
 
         <!--数据库表-->
-        <table tableName="enroll_notice" domainObjectName="EnrollNotice"
+<!--        <table tableName="enroll_notice" domainObjectName="EnrollNotice"-->
+<!--               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
+<!--               enableSelectByExample="true" selectByExampleQueryId="true">-->
+<!--            <property name="useActualColumnNames" value="false"/>-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--            <columnOverride column="content_file" jdbcType="VARCHAR" />-->
+<!--        </table>-->
+
+
+        <!--数据库表-->
+        <table tableName="test_notice" domainObjectName="TestNotice"
                enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
                enableSelectByExample="true" selectByExampleQueryId="true">
             <property name="useActualColumnNames" value="false"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-            <columnOverride column="content" jdbcType="VARCHAR" />
+            <columnOverride column="notice_file" jdbcType="VARCHAR" />
         </table>
     </context>
 

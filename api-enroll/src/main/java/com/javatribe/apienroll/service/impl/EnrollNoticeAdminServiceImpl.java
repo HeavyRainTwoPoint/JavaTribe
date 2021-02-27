@@ -26,6 +26,7 @@ public class EnrollNoticeAdminServiceImpl implements EnrollNoticeAdminService {
 
     @Override
     public Response<List<EnrollNotice>> query(EnrollNoticeQTO qto) {
+        qto.createCriteria().andDeleteMarkEqualTo(0);
         Response<List<EnrollNotice>> res = new Response<>();
         res.setData(enrollNoticeMapper.selectByExample(qto));
         res.setTotalCount(enrollNoticeMapper.countByExample(qto));

@@ -16,7 +16,7 @@ class ApiEnrollApplicationTests {
     void contextLoads() {
         IntStream.range(0,10).forEach(x -> {
             EnrollNotice notice = new EnrollNotice();
-            notice.setContent("我是内容"+ x);
+            notice.setContentFile("http://wqqqqwqwq.images"+ x);
             notice.setTitle("我是标题" + x);
             show(service.add(notice));
         });

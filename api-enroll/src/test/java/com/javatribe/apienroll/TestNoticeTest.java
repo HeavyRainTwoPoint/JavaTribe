@@ -4,7 +4,10 @@ import cn.hutool.json.JSONUtil;
 import com.aliyun.oss.OSS;
 import com.javatribe.apienroll.entity.EnrollNotice;
 import com.javatribe.apienroll.entity.EnrollNoticeQTO;
+import com.javatribe.apienroll.entity.TestNotice;
+import com.javatribe.apienroll.entity.TestNoticeQTO;
 import com.javatribe.apienroll.service.EnrollNoticeAdminService;
+import com.javatribe.apienroll.service.TestNoticeAdminService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -19,17 +22,18 @@ import java.util.stream.LongStream;
  * @description
  */
 @SpringBootTest(classes = ApiEnrollApplication.class)
-public class EnrollNoticeTest {
+public class TestNoticeTest {
     @Resource
     OSS oss;
     @Resource
-    EnrollNoticeAdminService service;
+    TestNoticeAdminService service;
     @Test
     public void testAdd() {
         IntStream.range(0,10).forEach(x -> {
-            EnrollNotice notice = new EnrollNotice();
-            notice.setContentFile("http://wqqqqwqwq.images"+ x);
-            notice.setTitle("我是标题" + x);
+            TestNotice notice = new TestNotice();
+            notice.setTestName("设计考核第"+x+"次");
+            notice.setNoticeFile("http://wqqqqwqwq.images"+ x);
+            notice.setTestDirection(3);
             show(service.add(notice));
         });
     }
@@ -37,8 +41,8 @@ public class EnrollNoticeTest {
 
     @Test
     public void testDel() {
-        LongStream.range(20,30).forEach(x -> {
-            EnrollNotice notice = new EnrollNotice();
+        LongStream.range(5,14).forEach(x -> {
+            TestNotice notice = new TestNotice();
             notice.setId(x);
             show(service.deleteById(notice));
         });
@@ -46,16 +50,14 @@ public class EnrollNoticeTest {
 
     @Test
     public void testDelByQTO() {
-        EnrollNoticeQTO qto = new EnrollNoticeQTO();
+        TestNoticeQTO qto = new TestNoticeQTO();
         qto.createCriteria().andIdIn(Arrays.asList(31L,32L,33L,34L,35L,36L));
         show(service.delete(qto));
     }
 
-
-
     @Test
     public void testQuery() {
-            EnrollNoticeQTO qto = new EnrollNoticeQTO();
+            TestNoticeQTO qto = new TestNoticeQTO();
             qto.setOrderByClause("gmt_created desc");
             show(service.query(qto));
     }

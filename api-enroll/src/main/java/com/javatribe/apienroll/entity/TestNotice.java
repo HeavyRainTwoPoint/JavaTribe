@@ -3,21 +3,22 @@ package com.javatribe.apienroll.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-public class EnrollNotice implements Serializable {
-
-    private static final long serialVersionUID = -7530222296107588668L;
-
+public class TestNotice implements Serializable {
     private Long id;
 
-    private String title;
+    private String testName;
 
-    private String contentFile;
+    private Integer testDirection;
+
+    private String noticeFile;
 
     private Integer deleteMark;
 
     private Date gmtCreated;
 
     private Date gmtModified;
+
+    private static final long serialVersionUID = 1L;
 
     public Long getId() {
         return id;
@@ -27,20 +28,28 @@ public class EnrollNotice implements Serializable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTestName() {
+        return testName;
     }
 
-    public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
+    public void setTestName(String testName) {
+        this.testName = testName == null ? null : testName.trim();
     }
 
-    public String getContentFile() {
-        return contentFile;
+    public Integer getTestDirection() {
+        return testDirection;
     }
 
-    public void setContentFile(String contentFile) {
-        this.contentFile = contentFile == null ? null : contentFile.trim();
+    public void setTestDirection(Integer testDirection) {
+        this.testDirection = testDirection;
+    }
+
+    public String getNoticeFile() {
+        return noticeFile;
+    }
+
+    public void setNoticeFile(String noticeFile) {
+        this.noticeFile = noticeFile == null ? null : noticeFile.trim();
     }
 
     public Integer getDeleteMark() {

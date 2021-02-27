@@ -3,9 +3,8 @@ package com.javatribe.apienroll.dao;
 import com.javatribe.apienroll.entity.EnrollNotice;
 import com.javatribe.apienroll.entity.EnrollNoticeQTO;
 import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
 public interface EnrollNoticeMapper {
     long countByExample(EnrollNoticeQTO example);
 
