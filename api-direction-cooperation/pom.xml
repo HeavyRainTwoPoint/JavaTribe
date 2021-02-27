@@ -7,7 +7,7 @@
         <artifactId>api-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>api-direction</artifactId>
+    <artifactId>api-direction-cooperation</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>api-direction</name>
     <description>The introduction and cooperation of tribes in all directions.</description>
@@ -29,6 +29,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>6.0.6</version>
         </dependency>
     </dependencies>
 </project>
