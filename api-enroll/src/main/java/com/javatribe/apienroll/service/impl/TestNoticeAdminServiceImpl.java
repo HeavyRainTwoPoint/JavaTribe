@@ -10,6 +10,7 @@ import com.javatribe.apienroll.entity.TestNoticeQTO;
 import com.javatribe.apienroll.service.EnrollNoticeAdminService;
 import com.javatribe.apienroll.service.TestNoticeAdminService;
 import com.javatribe.apienroll.utils.NumberUtil;
+import com.javatribe.apienroll.utils.ObjectUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -39,6 +40,9 @@ public class TestNoticeAdminServiceImpl implements TestNoticeAdminService {
 
     @Override
     public Response<Integer> add(TestNotice testNotice) {
+        if (ObjectUtil.isNull(testNotice)) {
+            logger.info("参数不合法->{}",testNotice);
+        }
         return new Response<>(testNoticeMapper.insertSelective(testNotice));
     }
 

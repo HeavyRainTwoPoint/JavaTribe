@@ -6,6 +6,7 @@ import com.javatribe.apienroll.entity.EnrollNotice;
 import com.javatribe.apienroll.entity.EnrollNoticeQTO;
 import com.javatribe.apienroll.service.EnrollNoticeAdminService;
 import com.javatribe.apienroll.utils.NumberUtil;
+import com.javatribe.apienroll.utils.ObjectUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -35,6 +36,9 @@ public class EnrollNoticeAdminServiceImpl implements EnrollNoticeAdminService {
 
     @Override
     public Response<Integer> add(EnrollNotice enrollNotice) {
+        if (ObjectUtil.isNull(enrollNotice)) {
+            logger.info("参数不合法->{}",enrollNotice);
+        }
         return new Response<>(enrollNoticeMapper.insertSelective(enrollNotice));
     }
 
