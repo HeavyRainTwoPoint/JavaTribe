@@ -5,13 +5,16 @@ import com.javatribe.apicommon.dto.FileDownloadDTO;
 import com.javatribe.apicommon.dto.FileUploadDTO;
 import com.javatribe.apicommon.dto.Response;
 import com.javatribe.apicommon.dto.ResponseStatus;
+import com.javatribe.apienroll.entity.EnrollTest;
 import com.javatribe.apienroll.entity.FileManager;
 import com.javatribe.apienroll.manager.FileCommandManager;
+import com.javatribe.apienroll.service.EnrollTestAdminService;
 import com.javatribe.apienroll.service.FileManagerCommonService;
 import com.javatribe.apienroll.service.impl.EnrollDirectionAdminServiceImpl;
 import com.javatribe.apienroll.utils.ObjectUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -36,8 +39,13 @@ public class FileCommandController {
     @Resource
     private FileManagerCommonService fileManagerCommonService;
 
+    @Resource
+    private EnrollTestAdminService enrollTestAdminService;
+
+    @Transactional
     @PostMapping("/upload/enroll_test")
-    public Response<Integer> uploadEnrollTestFile(@RequestPart("file") MultipartFile multipartFile, @RequestParam("owner_name") String ownerName) {
+    public Response<FileUploadDTO> uploadEnrollTestFile(@RequestPart("file") MultipartFile multipartFile,
+                                                  @RequestParam("owner_name") String ownerName, @RequestParam("direction_code") Integer directionCode) {
         if (ObjectUtil.isNull(multipartFile,ownerName)) {
             logger.info("参数不合法");
             return Response.fail(ResponseStatus.PARAMS_ERROR);
@@ -51,13 +59,22 @@ public class FileCommandController {
             fileManager.setFileUrl(dto.getUri());
             fileManager.setContenType(dto.getContentType());
             fileManager.setFileType(FileType.ZIP.getType());
-            // 保存
-            return fileManagerCommonService.add(fileManager);
+            fileManagerCommonService.add(fileManager);
+
+            EnrollTest test = new EnrollTest();
+            test.setTestName(multipartFile.getOriginalFilename());
+            test.setFileUrl(dto.getUri());
+            test.setOwnnerName(ownerName);
+            test.setDirectionCode(directionCode);
+            enrollTestAdminService.add(test);
+
+            return new Response<>(dto);
         }
         return Response.fail(ResponseStatus.PARAMS_ERROR);
     }
 
     @GetMapping("/download_file")
+    @Transactional
     public Response download(FileManager fileManager) {
         if (ObjectUtil.isNull(fileManager)) {
             logger.info("参数不合法->{}",fileManager);
