@@ -1,6 +1,7 @@
 package com.javatribe.apienroll.service.impl;
 
 import com.javatribe.apicommon.dto.Response;
+import com.javatribe.apicommon.dto.ResponseStatus;
 import com.javatribe.apienroll.dao.EnrollNoticeMapper;
 import com.javatribe.apienroll.entity.EnrollNotice;
 import com.javatribe.apienroll.entity.EnrollNoticeQTO;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,8 +24,13 @@ import java.util.List;
  */
 @Service
 public class EnrollNoticeAdminServiceImpl implements EnrollNoticeAdminService {
-    private static final Logger logger = LoggerFactory.getLogger(EnrollNoticeAdminServiceImpl.class);    @Resource
+
+    private static final Logger logger = LoggerFactory.getLogger(EnrollNoticeAdminServiceImpl.class);
+
+    @Resource
     private EnrollNoticeMapper enrollNoticeMapper;
+
+
 
     @Override
     public Response<List<EnrollNotice>> query(EnrollNoticeQTO qto) {
@@ -38,17 +45,18 @@ public class EnrollNoticeAdminServiceImpl implements EnrollNoticeAdminService {
     public Response<Integer> add(EnrollNotice enrollNotice) {
         if (ObjectUtil.isNull(enrollNotice)) {
             logger.info("参数不合法->{}",enrollNotice);
+            return Response.fail(ResponseStatus.PARAMS_ERROR);
         }
         return new Response<>(enrollNoticeMapper.insertSelective(enrollNotice));
     }
 
     @Override
     public Response<Integer> update(EnrollNotice enrollNotice) {
-        Response<Integer> res = new Response<>();
         if (NumberUtil.isInValidNum(enrollNotice.getId())) {
             logger.info("参数不合法 -> {}",enrollNotice.getId());
-            return res;
+            return Response.fail(ResponseStatus.PARAMS_ERROR);
         }
+        enrollNotice.setGmtModified(new Date());
         return new Response<Integer>(enrollNoticeMapper.updateByPrimaryKey(enrollNotice));
     }
 
@@ -62,10 +70,9 @@ public class EnrollNoticeAdminServiceImpl implements EnrollNoticeAdminService {
 
     @Override
     public Response<Integer> deleteById(EnrollNotice enrollNotice) {
-        Response<Integer> res = new Response<>();
         if (NumberUtil.isInValidNum(enrollNotice.getId())) {
             logger.info("参数不合法 -> {}",enrollNotice.getId());
-            return res;
+            return Response.fail(ResponseStatus.PARAMS_ERROR);
         }
         enrollNotice.setDeleteMark(1);
         return new Response<Integer>(enrollNoticeMapper.updateByPrimaryKeySelective(enrollNotice));

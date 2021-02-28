@@ -7,10 +7,10 @@ package com.javatribe.apienroll.utils;
  */
 public class NumberUtil {
     public static boolean isInValidNum(Integer intNum) {
-        return intNum < 0 || intNum == null;
+        return intNum == null || intNum < 0;
     }
 
     public static boolean isInValidNum(Long longNum) {
-        return longNum < 0 && longNum == null;
+        return longNum == null || longNum < 0;
     }
 }

@@ -3,6 +3,7 @@
 <mapper namespace="com.javatribe.apienroll.dao.EnrollDirectionMapper">
   <resultMap id="BaseResultMap" type="com.javatribe.apienroll.entity.EnrollDirection">
     <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="direction_img" jdbcType="VARCHAR" property="directionImg" />
     <result column="direction_name" jdbcType="VARCHAR" property="directionName" />
     <result column="direction_code" jdbcType="INTEGER" property="directionCode" />
     <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
@@ -39,7 +40,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, direction_name, direction_code, gmt_created, gmt_modified, delete_mark
+    id, direction_img, direction_name, direction_code, gmt_created, gmt_modified, delete_mark
   </sql>
   <select id="selectByExample" parameterType="com.javatribe.apienroll.entity.EnrollDirectionQTO" resultMap="BaseResultMap">
     select
@@ -70,10 +71,12 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into enroll_direction (direction_name, direction_code, gmt_created, 
-      gmt_modified, delete_mark)
-    values (#{directionName,jdbcType=VARCHAR}, #{directionCode,jdbcType=INTEGER}, #{gmtCreated,jdbcType=TIMESTAMP}, 
-      #{gmtModified,jdbcType=TIMESTAMP}, #{deleteMark,jdbcType=INTEGER})
+    insert into enroll_direction (direction_img, direction_name, direction_code, 
+      gmt_created, gmt_modified, delete_mark
+      )
+    values (#{directionImg,jdbcType=VARCHAR}, #{directionName,jdbcType=VARCHAR}, #{directionCode,jdbcType=INTEGER}, 
+      #{gmtCreated,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{deleteMark,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.javatribe.apienroll.entity.EnrollDirection">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -81,6 +84,9 @@
     </selectKey>
     insert into enroll_direction
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="directionImg != null">
+        direction_img,
+      </if>
       <if test="directionName != null">
         direction_name,
       </if>
@@ -98,6 +104,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="directionImg != null">
+        #{directionImg,jdbcType=VARCHAR},
+      </if>
       <if test="directionName != null">
         #{directionName,jdbcType=VARCHAR},
       </if>
@@ -118,6 +127,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.javatribe.apienroll.entity.EnrollDirection">
     update enroll_direction
     <set>
+      <if test="directionImg != null">
+        direction_img = #{directionImg,jdbcType=VARCHAR},
+      </if>
       <if test="directionName != null">
         direction_name = #{directionName,jdbcType=VARCHAR},
       </if>
@@ -138,7 +150,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.javatribe.apienroll.entity.EnrollDirection">
     update enroll_direction
-    set direction_name = #{directionName,jdbcType=VARCHAR},
+    set direction_img = #{directionImg,jdbcType=VARCHAR},
+      direction_name = #{directionName,jdbcType=VARCHAR},
       direction_code = #{directionCode,jdbcType=INTEGER},
       gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},

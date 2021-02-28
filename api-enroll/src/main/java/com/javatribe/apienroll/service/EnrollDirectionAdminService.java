@@ -12,7 +12,7 @@ import java.util.List;
  * @date 2021/2/27 22:05
  * @description
  */
-public interface EnrollDirectionService {
+public interface EnrollDirectionAdminService {
     // 查询列表
     Response<List<EnrollDirection>> query(EnrollDirectionQTO qto);
     // 添加

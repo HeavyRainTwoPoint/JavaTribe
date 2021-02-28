@@ -1,10 +1,11 @@
 package com.javatribe.apienroll.service.impl;
 
 import com.javatribe.apicommon.dto.Response;
+import com.javatribe.apicommon.dto.ResponseStatus;
 import com.javatribe.apienroll.dao.EnrollDirectionMapper;
 import com.javatribe.apienroll.entity.EnrollDirection;
 import com.javatribe.apienroll.entity.EnrollDirectionQTO;
-import com.javatribe.apienroll.service.EnrollDirectionService;
+import com.javatribe.apienroll.service.EnrollDirectionAdminService;
 import com.javatribe.apienroll.utils.ObjectUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,9 +20,11 @@ import java.util.List;
  * @description
  */
 @Service
-public class EnrollDirectionServiceImpl implements EnrollDirectionService {
-    private static final Logger logger = LoggerFactory.getLogger(EnrollNoticeAdminServiceImpl.class);    @Resource
+public class EnrollDirectionAdminServiceImpl implements EnrollDirectionAdminService {
+    private static final Logger logger = LoggerFactory.getLogger(EnrollDirectionAdminServiceImpl.class);
+    @Resource
     private EnrollDirectionMapper enrollDirectionMapper;
+
 
     @Override
     public Response<List<EnrollDirection>> query(EnrollDirectionQTO qto) {
@@ -33,6 +36,7 @@ public class EnrollDirectionServiceImpl implements EnrollDirectionService {
     public Response<Integer> add(EnrollDirection enrollDirection) {
         if (ObjectUtil.isNull(enrollDirection)) {
             logger.info("参数不合法->{}",enrollDirection);
+            return Response.fail(ResponseStatus.PARAMS_ERROR);
         }
         return new Response<>(enrollDirectionMapper.insertSelective(enrollDirection));
     }

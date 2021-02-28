@@ -1,6 +1,9 @@
 package com.javatribe.apicommon.dto;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 
@@ -9,7 +12,8 @@ import java.io.Serializable;
  * @date 2021/2/27 13:49
  * @description 响应类
  */
-@Data
+@Getter
+@Setter
 public class Response<T> implements Serializable {
     private static final long serialVersionUID = 4811333361458162044L;
     private T data;
@@ -30,12 +34,20 @@ public class Response<T> implements Serializable {
         this.status = ResponseStatus.SUCCESS;
     }
 
-    static<T> Response success(T data) {
+    public static<T> Response success(T data) {
         return new Response(data,ResponseStatus.SUCCESS);
     }
 
-    static<T> Response fail(T data) {
+    public static<T> Response fail(T data) {
         return new Response(data,ResponseStatus.ERROR);
+    }
+
+    public static<T> Response fail(T data, ResponseStatus responseStatus) {
+        return new Response(data,responseStatus);
+    }
+
+    public static<T> Response fail (ResponseStatus responseStatus) {
+        return new Response(null,responseStatus);
     }
 
     @Override

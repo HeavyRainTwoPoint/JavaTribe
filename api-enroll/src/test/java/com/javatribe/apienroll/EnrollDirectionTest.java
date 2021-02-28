@@ -2,19 +2,12 @@ package com.javatribe.apienroll;
 
 import cn.hutool.json.JSONUtil;
 import com.aliyun.oss.OSS;
-import com.javatribe.apienroll.dao.EnrollDirectionMapper;
 import com.javatribe.apienroll.entity.EnrollDirection;
-import com.javatribe.apienroll.entity.TestNotice;
-import com.javatribe.apienroll.entity.TestNoticeQTO;
-import com.javatribe.apienroll.service.EnrollDirectionService;
-import com.javatribe.apienroll.service.TestNoticeAdminService;
+import com.javatribe.apienroll.service.EnrollDirectionAdminService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
-import java.util.Arrays;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
 
 /**
  * @author Liang.Yong.hui
@@ -26,7 +19,7 @@ public class EnrollDirectionTest {
     @Resource
     OSS oss;
     @Resource
-    EnrollDirectionService service;
+    EnrollDirectionAdminService service;
     @Test
     public void testAdd() {
 //        IntStream.range(1,8).forEach(x -> {
@@ -83,6 +76,7 @@ public class EnrollDirectionTest {
 
 
     private void show(Object r) {
-        System.out.println(JSONUtil.toJsonStr(r));
+        System.out.println(JSONUtil.toJsonStr(r.toString().replace("Response","")));
     }
+
 }

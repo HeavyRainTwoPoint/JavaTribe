@@ -7,7 +7,9 @@ package com.javatribe.apicommon.dto;
  */
 public enum ResponseStatus {
     SUCCESS(1000,"成功"),
-    ERROR(5000,"系统出错")
+    ERROR(5000,"系统出错"),
+    PARAMS_ERROR(6000,"参数不合法"),
+    FILE_DOWNLOAD_ERROR(7000,"文件下载失败"),
     ;
 
     public Integer status;
@@ -17,5 +19,6 @@ public enum ResponseStatus {
         this.status = status;
         this.message = message;
     }
+
 
 }

@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class EnrollDirectionQTO {
+public class EnrollTestQTO {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public EnrollDirectionQTO() {
+    public EnrollTestQTO() {
         oredCriteria = new ArrayList<>();
     }
 
@@ -165,143 +165,73 @@ public class EnrollDirectionQTO {
             return (Criteria) this;
         }
 
-        public Criteria andDirectionImgIsNull() {
-            addCriterion("direction_img is null");
+        public Criteria andTestNameIsNull() {
+            addCriterion("test_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andDirectionImgIsNotNull() {
-            addCriterion("direction_img is not null");
+        public Criteria andTestNameIsNotNull() {
+            addCriterion("test_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDirectionImgEqualTo(String value) {
-            addCriterion("direction_img =", value, "directionImg");
+        public Criteria andTestNameEqualTo(String value) {
+            addCriterion("test_name =", value, "testName");
             return (Criteria) this;
         }
 
-        public Criteria andDirectionImgNotEqualTo(String value) {
-            addCriterion("direction_img <>", value, "directionImg");
+        public Criteria andTestNameNotEqualTo(String value) {
+            addCriterion("test_name <>", value, "testName");
             return (Criteria) this;
         }
 
-        public Criteria andDirectionImgGreaterThan(String value) {
-            addCriterion("direction_img >", value, "directionImg");
+        public Criteria andTestNameGreaterThan(String value) {
+            addCriterion("test_name >", value, "testName");
             return (Criteria) this;
         }
 
-        public Criteria andDirectionImgGreaterThanOrEqualTo(String value) {
-            addCriterion("direction_img >=", value, "directionImg");
+        public Criteria andTestNameGreaterThanOrEqualTo(String value) {
+            addCriterion("test_name >=", value, "testName");
             return (Criteria) this;
         }
 
-        public Criteria andDirectionImgLessThan(String value) {
-            addCriterion("direction_img <", value, "directionImg");
+        public Criteria andTestNameLessThan(String value) {
+            addCriterion("test_name <", value, "testName");
             return (Criteria) this;
         }
 
-        public Criteria andDirectionImgLessThanOrEqualTo(String value) {
-            addCriterion("direction_img <=", value, "directionImg");
+        public Criteria andTestNameLessThanOrEqualTo(String value) {
+            addCriterion("test_name <=", value, "testName");
             return (Criteria) this;
         }
 
-        public Criteria andDirectionImgLike(String value) {
-            addCriterion("direction_img like", value, "directionImg");
+        public Criteria andTestNameLike(String value) {
+            addCriterion("test_name like", value, "testName");
             return (Criteria) this;
         }
 
-        public Criteria andDirectionImgNotLike(String value) {
-            addCriterion("direction_img not like", value, "directionImg");
+        public Criteria andTestNameNotLike(String value) {
+            addCriterion("test_name not like", value, "testName");
             return (Criteria) this;
         }
 
-        public Criteria andDirectionImgIn(List<String> values) {
-            addCriterion("direction_img in", values, "directionImg");
+        public Criteria andTestNameIn(List<String> values) {
+            addCriterion("test_name in", values, "testName");
             return (Criteria) this;
         }
 
-        public Criteria andDirectionImgNotIn(List<String> values) {
-            addCriterion("direction_img not in", values, "directionImg");
+        public Criteria andTestNameNotIn(List<String> values) {
+            addCriterion("test_name not in", values, "testName");
             return (Criteria) this;
         }
 
-        public Criteria andDirectionImgBetween(String value1, String value2) {
-            addCriterion("direction_img between", value1, value2, "directionImg");
+        public Criteria andTestNameBetween(String value1, String value2) {
+            addCriterion("test_name between", value1, value2, "testName");
             return (Criteria) this;
         }
 
-        public Criteria andDirectionImgNotBetween(String value1, String value2) {
-            addCriterion("direction_img not between", value1, value2, "directionImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDirectionNameIsNull() {
-            addCriterion("direction_name is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDirectionNameIsNotNull() {
-            addCriterion("direction_name is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDirectionNameEqualTo(String value) {
-            addCriterion("direction_name =", value, "directionName");
-            return (Criteria) this;
-        }
-
-        public Criteria andDirectionNameNotEqualTo(String value) {
-            addCriterion("direction_name <>", value, "directionName");
-            return (Criteria) this;
-        }
-
-        public Criteria andDirectionNameGreaterThan(String value) {
-            addCriterion("direction_name >", value, "directionName");
-            return (Criteria) this;
-        }
-
-        public Criteria andDirectionNameGreaterThanOrEqualTo(String value) {
-            addCriterion("direction_name >=", value, "directionName");
-            return (Criteria) this;
-        }
-
-        public Criteria andDirectionNameLessThan(String value) {
-            addCriterion("direction_name <", value, "directionName");
-            return (Criteria) this;
-        }
-
-        public Criteria andDirectionNameLessThanOrEqualTo(String value) {
-            addCriterion("direction_name <=", value, "directionName");
-            return (Criteria) this;
-        }
-
-        public Criteria andDirectionNameLike(String value) {
-            addCriterion("direction_name like", value, "directionName");
-            return (Criteria) this;
-        }
-
-        public Criteria andDirectionNameNotLike(String value) {
-            addCriterion("direction_name not like", value, "directionName");
-            return (Criteria) this;
-        }
-
-        public Criteria andDirectionNameIn(List<String> values) {
-            addCriterion("direction_name in", values, "directionName");
-            return (Criteria) this;
-        }
-
-        public Criteria andDirectionNameNotIn(List<String> values) {
-            addCriterion("direction_name not in", values, "directionName");
-            return (Criteria) this;
-        }
-
-        public Criteria andDirectionNameBetween(String value1, String value2) {
-            addCriterion("direction_name between", value1, value2, "directionName");
-            return (Criteria) this;
-        }
-
-        public Criteria andDirectionNameNotBetween(String value1, String value2) {
-            addCriterion("direction_name not between", value1, value2, "directionName");
+        public Criteria andTestNameNotBetween(String value1, String value2) {
+            addCriterion("test_name not between", value1, value2, "testName");
             return (Criteria) this;
         }
 
@@ -362,6 +292,146 @@ public class EnrollDirectionQTO {
 
         public Criteria andDirectionCodeNotBetween(Integer value1, Integer value2) {
             addCriterion("direction_code not between", value1, value2, "directionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnnerNameIsNull() {
+            addCriterion("ownner_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnnerNameIsNotNull() {
+            addCriterion("ownner_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnnerNameEqualTo(String value) {
+            addCriterion("ownner_name =", value, "ownnerName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnnerNameNotEqualTo(String value) {
+            addCriterion("ownner_name <>", value, "ownnerName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnnerNameGreaterThan(String value) {
+            addCriterion("ownner_name >", value, "ownnerName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnnerNameGreaterThanOrEqualTo(String value) {
+            addCriterion("ownner_name >=", value, "ownnerName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnnerNameLessThan(String value) {
+            addCriterion("ownner_name <", value, "ownnerName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnnerNameLessThanOrEqualTo(String value) {
+            addCriterion("ownner_name <=", value, "ownnerName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnnerNameLike(String value) {
+            addCriterion("ownner_name like", value, "ownnerName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnnerNameNotLike(String value) {
+            addCriterion("ownner_name not like", value, "ownnerName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnnerNameIn(List<String> values) {
+            addCriterion("ownner_name in", values, "ownnerName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnnerNameNotIn(List<String> values) {
+            addCriterion("ownner_name not in", values, "ownnerName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnnerNameBetween(String value1, String value2) {
+            addCriterion("ownner_name between", value1, value2, "ownnerName");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnnerNameNotBetween(String value1, String value2) {
+            addCriterion("ownner_name not between", value1, value2, "ownnerName");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileUrlIsNull() {
+            addCriterion("file_url is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileUrlIsNotNull() {
+            addCriterion("file_url is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileUrlEqualTo(String value) {
+            addCriterion("file_url =", value, "fileUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileUrlNotEqualTo(String value) {
+            addCriterion("file_url <>", value, "fileUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileUrlGreaterThan(String value) {
+            addCriterion("file_url >", value, "fileUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileUrlGreaterThanOrEqualTo(String value) {
+            addCriterion("file_url >=", value, "fileUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileUrlLessThan(String value) {
+            addCriterion("file_url <", value, "fileUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileUrlLessThanOrEqualTo(String value) {
+            addCriterion("file_url <=", value, "fileUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileUrlLike(String value) {
+            addCriterion("file_url like", value, "fileUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileUrlNotLike(String value) {
+            addCriterion("file_url not like", value, "fileUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileUrlIn(List<String> values) {
+            addCriterion("file_url in", values, "fileUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileUrlNotIn(List<String> values) {
+            addCriterion("file_url not in", values, "fileUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileUrlBetween(String value1, String value2) {
+            addCriterion("file_url between", value1, value2, "fileUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileUrlNotBetween(String value1, String value2) {
+            addCriterion("file_url not between", value1, value2, "fileUrl");
             return (Criteria) this;
         }
 

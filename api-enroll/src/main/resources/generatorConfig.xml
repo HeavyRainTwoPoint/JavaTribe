@@ -37,13 +37,13 @@
         </javaClientGenerator>
 
         <!--数据库表-->
-<!--        <table tableName="enroll_notice" domainObjectName="EnrollNotice"-->
-<!--               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
-<!--               enableSelectByExample="true" selectByExampleQueryId="true">-->
-<!--            <property name="useActualColumnNames" value="false"/>-->
-<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-<!--            <columnOverride column="content_file" jdbcType="VARCHAR" />-->
-<!--        </table>-->
+        <table tableName="enroll_notice" domainObjectName="EnrollNotice"
+               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+            <columnOverride column="content_file" jdbcType="VARCHAR" />
+        </table>
 
 
         <!--数据库表-->
@@ -57,12 +57,33 @@
 
 
         <!--数据库表-->
-        <table tableName="enroll_direction" domainObjectName="EnrollDirection"
-               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="true" selectByExampleQueryId="true">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
+<!--        <table tableName="enroll_direction" domainObjectName="EnrollDirection"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+<!--               enableSelectByExample="true" selectByExampleQueryId="true">-->
+<!--            <property name="useActualColumnNames" value="false"/>-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--        </table>-->
+
+
+        <!--数据库表-->
+<!--        <table tableName="enroll_test" domainObjectName="EnrollTest"-->
+<!--               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
+<!--               enableSelectByExample="true" selectByExampleQueryId="true">-->
+<!--            <property name="useActualColumnNames" value="false"/>-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--            <columnOverride column="file_url" jdbcType="VARCHAR" />-->
+<!--        </table>-->
+
+
+        <!--数据库表-->
+<!--        <table tableName="file_manager" domainObjectName="FileManager"-->
+<!--               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
+<!--               enableSelectByExample="true" selectByExampleQueryId="true">-->
+<!--            <property name="useActualColumnNames" value="false"/>-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--            <columnOverride column="file_name" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="file_url" jdbcType="VARCHAR" />-->
+<!--        </table>-->
     </context>
 
 

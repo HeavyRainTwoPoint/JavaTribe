@@ -39,7 +39,7 @@ public class EnrollNoticeTest {
     public void testDel() {
         LongStream.range(20,30).forEach(x -> {
             EnrollNotice notice = new EnrollNotice();
-            notice.setId(x);
+            notice.setId(null);
             show(service.deleteById(notice));
         });
     }
@@ -62,6 +62,6 @@ public class EnrollNoticeTest {
 
 
     private void show(Object r) {
-        System.out.println(JSONUtil.toJsonStr(r));
+        System.out.println(JSONUtil.toJsonStr(r.toString().replace("Response","")));
     }
 }

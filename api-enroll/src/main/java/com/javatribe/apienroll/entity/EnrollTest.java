@@ -3,14 +3,16 @@ package com.javatribe.apienroll.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-public class EnrollDirection implements Serializable {
+public class EnrollTest implements Serializable {
     private Long id;
 
-    private String directionImg;
-
-    private String directionName;
+    private String testName;
 
     private Integer directionCode;
+
+    private String ownnerName;
+
+    private String fileUrl;
 
     private Date gmtCreated;
 
@@ -28,20 +30,12 @@ public class EnrollDirection implements Serializable {
         this.id = id;
     }
 
-    public String getDirectionImg() {
-        return directionImg;
+    public String getTestName() {
+        return testName;
     }
 
-    public void setDirectionImg(String directionImg) {
-        this.directionImg = directionImg == null ? null : directionImg.trim();
-    }
-
-    public String getDirectionName() {
-        return directionName;
-    }
-
-    public void setDirectionName(String directionName) {
-        this.directionName = directionName == null ? null : directionName.trim();
+    public void setTestName(String testName) {
+        this.testName = testName == null ? null : testName.trim();
     }
 
     public Integer getDirectionCode() {
@@ -50,6 +44,22 @@ public class EnrollDirection implements Serializable {
 
     public void setDirectionCode(Integer directionCode) {
         this.directionCode = directionCode;
+    }
+
+    public String getOwnnerName() {
+        return ownnerName;
+    }
+
+    public void setOwnnerName(String ownnerName) {
+        this.ownnerName = ownnerName == null ? null : ownnerName.trim();
+    }
+
+    public String getFileUrl() {
+        return fileUrl;
+    }
+
+    public void setFileUrl(String fileUrl) {
+        this.fileUrl = fileUrl == null ? null : fileUrl.trim();
     }
 
     public Date getGmtCreated() {

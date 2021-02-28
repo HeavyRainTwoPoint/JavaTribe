@@ -4,9 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class EnrollNotice implements Serializable {
-
-    private static final long serialVersionUID = -7530222296107588668L;
-
     private Long id;
 
     private String title;
@@ -18,6 +15,8 @@ public class EnrollNotice implements Serializable {
     private Date gmtCreated;
 
     private Date gmtModified;
+
+    private static final long serialVersionUID = 1L;
 
     public Long getId() {
         return id;
