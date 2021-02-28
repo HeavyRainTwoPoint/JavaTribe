@@ -42,6 +42,13 @@ public class FileCommandController {
     @Resource
     private EnrollTestAdminService enrollTestAdminService;
 
+    /**
+     * 上传考核作业
+     * @param multipartFile 文件
+     * @param ownerName 上传者
+     * @param directionCode 方向代号
+     * @return
+     */
     @Transactional
     @PostMapping("/upload/enroll_test")
     public Response<FileUploadDTO> uploadEnrollTestFile(@RequestPart("file") MultipartFile multipartFile,
