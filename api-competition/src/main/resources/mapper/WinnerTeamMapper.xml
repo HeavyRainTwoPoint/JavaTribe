@@ -52,7 +52,7 @@ WHERE
 	twt.delete_status = 0
 ORDER BY
 	twt.competition_id,
-	STR_TO_DATE( date_format( twt.team_begin_time, '%Y-%m-%d' ), '%Y-%c' ) DESC,
+	STR_TO_DATE( date_format( twt.team_begin_time, '%Y-%m-%d' ), '%Y' ) DESC,
 	twt.team_order_num
   </select>
 </mapper>

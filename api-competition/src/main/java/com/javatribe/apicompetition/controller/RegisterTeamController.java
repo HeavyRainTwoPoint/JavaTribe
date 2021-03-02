@@ -49,6 +49,7 @@ public class RegisterTeamController {
         Result result = new Result();
         RegisterTeam registerTeamOfData = new RegisterTeam(registerTeam.getRegisterId(), registerTeam.getCompetitionId(), registerTeam.getTeamName(), registerTeam.getTeamLeaderName(), registerTeam.getTeamLeaderPhone(), registerTeam.getTeamLeaderStudentId(), registerTeam.getTeamLeaderWechat(), registerTeam.getTeamLeaderCollege());
         String user = "";
+        //将队员的名字使用，分割，串联起来
         for (String temp : registerTeam.getTeamUserList()) {
             user = user + temp + ",";
         }
@@ -60,8 +61,11 @@ public class RegisterTeamController {
         }
         registerTeamOfData.setDeleteStatus(0);
         registerTeamOfData.setRegisterTime(new Date());
-        user = user.substring(0, user.length() - 1);
+        if(user!="") {
+            user = user.substring(0, user.length() - 1);
+        }
         registerTeamOfData.setTeamUserList(user);
+        //还需要判断是否有相同的名字 【同名规则 在同一场比赛的同一届下，不能有相同的队伍名字】
         int i = registerTeamService.insertRegisterTeam(registerTeamOfData);
         if (i > 0) {
             result.setCode(200);

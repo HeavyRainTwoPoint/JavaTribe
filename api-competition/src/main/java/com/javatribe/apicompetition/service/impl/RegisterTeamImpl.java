@@ -21,9 +21,13 @@ public class RegisterTeamImpl implements RegisterTeamService {
         return registerTeamMapper.insert(registerTeam);
     }
 
+    /**
+     * 判断基本信息是否正确
+     * @param registerTeam
+     * @return
+     */
     @Override
     public String toValidateMessage(RegisterTeam registerTeam) {
-        //首先判断电话号码
         String phone = registerTeam.getTeamLeaderPhone();
         Pattern phoneRegex = Pattern.compile("^1[358]\\d{9}$",Pattern.CASE_INSENSITIVE);
         if(!phoneRegex.matcher(phone).matches()){
