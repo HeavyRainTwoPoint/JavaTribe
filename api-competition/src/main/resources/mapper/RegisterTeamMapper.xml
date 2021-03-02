@@ -68,4 +68,27 @@
     	delete_status = 0
 	    AND sign_up=1
   </select>
+
+  <select id="selectSameTeamName" resultType="java.lang.Integer">
+    SELECT
+	count( register_id )
+    FROM
+	`t_register_team`
+    WHERE
+	STR_TO_DATE( date_format( register_time, '%Y-%m-%d' ), '%Y' ) = STR_TO_DATE( #{year}, '%Y' )
+	AND competition_id = #{competitionId}
+	AND team_name = #{teamName}
+  </select>
+
+  <select id="selectSameTeamLeaderName" resultType="java.lang.Integer">
+    SELECT
+	count( register_id )
+    FROM
+	`t_register_team`
+    WHERE
+	STR_TO_DATE( date_format( register_time, '%Y-%m-%d' ), '%Y' ) = STR_TO_DATE( #{year}, '%Y' )
+	AND competition_id = 1
+	AND team_leader_name = #{teamLeaderName}
+  </select>
+
 </mapper>

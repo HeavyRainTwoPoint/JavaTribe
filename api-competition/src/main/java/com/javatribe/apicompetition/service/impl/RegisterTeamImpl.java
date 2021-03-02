@@ -2,7 +2,9 @@ package com.javatribe.apicompetition.service.impl;
 
 import com.javatribe.apicompetition.mapper.RegisterTeamMapper;
 import com.javatribe.apicompetition.pojo.po.RegisterTeam;
+import com.javatribe.apicompetition.pojo.po.RegisterTeamOfFront;
 import com.javatribe.apicompetition.service.RegisterTeamService;
+import org.apache.http.client.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,6 +40,32 @@ public class RegisterTeamImpl implements RegisterTeamService {
 //        if(){
 //            return "队长学号填写出错，请重新填写";
 //        }
+        return null;
+    }
+
+    @Override
+    public String toValidateNoSameNameOrSameLeaderName(RegisterTeam registerTeam) {
+        //首先检查是否有同名队伍 规则：在同一届 同一个比赛中 不能存在相同的队伍
+        String year = DateUtils.formatDate(registerTeam.getRegisterTime(),"yyyy");
+        int i = registerTeamMapper.selectSameTeamName(year, registerTeam.getCompetitionId(), registerTeam.getTeamName());
+        if (i>0){
+            return "队伍名字重复，请重新填写";
+        }
+        i = registerTeamMapper.selectSameTeamLeaderName(year,registerTeam.getCompetitionId(),registerTeam.getTeamLeaderName());
+        if (i>0){
+            return "您作为队长已经报过名了，请勿重复报名";
+        }
+        return null;
+    }
+
+    @Override
+    public String toValidateMessageIsNull(RegisterTeamOfFront registerTeam) {
+        if (registerTeam.getTeamName()==null){
+            return "队伍名字为空";
+        }
+        if (registerTeam.getTeamLeaderName()==null){
+            return "队长名字必须填写";
+        }
         return null;
     }
 }

@@ -6,6 +6,7 @@ import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
 import com.javatribe.apicompetition.pojo.po.RegisterTeam;
 import com.javatribe.apicompetition.pojo.po.RegisterTeamOfFront;
 import com.javatribe.apicompetition.service.RegisterTeamService;
+import org.apache.http.client.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -47,13 +48,26 @@ public class RegisterTeamController {
     @RequestMapping(value = "/sign_up",method = RequestMethod.POST)
     public Result singUp(RegisterTeamOfFront registerTeam) {
         Result result = new Result();
+        //首先判断是否为空
+        String message = registerTeamService.toValidateMessageIsNull(registerTeam);
+        if(!Objects.isNull(message)){
+            result.setCode(401);
+            result.setMessage("报名失败："+message);
+            return result;
+        }
+
         RegisterTeam registerTeamOfData = new RegisterTeam(registerTeam.getRegisterId(), registerTeam.getCompetitionId(), registerTeam.getTeamName(), registerTeam.getTeamLeaderName(), registerTeam.getTeamLeaderPhone(), registerTeam.getTeamLeaderStudentId(), registerTeam.getTeamLeaderWechat(), registerTeam.getTeamLeaderCollege());
         String user = "";
         //将队员的名字使用，分割，串联起来
         for (String temp : registerTeam.getTeamUserList()) {
             user = user + temp + ",";
         }
-        String message = registerTeamService.toValidateMessage(registerTeamOfData);
+        if(user!="") {
+            user = user.substring(0, user.length() - 1);
+        }
+        registerTeamOfData.setTeamUserList(user);
+
+        message = registerTeamService.toValidateMessage(registerTeamOfData);
         if(!Objects.isNull(message)){
             result.setCode(401);
             result.setMessage("报名失败："+message);
@@ -61,11 +75,12 @@ public class RegisterTeamController {
         }
         registerTeamOfData.setDeleteStatus(0);
         registerTeamOfData.setRegisterTime(new Date());
-        if(user!="") {
-            user = user.substring(0, user.length() - 1);
+        message = registerTeamService.toValidateNoSameNameOrSameLeaderName(registerTeamOfData);
+        if (!Objects.isNull(message)){
+            result.setCode(401);
+            result.setMessage("报名失败："+message);
+            return result;
         }
-        registerTeamOfData.setTeamUserList(user);
-        //还需要判断是否有相同的名字 【同名规则 在同一场比赛的同一届下，不能有相同的队伍名字】
         int i = registerTeamService.insertRegisterTeam(registerTeamOfData);
         if (i > 0) {
             result.setCode(200);
