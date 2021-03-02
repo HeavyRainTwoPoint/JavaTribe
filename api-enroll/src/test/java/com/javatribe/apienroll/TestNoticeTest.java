@@ -2,11 +2,8 @@ package com.javatribe.apienroll;
 
 import cn.hutool.json.JSONUtil;
 import com.aliyun.oss.OSS;
-import com.javatribe.apienroll.entity.EnrollNotice;
-import com.javatribe.apienroll.entity.EnrollNoticeQTO;
 import com.javatribe.apienroll.entity.TestNotice;
 import com.javatribe.apienroll.entity.TestNoticeQTO;
-import com.javatribe.apienroll.service.EnrollNoticeAdminService;
 import com.javatribe.apienroll.service.TestNoticeAdminService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

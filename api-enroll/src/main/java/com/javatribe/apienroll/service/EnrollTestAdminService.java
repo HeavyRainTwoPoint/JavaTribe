@@ -1,8 +1,6 @@
 package com.javatribe.apienroll.service;
 
 import com.javatribe.apicommon.dto.Response;
-import com.javatribe.apienroll.entity.EnrollNotice;
-import com.javatribe.apienroll.entity.EnrollNoticeQTO;
 import com.javatribe.apienroll.entity.EnrollTest;
 import com.javatribe.apienroll.entity.EnrollTestQTO;
 
