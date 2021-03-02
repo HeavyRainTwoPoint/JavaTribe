@@ -28,7 +28,7 @@ public class EnrollNoticeTest {
     public void testAdd() {
         IntStream.range(0,10).forEach(x -> {
             EnrollNotice notice = new EnrollNotice();
-            notice.setContentFile("http://wqqqqwqwq.images"+ x);
+            notice.setContentFileUrl("http://wqqqqwqwq.images"+ x);
             notice.setTitle("我是标题" + x);
             show(service.add(notice));
         });

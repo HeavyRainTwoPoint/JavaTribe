@@ -3,7 +3,6 @@ package com.javatribe.apienroll.service;
 import com.javatribe.apicommon.dto.Response;
 import com.javatribe.apienroll.entity.EnrollDirection;
 import com.javatribe.apienroll.entity.EnrollDirectionQTO;
-import com.javatribe.apienroll.entity.EnrollNoticeQTO;
 
 import java.util.List;
 
