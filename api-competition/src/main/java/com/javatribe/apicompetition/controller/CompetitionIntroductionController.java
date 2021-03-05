@@ -78,6 +78,16 @@ public class CompetitionIntroductionController {
         return Result.success();
     }
 
+    /**
+     * 添加比赛
+     * @param competition
+     * @return
+     */
+    @PutMapping("/addCompetition")
+    public Result addCompetition(CompetitionIntroduction competition){
+        return competitionIntroductionService.addCompetition(competition);
+    }
+
 
 
 }

@@ -24,4 +24,6 @@ public interface RegisterTeamMapper {
     int selectSameTeamName(@Param("year") String year, @Param("competitionId") Long competitionId, @Param("teamName") String teamName);
 
     int selectSameTeamLeaderName(@Param("year") String year,@Param("competitionId") Long competitionId,@Param("teamLeaderName") String teamLeaderName);
+
+    List<RegisterTeam> queryRegisterList(@Param("competitionId") Long competitionId);
 }

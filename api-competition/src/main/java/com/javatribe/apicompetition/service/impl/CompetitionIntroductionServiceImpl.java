@@ -1,18 +1,18 @@
 package com.javatribe.apicompetition.service.impl;
 
+import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.mapper.CompetitionIntroductionMapper;
 import com.javatribe.apicompetition.mapper.CompetitionIntroductionMapperCustom;
 import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
 import com.javatribe.apicompetition.service.CompetitionIntroductionService;
 import com.javatribe.apicompetition.util.InsertUtil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @Author lyr
@@ -73,5 +73,34 @@ public class CompetitionIntroductionServiceImpl implements CompetitionIntroducti
     public void updateCompetitionInfo(CompetitionIntroduction competitionIntroduction) {
         competitionIntroductionMapperCustom.updateSelective(
                 competitionIntroduction.withGmtModified(new Date()));
+    }
+
+    @Override
+    public Result addCompetition(CompetitionIntroduction competition) {
+        Result result = new Result();
+        if (Objects.isNull(competition.getCompetitionName())){
+            result.setCode(401);
+            result.setMessage("比赛名字为空，请重新填写");
+            return result;
+        }
+        //判断是否有相同比赛名字
+        String competitionName = competition.getCompetitionName();
+        int i = competitionIntroductionMapper.selectByCompetitionName(competitionName);
+        if (i>0){
+            result.setCode(401);
+            result.setMessage("添加出错，比赛名字重复");
+            return result;
+        }
+        competition.setDeleteStatus(false);
+        competition.setSignUp(1);
+        competition.setGmtCreate(new Date());
+        int insertRow = competitionIntroductionMapper.insert(competition);
+        if (insertRow>0){
+            return Result.success();
+        }else{
+            result.setCode(401);
+            result.setMessage("插入失败");
+            return result;
+        }
     }
 }

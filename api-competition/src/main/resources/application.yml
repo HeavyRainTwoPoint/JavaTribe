@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://47.92.200.8:3306/javatribe?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://47.92.200.8:3306/javatribe?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowMultiQueries=true
     password: pBcrDNAMFr7ifb7e
     username: javatribe
     driver-class-name: com.mysql.jdbc.Driver
@@ -15,6 +15,11 @@ spring:
     serialization: {WRITE_DATES_AS_TIMESTAMPS: true}
   profiles:
     active: dev
+  #激活自动代码功能，将AOP代理接口暴露
+  aop:
+    proxy-target-class: true
+    auto: on
+
 
 mybatis:
   mapper-locations: classpath:/mapper/**/*.xml

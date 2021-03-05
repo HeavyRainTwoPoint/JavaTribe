@@ -1,15 +1,24 @@
 package com.javatribe.apicompetition.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
+import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.mapper.RegisterTeamMapper;
 import com.javatribe.apicompetition.pojo.po.RegisterTeam;
 import com.javatribe.apicompetition.pojo.po.RegisterTeamOfFront;
 import com.javatribe.apicompetition.service.RegisterTeamService;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.client.utils.DateUtils;
+import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Transactional
 @Service
@@ -32,6 +41,9 @@ public class RegisterTeamImpl implements RegisterTeamService {
     public String toValidateMessage(RegisterTeam registerTeam) {
         String phone = registerTeam.getTeamLeaderPhone();
         Pattern phoneRegex = Pattern.compile("^1[358]\\d{9}$",Pattern.CASE_INSENSITIVE);
+        if (phone==null || phone==""){
+            return "请填写手机号码";
+        }
         if(!phoneRegex.matcher(phone).matches()){
             return "手机号码错误，请重新填写";
         }
@@ -67,5 +79,93 @@ public class RegisterTeamImpl implements RegisterTeamService {
             return "队长名字必须填写";
         }
         return null;
+    }
+
+    @Override
+    public Result queryRegisterList(Long competitionId) {
+        Result result = new Result();
+        result.setCode(200);
+        List<RegisterTeam> registerTeam = registerTeamMapper.queryRegisterList(competitionId);
+        if (registerTeam!=null && registerTeam.size()!=0){
+            List<RegisterTeamOfFront> datas = Arrays.stream(registerTeam.toArray(new RegisterTeam[registerTeam.size()])).map((o) -> {
+                RegisterTeamOfFront registerTeamOfFront = new RegisterTeamOfFront();
+                registerTeamOfFront.setCompetitionId(o.getCompetitionId());
+                registerTeamOfFront.setOrder(o.getOrder());
+                registerTeamOfFront.setRegisterId(o.getRegisterId());
+                registerTeamOfFront.setTeamLeaderCollege(o.getTeamLeaderCollege());
+                registerTeamOfFront.setTeamLeaderName(o.getTeamLeaderName());
+                registerTeamOfFront.setTeamLeaderStudentId(o.getTeamLeaderStudentId());
+                registerTeamOfFront.setTeamLeaderPhone(o.getTeamLeaderPhone());
+                registerTeamOfFront.setTeamLeaderWechat(o.getTeamLeaderWechat());
+                registerTeamOfFront.setTeamName(o.getTeamName());
+                registerTeamOfFront.setRegisterTime(o.getRegisterTime());
+                if (!StringUtils.isEmpty(o.getTeamUserList()))
+                    registerTeamOfFront.setTeamUserList(Arrays.stream(o.getTeamUserList().split(",")).collect(Collectors.toList()));
+                return registerTeamOfFront;
+            }).collect(Collectors.toList());
+            result.setData(JSONObject.toJSONString(datas));
+        }else{
+            result.setMessage("没有数据");
+            result.setData(null);
+        }
+        return result;
+    }
+
+    @Override
+    public Result editRegisterData(RegisterTeamOfFront registerTeam) {
+        Result result = new Result();
+        if (registerTeam.getRegisterTime()==null){
+            result.setCode(401);
+            result.setMessage("registerTime参数为空，修改失败");
+            return result;
+        }
+        RegisterTeam registerTeamOfData = new RegisterTeam(registerTeam.getRegisterId(), registerTeam.getCompetitionId(), registerTeam.getTeamName(), registerTeam.getTeamLeaderName(), registerTeam.getTeamLeaderPhone(), registerTeam.getTeamLeaderStudentId(), registerTeam.getTeamLeaderWechat(), registerTeam.getTeamLeaderCollege());
+        registerTeamOfData.setRegisterTime(registerTeam.getRegisterTime());
+        result = ((RegisterTeamService)AopContext.currentProxy()).validateEditAndSignRegisterTeam(registerTeam, result, "编辑", registerTeamOfData);
+        if (result.getCode() != null){
+            return result;
+        }
+        registerTeamMapper.updateByPrimaryKey(registerTeamOfData);
+        return Result.success();
+    }
+
+    @Override
+    public Result deleteRegisterData(Long registerId) {
+        registerTeamMapper.deleteByPrimaryKey(registerId);
+        return Result.success();
+    }
+
+    @Override
+    public Result validateEditAndSignRegisterTeam(RegisterTeamOfFront registerTeam,Result result,String type,RegisterTeam registerTeamOfData) {
+        String user = "";
+        //将队员的名字使用，分割，串联起来
+        for(int i=0 ; registerTeam.getTeamUserList()!=null&&i<registerTeam.getTeamUserList().size() ; i++){
+            user += (registerTeam.getTeamUserList().get(i)+",");
+        }
+        if(user!="") {
+            user = user.substring(0, user.length() - 1);
+        }
+        registerTeamOfData.setTeamUserList(user);
+        //如果编辑的时候手机号码为空，那么就不需要再次判断。
+        String message = null;
+        if (!(StringUtils.isEmpty(registerTeam.getTeamLeaderPhone())&&"编辑".equals(type))) {
+            message = toValidateMessage(registerTeamOfData);
+            if (!Objects.isNull(message)) {
+                result.setCode(401);
+                result.setMessage(type + "失败：" + message);
+                return result;
+            }
+        }
+        registerTeamOfData.setDeleteStatus(0);
+        if (registerTeamOfData.getRegisterTime()==null) {
+            registerTeamOfData.setRegisterTime(new Date());
+        }
+        message = toValidateNoSameNameOrSameLeaderName(registerTeamOfData);
+        if (!Objects.isNull(message)){
+            result.setCode(401);
+            result.setMessage(type+"失败："+message);
+            return result;
+        }
+        return result;
     }
 }
