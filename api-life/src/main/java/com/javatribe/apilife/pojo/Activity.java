@@ -14,7 +14,7 @@ public class Activity {
     private String actTitle;
     private String actContent;
     private String actImgURL;
-    private String actTime;
+    private Timestamp actTime;
     private Integer priority;
     private Timestamp gmtCreate;
     private Timestamp gmtModify;
