@@ -3,6 +3,7 @@ package com.javatribe.apilife.service.impl;
 import com.javatribe.apilife.cache.Cache;
 import com.javatribe.apilife.dao.ActivityDao;
 import com.javatribe.apilife.dto.ActivityDTO;
+import com.javatribe.apilife.expt.SqlException;
 import com.javatribe.apilife.expt.SwapException;
 import com.javatribe.apilife.pojo.Activity;
 import com.javatribe.apilife.service.LifeInfoManipulation;
@@ -25,13 +26,22 @@ public class LifeInfoManipulationServiceImpl implements LifeInfoManipulation {
     Cache cache;
 
     @Override
-    public void insertActivity(ActivityDTO dto) {
+    public void insertActivity(ActivityDTO dto) throws SqlException {
+        if (dto.getActTime() == null || StringUtils.isEmpty(dto.getActTitle())
+                || StringUtils.isEmpty(dto.getActContent()) || dto.getImgs() == null
+                || dto.getImgs().length == 0) {
+            throw new SqlException("信息不全");
+        }
+        boolean isExist = activityDao.isExistTitle(dto.getActTitle()) == 1;
+        if (isExist) {
+            throw new SqlException("标题存在");
+        }
         final Timestamp now = new Timestamp(System.currentTimeMillis());
         Activity activity = new Activity();
         BeanUtils.copyProperties(dto, activity);
         activity.setActImgURL(join(dto.getImgs(), ","));
         activity.setPriority(activityDao.latestPriority() + 1);
-        activity.setActTime(now);
+        activity.setActTime(new Timestamp(dto.getActTime()));
         activity.setGmtCreate(now);
         activity.setGmtModify(now);
         activity.setDeleteStatus(0);
@@ -40,9 +50,19 @@ public class LifeInfoManipulationServiceImpl implements LifeInfoManipulation {
     }
 
     @Override
-    public void updateActivityById(ActivityDTO dto) {
+    public void updateActivityById(ActivityDTO dto) throws SqlException {
+        if (dto.getId() == null) {
+            throw new SqlException("需要id参数");
+        }
+        boolean isExist = activityDao.isExistId(dto.getId()) == 1;
+        if (!isExist) {
+            throw new SqlException("id不存在");
+        }
         Activity activity = new Activity();
         BeanUtils.copyProperties(dto, activity);
+        if (dto.getActTime() != null) {
+            activity.setActTime(new Timestamp(dto.getActTime()));
+        }
         activity.setActImgURL(join(dto.getImgs(), ","));
         activity.setGmtModify(new Timestamp(System.currentTimeMillis()));
         activityDao.updateById(activity);
@@ -128,7 +148,7 @@ public class LifeInfoManipulationServiceImpl implements LifeInfoManipulation {
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < strings.length - 1; i++) {
-            sb.append(strings[i]);
+            sb.append(strings[i].trim());
             sb.append(join);
         }
         sb.append(strings[strings.length - 1]);

@@ -1,6 +1,6 @@
 package com.javatribe.apilife.controller;
 
-import com.javatribe.apilife.dto.Result;
+import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apilife.pojo.Activity;
 import com.javatribe.apilife.service.LifeInfoQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class LifeInfoQueryController {
     @GetMapping("/life-infos")
     public Result allLifeInfos() {
         final List<Activity> data = lifeInfoQueryService.listActivitiesByPriority();
-        return Result.ok(data);
+        return Result.success(data);
     }
 
     @GetMapping("/life-info/{id}")
@@ -33,7 +33,7 @@ public class LifeInfoQueryController {
             result.setMessage("对象不存在");
             return result;
         }
-        return Result.ok(data);
+        return Result.success(data);
     }
 
     @GetMapping("/life-info/title/{title}")
@@ -45,7 +45,7 @@ public class LifeInfoQueryController {
             result.setMessage("对象不存在");
             return result;
         }
-        return Result.ok(data);
+        return Result.success(data);
     }
 
     @GetMapping("/life-info/exist/{title}")

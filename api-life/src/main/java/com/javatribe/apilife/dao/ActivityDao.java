@@ -36,4 +36,6 @@ public interface ActivityDao {
     void updatePriorityById(@Param("id") int id, @Param("priority") int priority);
 
     Integer selectDownIdByPriority(int priority);
+
+    int isExistId(@Param("id") int id);
 }

@@ -1,15 +1,16 @@
 package com.javatribe.apilife.service;
 
 import com.javatribe.apilife.dto.ActivityDTO;
+import com.javatribe.apilife.expt.SqlException;
 import com.javatribe.apilife.pojo.Activity;
 
 public interface LifeInfoManipulation {
 
-    void insertActivity(ActivityDTO dto);
+    void insertActivity(ActivityDTO dto) throws SqlException;
 
     void updateActivityByTitle(ActivityDTO dto);
 
-    void updateActivityById(ActivityDTO dto);
+    void updateActivityById(ActivityDTO dto) throws SqlException;
 
     void deleteActivityById(int id);
 

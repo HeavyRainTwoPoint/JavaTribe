@@ -1,7 +1,8 @@
 package com.javatribe.apilife.controller;
 
+import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apilife.dto.ActivityDTO;
-import com.javatribe.apilife.dto.Result;
+import com.javatribe.apilife.expt.SqlException;
 import com.javatribe.apilife.expt.SwapException;
 import com.javatribe.apilife.service.LifeInfoManipulation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,21 +17,29 @@ public class LifeInfoManipulationController {
 
     @PostMapping("/life-info")
     public Result insertLifeInfo(@RequestBody(required = false) ActivityDTO dto) {
-        lifeInfoManipulation.insertActivity(dto);
-        return Result.ok();
+        try {
+            lifeInfoManipulation.insertActivity(dto);
+        } catch (SqlException e) {
+            return Result.from(e.getMessage(), 400);
+        }
+        return Result.success();
     }
 
-    @PutMapping("/life-info")
+    @PutMapping("/life-info/")
     public Result updateLifeInfo(@RequestBody(required = false) ActivityDTO dto) {
-        lifeInfoManipulation.updateActivityById(dto);
-        return Result.ok();
+        try {
+            lifeInfoManipulation.updateActivityById(dto);
+        } catch (SqlException e) {
+            return Result.from(e.getMessage(), 400);
+        }
+        return Result.success();
     }
 
 
     @DeleteMapping("/life-info/{id}")
     public Result deleteLifeInfoById(@PathVariable("id") int id) {
         lifeInfoManipulation.deleteActivityById(id);
-        return Result.ok();
+        return Result.success();
     }
 
     @PutMapping("/priority/move-up/{id}")
@@ -43,7 +52,7 @@ public class LifeInfoManipulationController {
             result.setMessage(e.getMessage());
             return result;
         }
-        return Result.ok();
+        return Result.success();
     }
 
     @PutMapping("/priority/move-down/{id}")
@@ -56,14 +65,14 @@ public class LifeInfoManipulationController {
             result.setMessage(e.getMessage());
             return result;
         }
-        return Result.ok();
+        return Result.success();
     }
 
 
     @PutMapping("/priority/swap")
     public Result moveDown(@RequestParam("a") int a, @RequestParam("b") int b) {
         lifeInfoManipulation.prioritySwap(a, b);
-        return Result.ok();
+        return Result.success();
     }
 
 }

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javatribe.apilife.dao.ActivityDao">
+    <resultMap id="activityResultMap" type="com.javatribe.apilife.pojo.Activity">
+        <id property="id" column="act_id"/>
+        <result property="actTitle" column="act_title"/>
+        <result property="actContent" column="act_content"/>
+        <result property="actImgURL" column="act_imgURL"/>
+        <result property="actTime" column="act_time"/>
+        <result property="priority" column="priority"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModify" column="gmt_modify"/>
+        <result property="deleteStatus" column="delete_status"/>
+    </resultMap>
+    <select id="selectAll" resultMap="activityResultMap">
+        SELECT act_id,
+               act_title,
+               act_content,
+               act_imgURL,
+               act_time,
+               priority,
+               gmt_create,
+               gmt_modify,
+               delete_status
+        FROM t_activity
+        WHERE delete_status = 0
+        ORDER BY priority
+    </select>
+    <select id="selectById" resultType="com.javatribe.apilife.pojo.Activity">
+        select act_id,
+               act_title,
+               act_content,
+               act_imgURL,
+               act_time,
+               priority,
+               gmt_create,
+               gmt_modify,
+               delete_status
+        from t_activity
+        where act_id = #{id}
+          and delete_status = 0
+    </select>
+    <select id="selectByTitle" resultType="com.javatribe.apilife.pojo.Activity">
+        select act_id,
+               act_title,
+               act_content,
+               act_imgURL,
+               act_time,
+               priority,
+               gmt_create,
+               gmt_modify,
+               delete_status
+        from t_activity
+        where act_title = #{title}
+          and delete_status = 0
+    </select>
+    <select id="selectIdByTitle" resultType="java.lang.Integer">
+        select act_id
+        from t_activity
+        where act_title = #{title}
+          and delete_status = 0
+    </select>
+
+    <select id="latestPriority" resultType="java.lang.Integer">
+        SELECT priority
+        FROM t_activity
+        ORDER BY priority DESC
+        LIMIT 0,1
+    </select>
+    <select id="isExistTitle" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM t_activity
+        WHERE act_title = #{title} AND delete_status = 0
+    </select>
+
+    <select id="isExistId" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM t_activity
+        WHERE act_id = #{id} AND delete_status = 0
+    </select>
+    <select id="selectPriorityById" resultType="java.lang.Integer">
+        SELECT priority
+        FROM t_activity
+        WHERE act_id = #{id};
+    </select>
+
+    <select id="selectUpIdByPriority" resultType="java.lang.Integer">
+        SELECT act_id
+        FROM t_activity
+        WHERE priority
+            &lt; #{priority}
+          AND delete_status = 0
+        ORDER BY priority DESC
+        LIMIT 1
+    </select>
+    <select id="selectDownIdByPriority" resultType="java.lang.Integer">
+        SELECT act_id
+        FROM t_activity
+        WHERE priority
+            &gt; #{priority}
+          AND delete_status = 0
+        ORDER BY priority
+        LIMIT 1
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true">
+        insert into t_activity(act_title, act_content, act_imgURL, act_time,
+                             priority, gmt_create, gmt_modify, delete_status)
+        values (#{actTitle}, #{actContent}, #{actImgURL}, #{actTime},
+                #{priority}, #{gmtCreate}, #{gmtModify}, #{deleteStatus})
+    </insert>
+    <update id="updateById">
+        update t_activity
+        <set>
+            <if test="actTitle != null">act_title = #{actTitle},</if>
+            <if test="actContent != null">act_content = #{actContent},</if>
+            <if test="actImgURL != null">act_imgURL = #{actImgURL},</if>
+            <if test="actTime != null">act_time = #{actTime},</if>
+            <if test="priority != null">priority = #{priority},</if>
+            <if test="gmtCreate != null">gmt_create = #{gmtCreate},</if>
+            <if test="gmtModify != null">gmt_modify = #{gmtModify},</if>
+            <if test="deleteStatus != null">delete_status = #{deleteStatus},</if>
+        </set>
+        where act_id = #{id}
+    </update>
+    <update id="updateByTitle">
+        update t_activity
+        <set>
+            <if test="actContent != null">act_content = #{actContent},</if>
+            <if test="actImgURL != null">act_imgURL = #{actImgURL},</if>
+            <if test="actTime != null">act_time = #{actTime},</if>
+            <if test="priority != null">priority = #{priority}</if>
+            <if test="gmtCreate != null">gmt_create = #{gmtCreate}</if>
+            <if test="gmtModify != null">gmt_modify = #{gmtModify}</if>
+            <if test="deleteStatus != null">delete_status = #{deleteStatus}</if>
+        </set>
+        where actTitle = #{actTitle}
+    </update>
+    <update id="deleteById">
+        update t_activity
+        set delete_status = 1
+        where act_id = #{id}
+    </update>
+    <update id="updatePriorityById">
+
+    </update>
+</mapper>
