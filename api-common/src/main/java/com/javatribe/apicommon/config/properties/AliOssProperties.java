@@ -19,11 +19,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties(prefix = "oss")
 @Data
-<<<<<<< HEAD
-// @ConditionalOnProperty(value = "oss")
-=======
-//@ConditionalOnProperty(value = "oss")
->>>>>>> 8802eb67d6322ff78eebcaf5272a495e82b0969b
+
 public class AliOssProperties {
 
     private String accessKeyId;

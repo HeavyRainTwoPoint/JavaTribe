@@ -20,6 +20,7 @@ public class InsertUtil {
         if (styleShow==null) {
             return;
         }
+        HtmlUtil.escapeHtml(styleShow);
         styleShow.setDeleteStatus(false);
         styleShow.setShowStatus(true);
         styleShow.setGmtCreate(new Date());
@@ -34,6 +35,7 @@ public class InsertUtil {
         if (competitionIntroduction==null) {
             return;
         }
+        HtmlUtil.escapeHtml(competitionIntroduction);
         competitionIntroduction.setDeleteStatus(false);
         competitionIntroduction.setGmtCreate(new Date());
         competitionIntroduction.setGmtModified(new Date());

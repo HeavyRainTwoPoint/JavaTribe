@@ -1,9 +1,13 @@
 package com.javatribe.apicompetition.controller;
 
 import com.javatribe.apicommon.dto.Result;
+import com.javatribe.apicompetition.pojo.dto.CompetitionIntroductionDTO;
 import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
 import com.javatribe.apicompetition.service.CompetitionIntroductionService;
+import com.javatribe.apicompetition.util.BeanMapperUtils;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.beanutils.BeanUtils;
+import org.mapstruct.factory.Mappers;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +24,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CompetitionIntroductionController {
     final CompetitionIntroductionService competitionIntroductionService;
+    private final BeanMapperUtils mapperUtils = Mappers.getMapper(BeanMapperUtils.class);
 
 
     /**
@@ -62,16 +67,24 @@ public class CompetitionIntroductionController {
      * @return
      */
     @PostMapping("/competition")
-    public Result setCompetition(CompetitionIntroduction competitionIntroduction) {
-        competitionIntroductionService.insertCompetitionInfo(competitionIntroduction);
+    public Result setCompetition(@RequestBody CompetitionIntroductionDTO competitionIntroduction) {
+
+        // BeanUtils.copyProperties(db,competitionIntroduction);
+        if (competitionIntroduction.getCompetitionId()==null) {
+            // id 是 null 就 插入
+            competitionIntroductionService.insertCompetitionInfo(mapperUtils.from(competitionIntroduction));
+        }else {
+            //否则就更新
+            competitionIntroductionService.updateCompetitionInfo(mapperUtils.from(competitionIntroduction));
+        }
         return Result.success();
 
     }
-    @PutMapping("/competition")
-    public Result updateById(CompetitionIntroduction competitionIntroduction) {
-        competitionIntroductionService.updateCompetitionInfo(competitionIntroduction);
-        return Result.success();
-    }
+    // @PutMapping("/competition")
+    // public Result updateById(@RequestBody CompetitionIntroduction competitionIntroduction) {
+    //     competitionIntroductionService.updateCompetitionInfo(competitionIntroduction);
+    //     return Result.success();
+    // }
     @DeleteMapping("/competition/{id}")
     public Result deleteCompetitionById(@PathVariable Long id) {
         competitionIntroductionService.deleteCompetitionInfoById(id);

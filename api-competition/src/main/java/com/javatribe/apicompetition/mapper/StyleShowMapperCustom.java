@@ -1,6 +1,7 @@
 package com.javatribe.apicompetition.mapper;
 
 import com.javatribe.apicompetition.pojo.po.StyleShow;
+import com.javatribe.apicompetition.pojo.vo.StyleShowVO;
 
 import java.util.List;
 
@@ -12,5 +13,5 @@ public interface StyleShowMapperCustom {
     /**
      * @return 获取首页风采展示数据
      */
-    List<StyleShow> getFirstPage();
+    List<StyleShowVO> getFirstPage();
 }

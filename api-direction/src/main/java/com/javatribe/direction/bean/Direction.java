@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
  * @since 2020年12月18日 15:57
  */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+// @AllArgsConstructor
+// @NoArgsConstructor
 public class Direction {
 
 }
