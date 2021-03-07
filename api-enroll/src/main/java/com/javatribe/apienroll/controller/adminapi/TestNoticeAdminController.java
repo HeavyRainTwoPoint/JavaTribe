@@ -2,12 +2,9 @@ package com.javatribe.apienroll.controller.adminapi;
 
 import com.javatribe.apicommon.dto.Response;
 import com.javatribe.apicommon.dto.ResponseStatus;
-import com.javatribe.apienroll.entity.EnrollTest;
-import com.javatribe.apienroll.entity.EnrollTestQTO;
 import com.javatribe.apienroll.entity.TestNotice;
 import com.javatribe.apienroll.entity.TestNoticeQTO;
-import com.javatribe.apienroll.service.EnrollTestAdminService;
-import com.javatribe.apienroll.service.TestNoticeAdminService;
+import com.javatribe.apienroll.service.admin.TestNoticeAdminService;
 import com.javatribe.apienroll.utils.ObjectUtil;
 import org.springframework.web.bind.annotation.*;
 

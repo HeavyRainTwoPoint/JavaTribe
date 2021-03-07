@@ -3,13 +3,11 @@ package com.javatribe.apienroll.controller.adminapi;
 import com.javatribe.apicommon.dto.Response;
 import com.javatribe.apienroll.entity.EnrollDirection;
 import com.javatribe.apienroll.entity.EnrollDirectionQTO;
-import com.javatribe.apienroll.service.EnrollDirectionAdminService;
+import com.javatribe.apienroll.service.admin.EnrollDirectionAdminService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author Liang.Yong.hui

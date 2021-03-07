@@ -1,9 +1,7 @@
 package com.javatribe.apienroll;
 
 import cn.hutool.json.JSONUtil;
-import com.javatribe.apienroll.entity.TestNoticeQTO;
-import com.javatribe.apienroll.service.EnrollDirectionService;
-import com.javatribe.apienroll.service.EnrollNoticeService;
+import com.javatribe.apienroll.service.openapi.EnrollOpenApiService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -16,22 +14,31 @@ import javax.annotation.Resource;
  */
 @SpringBootTest(classes = ApiEnrollApplication.class)
 public class OpenServiceTest {
-    @Resource
-    private EnrollDirectionService enrollDirectionService;
+
 
     @Resource
-    private EnrollNoticeService enrollNoticeService;
+    private EnrollOpenApiService enrollOpenApiService;
     @Test
     public void testQueryDirection() {
-       show(enrollDirectionService.getLastNItemsOnPerDirection(3));
+       show(enrollOpenApiService.getLastNTestNameOnPerDirection(3));
+    }
+
+
+
+    @Test
+    public void testEnrollNotice() {
+        show(enrollOpenApiService.getEnrollNoticeGroupByYear(2));
     }
 
     @Test
-    public void getEnrollNoticeAndDocxUrlOnDirection() {
-        show(enrollNoticeService.getEnrollNoticeAndDocxUrlOnDirection(1));
+    public void getTestNoticeOnDirection() {
+        show(enrollOpenApiService.getTestNoticeOnDirection(2));
     }
 
-
+    @Test
+    public void getLastNTestNameOnPerDirection() {
+        show(enrollOpenApiService.getLastNTestNameOnPerDirection(4));
+    }
 //    private void show(Object r) {
 //        System.out.println(JSONUtil.toJsonStr(r.toString().replace("Response","")));
 //    }

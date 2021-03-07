@@ -20,7 +20,7 @@ import java.util.List;
  * @create 2021/1/16 15:44
  */
 @RestController
-@RequestMapping("/competition/")
+@RequestMapping("/competition")
 @RequiredArgsConstructor
 public class CompetitionIntroductionController {
     final CompetitionIntroductionService competitionIntroductionService;
