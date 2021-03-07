@@ -54,6 +54,7 @@ public class EnrollOpenApiController {
      * @param directionCode
      * @return
      */
+    @GetMapping("/test_notice")
     public Response getTestNoticeOnDirectionCode(@RequestParam(value = "direction_code") Integer directionCode) {
         return enrollOpenApiService.getTestNoticeOnDirection(directionCode);
     }
