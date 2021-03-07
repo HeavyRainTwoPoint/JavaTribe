@@ -25,11 +25,11 @@ spring:
     auto: true
     proxy-target-class: true
 
-#mybatis-plus:
-#  mapper-locations: com/javatribe/introduction/mapper/xml/*.xml, classpath:/mappers/*.xml
-#  configuration:
-#    map-underscore-to-camel-case: true
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+mybatis-plus:
+  mapper-locations: com/javatribe/introduction/mapper/xml/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 
 mybatis:
