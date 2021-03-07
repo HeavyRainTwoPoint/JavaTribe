@@ -1,11 +1,11 @@
-package com.javatribe.apienroll.service.impl;
+package com.javatribe.apienroll.service.admin.impl;
 
 import com.javatribe.apicommon.dto.Response;
 import com.javatribe.apicommon.dto.ResponseStatus;
 import com.javatribe.apienroll.dao.EnrollNoticeMapper;
 import com.javatribe.apienroll.entity.EnrollNotice;
 import com.javatribe.apienroll.entity.EnrollNoticeQTO;
-import com.javatribe.apienroll.service.EnrollNoticeAdminService;
+import com.javatribe.apienroll.service.admin.EnrollNoticeAdminService;
 import com.javatribe.apienroll.utils.NumberUtil;
 import com.javatribe.apienroll.utils.ObjectUtil;
 import org.slf4j.Logger;

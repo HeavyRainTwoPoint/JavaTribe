@@ -4,7 +4,7 @@ import cn.hutool.json.JSONUtil;
 import com.aliyun.oss.OSS;
 import com.javatribe.apienroll.entity.EnrollNotice;
 import com.javatribe.apienroll.entity.EnrollNoticeQTO;
-import com.javatribe.apienroll.service.EnrollNoticeAdminService;
+import com.javatribe.apienroll.service.admin.EnrollNoticeAdminService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -28,7 +28,7 @@ public class EnrollNoticeTest {
     public void testAdd() {
         IntStream.range(0,10).forEach(x -> {
             EnrollNotice notice = new EnrollNotice();
-            notice.setContentFileUrl("http://wqqqqwqwq.images"+ x);
+            notice.setContent("http://wqqqqwqwq.images"+ x);
             notice.setTitle("我是标题" + x);
             show(service.add(notice));
         });

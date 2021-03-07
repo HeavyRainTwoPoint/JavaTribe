@@ -4,7 +4,7 @@ import com.javatribe.apicommon.dto.Response;
 import com.javatribe.apicommon.dto.ResponseStatus;
 import com.javatribe.apienroll.entity.EnrollTest;
 import com.javatribe.apienroll.entity.EnrollTestQTO;
-import com.javatribe.apienroll.service.EnrollTestAdminService;
+import com.javatribe.apienroll.service.admin.EnrollTestAdminService;
 import com.javatribe.apienroll.utils.ObjectUtil;
 import org.springframework.web.bind.annotation.*;
 

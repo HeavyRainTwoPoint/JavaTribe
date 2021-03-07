@@ -3,7 +3,7 @@ package com.javatribe.apienroll;
 import cn.hutool.json.JSONUtil;
 import com.javatribe.apienroll.entity.EnrollTest;
 import com.javatribe.apienroll.entity.EnrollTestQTO;
-import com.javatribe.apienroll.service.EnrollTestAdminService;
+import com.javatribe.apienroll.service.admin.EnrollTestAdminService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

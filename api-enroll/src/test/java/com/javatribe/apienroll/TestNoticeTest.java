@@ -4,7 +4,7 @@ import cn.hutool.json.JSONUtil;
 import com.aliyun.oss.OSS;
 import com.javatribe.apienroll.entity.TestNotice;
 import com.javatribe.apienroll.entity.TestNoticeQTO;
-import com.javatribe.apienroll.service.TestNoticeAdminService;
+import com.javatribe.apienroll.service.admin.TestNoticeAdminService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
