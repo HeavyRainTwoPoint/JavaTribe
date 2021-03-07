@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.javatribe.apienroll.dao.EnrollNoticeMapper">
-  <resultMap id="BaseResultMap" type="com.javatribe.apienroll.entity.EnrollNotice">
+<mapper namespace="com.javatribe.apienroll.dao.TestNoticeMapper">
+  <resultMap id="BaseResultMap" type="com.javatribe.apienroll.entity.TestNotice">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="content" jdbcType="VARCHAR" property="content" />
-    <result column="direction_code" jdbcType="INTEGER" property="directionCode" />
+    <result column="test_name" jdbcType="VARCHAR" property="testName" />
+    <result column="test_direction" jdbcType="INTEGER" property="testDirection" />
+    <result column="notice_file" jdbcType="VARCHAR" property="noticeFile" />
     <result column="delete_mark" jdbcType="INTEGER" property="deleteMark" />
     <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
     <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
@@ -69,16 +69,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, title, content, direction_code, delete_mark, gmt_created, gmt_modified
+    id, test_name, test_direction, notice_file, delete_mark, gmt_created, gmt_modified
   </sql>
-  <select id="selectByExample" parameterType="com.javatribe.apienroll.entity.EnrollNoticeQTO" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.javatribe.apienroll.entity.TestNoticeQTO" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from enroll_notice
+    from test_notice
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -89,44 +89,44 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from enroll_notice
+    from test_notice
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from enroll_notice
+    delete from test_notice
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.javatribe.apienroll.entity.EnrollNoticeQTO">
-    delete from enroll_notice
+  <delete id="deleteByExample" parameterType="com.javatribe.apienroll.entity.TestNoticeQTO">
+    delete from test_notice
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.javatribe.apienroll.entity.EnrollNotice">
+  <insert id="insert" parameterType="com.javatribe.apienroll.entity.TestNotice">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into enroll_notice (title, content, direction_code, 
+    insert into test_notice (test_name, test_direction, notice_file, 
       delete_mark, gmt_created, gmt_modified
       )
-    values (#{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{directionCode,jdbcType=INTEGER}, 
+    values (#{testName,jdbcType=VARCHAR}, #{testDirection,jdbcType=INTEGER}, #{noticeFile,jdbcType=VARCHAR}, 
       #{deleteMark,jdbcType=INTEGER}, #{gmtCreated,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.javatribe.apienroll.entity.EnrollNotice">
+  <insert id="insertSelective" parameterType="com.javatribe.apienroll.entity.TestNotice">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into enroll_notice
+    insert into test_notice
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="title != null">
-        title,
+      <if test="testName != null">
+        test_name,
       </if>
-      <if test="content != null">
-        content,
+      <if test="testDirection != null">
+        test_direction,
       </if>
-      <if test="directionCode != null">
-        direction_code,
+      <if test="noticeFile != null">
+        notice_file,
       </if>
       <if test="deleteMark != null">
         delete_mark,
@@ -139,14 +139,14 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="title != null">
-        #{title,jdbcType=VARCHAR},
+      <if test="testName != null">
+        #{testName,jdbcType=VARCHAR},
       </if>
-      <if test="content != null">
-        #{content,jdbcType=VARCHAR},
+      <if test="testDirection != null">
+        #{testDirection,jdbcType=INTEGER},
       </if>
-      <if test="directionCode != null">
-        #{directionCode,jdbcType=INTEGER},
+      <if test="noticeFile != null">
+        #{noticeFile,jdbcType=VARCHAR},
       </if>
       <if test="deleteMark != null">
         #{deleteMark,jdbcType=INTEGER},
@@ -159,26 +159,26 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.javatribe.apienroll.entity.EnrollNoticeQTO" resultType="java.lang.Long">
-    select count(*) from enroll_notice
+  <select id="countByExample" parameterType="com.javatribe.apienroll.entity.TestNoticeQTO" resultType="java.lang.Long">
+    select count(*) from test_notice
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update enroll_notice
+    update test_notice
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.title != null">
-        title = #{record.title,jdbcType=VARCHAR},
+      <if test="record.testName != null">
+        test_name = #{record.testName,jdbcType=VARCHAR},
       </if>
-      <if test="record.content != null">
-        content = #{record.content,jdbcType=VARCHAR},
+      <if test="record.testDirection != null">
+        test_direction = #{record.testDirection,jdbcType=INTEGER},
       </if>
-      <if test="record.directionCode != null">
-        direction_code = #{record.directionCode,jdbcType=INTEGER},
+      <if test="record.noticeFile != null">
+        notice_file = #{record.noticeFile,jdbcType=VARCHAR},
       </if>
       <if test="record.deleteMark != null">
         delete_mark = #{record.deleteMark,jdbcType=INTEGER},
@@ -195,11 +195,11 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update enroll_notice
+    update test_notice
     set id = #{record.id,jdbcType=BIGINT},
-      title = #{record.title,jdbcType=VARCHAR},
-      content = #{record.content,jdbcType=VARCHAR},
-      direction_code = #{record.directionCode,jdbcType=INTEGER},
+      test_name = #{record.testName,jdbcType=VARCHAR},
+      test_direction = #{record.testDirection,jdbcType=INTEGER},
+      notice_file = #{record.noticeFile,jdbcType=VARCHAR},
       delete_mark = #{record.deleteMark,jdbcType=INTEGER},
       gmt_created = #{record.gmtCreated,jdbcType=TIMESTAMP},
       gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP}
@@ -207,17 +207,17 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.javatribe.apienroll.entity.EnrollNotice">
-    update enroll_notice
+  <update id="updateByPrimaryKeySelective" parameterType="com.javatribe.apienroll.entity.TestNotice">
+    update test_notice
     <set>
-      <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
+      <if test="testName != null">
+        test_name = #{testName,jdbcType=VARCHAR},
       </if>
-      <if test="content != null">
-        content = #{content,jdbcType=VARCHAR},
+      <if test="testDirection != null">
+        test_direction = #{testDirection,jdbcType=INTEGER},
       </if>
-      <if test="directionCode != null">
-        direction_code = #{directionCode,jdbcType=INTEGER},
+      <if test="noticeFile != null">
+        notice_file = #{noticeFile,jdbcType=VARCHAR},
       </if>
       <if test="deleteMark != null">
         delete_mark = #{deleteMark,jdbcType=INTEGER},
@@ -231,11 +231,11 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.javatribe.apienroll.entity.EnrollNotice">
-    update enroll_notice
-    set title = #{title,jdbcType=VARCHAR},
-      content = #{content,jdbcType=VARCHAR},
-      direction_code = #{directionCode,jdbcType=INTEGER},
+  <update id="updateByPrimaryKey" parameterType="com.javatribe.apienroll.entity.TestNotice">
+    update test_notice
+    set test_name = #{testName,jdbcType=VARCHAR},
+      test_direction = #{testDirection,jdbcType=INTEGER},
+      notice_file = #{noticeFile,jdbcType=VARCHAR},
       delete_mark = #{deleteMark,jdbcType=INTEGER},
       gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}

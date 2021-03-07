@@ -3,14 +3,11 @@ package com.javatribe.apienroll.controller.adminapi;
 import com.javatribe.apicommon.dto.Response;
 import com.javatribe.apicommon.dto.ResponseStatus;
 import com.javatribe.apienroll.entity.*;
-import com.javatribe.apienroll.service.EnrollNoticeAdminService;
-import com.javatribe.apienroll.service.EnrollTestAdminService;
-import com.javatribe.apienroll.service.TestNoticeAdminService;
+import com.javatribe.apienroll.service.admin.EnrollNoticeAdminService;
 import com.javatribe.apienroll.utils.ObjectUtil;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.management.QueryEval;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

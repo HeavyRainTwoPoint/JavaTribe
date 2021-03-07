@@ -1,11 +1,11 @@
-package com.javatribe.apienroll.service.impl;
+package com.javatribe.apienroll.service.admin.impl;
 
 import com.javatribe.apicommon.dto.Response;
 import com.javatribe.apicommon.dto.ResponseStatus;
 import com.javatribe.apienroll.dao.EnrollTestMapper;
 import com.javatribe.apienroll.entity.EnrollTest;
 import com.javatribe.apienroll.entity.EnrollTestQTO;
-import com.javatribe.apienroll.service.EnrollTestAdminService;
+import com.javatribe.apienroll.service.admin.EnrollTestAdminService;
 import com.javatribe.apienroll.utils.NumberUtil;
 import com.javatribe.apienroll.utils.ObjectUtil;
 import org.slf4j.Logger;

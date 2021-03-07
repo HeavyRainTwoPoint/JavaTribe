@@ -3,7 +3,7 @@ package com.javatribe.apienroll;
 import cn.hutool.json.JSONUtil;
 import com.aliyun.oss.OSS;
 import com.javatribe.apienroll.entity.EnrollDirection;
-import com.javatribe.apienroll.service.EnrollDirectionAdminService;
+import com.javatribe.apienroll.service.admin.EnrollDirectionAdminService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

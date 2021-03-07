@@ -1,4 +1,4 @@
-package com.javatribe.apienroll.service;
+package com.javatribe.apienroll.service.admin;
 
 import com.javatribe.apicommon.dto.Response;
 import com.javatribe.apienroll.entity.EnrollTest;
