@@ -26,12 +26,17 @@ public class TestNoticeTest {
     TestNoticeAdminService service;
     @Test
     public void testAdd() {
-        IntStream.range(0,10).forEach(x -> {
+        IntStream.range(1,5).forEach(x -> {
             TestNotice notice = new TestNotice();
-            notice.setTestName("设计考核第"+x+"次");
-            notice.setNoticeFile("http://wqqqqwqwq.images"+ x);
-            notice.setTestDirection(3);
+            notice.setTestName("前端考核第"+x+"次");
+            notice.setNoticeFile("['http://www.baidu.com','http://www.baidu2.com','http://www.baidu3.com','http://www.baidus.com']");
+            notice.setTestDirection(1);
             show(service.add(notice));
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         });
     }
 

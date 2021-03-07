@@ -27,7 +27,7 @@ public class EnrollOpenApiController {
     private EnrollOpenApiService enrollOpenApiService;
 
     /**
-     * 获取每个方向最新的考核通知
+     * 获取每个方向最新的考核通知标题
      * @param n 默认为4
      * @return
      */
