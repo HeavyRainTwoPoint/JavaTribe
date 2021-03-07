@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javatribe.apienroll.dao.EnrollTestMapper">
+  <resultMap id="BaseResultMap" type="com.javatribe.apienroll.entity.EnrollTest">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="test_name" jdbcType="VARCHAR" property="testName" />
+    <result column="direction_code" jdbcType="INTEGER" property="directionCode" />
+    <result column="ownner_name" jdbcType="VARCHAR" property="ownnerName" />
+    <result column="file_url" jdbcType="VARCHAR" property="fileUrl" />
+    <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="delete_mark" jdbcType="INTEGER" property="deleteMark" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, test_name, direction_code, ownner_name, file_url, gmt_created, gmt_modified, 
+    delete_mark
+  </sql>
+  <select id="selectByExample" parameterType="com.javatribe.apienroll.entity.EnrollTestQTO" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from enroll_test
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from enroll_test
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from enroll_test
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.javatribe.apienroll.entity.EnrollTestQTO">
+    delete from enroll_test
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.javatribe.apienroll.entity.EnrollTest">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into enroll_test (test_name, direction_code, ownner_name, 
+      file_url, gmt_created, gmt_modified, 
+      delete_mark)
+    values (#{testName,jdbcType=VARCHAR}, #{directionCode,jdbcType=INTEGER}, #{ownnerName,jdbcType=VARCHAR}, 
+      #{fileUrl,jdbcType=VARCHAR}, #{gmtCreated,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
+      #{deleteMark,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.javatribe.apienroll.entity.EnrollTest">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into enroll_test
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="testName != null">
+        test_name,
+      </if>
+      <if test="directionCode != null">
+        direction_code,
+      </if>
+      <if test="ownnerName != null">
+        ownner_name,
+      </if>
+      <if test="fileUrl != null">
+        file_url,
+      </if>
+      <if test="gmtCreated != null">
+        gmt_created,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="deleteMark != null">
+        delete_mark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="testName != null">
+        #{testName,jdbcType=VARCHAR},
+      </if>
+      <if test="directionCode != null">
+        #{directionCode,jdbcType=INTEGER},
+      </if>
+      <if test="ownnerName != null">
+        #{ownnerName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileUrl != null">
+        #{fileUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreated != null">
+        #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteMark != null">
+        #{deleteMark,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.javatribe.apienroll.entity.EnrollTestQTO" resultType="java.lang.Long">
+    select count(*) from enroll_test
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update enroll_test
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.testName != null">
+        test_name = #{record.testName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.directionCode != null">
+        direction_code = #{record.directionCode,jdbcType=INTEGER},
+      </if>
+      <if test="record.ownnerName != null">
+        ownner_name = #{record.ownnerName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileUrl != null">
+        file_url = #{record.fileUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gmtCreated != null">
+        gmt_created = #{record.gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.gmtModified != null">
+        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.deleteMark != null">
+        delete_mark = #{record.deleteMark,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update enroll_test
+    set id = #{record.id,jdbcType=BIGINT},
+      test_name = #{record.testName,jdbcType=VARCHAR},
+      direction_code = #{record.directionCode,jdbcType=INTEGER},
+      ownner_name = #{record.ownnerName,jdbcType=VARCHAR},
+      file_url = #{record.fileUrl,jdbcType=VARCHAR},
+      gmt_created = #{record.gmtCreated,jdbcType=TIMESTAMP},
+      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      delete_mark = #{record.deleteMark,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.javatribe.apienroll.entity.EnrollTest">
+    update enroll_test
+    <set>
+      <if test="testName != null">
+        test_name = #{testName,jdbcType=VARCHAR},
+      </if>
+      <if test="directionCode != null">
+        direction_code = #{directionCode,jdbcType=INTEGER},
+      </if>
+      <if test="ownnerName != null">
+        ownner_name = #{ownnerName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileUrl != null">
+        file_url = #{fileUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreated != null">
+        gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteMark != null">
+        delete_mark = #{deleteMark,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.javatribe.apienroll.entity.EnrollTest">
+    update enroll_test
+    set test_name = #{testName,jdbcType=VARCHAR},
+      direction_code = #{directionCode,jdbcType=INTEGER},
+      ownner_name = #{ownnerName,jdbcType=VARCHAR},
+      file_url = #{fileUrl,jdbcType=VARCHAR},
+      gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      delete_mark = #{deleteMark,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

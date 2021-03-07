@@ -18,14 +18,13 @@ public class WinnerTeamServiceImpl implements WinnerTeamService {
     @Override
     public List<AllWinnerTeamToDisplay> queryWinnerTeamOfCompetition() {
         List<AllWinnerTeamToDisplay> allWinnerTeamToDisplays = new ArrayList<>();
-        //查出来的用户会根据 competitionid -->  开始时间  -->  名次  进行排序
+        //查出来的用户会根据 competitionid -->  开始时间[即第几届]  -->  名次  进行排序
         List<WinnerTeamAndCompetition> winnerTeamAndCompetitions = winnerTeamMapper.selectTeamOfCompetition();
         //计算出比赛的种类
         List<Long> competitionStreams = winnerTeamAndCompetitions.stream().map(o->o.getCompetitionId()).distinct().collect(Collectors.toList());
         for(int i=0 ; i<competitionStreams.size() ; i++){
-            //进行处理数据格式
             Long competitionId = competitionStreams.get(i);
-            //首先找到不同类别的比赛
+            //根据competitionId获取到对应数据
             List<WinnerTeamAndCompetition> collect = winnerTeamAndCompetitions.stream().filter(o -> o.getCompetitionId() == competitionId).collect(Collectors.toList());
             if(collect==null || collect.size()==0){
                 continue;
@@ -44,6 +43,7 @@ public class WinnerTeamServiceImpl implements WinnerTeamService {
             temp.setDates(dateTimes);
             //设置比赛的等级以及内容
             List<WinnerTeamsAndPrizes> winnerTeamsAndPrizesList = new ArrayList<>();
+            //以第几届作为分组
             Map<String, List<WinnerTeamAndCompetition>> listMap = collect.stream().collect(Collectors.groupingBy(WinnerTeamAndCompetition::getTheYear));
             for(Map.Entry<String,List<WinnerTeamAndCompetition>> entry:listMap.entrySet()){
                 List<WinnerTeamAndCompetition> value = entry.getValue();

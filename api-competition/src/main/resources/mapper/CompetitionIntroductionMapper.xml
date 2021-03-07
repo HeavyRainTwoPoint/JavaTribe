@@ -46,4 +46,8 @@
     gmt_modified, sign_up
     from t_competition_introduction
   </select>
+
+  <select id="selectByCompetitionName" resultType="java.lang.Integer">
+    select count(*) from t_competition_introduction where competition_name=#{competitionName}
+  </select>
 </mapper>

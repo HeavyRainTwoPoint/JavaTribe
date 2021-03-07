@@ -8,6 +8,8 @@ public class RegisterTeam implements Serializable {
 
     private Long competitionId;
 
+    private Long order;
+
     private String teamName;
 
     private String teamLeaderName;
@@ -180,6 +182,14 @@ public class RegisterTeam implements Serializable {
 
     public void setRegisterTime(Date registerTime) {
         this.registerTime = registerTime;
+    }
+
+    public Long getOrder() {
+        return order;
+    }
+
+    public void setOrder(Long order) {
+        this.order = order;
     }
 
     @Override

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--  <properties resource="mybatis.properties" />   -->
+    <classPathEntry
+            location="D:\my_maven\maven_repository\mysql\mysql-connector-java\5.1.6/mysql-connector-java-5.1.6.jar"/>
+
+    <context id="msqlTables" targetRuntime="MyBatis3" >
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$"/>
+            <property name="replaceString" value="QTO"/>
+        </plugin>
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        <jdbcConnection connectionURL="jdbc:mysql://47.92.200.8:3306/javatribe?serverTimezone=GMT%2B8"
+                        driverClass="com.mysql.jdbc.Driver" password="pBcrDNAMFr7ifb7e" userId="javatribe">
+
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <javaModelGenerator targetPackage="com.javatribe.apienroll.entity" targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <!-- 从数据库返回的值被清理前后的空格  -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="mapping" targetProject="src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.javatribe.apienroll.dao" targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--数据库表-->
+        <table tableName="enroll_notice" domainObjectName="EnrollNotice"
+               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+            <columnOverride column="content_file_url" jdbcType="VARCHAR" />
+        </table>
+
+
+        <!--数据库表-->
+<!--        <table tableName="test_notice" domainObjectName="TestNotice"-->
+<!--               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
+<!--               enableSelectByExample="true" selectByExampleQueryId="true">-->
+<!--            <property name="useActualColumnNames" value="false"/>-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--            <columnOverride column="notice_file" jdbcType="VARCHAR" />-->
+<!--        </table>-->
+
+
+        <!--数据库表-->
+<!--        <table tableName="enroll_direction" domainObjectName="EnrollDirection"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+<!--               enableSelectByExample="true" selectByExampleQueryId="true">-->
+<!--            <property name="useActualColumnNames" value="false"/>-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--        </table>-->
+
+
+        <!--数据库表-->
+<!--        <table tableName="enroll_test" domainObjectName="EnrollTest"-->
+<!--               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
+<!--               enableSelectByExample="true" selectByExampleQueryId="true">-->
+<!--            <property name="useActualColumnNames" value="false"/>-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--            <columnOverride column="file_url" jdbcType="VARCHAR" />-->
+<!--        </table>-->
+
+
+        <!--数据库表-->
+<!--        <table tableName="file_manager" domainObjectName="FileManager"-->
+<!--               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
+<!--               enableSelectByExample="true" selectByExampleQueryId="true">-->
+<!--            <property name="useActualColumnNames" value="false"/>-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--            <columnOverride column="file_name" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="file_url" jdbcType="VARCHAR" />-->
+<!--        </table>-->
+    </context>
+
+
+
+</generatorConfiguration>

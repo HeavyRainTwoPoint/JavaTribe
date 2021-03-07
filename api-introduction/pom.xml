@@ -12,6 +12,16 @@
     <artifactId>api-introduction</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.javatribe</groupId>
+            <artifactId>api-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
         <!--mybatis-plus 持久层-->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -29,6 +39,13 @@
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity-engine-core</artifactId>
             <version>${velocity-engine-core.version}</version>
+        </dependency>
+
+        <!--日期时间工具-->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${jodatime.version}</version>
         </dependency>
 
         <!--swagger-->
@@ -50,9 +67,6 @@
 <!--            <version>4.12</version>-->
         </dependency>
     </dependencies>
-    <properties>
-
-    </properties>
 
     <build>
         <resources>

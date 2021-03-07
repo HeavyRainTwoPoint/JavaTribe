@@ -1,6 +1,10 @@
 package com.javatribe.apicompetition.pojo.po;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 public class RegisterTeamOfFront implements Serializable {
@@ -8,6 +12,8 @@ public class RegisterTeamOfFront implements Serializable {
     private Long registerId;
 
     private Long competitionId;
+
+    private Long order;
 
     private String teamName;
 
@@ -20,6 +26,10 @@ public class RegisterTeamOfFront implements Serializable {
     private String teamLeaderWechat;
 
     private String teamLeaderCollege;
+
+    @JSONField(format = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date registerTime;
 
     private List<String> teamUserList;
 
@@ -93,5 +103,21 @@ public class RegisterTeamOfFront implements Serializable {
 
     public void setTeamUserList(List<String> teamUserList) {
         this.teamUserList = teamUserList;
+    }
+
+    public Long getOrder() {
+        return order;
+    }
+
+    public void setOrder(Long order) {
+        this.order = order;
+    }
+
+    public Date getRegisterTime() {
+        return registerTime;
+    }
+
+    public void setRegisterTime(Date registerTime) {
+        this.registerTime = registerTime;
     }
 }
