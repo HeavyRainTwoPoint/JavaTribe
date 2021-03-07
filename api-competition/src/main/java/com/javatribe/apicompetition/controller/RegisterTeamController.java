@@ -86,7 +86,6 @@ public class RegisterTeamController {
      */
     @GetMapping("/registerList")
     public Result queryRegisterList(@RequestParam("competitionId") Long competitionId){
-        System.out.println("competitionId-->"+competitionId);
         return registerTeamService.queryRegisterList(competitionId);
     }
 
@@ -103,7 +102,6 @@ public class RegisterTeamController {
     @PostMapping("/addRegisterData")
     public void addRegisterData(HttpServletRequest request, HttpServletResponse response){
         try {
-            System.out.println("askdknsadnsjds");
             request.getRequestDispatcher("sign_up").forward(request,response);
         } catch (ServletException e) {
             logger.error(e.getMessage(),e);
