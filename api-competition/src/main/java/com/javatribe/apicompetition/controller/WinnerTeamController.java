@@ -3,12 +3,12 @@ package com.javatribe.apicompetition.controller;
 import com.alibaba.fastjson.JSON;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.pojo.po.AllWinnerTeamToDisplay;
+import com.javatribe.apicompetition.pojo.po.NumberOfSessions;
+import com.javatribe.apicompetition.pojo.po.WinnerTeam;
 import com.javatribe.apicompetition.service.WinnerTeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +30,28 @@ public class WinnerTeamController {
         result.setCode(200);
         result.setData(JSON.toJSONString(allWinnerTeamToDisplays));
         return result;
+    }
+
+    //添加届数
+    @PostMapping(value = "/addSession")
+    public Result addSessionNum(NumberOfSessions sessions){
+        return winnerTeamService.addSessionNum(sessions);
+    }
+
+    //添加获奖数据
+    @PostMapping(value = "/addGetPrizesData")
+    public Result addGetPrizesData(WinnerTeam winnerTeam){
+        return winnerTeamService.addGetPrizesData(winnerTeam);
+    }
+
+    @PutMapping(value = "/editGetPrizesData")
+    public Result editGetPrizesData(WinnerTeam winnerTeam){
+        return winnerTeamService.editGetPrizesData(winnerTeam);
+    }
+
+    @DeleteMapping(value = "/deleteGetPrizesData")
+    public Result deleteGetPrizesData(WinnerTeam winnerTeam){
+        return winnerTeamService.deleteGetPrizesData(winnerTeam);
     }
 
 }
