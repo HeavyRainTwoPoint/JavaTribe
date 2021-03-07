@@ -3,6 +3,7 @@ package com.javatribe.apienroll;
 import cn.hutool.json.JSONUtil;
 import com.aliyun.oss.OSS;
 import com.javatribe.apienroll.entity.EnrollDirection;
+import com.javatribe.apienroll.entity.EnrollDirectionQTO;
 import com.javatribe.apienroll.service.admin.EnrollDirectionAdminService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -67,16 +68,16 @@ public class EnrollDirectionTest {
 
 
 
-//    @Test
-//    public void testQuery() {
-//            TestNoticeQTO qto = new TestNoticeQTO();
-//            qto.setOrderByClause("gmt_created desc");
-//            show(service.query(qto));
-//    }
+    @Test
+    public void testQuery() {
+            EnrollDirectionQTO qto = new EnrollDirectionQTO();
+            qto.setOrderByClause("gmt_created desc");
+            show(service.query(qto));
+    }
 
 
     private void show(Object r) {
-        System.out.println(JSONUtil.toJsonStr(r.toString().replace("Response","")));
+        System.out.println(JSONUtil.toJsonStr(r));
     }
 
 }
