@@ -59,6 +59,7 @@ public class FileCommandController {
         if (dto.isSuccess()) {
             FileManager fileManager = new FileManager();
             fileManager.setFileName(dto.getFileName());
+            fileManager.setUploader(ownerName);
             fileManager.setFileUrl(dto.getUri());
             fileManager.setContenType(dto.getContentType());
             fileManager.setFileType(FileType.ZIP.getType());
@@ -97,4 +98,27 @@ public class FileCommandController {
         }
         return Response.fail(ResponseStatus.FILE_DOWNLOAD_ERROR);
     }
+
+    @Transactional
+    @PostMapping("/upload/file")
+    public Response<FileUploadDTO> uploadFile(@RequestPart("file") MultipartFile multipartFile,
+                                                        @RequestParam("uploader") String ownerName) {
+        FileUploadDTO dto = fileCommandManager.upload(multipartFile, FileType.ZIP).getData();
+
+        // 上传成功
+        if (dto.isSuccess()) {
+            FileManager fileManager = new FileManager();
+            fileManager.setFileName(dto.getFileName());
+            fileManager.setFileUrl(dto.getUri());
+            fileManager.setUploader(ownerName);
+            fileManager.setContenType(dto.getContentType());
+            fileManager.setFileType(FileType.ZIP.getType());
+            return Response.success(dto);
+        }
+
+        return Response.fail(null);
+
+    }
+
+
 }

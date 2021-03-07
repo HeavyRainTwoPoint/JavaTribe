@@ -20,7 +20,7 @@ public class OpenServiceTest {
     private EnrollOpenApiService enrollOpenApiService;
     @Test
     public void testQueryDirection() {
-       show(enrollOpenApiService.getLastNTestNameOnPerDirection(3));
+       show(enrollOpenApiService.getLastNTestNameOnPerDirection(4));
     }
 
 
