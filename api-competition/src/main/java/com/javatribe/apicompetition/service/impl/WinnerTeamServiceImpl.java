@@ -202,4 +202,29 @@ public class WinnerTeamServiceImpl implements WinnerTeamService {
         }
         return result;
     }
+
+    @Override
+    public Result editSessionNum(NumberOfSessions sessions) {
+        Result result = Result.success();
+        if (Objects.isNull(sessions.getYearId())){
+            result.setCode(401);
+            result.setMessage("修改出错，届数唯一标识为空");
+            return result;
+        }
+        //如果三个需要被修改的值都为空，就不需要执行修改语句
+        if (StringUtils.isEmpty(sessions.getTheYear()) &&
+                Objects.isNull(sessions.getYearStartTime()) &&
+                Objects.isNull(sessions.getYearEndTime())){
+            return result;
+        }
+        try {
+            sessions.setGmtModified(new Date());
+            winnerTeamMapper.editSessionNum(sessions);
+        }catch (Exception e){
+            result.setCode(401);
+            result.setMessage("修改出错");
+            logger.error(e.getMessage(),e);
+        }
+        return result;
+    }
 }

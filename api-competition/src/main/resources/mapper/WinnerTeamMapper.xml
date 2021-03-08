@@ -112,4 +112,23 @@
     delete from t_winner_team where team_id=#{teamId} and
     the_year=@year_id and competition_id=#{competitionId} limit 1
   </delete>
+
+  <update id="editSessionNum" parameterType="com.javatribe.apicompetition.pojo.po.NumberOfSessions">
+    update number_of_sessions
+    <trim prefix="set" suffixOverrides=",">
+        <if test="theYear!=null and theYear!=''">
+            the_year='',
+        </if>
+        <if test="yearStartTime!=null">
+            year_start_time=#{yearStartTime},
+        </if>
+        <if test="yearEndTime!=null">
+            year_end_time=#{yearEndTime},
+        </if>
+        <if test="gmtModified!=null">
+            gmt_modified=#{gmtModified}
+        </if>
+    </trim>
+    where year_id=#{yearId}
+  </update>
 </mapper>

@@ -27,4 +27,6 @@ public interface WinnerTeamMapper {
     int updatePrizesData(WinnerTeam winnerTeam);
 
     int deletePrizesData(WinnerTeam winnerTeam);
+
+    int editSessionNum(NumberOfSessions sessions);
 }
