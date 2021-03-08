@@ -66,7 +66,7 @@ public class TestNoticeTest {
 
 
     private void show(Object r) {
-        System.out.println(JSONUtil.toJsonStr(r.toString().replace("Response","")));
+        System.out.println(JSONUtil.toJsonStr(r));
     }
 
 }

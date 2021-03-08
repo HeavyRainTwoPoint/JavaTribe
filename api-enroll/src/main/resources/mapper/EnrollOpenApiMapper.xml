@@ -3,9 +3,8 @@
 <mapper namespace="com.javatribe.apienroll.mapper.EnrollOpenApiMapper">
 
   <select id="getLastNTestNameOnPerDirection" resultType="com.javatribe.apienroll.entity.TestNotice">
-
     SELECT
-    test_direction,test_name
+    id,test_direction,test_name
     FROM
     test_notice
     WHERE
