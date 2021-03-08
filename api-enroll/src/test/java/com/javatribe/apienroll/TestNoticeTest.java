@@ -2,12 +2,9 @@ package com.javatribe.apienroll;
 
 import cn.hutool.json.JSONUtil;
 import com.aliyun.oss.OSS;
-import com.javatribe.apienroll.entity.EnrollNotice;
-import com.javatribe.apienroll.entity.EnrollNoticeQTO;
 import com.javatribe.apienroll.entity.TestNotice;
 import com.javatribe.apienroll.entity.TestNoticeQTO;
-import com.javatribe.apienroll.service.EnrollNoticeAdminService;
-import com.javatribe.apienroll.service.TestNoticeAdminService;
+import com.javatribe.apienroll.service.admin.TestNoticeAdminService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -29,12 +26,17 @@ public class TestNoticeTest {
     TestNoticeAdminService service;
     @Test
     public void testAdd() {
-        IntStream.range(0,10).forEach(x -> {
+        IntStream.range(1,5).forEach(x -> {
             TestNotice notice = new TestNotice();
-            notice.setTestName("设计考核第"+x+"次");
-            notice.setNoticeFile("http://wqqqqwqwq.images"+ x);
-            notice.setTestDirection(3);
+            notice.setTestName("前端考核第"+x+"次");
+            notice.setNoticeFile("['http://www.baidu.com','http://www.baidu2.com','http://www.baidu3.com','http://www.baidus.com']");
+            notice.setTestDirection(1);
             show(service.add(notice));
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         });
     }
 

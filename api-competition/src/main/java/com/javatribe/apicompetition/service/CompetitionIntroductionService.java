@@ -1,5 +1,6 @@
 package com.javatribe.apicompetition.service;
 
+import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
 
 import java.util.List;
@@ -33,4 +34,6 @@ public interface CompetitionIntroductionService {
      * @param competitionIntroduction
      */
     void updateCompetitionInfo(CompetitionIntroduction competitionIntroduction);
+
+    Result addCompetition(CompetitionIntroduction competition);
 }

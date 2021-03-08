@@ -42,7 +42,7 @@
                enableSelectByExample="true" selectByExampleQueryId="true">
             <property name="useActualColumnNames" value="false"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-            <columnOverride column="content_file" jdbcType="VARCHAR" />
+            <columnOverride column="content" jdbcType="VARCHAR" />
         </table>
 
 

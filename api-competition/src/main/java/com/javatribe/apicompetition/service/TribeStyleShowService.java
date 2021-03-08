@@ -1,6 +1,7 @@
 package com.javatribe.apicompetition.service;
 
 import com.javatribe.apicompetition.pojo.po.StyleShow;
+import com.javatribe.apicompetition.pojo.vo.StyleShowVO;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public interface TribeStyleShowService {
     /**
      * @return 部落官网首页获取风采展示
      */
-    List<StyleShow> getAllStyleShow();
+    List<StyleShowVO> getAllStyleShow();
 
     /**
      * 更新风采展示

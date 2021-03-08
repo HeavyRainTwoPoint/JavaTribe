@@ -3,6 +3,7 @@ package com.javatribe.apicompetition;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
  * @Author lyr
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @MapperScan("com.javatribe.apicompetition.mapper")
 @SpringBootApplication(scanBasePackages = "com.javatribe")
+@EnableAspectJAutoProxy(exposeProxy = true)
 public class WebTest {
 
 

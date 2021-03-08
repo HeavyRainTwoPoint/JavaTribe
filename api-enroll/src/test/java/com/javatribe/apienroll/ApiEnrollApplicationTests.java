@@ -1,7 +1,7 @@
 package com.javatribe.apienroll;
 
 import com.javatribe.apienroll.entity.EnrollNotice;
-import com.javatribe.apienroll.service.EnrollNoticeAdminService;
+import com.javatribe.apienroll.service.admin.EnrollNoticeAdminService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -16,7 +16,7 @@ class ApiEnrollApplicationTests {
     void contextLoads() {
         IntStream.range(0,10).forEach(x -> {
             EnrollNotice notice = new EnrollNotice();
-            notice.setContentFile("http://wqqqqwqwq.images"+ x);
+            notice.setContent("http://wqqqqwqwq.images"+ x);
             notice.setTitle("我是标题" + x);
             show(service.add(notice));
         });

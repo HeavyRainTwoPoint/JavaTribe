@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication(scanBasePackages = "com.javatribe")
-@MapperScan("com.javatribe.apienroll.dao")
+@MapperScan(basePackages = {"com.javatribe.apienroll.dao","com.javatribe.apienroll.mapper"})
 public class ApiEnrollApplication {
 
     public static void main(String[] args) {

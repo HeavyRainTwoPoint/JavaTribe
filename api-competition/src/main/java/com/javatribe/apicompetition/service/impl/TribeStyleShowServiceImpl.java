@@ -3,6 +3,7 @@ package com.javatribe.apicompetition.service.impl;
 import com.javatribe.apicompetition.mapper.StyleShowMapper;
 import com.javatribe.apicompetition.mapper.StyleShowMapperCustom;
 import com.javatribe.apicompetition.pojo.po.StyleShow;
+import com.javatribe.apicompetition.pojo.vo.StyleShowVO;
 import com.javatribe.apicompetition.service.TribeStyleShowService;
 import com.javatribe.apicompetition.util.InsertUtil;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +29,7 @@ public class TribeStyleShowServiceImpl implements TribeStyleShowService {
      * @return 获取风采暂时
      */
     @Override
-    public List<StyleShow> getAllStyleShow() {
+    public List<StyleShowVO> getAllStyleShow() {
         return styleShowMapperCustom.getFirstPage()
                 ;
 

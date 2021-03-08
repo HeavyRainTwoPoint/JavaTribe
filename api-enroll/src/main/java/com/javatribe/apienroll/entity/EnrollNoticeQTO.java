@@ -235,73 +235,133 @@ public class EnrollNoticeQTO {
             return (Criteria) this;
         }
 
-        public Criteria andContentFileIsNull() {
-            addCriterion("content_file is null");
+        public Criteria andContentIsNull() {
+            addCriterion("content is null");
             return (Criteria) this;
         }
 
-        public Criteria andContentFileIsNotNull() {
-            addCriterion("content_file is not null");
+        public Criteria andContentIsNotNull() {
+            addCriterion("content is not null");
             return (Criteria) this;
         }
 
-        public Criteria andContentFileEqualTo(String value) {
-            addCriterion("content_file =", value, "contentFile");
+        public Criteria andContentEqualTo(String value) {
+            addCriterion("content =", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andContentFileNotEqualTo(String value) {
-            addCriterion("content_file <>", value, "contentFile");
+        public Criteria andContentNotEqualTo(String value) {
+            addCriterion("content <>", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andContentFileGreaterThan(String value) {
-            addCriterion("content_file >", value, "contentFile");
+        public Criteria andContentGreaterThan(String value) {
+            addCriterion("content >", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andContentFileGreaterThanOrEqualTo(String value) {
-            addCriterion("content_file >=", value, "contentFile");
+        public Criteria andContentGreaterThanOrEqualTo(String value) {
+            addCriterion("content >=", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andContentFileLessThan(String value) {
-            addCriterion("content_file <", value, "contentFile");
+        public Criteria andContentLessThan(String value) {
+            addCriterion("content <", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andContentFileLessThanOrEqualTo(String value) {
-            addCriterion("content_file <=", value, "contentFile");
+        public Criteria andContentLessThanOrEqualTo(String value) {
+            addCriterion("content <=", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andContentFileLike(String value) {
-            addCriterion("content_file like", value, "contentFile");
+        public Criteria andContentLike(String value) {
+            addCriterion("content like", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andContentFileNotLike(String value) {
-            addCriterion("content_file not like", value, "contentFile");
+        public Criteria andContentNotLike(String value) {
+            addCriterion("content not like", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andContentFileIn(List<String> values) {
-            addCriterion("content_file in", values, "contentFile");
+        public Criteria andContentIn(List<String> values) {
+            addCriterion("content in", values, "content");
             return (Criteria) this;
         }
 
-        public Criteria andContentFileNotIn(List<String> values) {
-            addCriterion("content_file not in", values, "contentFile");
+        public Criteria andContentNotIn(List<String> values) {
+            addCriterion("content not in", values, "content");
             return (Criteria) this;
         }
 
-        public Criteria andContentFileBetween(String value1, String value2) {
-            addCriterion("content_file between", value1, value2, "contentFile");
+        public Criteria andContentBetween(String value1, String value2) {
+            addCriterion("content between", value1, value2, "content");
             return (Criteria) this;
         }
 
-        public Criteria andContentFileNotBetween(String value1, String value2) {
-            addCriterion("content_file not between", value1, value2, "contentFile");
+        public Criteria andContentNotBetween(String value1, String value2) {
+            addCriterion("content not between", value1, value2, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionCodeIsNull() {
+            addCriterion("direction_code is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionCodeIsNotNull() {
+            addCriterion("direction_code is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionCodeEqualTo(Integer value) {
+            addCriterion("direction_code =", value, "directionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionCodeNotEqualTo(Integer value) {
+            addCriterion("direction_code <>", value, "directionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionCodeGreaterThan(Integer value) {
+            addCriterion("direction_code >", value, "directionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionCodeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("direction_code >=", value, "directionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionCodeLessThan(Integer value) {
+            addCriterion("direction_code <", value, "directionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionCodeLessThanOrEqualTo(Integer value) {
+            addCriterion("direction_code <=", value, "directionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionCodeIn(List<Integer> values) {
+            addCriterion("direction_code in", values, "directionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionCodeNotIn(List<Integer> values) {
+            addCriterion("direction_code not in", values, "directionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionCodeBetween(Integer value1, Integer value2) {
+            addCriterion("direction_code between", value1, value2, "directionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionCodeNotBetween(Integer value1, Integer value2) {
+            addCriterion("direction_code not between", value1, value2, "directionCode");
             return (Criteria) this;
         }
 

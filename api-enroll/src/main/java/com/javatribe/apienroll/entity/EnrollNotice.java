@@ -8,7 +8,9 @@ public class EnrollNotice implements Serializable {
 
     private String title;
 
-    private String contentFile;
+    private String content;
+
+    private Integer directionCode;
 
     private Integer deleteMark;
 
@@ -34,12 +36,20 @@ public class EnrollNotice implements Serializable {
         this.title = title == null ? null : title.trim();
     }
 
-    public String getContentFile() {
-        return contentFile;
+    public String getContent() {
+        return content;
     }
 
-    public void setContentFile(String contentFile) {
-        this.contentFile = contentFile == null ? null : contentFile.trim();
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
+    }
+
+    public Integer getDirectionCode() {
+        return directionCode;
+    }
+
+    public void setDirectionCode(Integer directionCode) {
+        this.directionCode = directionCode;
     }
 
     public Integer getDeleteMark() {

@@ -18,7 +18,7 @@ import javax.annotation.Resource;
  * @Author lyr
  * @create 2021/1/13 22:19
  */
-@RequiredArgsConstructor
+
 @SpringBootTest(classes = WebTest.class)
 public class AAATEST {
 

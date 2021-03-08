@@ -1,16 +1,14 @@
 package com.javatribe.apienroll.controller;
 
 import com.javatribe.apicommon.core.constant.enums.FileType;
-import com.javatribe.apicommon.dto.FileDownloadDTO;
 import com.javatribe.apicommon.dto.FileUploadDTO;
 import com.javatribe.apicommon.dto.Response;
 import com.javatribe.apicommon.dto.ResponseStatus;
 import com.javatribe.apienroll.entity.EnrollTest;
 import com.javatribe.apienroll.entity.FileManager;
 import com.javatribe.apienroll.manager.FileCommandManager;
-import com.javatribe.apienroll.service.EnrollTestAdminService;
-import com.javatribe.apienroll.service.FileManagerCommonService;
-import com.javatribe.apienroll.service.impl.EnrollDirectionAdminServiceImpl;
+import com.javatribe.apienroll.service.admin.EnrollTestAdminService;
+import com.javatribe.apienroll.service.common.FileManagerCommonService;
 import com.javatribe.apienroll.utils.ObjectUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,8 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 /**
  * @author Liang.Yong.hui
@@ -63,6 +59,7 @@ public class FileCommandController {
         if (dto.isSuccess()) {
             FileManager fileManager = new FileManager();
             fileManager.setFileName(dto.getFileName());
+            fileManager.setUploader(ownerName);
             fileManager.setFileUrl(dto.getUri());
             fileManager.setContenType(dto.getContentType());
             fileManager.setFileType(FileType.ZIP.getType());
@@ -101,4 +98,27 @@ public class FileCommandController {
         }
         return Response.fail(ResponseStatus.FILE_DOWNLOAD_ERROR);
     }
+
+    @Transactional
+    @PostMapping("/upload/file")
+    public Response<FileUploadDTO> uploadFile(@RequestPart("file") MultipartFile multipartFile,
+                                                        @RequestParam("uploader") String ownerName) {
+        FileUploadDTO dto = fileCommandManager.upload(multipartFile, FileType.ZIP).getData();
+
+        // 上传成功
+        if (dto.isSuccess()) {
+            FileManager fileManager = new FileManager();
+            fileManager.setFileName(dto.getFileName());
+            fileManager.setFileUrl(dto.getUri());
+            fileManager.setUploader(ownerName);
+            fileManager.setContenType(dto.getContentType());
+            fileManager.setFileType(FileType.ZIP.getType());
+            return Response.success(dto);
+        }
+
+        return Response.fail(null);
+
+    }
+
+
 }

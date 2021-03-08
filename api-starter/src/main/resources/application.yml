@@ -26,18 +26,19 @@ spring:
     proxy-target-class: true
 
 mybatis-plus:
-  mapper-locations: com/javatribe/introduction/mapper/xml/*.xml, classpath:/mappers/*.xml
+  mapper-locations: com/javatribe/introduction/mapper/xml/*.xml
   configuration:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 
 mybatis:
-  mapper-locations: classpath:/mapper/**/*.xml
-  type-aliases-package: com.javatribe.apicompetition.pojo.po
+  mapper-locations: classpath*:/mapper/**/*.xml,classpath*:/mappers/**/*.xml
+#  type-aliases-package: com.javatribe.apicompetition.pojo.po
   configuration:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
 
 oss:
   access-key-id: LTAI4GL5YbDREf9WSAv6xo5a
@@ -45,3 +46,5 @@ oss:
   bucket-name: javatribe
   endpoint: oss-cn-guangzhou.aliyuncs.com
   host: https://${oss.bucket-name}.${oss.endpoint}
+
+

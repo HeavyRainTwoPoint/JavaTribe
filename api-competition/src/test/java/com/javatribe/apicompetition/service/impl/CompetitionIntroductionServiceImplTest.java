@@ -9,6 +9,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
@@ -40,10 +41,18 @@ class CompetitionIntroductionServiceImplTest {
         System.out.println(competitionIntroductionService.firstPageShow());
         System.out.println(competitionIntroductionService.firstPageShow());
     }
-
+    CompetitionIntroduction mock() {
+        return new CompetitionIntroduction()
+                .withDeleteStatus(false)
+                .withSignUp(0)
+                .withCompetitionName("蓝桥杯")
+                .withShowContent("蓝桥杯啦啦   <script>alert()</script>");
+    }
     @Test
-    void insertCompetitionInfo() {
-        competitionIntroductionService.insertCompetitionInfo(new CompetitionIntroduction());
+    // @Transactional(propagation = Propagation.NEVER)
+    void insertCompetitionInfo() throws Exception {
+        competitionIntroductionService.insertCompetitionInfo(mock());
+        // throw new Exception("测试");
     }
 
     @Test

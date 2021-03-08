@@ -16,6 +16,7 @@
     <result column="team_begin_time" jdbcType="TIMESTAMP" property="teamBeginTime" />
     <result column="team_end_time" jdbcType="TIMESTAMP" property="teamEndTime" />
     <result column="the_year" jdbcType="VARCHAR" property="theYear" />
+    <result column="year_id" jdbcType="INTEGER" property="yearId" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_style_show
@@ -29,12 +30,12 @@
       show_status, delete_status, show_order, 
       imgs, project_name, team_name, 
       team_members, team_begin_time, team_end_time, 
-      the_year)
+      the_year, year_id)
     values (#{competitionId,jdbcType=BIGINT}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
       #{showStatus,jdbcType=BIT}, #{deleteStatus,jdbcType=BIT}, #{showOrder,jdbcType=INTEGER}, 
       #{imgs,jdbcType=VARCHAR}, #{projectName,jdbcType=VARCHAR}, #{teamName,jdbcType=VARCHAR}, 
       #{teamMembers,jdbcType=VARCHAR}, #{teamBeginTime,jdbcType=TIMESTAMP}, #{teamEndTime,jdbcType=TIMESTAMP}, 
-      #{theYear,jdbcType=VARCHAR})
+      #{theYear,jdbcType=VARCHAR}, #{yearId,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.javatribe.apicompetition.pojo.po.StyleShow">
     update t_style_show
@@ -50,20 +51,21 @@
       team_members = #{teamMembers,jdbcType=VARCHAR},
       team_begin_time = #{teamBeginTime,jdbcType=TIMESTAMP},
       team_end_time = #{teamEndTime,jdbcType=TIMESTAMP},
-      the_year = #{theYear,jdbcType=VARCHAR}
+      the_year = #{theYear,jdbcType=VARCHAR},
+      year_id = #{yearId,jdbcType=INTEGER}
     where show_id = #{showId,jdbcType=BIGINT}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select show_id, competition_id, gmt_create, gmt_modified, show_status, delete_status, 
     show_order, imgs, project_name, team_name, team_members, team_begin_time, team_end_time, 
-    the_year
+    the_year, year_id
     from t_style_show
     where show_id = #{showId,jdbcType=BIGINT}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select show_id, competition_id, gmt_create, gmt_modified, show_status, delete_status, 
     show_order, imgs, project_name, team_name, team_members, team_begin_time, team_end_time, 
-    the_year
+    the_year, year_id
     from t_style_show
   </select>
 </mapper>

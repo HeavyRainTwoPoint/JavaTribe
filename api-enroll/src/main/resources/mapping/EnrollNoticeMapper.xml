@@ -4,7 +4,8 @@
   <resultMap id="BaseResultMap" type="com.javatribe.apienroll.entity.EnrollNotice">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="content_file" jdbcType="VARCHAR" property="contentFile" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="direction_code" jdbcType="INTEGER" property="directionCode" />
     <result column="delete_mark" jdbcType="INTEGER" property="deleteMark" />
     <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
     <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, title, content_file, delete_mark, gmt_created, gmt_modified
+    id, title, content, direction_code, delete_mark, gmt_created, gmt_modified
   </sql>
   <select id="selectByExample" parameterType="com.javatribe.apienroll.entity.EnrollNoticeQTO" resultMap="BaseResultMap">
     select
@@ -105,10 +106,12 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into enroll_notice (title, content_file, delete_mark, 
-      gmt_created, gmt_modified)
-    values (#{title,jdbcType=VARCHAR}, #{contentFile,jdbcType=VARCHAR}, #{deleteMark,jdbcType=INTEGER}, 
-      #{gmtCreated,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
+    insert into enroll_notice (title, content, direction_code, 
+      delete_mark, gmt_created, gmt_modified
+      )
+    values (#{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{directionCode,jdbcType=INTEGER}, 
+      #{deleteMark,jdbcType=INTEGER}, #{gmtCreated,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.javatribe.apienroll.entity.EnrollNotice">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -119,8 +122,11 @@
       <if test="title != null">
         title,
       </if>
-      <if test="contentFile != null">
-        content_file,
+      <if test="content != null">
+        content,
+      </if>
+      <if test="directionCode != null">
+        direction_code,
       </if>
       <if test="deleteMark != null">
         delete_mark,
@@ -136,8 +142,11 @@
       <if test="title != null">
         #{title,jdbcType=VARCHAR},
       </if>
-      <if test="contentFile != null">
-        #{contentFile,jdbcType=VARCHAR},
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="directionCode != null">
+        #{directionCode,jdbcType=INTEGER},
       </if>
       <if test="deleteMark != null">
         #{deleteMark,jdbcType=INTEGER},
@@ -165,8 +174,11 @@
       <if test="record.title != null">
         title = #{record.title,jdbcType=VARCHAR},
       </if>
-      <if test="record.contentFile != null">
-        content_file = #{record.contentFile,jdbcType=VARCHAR},
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.directionCode != null">
+        direction_code = #{record.directionCode,jdbcType=INTEGER},
       </if>
       <if test="record.deleteMark != null">
         delete_mark = #{record.deleteMark,jdbcType=INTEGER},
@@ -186,7 +198,8 @@
     update enroll_notice
     set id = #{record.id,jdbcType=BIGINT},
       title = #{record.title,jdbcType=VARCHAR},
-      content_file = #{record.contentFile,jdbcType=VARCHAR},
+      content = #{record.content,jdbcType=VARCHAR},
+      direction_code = #{record.directionCode,jdbcType=INTEGER},
       delete_mark = #{record.deleteMark,jdbcType=INTEGER},
       gmt_created = #{record.gmtCreated,jdbcType=TIMESTAMP},
       gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP}
@@ -200,8 +213,11 @@
       <if test="title != null">
         title = #{title,jdbcType=VARCHAR},
       </if>
-      <if test="contentFile != null">
-        content_file = #{contentFile,jdbcType=VARCHAR},
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="directionCode != null">
+        direction_code = #{directionCode,jdbcType=INTEGER},
       </if>
       <if test="deleteMark != null">
         delete_mark = #{deleteMark,jdbcType=INTEGER},
@@ -218,7 +234,8 @@
   <update id="updateByPrimaryKey" parameterType="com.javatribe.apienroll.entity.EnrollNotice">
     update enroll_notice
     set title = #{title,jdbcType=VARCHAR},
-      content_file = #{contentFile,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      direction_code = #{directionCode,jdbcType=INTEGER},
       delete_mark = #{deleteMark,jdbcType=INTEGER},
       gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}

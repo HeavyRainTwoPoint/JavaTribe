@@ -8,19 +8,19 @@
         <set>
 
             <if test="competitionName != null ">
-                competition_name= #{ competitionName }
+                competition_name= #{ competitionName } ,
             </if>
             <if test="showContent != null ">
-                show_content= #{ showContent }
+                show_content= #{ showContent } ,
             </if>
             <if test="deleteStatus != null ">
-                delete_status= #{ deleteStatus }
+                delete_status= #{ deleteStatus } ,
             </if>
             <if test="gmtModified != null ">
-                gmt_modified= #{ gmtModified }
+                gmt_modified= #{ gmtModified } ,
             </if>
             <if test="signUp != null ">
-                sign_up= #{ signUp }
+                sign_up= #{ signUp },
             </if>
 
         </set>
