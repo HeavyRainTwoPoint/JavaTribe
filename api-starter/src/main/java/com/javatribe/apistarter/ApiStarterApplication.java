@@ -18,7 +18,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 // =======
 @MapperScan({"com.javatribe.apishare.mapper",
         "com.javatribe.introduction.mapper",
-        "com.javatribe.apilife.dao"})
+        "com.javatribe.apilife.dao",
+        "com.javatribe.apienroll.dao",
+        "com.javatribe.apienroll.mapper"})
 // >>>>>>> 9d8a4a18581b6f94fa77c62de6634b3d29b70eea
 public class ApiStarterApplication {
 
