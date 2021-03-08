@@ -8,6 +8,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
+import java.util.List;
+
 /**
  * 属性拷贝
  * @Author lyr
@@ -50,4 +52,11 @@ public interface BeanMapperUtils {
 
     })
     StyleShow from(StyleShowDTO styleShowDTO);
+
+    //
+    // /**
+    //  * 数据库 对象批量转给 前端
+    //  * @return
+    //  */
+    // List<StyleShowDTO> styleShowEntity2DTO(List<StyleShow> list);
 }
