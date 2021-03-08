@@ -90,7 +90,7 @@ public class WinnerTeamServiceImpl implements WinnerTeamService {
         try{
             winnerTeamMapper.addSessionNum(sessions);
         }catch (Exception e){
-            result.setCode(201);
+            result.setCode(401);
             result.setMessage("执行出错!!");
             logger.error(e.getMessage(),e);
             return result;
