@@ -54,4 +54,9 @@ public class WinnerTeamController {
         return winnerTeamService.deleteGetPrizesData(winnerTeam);
     }
 
+    @PutMapping(value = "/editSessionNum")
+    public Result editSessionNum(NumberOfSessions sessions){
+        return winnerTeamService.editSessionNum(sessions);
+    }
+
 }

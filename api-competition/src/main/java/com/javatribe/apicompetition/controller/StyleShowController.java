@@ -23,7 +23,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StyleShowController {
     final TribeStyleShowService styleShowService;
-    final BeanMapperUtils beanMapperUtils = Mappers.getMapper(BeanMapperUtils.class);
+    final BeanMapperUtils beanMapperUtils /*= Mappers.getMapper(BeanMapperUtils.class)*/;
 
 
     /**
