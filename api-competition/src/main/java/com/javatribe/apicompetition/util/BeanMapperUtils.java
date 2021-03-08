@@ -13,7 +13,7 @@ import org.mapstruct.Mappings;
  * @Author lyr
  * @create 2021/3/7 13:03
  */
-@Mapper
+@Mapper(componentModel = "spring")
 public interface BeanMapperUtils {
     /**
      * 比赛
