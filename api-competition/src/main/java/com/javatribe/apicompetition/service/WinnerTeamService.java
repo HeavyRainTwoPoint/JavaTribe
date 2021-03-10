@@ -18,4 +18,6 @@ public interface WinnerTeamService {
     Result editGetPrizesData(WinnerTeam winnerTeam);
 
     Result deleteGetPrizesData(WinnerTeam winnerTeam);
+
+    Result editSessionNum(NumberOfSessions sessions);
 }

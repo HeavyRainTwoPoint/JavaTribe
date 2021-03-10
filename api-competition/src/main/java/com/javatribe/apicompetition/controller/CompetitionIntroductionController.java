@@ -23,7 +23,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CompetitionIntroductionController {
     final CompetitionIntroductionService competitionIntroductionService;
-    private final BeanMapperUtils mapperUtils = Mappers.getMapper(BeanMapperUtils.class);
+    final BeanMapperUtils mapperUtils; /*= Mappers.getMapper(BeanMapperUtils.class);*/
 
 
     /**
