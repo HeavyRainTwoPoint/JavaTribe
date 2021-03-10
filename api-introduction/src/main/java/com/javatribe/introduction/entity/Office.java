@@ -1,9 +1,8 @@
 package com.javatribe.introduction.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.util.Date;
-import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -48,9 +47,11 @@ public class Office implements Serializable {
     private Integer sessions;
 
     @ApiModelProperty(value = "创建时间")
+    @TableField(value = "gmt_create", fill = FieldFill.INSERT)
     private Date gmtCreate;
 
     @ApiModelProperty(value = "修改时间")
+    @TableField(value = "gmt_modified", fill = FieldFill.INSERT_UPDATE)
     private Date gmtModified;
 
 

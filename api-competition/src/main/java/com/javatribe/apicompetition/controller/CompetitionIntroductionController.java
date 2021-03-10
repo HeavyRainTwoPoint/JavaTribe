@@ -6,7 +6,6 @@ import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
 import com.javatribe.apicompetition.service.CompetitionIntroductionService;
 import com.javatribe.apicompetition.util.BeanMapperUtils;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.beanutils.BeanUtils;
 import org.mapstruct.factory.Mappers;
 import org.springframework.web.bind.annotation.*;
 

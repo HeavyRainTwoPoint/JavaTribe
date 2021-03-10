@@ -17,6 +17,12 @@ public interface ManagementService extends IService<Management> {
 
     List<Management> findAll();
 
+    Management findById(String id);
+
+    List<Management> findLeader();
+
+    List<Management> findPresent();
+
     int addManager(Management manage);
 
     int deleteManager(Integer id);

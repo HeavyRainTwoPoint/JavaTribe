@@ -30,7 +30,29 @@ public class ManagementServiceImpl extends ServiceImpl<ManagementMapper, Managem
     }
 
     @Override
+    public Management findById(String id) {
+        return baseMapper.selectById(id);
+    }
+
+    @Override
+    public List<Management> findLeader() {
+        LambdaQueryWrapper<Management> wrapper = new LambdaQueryWrapper<>();
+        wrapper.select()
+                .eq(Management::getIsLeader, 1)
+                .orderByAsc(Management::getSessions);
+        return baseMapper.selectList(wrapper);
+    }
+
+    @Override
+    public List<Management> findPresent() {
+        return baseMapper.presentManage();
+    }
+
+    @Override
     public int addManager(Management manage) {
+        if (manage.getPosition().equals("队长")) {
+            manage.setIsLeader(1);
+        }
         return baseMapper.insert(manage);
     }
 

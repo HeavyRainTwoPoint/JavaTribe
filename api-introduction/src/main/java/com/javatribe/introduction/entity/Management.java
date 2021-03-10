@@ -42,6 +42,14 @@ public class Management implements Serializable {
     @ApiModelProperty(value = "届数")
     private Integer sessions;
 
+    @ApiModelProperty(value = "是否是队长")
+    @TableField(value = "is_leader")
+    private Integer isLeader;
+
+    @ApiModelProperty(value = "任职时间")
+    @TableField(value = "work_time")
+    private String workTime;
+
     @ApiModelProperty(value = "创建时间")
     @TableField(value = "gmt_create", fill = FieldFill.INSERT)
     private Date gmtCreate;

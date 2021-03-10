@@ -36,6 +36,30 @@ public class ManagementController {
         return Result.success(res);
     }
 
+    @GetMapping("findById")
+    public Result findById(@RequestParam("id") String id) {
+        Management management = managementService.findById(id);
+        HashMap<String, Object> res = new HashMap<>();
+        res.put("management", management);
+        return Result.success(res);
+    }
+
+    @GetMapping("sessionsLeader")
+    public Result sessionsLeader() {
+        List<Management> leaders = managementService.findLeader();
+        HashMap<String, Object> res = new HashMap<>();
+        res.put("leaders", leaders);
+        return Result.success(res);
+    }
+
+    @GetMapping("presentManager")
+    public Result presentManager() {
+        List<Management> presents = managementService.findPresent();
+        HashMap<String, Object> res = new HashMap<>();
+        res.put("presents", presents);
+        return Result.success(res);
+    }
+
     @PostMapping("addManager")
     public Result addManager(@RequestBody Management manage) {
         if (managementService.addManager(manage) == 1) {
