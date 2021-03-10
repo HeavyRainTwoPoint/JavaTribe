@@ -179,8 +179,16 @@
       <workItem from="1605964974773" duration="5284000" />
       <workItem from="1606017311427" duration="6218000" />
       <workItem from="1606017311427" duration="7302000" />
-      <workItem from="1615367851469" duration="625000" />
+      <workItem from="1615367851469" duration="2620000" />
     </task>
+    <task id="LOCAL-00001" summary="部落概况第4次修改">
+      <created>1615368689295</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1615368689295</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,10 +200,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="部落概况第4次修改" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="205" y="0" key="CommitChangelistDialog2" timestamp="1615368040752">
+    <state x="205" y="0" key="CommitChangelistDialog2" timestamp="1615368708385">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="205" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1615368040752" />
+    <state x="205" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1615368708385" />
     <state width="1481" height="3" key="GridCell.Tab.0.bottom" timestamp="1615368588140">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -244,10 +252,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1481" height="288" key="GridCell.Tab.2.right/0.0.1536.864@0.0.1536.864" timestamp="1615367779687" />
-    <state x="260" y="100" key="Vcs.Push.Dialog.v2" timestamp="1615368575122">
+    <state x="260" y="100" key="Vcs.Push.Dialog.v2" timestamp="1615368725973">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="260" y="100" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1615368575122" />
+    <state x="260" y="100" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1615368725973" />
     <state x="334" y="214" key="com.intellij.ide.util.TipDialog" timestamp="1615368013463">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
