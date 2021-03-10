@@ -20,7 +20,7 @@ public class OpenServiceTest {
     private EnrollOpenApiService enrollOpenApiService;
     @Test
     public void testQueryDirection() {
-       show(enrollOpenApiService.getLastNTestNameOnPerDirection(4));
+       show(enrollOpenApiService.getLastNTestNameOnDirection(4, 1));
     }
 
 
@@ -37,7 +37,7 @@ public class OpenServiceTest {
 
     @Test
     public void getLastNTestNameOnPerDirection() {
-        show(enrollOpenApiService.getLastNTestNameOnPerDirection(4));
+//        show(enrollOpenApiService.getLastNTestNameOnPerDirection(4, directionCode));
     }
 //    private void show(Object r) {
 //        System.out.println(JSONUtil.toJsonStr(r.toString().replace("Response","")));

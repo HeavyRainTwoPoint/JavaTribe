@@ -2,22 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.javatribe.apienroll.mapper.EnrollOpenApiMapper">
 
-  <select id="getLastNTestNameOnPerDirection" resultType="com.javatribe.apienroll.entity.TestNotice">
+  <select id="getLastNTestNameOnDirection" resultType="com.javatribe.apienroll.entity.TestNotice">
     SELECT
-    id,test_direction,test_name
+            id,test_direction,test_name
     FROM
-    test_notice
-    WHERE
-    (
-    SELECT
-    COUNT(*) FROM test_notice AS e
-    WHERE
-    e.`test_direction` = test_notice.`test_direction` AND e.`gmt_created` >= test_notice.`gmt_created`
-    )
-    <if test="n >= 0">
-      &lt;= #{n}
-    </if>
-    AND test_notice.`delete_mark` = 0
+            test_notice WHERE test_direction = 1 ORDER BY gmt_created DESC LIMIT 4
   </select>
   <select id="getEnrollNoticeLastNYears" resultType="com.javatribe.apienroll.dto.EnrollNoticeDTO">
     SELECT *,YEAR(a.`gmt_created`) AS `year`

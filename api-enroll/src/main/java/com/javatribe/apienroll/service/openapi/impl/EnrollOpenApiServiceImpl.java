@@ -8,7 +8,6 @@ import com.javatribe.apienroll.dto.TestNoticeDTO;
 import com.javatribe.apienroll.entity.TestNotice;
 import com.javatribe.apienroll.mapper.EnrollOpenApiMapper;
 import com.javatribe.apienroll.service.openapi.EnrollOpenApiService;
-import com.javatribe.apienroll.utils.BeanCopyUtil;
 import com.javatribe.apienroll.utils.JSONTools;
 import com.javatribe.apienroll.utils.NumberUtil;
 import org.slf4j.Logger;
@@ -16,11 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.*;
 
 /**
  * @author Liang.Yong.hui
@@ -35,21 +30,24 @@ public class EnrollOpenApiServiceImpl implements EnrollOpenApiService {
     private EnrollOpenApiMapper enrollOpenApiMapper;
 
     @Override
-    public Response<List<TestNotice>> getLastNTestNameOnPerDirection(Integer n) {
-        if (NumberUtil.isInValidNum(n)) {
+    public Response<List<TestNotice>> getLastNTestNameOnDirection(Integer n, Integer directionCode) {
+        if (NumberUtil.isInValidNum(n) || NumberUtil.isInValidNum(directionCode)) {
             logger.error("参数不合法");
             return Response.fail(ResponseStatus.PARAMS_ERROR);
         }
-        return Response.success(enrollOpenApiMapper.getLastNTestNameOnPerDirection(n));
+        List<TestNotice> testNoticeTitles = enrollOpenApiMapper.getLastNTestNameOnDirection(n, directionCode);
+        Collections.reverse(testNoticeTitles);
+        return Response.success(testNoticeTitles);
     }
 
     @Override
-    public Response<Map<Integer,List<EnrollNoticeDTO>>> getEnrollNoticeGroupByYear(Integer n) {
+    public Response<List<List<EnrollNoticeDTO>>> getEnrollNoticeGroupByYear(Integer n) {
         List<EnrollNoticeDTO> dtoList = enrollOpenApiMapper.getEnrollNoticeLastNYears(n);
         if (dtoList.isEmpty()) {
             logger.info("无结果命中");
             return new Response<>();
         }
+        List<List<EnrollNoticeDTO>> res = new ArrayList<>();
         Map<Integer,List<EnrollNoticeDTO>> resData = new HashMap<>();
         dtoList.forEach(x -> {
             if (resData.containsKey(x.getYear())) {
@@ -60,7 +58,11 @@ public class EnrollOpenApiServiceImpl implements EnrollOpenApiService {
                 resData.put(x.getYear(),list);
             }
         });
-        return Response.success(resData);
+        resData.forEach((k,v) -> {
+            res.add(v);
+        });
+
+        return Response.success(res);
     }
 
     @Override

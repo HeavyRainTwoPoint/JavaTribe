@@ -1,6 +1,7 @@
 package com.javatribe.apienroll.controller.openapi;
 
 import com.javatribe.apicommon.dto.Response;
+import com.javatribe.apicommon.dto.ResponseStatus;
 import com.javatribe.apienroll.dto.EnrollNoticeDTO;
 import com.javatribe.apienroll.entity.TestNotice;
 import com.javatribe.apienroll.service.openapi.EnrollOpenApiService;
@@ -32,11 +33,11 @@ public class EnrollOpenApiController {
      * @return
      */
     @GetMapping("/test_name")
-    public Response<List<TestNotice>> getLastNTestNameOnPerDirection(@RequestParam(value = "last_n",required = false) Integer n) {
+    public Response<List<TestNotice>> getLastNTestNameOnDirection(@RequestParam(value = "last_n",required = false) Integer n, @RequestParam("direction_code") Integer directionCode) {
         if (NumberUtil.isInValidNum(n)) {
             n = 4;
         }
-        return enrollOpenApiService.getLastNTestNameOnPerDirection(n);
+        return enrollOpenApiService.getLastNTestNameOnDirection(n,directionCode);
     }
 
     /**
@@ -45,7 +46,7 @@ public class EnrollOpenApiController {
      * @return
      */
     @GetMapping("/enroll_notice")
-    public Response<Map<Integer,List<EnrollNoticeDTO>>>  getEnrollNoticeGroupByYear(@RequestParam(value = "last_n",required = false) Integer n) {
+    public Response<List<List<EnrollNoticeDTO>>>  getEnrollNoticeGroupByYear(@RequestParam(value = "last_n",required = false) Integer n) {
         return enrollOpenApiService.getEnrollNoticeGroupByYear(n);
     }
 
