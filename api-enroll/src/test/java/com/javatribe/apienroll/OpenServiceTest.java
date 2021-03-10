@@ -32,7 +32,7 @@ public class OpenServiceTest {
 
     @Test
     public void getTestNoticeOnDirection() {
-        show(enrollOpenApiService.getTestNoticeOnDirection(2));
+        show(enrollOpenApiService.getTestNoticeOnDirection(1));
     }
 
     @Test

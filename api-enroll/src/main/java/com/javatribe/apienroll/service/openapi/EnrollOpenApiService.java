@@ -18,6 +18,6 @@ public interface EnrollOpenApiService {
 
     Response<List<List<EnrollNoticeDTO>>> getEnrollNoticeGroupByYear(Integer n);
 
-    Response<Map<String, TestNoticeDTO>> getTestNoticeOnDirection(Integer directionCode);
+    Response<List<TestNoticeDTO>> getTestNoticeOnDirection(Integer directionCode);
 
 }

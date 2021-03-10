@@ -66,12 +66,12 @@ public class EnrollOpenApiServiceImpl implements EnrollOpenApiService {
     }
 
     @Override
-    public Response<Map<String, TestNoticeDTO>> getTestNoticeOnDirection(Integer directionCode) {
+    public Response<List<TestNoticeDTO>> getTestNoticeOnDirection(Integer directionCode) {
         if (NumberUtil.isInValidNum(directionCode)) {
             logger.error("参数不合法");
             return Response.fail(ResponseStatus.PARAMS_ERROR);
         }
-        Map<String, TestNoticeDTO> resData = new HashMap<>();
+        List<TestNoticeDTO> resData = new ArrayList<>();
         List<TestNotice> list = enrollOpenApiMapper.getTestNoticeOnDirection(directionCode);
 
         list.forEach(x -> {
@@ -82,7 +82,7 @@ public class EnrollOpenApiServiceImpl implements EnrollOpenApiService {
             dto.setDeleteMark(x.getDeleteMark());
             dto.setGmtCreated(x.getGmtCreated());
             dto.setNoticeFileList(JSONTools.toList(new JSONArray(x.getNoticeFile()),String.class));
-            resData.put(x.getTestName(),dto);
+            resData.add(dto);
         });
 
         return Response.success(resData);
