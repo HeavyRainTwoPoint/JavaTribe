@@ -1,0 +1,34 @@
+############################################################
+#
+# web访问端口号  约定：8080
+#
+############################################################
+server:
+  port: 8080
+############################################################
+#
+# 配置数据源信息
+#
+############################################################
+spring:
+  profiles:
+    active: dev
+    # 数据源的相关配置
+  datasource:
+    url: jdbc:mysql://47.92.200.8:3306/javatribe?useUnicode=true&characterEncoding=UTF8&useSSL=false
+    username: javatribe
+    password: pBcrDNAMFr7ifb7e
+    driver-class-name: com.mysql.jdbc.Driver
+  #配置json时间区
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+############################################################
+#
+# mybatis设置
+#
+############################################################
+mybatis:
+  type-aliases-package: com.javatribe.cooperation.bean.empty
+  mapper-locations: classpath:mapper/*.xml
+

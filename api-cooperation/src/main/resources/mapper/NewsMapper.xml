@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javatribe.cooperation.mapper.NewsMapper">
+    <resultMap type="com.javatribe.cooperation.bean.entity.News" id="newsMapper">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="title" column="title" jdbcType="VARBINARY"/>
+        <result property="photo" column="photo" jdbcType="VARCHAR"/>
+        <result property="url" column="url" jdbcType="VARCHAR"/>
+        <result property="createBy" column="create_by" jdbcType="INTEGER"/>
+        <result property="updateBy" column="update_by" jdbcType="INTEGER"/>
+        <result property="updateTime" column="update_time" jdbcType="DATE"/>
+        <result property="createTime" column="create_time" jdbcType="DATE"/>
+        <result property="priority" column="priority" jdbcType="BIT"/>
+        <result property="deleteStatus" column="delete_status" jdbcType="BIT"/>
+    </resultMap>
+    <insert id="insert">
+        insert
+        into
+        t_news(`title`,`photo`, `url`, `priority`,`create_by`,`update_by`)
+        values
+        (#{news.title},
+        #{news.photo},
+        #{news.url},
+        #{news.priority},
+        #{news.createBy},
+        #{news.updateBy}
+        )
+    </insert>
+    <update id="update">
+        update
+        t_news
+        set
+        `title`=#{news.title},
+        `photo`=#{news.photo},
+        `url`=#{news.url},
+        `priority`=#{news.priority},
+        `update_by`=#{news.updateBy},
+        `update_time`=#{news.updateTime}
+        where
+        id=#{news.id}
+    </update>
+    <update id="delete">
+         update
+         t_news
+         set
+         delete_status=1
+         where
+         id=#{newsId}
+    </update>
+    <select id="selectById" resultMap="newsMapper">
+        select
+        *
+        from
+        t_news
+        where
+        delete_status=0
+        and
+        id=#{newsId}
+    </select>
+    <select id="getAll" resultMap="newsMapper">
+        select
+        *
+        from
+        t_news
+        where
+        delete_status=0
+    </select>
+    <select id="getByPages" resultMap="newsMapper">
+        select
+        *
+        from
+        t_news
+        where
+        delete_status=0
+        and
+        priority=0
+        limit #{start},#{end}
+    </select>
+    <select id="getCounts" resultType="java.lang.Integer">
+        select
+        count(*)
+        from
+        t_news
+        where
+        delete_status=0
+    </select>
+    <select id="getTopNews"  resultMap="newsMapper">
+        select
+        *
+        from
+        t_news
+        where
+        delete_status=0
+        and
+        priority=1
+        limit #{topSize}
+    </select>
+
+</mapper>
