@@ -29,10 +29,6 @@
             <artifactId>api-competition</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
-
-
-
         <dependency>
             <groupId>com.javatribe</groupId>
             <artifactId>api-introduction</artifactId>
@@ -50,9 +46,14 @@
         </dependency>
         <dependency>
             <groupId>com.javatribe</groupId>
-            <artifactId>api-enroll</artifactId>
+            <artifactId>api-cooperation</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.javatribe</groupId>-->
+<!--            <artifactId>api-enroll</artifactId>-->
+<!--            <version>0.0.1-SNAPSHOT</version>-->
+<!--        </dependency>-->
 <!--        <dependency>-->
 <!--            <groupId>com.javatribe</groupId>-->
 <!--            <artifactId>api-enroll</artifactId>-->
