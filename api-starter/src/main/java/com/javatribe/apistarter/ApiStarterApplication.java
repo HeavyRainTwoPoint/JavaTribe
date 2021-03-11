@@ -20,6 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @MapperScan({"com.javatribe.apishare.mapper",
         "com.javatribe.introduction.mapper",
         "com.javatribe.apilife.dao",
+        "com.javatribe.cooperation.mapper",
         "com.javatribe.apienroll.dao",
         "com.javatribe.apienroll.mapper"})
 // >>>>>>> 9d8a4a18581b6f94fa77c62de6634b3d29b70eea
