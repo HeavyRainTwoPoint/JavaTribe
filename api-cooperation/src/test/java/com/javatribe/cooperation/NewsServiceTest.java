@@ -1,6 +1,5 @@
 package com.javatribe.cooperation;
 
-import com.javatribe.cooperation.bean.entity.Cooperation;
 import com.javatribe.cooperation.bean.entity.News;
 import com.javatribe.cooperation.service.NewsService;
 import org.junit.jupiter.api.Test;
