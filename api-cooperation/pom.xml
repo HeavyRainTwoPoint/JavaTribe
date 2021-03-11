@@ -9,7 +9,7 @@
     </parent>
     <artifactId>api-cooperation</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>api-direction</name>
+    <name>api-cooperation</name>
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>
