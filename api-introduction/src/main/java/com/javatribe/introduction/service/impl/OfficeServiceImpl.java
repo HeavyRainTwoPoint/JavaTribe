@@ -23,7 +23,7 @@ public class OfficeServiceImpl extends ServiceImpl<OfficeMapper, Office> impleme
     @Override
     public List<Office> findAll() {
         LambdaQueryWrapper<Office> wrapper = new LambdaQueryWrapper<>();
-        wrapper.select();
+        wrapper.select().orderByAsc(Office::getSessions);
         return baseMapper.selectList(wrapper);
     }
 
