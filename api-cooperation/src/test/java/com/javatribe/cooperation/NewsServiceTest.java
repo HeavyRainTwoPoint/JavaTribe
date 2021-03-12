@@ -60,7 +60,7 @@ class NewsServiceTest {
 
     @Test
     public void testPage() {
-        System.out.println(newsService.page(0));
+        System.out.println(newsService.page(0,10));
     }
 
     @Test

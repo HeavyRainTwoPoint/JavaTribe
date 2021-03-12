@@ -1,6 +1,7 @@
 package com.javatribe.cooperation;
 
 import com.javatribe.cooperation.bean.entity.Cooperation;
+import com.javatribe.cooperation.mapper.CooperationMapper;
 import com.javatribe.cooperation.service.CooperationService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,6 +19,9 @@ public class CooperationServiceTest {
     @Resource
     CooperationService cooperationService;
 
+    @Resource
+    CooperationMapper cooperationMapper;
+
     @Test
     public void testInsert() {
         Cooperation cooperation = new Cooperation();
@@ -34,7 +38,7 @@ public class CooperationServiceTest {
 
     @Test
     public void testGet() {
-        Cooperation cooperation = cooperationService.get(11);
+        Cooperation cooperation = cooperationMapper.selectById(12);
         System.out.println(cooperation);
 
     }
@@ -64,7 +68,7 @@ public class CooperationServiceTest {
 
     @Test
     public void testPage() {
-        System.out.println(cooperationService.page(0, 0));
+        System.out.println(cooperationService.page(0, 0,10));
     }
     @Test
     public void getCounts() {

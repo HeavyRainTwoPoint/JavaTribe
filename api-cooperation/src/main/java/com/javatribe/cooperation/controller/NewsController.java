@@ -76,8 +76,8 @@ public class NewsController {
     }
 
     @GetMapping("page")
-    public ApiResult page(@Param("page") Integer page) {
-        return ApiResults.success(newsService.page(page));
+    public ApiResult page(@Param("page") Integer page,@Param("size") Integer size) {
+        return ApiResults.success(newsService.page(page,size));
     }
 
     @GetMapping("getTopNews")

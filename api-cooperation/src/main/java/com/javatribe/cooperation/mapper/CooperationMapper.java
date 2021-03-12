@@ -10,7 +10,7 @@ public interface CooperationMapper {
     void update(@Param("cooperation") Cooperation cooperation);
     void delete(@Param("cooperationId") int cooperationId);
     Cooperation selectById(@Param("cooperationId") int cooperationId);
-    List<Cooperation> getByPages(@Param("start") int start, @Param("end") int end,@Param("type") Integer type);
+    List<Cooperation> getByPages(@Param("type") Integer type,@Param("start") int start, @Param("end") int end);
     List<Cooperation> getAll(@Param("type") Integer type);
     int getCounts();
 }

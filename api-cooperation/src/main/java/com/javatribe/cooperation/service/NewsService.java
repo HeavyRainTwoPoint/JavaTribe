@@ -35,8 +35,8 @@ public class NewsService {
         return newsMapper.getAll();
     }
 
-    public List<News> page(Integer page) {
-        return newsMapper.getByPages(page * 3, 3);
+    public List<News> page(Integer page,Integer size) {
+        return newsMapper.getByPages(page * size, size);
     }
 
     public List<News> getTopNews() {

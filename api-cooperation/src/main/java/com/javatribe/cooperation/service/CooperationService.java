@@ -35,8 +35,8 @@ public class CooperationService {
         return cooperationMapper.getAll(type);
     }
 
-    public List<Cooperation> page(Integer page, Integer type) {
-        return cooperationMapper.getByPages(page * 3, 3, type);
+    public List<Cooperation> page( Integer type,Integer page,Integer size) {
+        return cooperationMapper.getByPages(type,page * size, size);
     }
 
     public Integer getCounts() {

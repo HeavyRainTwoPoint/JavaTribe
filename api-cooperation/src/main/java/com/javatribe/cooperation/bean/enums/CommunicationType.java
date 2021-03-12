@@ -3,8 +3,6 @@ package com.javatribe.cooperation.bean.enums;
 import lombok.AllArgsConstructor;
 
 /**
- *
- *
  * @author LCW
  * @since 2021/2/28 10:27
  **/

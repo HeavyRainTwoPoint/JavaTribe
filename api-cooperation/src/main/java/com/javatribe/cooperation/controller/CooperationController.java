@@ -75,8 +75,8 @@ public class CooperationController {
 
 
     @GetMapping("page")
-    public ApiResult page(@Param("page") Integer page, @Param("type") Integer type) {
-        return ApiResults.success(cooperationService.page(page, type));
+    public ApiResult page(@Param("type") Integer type, @Param("page") Integer page, @Param("size") Integer size) {
+        return ApiResults.success(cooperationService.page(type, page, size));
     }
 
     @GetMapping("getCounts")
