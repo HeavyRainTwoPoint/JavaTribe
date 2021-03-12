@@ -12,5 +12,6 @@ public interface CooperationMapper {
     Cooperation selectById(@Param("cooperationId") int cooperationId);
     List<Cooperation> getByPages(@Param("type") Integer type,@Param("start") int start, @Param("end") int end);
     List<Cooperation> getAll(@Param("type") Integer type);
-    int getCounts();
+    int getAllCounts();
+    Integer getCounts(Integer type);
 }

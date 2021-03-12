@@ -70,11 +70,17 @@ public class CooperationServiceTest {
     public void testPage() {
         System.out.println(cooperationService.page(0, 0,10));
     }
+
     @Test
     public void getCounts() {
-        System.out.println(cooperationService.getCounts());
+        System.out.println(cooperationService.getCounts(0));
+        System.out.println(cooperationService.getCounts(1));
     }
 
+    @Test
+    public void getAllCounts() {
+        System.out.println(cooperationService.getAllCounts());
+    }
 
 
 }

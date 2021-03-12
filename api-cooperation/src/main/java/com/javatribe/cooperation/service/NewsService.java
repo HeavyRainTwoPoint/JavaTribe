@@ -15,6 +15,8 @@ public class NewsService {
     private NewsMapper newsMapper;
 
     public void insert(News record) {
+        record.setUpdateTime(new Date());
+        record.setCreateTime(new Date());
         newsMapper.insert(record);
     }
 
@@ -43,8 +45,15 @@ public class NewsService {
         return newsMapper.getTopNews(2);
     }
 
-    public Integer getCounts() {
-        return newsMapper.getCounts();
+    public Integer getCounts(Integer priority) {
+        return newsMapper.getCounts(priority);
     }
 
+    public  List<News>  getLowPriorityPage(Integer page, Integer size) {
+        return newsMapper.getLowPriorityPage(page * size, size);
+    }
+
+    public Integer getAllCounts() {
+        return newsMapper.getAllCounts();
+    }
 }

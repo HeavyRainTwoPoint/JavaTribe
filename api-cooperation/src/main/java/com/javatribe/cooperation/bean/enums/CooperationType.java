@@ -7,10 +7,14 @@ import lombok.AllArgsConstructor;
  * @since 2021/2/28 10:27
  **/
 @AllArgsConstructor
-public enum CommunicationType {
+public enum CooperationType {
 
-    In_Communication(0,"对内交流"),
-    Out_Communication(1, "对外交流");
+    InCooperation(0,"对内交流"),
+    OutCooperation(1, "对外交流");
+
+    public int getType() {
+        return type;
+    }
 
     int type;
     String msg;

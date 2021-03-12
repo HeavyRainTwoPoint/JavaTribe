@@ -15,6 +15,8 @@ public class CooperationService {
     private CooperationMapper cooperationMapper;
 
     public void insert(Cooperation record) {
+        record.setUpdateTime(new Date());
+        record.setCreateTime(new Date());
         cooperationMapper.insert(record);
     }
 
@@ -39,7 +41,11 @@ public class CooperationService {
         return cooperationMapper.getByPages(type,page * size, size);
     }
 
-    public Integer getCounts() {
-        return cooperationMapper.getCounts();
+    public Integer getCounts(Integer type) {
+        return cooperationMapper.getCounts(type);
+    }
+
+    public Integer getAllCounts() {
+        return cooperationMapper.getAllCounts();
     }
 }

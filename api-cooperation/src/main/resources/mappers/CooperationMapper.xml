@@ -76,7 +76,16 @@
         delete_status=0
         and
         `type`=#{type}
+        ORDER BY create_time DESC
         limit #{start},#{end}
+    </select>
+    <select id="getAllCounts" resultType="java.lang.Integer">
+        select
+        count(*)
+        from
+        t_cooperation
+        where
+        delete_status=0
     </select>
     <select id="getCounts" resultType="java.lang.Integer">
         select
@@ -84,6 +93,8 @@
         from
         t_cooperation
         where
+        `type`=#{type}
+        and
         delete_status=0
     </select>
 

@@ -72,8 +72,7 @@
         t_news
         where
         delete_status=0
-        and
-        priority=0
+        ORDER BY create_time DESC
         limit #{start},#{end}
     </select>
     <select id="getCounts" resultType="java.lang.Integer">
@@ -82,6 +81,8 @@
         from
         t_news
         where
+        priority=#{priority}
+        and
         delete_status=0
     </select>
     <select id="getTopNews"  resultMap="newsMapper">
@@ -93,7 +94,28 @@
         delete_status=0
         and
         priority=1
+        ORDER BY create_time DESC
         limit #{topSize}
+    </select>
+    <select id="getLowPriorityPage" resultMap="newsMapper">
+        select
+        *
+        from
+        t_news
+        where
+        delete_status=0
+        and
+        priority=0
+        ORDER BY create_time DESC
+        limit #{start},#{end}
+    </select>
+    <select id="getAllCounts" resultType="java.lang.Integer">
+        select
+        count(*)
+        from
+        t_news
+        where
+        delete_status=0
     </select>
 
 </mapper>

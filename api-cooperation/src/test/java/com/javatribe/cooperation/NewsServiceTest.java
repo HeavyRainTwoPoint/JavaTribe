@@ -69,12 +69,17 @@ class NewsServiceTest {
     }
 
     @Test
+    public void getAllCounts() {
+        System.out.println(newsService.getAllCounts());
+    }
+    @Test
     public void getCounts() {
-        System.out.println(newsService.getCounts());
+        System.out.println(newsService.getCounts(1));
+        System.out.println(newsService.getCounts(0));
     }
 
-
-
-
-
+    @Test
+    public void getLowPriorityPage() {
+        System.out.println(newsService.getLowPriorityPage(0, 2));
+    }
 }

@@ -12,7 +12,8 @@ public interface NewsMapper {
     News selectById(@Param("newsId") int newsId);
     List<News> getByPages(@Param("start") int start, @Param("end") int end);
     List<News> getAll();
-    int getCounts();
+    int getCounts(@Param("priority") int priority);
     List<News> getTopNews(@Param("topSize") int topSize);
-
+    List<News> getLowPriorityPage(@Param("start") int start, @Param("end") int end);
+    Integer getAllCounts();
 }
