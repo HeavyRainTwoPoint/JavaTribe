@@ -6,10 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 // import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
- @EnableSwagger2
+// @EnableSwagger2
 @EnableScheduling
 @SpringBootApplication(scanBasePackages = "com.javatribe")
 // <<<<<<< HEAD
@@ -17,12 +16,15 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 // @MapperScan()
 // =======
-@MapperScan({"com.javatribe.apishare.mapper",
+@MapperScan({
+
+        "com.javatribe.apishare.mapper",
         "com.javatribe.introduction.mapper",
         "com.javatribe.apilife.dao",
-        "com.javatribe.cooperation.mapper"})
-//        "com.javatribe.apienroll.dao",
-//        "com.javatribe.apienroll.mapper"})
+        "com.javatribe.apienroll.dao",
+        "com.javatribe.apienroll.mapper",
+        "com.javatribe.apicompetition.mapper"
+})
 // >>>>>>> 9d8a4a18581b6f94fa77c62de6634b3d29b70eea
 public class ApiStarterApplication {
 
