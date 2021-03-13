@@ -33,6 +33,12 @@ public class Cooperation {
     private String photo;
 
     /**
+     * 交流事项
+     */
+    @NotNull(message = "items不能为空")
+    private String items;
+
+    /**
      * 内容
      */
     @NotNull(message = "content不能为空")

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
-import java.util.Date;
+import java.util.Random;
 
 /**
  * @author LCW
@@ -20,16 +20,24 @@ class NewsServiceTest {
 
     @Test
     public void insertTest() {
-        News news = new News();
-        news.setUpdateTime(new Date());
-        news.setCreateTime(new Date());
-        news.setUpdateBy(1);
-        news.setCreateBy(1);
-        news.setUrl("1222sadsds2");
-        news.setPriority(1);
-        news.setTitle("张dsds三");
-        news.setPhoto("https://bdsdaidu2232.com");
-        newsService.insert(news);
+        int flag = 0;
+        for (int i = 0; i < 100; i++) {
+            News news = new News();
+            Random random = new Random();
+            news.setUpdateBy(random.nextInt(1000000000));
+            news.setCreateBy(random.nextInt(1000000000));
+            news.setUrl("https://baidu.com");
+            if (flag == 0) {
+                news.setPriority(0);
+                flag = 1;
+            } else {
+                news.setPriority(1);
+                flag = 0;
+            }
+            news.setTitle("李四" + random.nextInt(10000) + "xxxx");
+            news.setPhoto("http://img.1ppt.com/uploads/allimg/2103/1-210312131R80-L.jpg");
+            newsService.insert(news);
+        }
     }
     @Test
     public void testGet() {

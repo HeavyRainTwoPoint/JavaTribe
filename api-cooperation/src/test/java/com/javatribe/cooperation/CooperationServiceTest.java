@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
+import java.util.Random;
 
 /**
  * @author LCW
@@ -21,19 +23,29 @@ public class CooperationServiceTest {
 
     @Resource
     CooperationMapper cooperationMapper;
-
+    Random random = new Random();
     @Test
     public void testInsert() {
-        Cooperation cooperation = new Cooperation();
-        cooperation.setUpdateTime(new Date());
-        cooperation.setCreateTime(new Date());
-        cooperation.setUpdateBy(1);
-        cooperation.setCreateBy(1);
-        cooperation.setContent("12222");
-        cooperation.setType(1);
-        cooperation.setTitle("张三");
-        cooperation.setPhoto("https://baidu.com");
-        cooperationService.insert(cooperation);
+        int flag = 0;
+        for (int i = 0; i < 100; i++) {
+            Cooperation cooperation = new Cooperation();
+
+            cooperation.setUpdateBy(random.nextInt(1000000000));
+            cooperation.setCreateBy(random.nextInt(1000000000));
+            cooperation.setContent(random.nextInt(1000000000) + "");
+            if (flag == 0) {
+                cooperation.setType(0);
+                flag = 1;
+            } else {
+                cooperation.setType(1);
+                flag = 0;
+            }
+            cooperation.setTitle("张三" + random.nextInt(10000) + "xxxx");
+            cooperation.setPhoto("http://img.1ppt.com/uploads/allimg/2103/1-210312131R80-L.jpg");
+            cooperationService.insert(cooperation);
+
+        }
+
     }
 
     @Test
@@ -45,14 +57,15 @@ public class CooperationServiceTest {
 
     @Test
     public void testUpdate() {
-        Cooperation cooperation = cooperationService.get(11);
-        cooperation.setType(2);
-        cooperation.setTitle("xxx");
-        cooperation.setPhoto("baidu.com");
-        cooperation.setUpdateBy(2);
-        cooperation.setUpdateTime(new Date());
-        cooperation.setContent("3232323232");
-        cooperationService.update(cooperation);
+        List<Cooperation> page = cooperationService.page(0, 0, 1000);
+        for (Cooperation cooperation : page) {
+            cooperation.setItems("张三" + random.nextInt(10000)
+                    + " "+"李四" + random.nextInt(10000)
+                    + " "+"王五" + random.nextInt(10000)
+            );
+            cooperationService.update(cooperation);
+        }
+
     }
 
     @Test

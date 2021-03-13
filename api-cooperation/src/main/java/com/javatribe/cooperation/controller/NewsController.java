@@ -109,7 +109,7 @@ public class NewsController {
     }
 
     /**
-     * 获取前两天优先级高的新闻
+     * 获取前两条优先级高的新闻
      */
     @GetMapping("getTopNews")
     public ApiResult getTopNews() {

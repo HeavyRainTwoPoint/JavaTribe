@@ -5,6 +5,7 @@
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="title" column="title" jdbcType="VARBINARY"/>
         <result property="photo" column="photo" jdbcType="VARCHAR"/>
+        <result property="items" column="items" jdbcType="VARCHAR"/>
         <result property="content" column="content" jdbcType="VARCHAR"/>
         <result property="createBy" column="create_by" jdbcType="INTEGER"/>
         <result property="updateBy" column="update_by" jdbcType="INTEGER"/>
@@ -16,10 +17,11 @@
     <insert id="insert">
         insert
         into
-        t_cooperation(`title`,`photo`, `content`, `type`,`create_by`,`update_by`)
+        t_cooperation(`title`,`photo`,`items`, `content`, `type`,`create_by`,`update_by`)
         values
         (#{cooperation.title},
         #{cooperation.photo},
+        #{cooperation.items},
         #{cooperation.content},
         #{cooperation.type},
         #{cooperation.createBy},
@@ -32,6 +34,7 @@
         set
         `title`=#{cooperation.title},
         `photo`=#{cooperation.photo},
+        `items`=#{cooperation.items},
         `content`=#{cooperation.content},
         `type`=#{cooperation.type},
         `update_by`=#{cooperation.updateBy},
