@@ -31,7 +31,7 @@ public class RegisterTeamOfFront implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date registerTime;
 
-    private List<String> teamUserList;
+    private List<Student> teamUserList;
 
     public Long getRegisterId() {
         return registerId;
@@ -97,11 +97,11 @@ public class RegisterTeamOfFront implements Serializable {
         this.teamLeaderCollege = teamLeaderCollege;
     }
 
-    public List<String> getTeamUserList() {
+    public List<Student> getTeamUserList() {
         return teamUserList;
     }
 
-    public void setTeamUserList(List<String> teamUserList) {
+    public void setTeamUserList(List<Student> teamUserList) {
         this.teamUserList = teamUserList;
     }
 

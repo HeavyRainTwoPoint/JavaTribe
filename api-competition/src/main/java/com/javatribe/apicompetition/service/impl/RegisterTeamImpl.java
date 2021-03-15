@@ -5,6 +5,7 @@ import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.mapper.RegisterTeamMapper;
 import com.javatribe.apicompetition.pojo.po.RegisterTeam;
 import com.javatribe.apicompetition.pojo.po.RegisterTeamOfFront;
+import com.javatribe.apicompetition.pojo.po.Student;
 import com.javatribe.apicompetition.service.RegisterTeamService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.client.utils.DateUtils;
@@ -13,10 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -99,8 +97,18 @@ public class RegisterTeamImpl implements RegisterTeamService {
                 registerTeamOfFront.setTeamLeaderWechat(o.getTeamLeaderWechat());
                 registerTeamOfFront.setTeamName(o.getTeamName());
                 registerTeamOfFront.setRegisterTime(o.getRegisterTime());
-                if (!StringUtils.isEmpty(o.getTeamUserList()))
-                    registerTeamOfFront.setTeamUserList(Arrays.stream(o.getTeamUserList().split(",")).collect(Collectors.toList()));
+                if (!StringUtils.isEmpty(o.getTeamUserList())){
+                    String[] teamUser = o.getTeamUserList().split(",");
+                    String[] teamUserId = o.getTeamUserId().split(",");
+                    List<Student> students = new ArrayList<>();
+                    for (int i=0 ; i<teamUser.length ; i++){
+                        Student tempData = new Student();
+                        tempData.setStudentId(teamUserId[i]);
+                        tempData.setStudentName(teamUser[i]);
+                        students.add(tempData);
+                    }
+                    registerTeamOfFront.setTeamUserList(students);
+                }
                 return registerTeamOfFront;
             }).collect(Collectors.toList());
             result.setData(JSONObject.toJSONString(datas));
@@ -138,14 +146,24 @@ public class RegisterTeamImpl implements RegisterTeamService {
     @Override
     public Result validateEditAndSignRegisterTeam(RegisterTeamOfFront registerTeam,Result result,String type,RegisterTeam registerTeamOfData) {
         String user = "";
+        String userId = "";
         //将队员的名字使用，分割，串联起来
         for(int i=0 ; registerTeam.getTeamUserList()!=null&&i<registerTeam.getTeamUserList().size() ; i++){
-            user += (registerTeam.getTeamUserList().get(i)+",");
+            Student student = registerTeam.getTeamUserList().get(i);
+            if (StringUtils.isEmpty(student.getStudentId()) || StringUtils.isEmpty(student.getStudentName())){
+                result.setCode(401);
+                result.setMessage("学号和学生姓名传输不对称");
+                return result;
+            }
+            user += (student.getStudentName()+",");
+            userId += (student.getStudentId()+",");
         }
         if(user!="") {
             user = user.substring(0, user.length() - 1);
+            userId = user.substring(0,userId.length()-1);
         }
         registerTeamOfData.setTeamUserList(user);
+        registerTeamOfData.setTeamUserId(userId);
         //如果编辑的时候手机号码为空，那么就不需要再次判断。
         String message = null;
         if (!(StringUtils.isEmpty(registerTeam.getTeamLeaderPhone())&&"编辑".equals(type))) {
