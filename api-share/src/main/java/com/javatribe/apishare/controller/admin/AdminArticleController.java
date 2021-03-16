@@ -99,6 +99,21 @@ public class AdminArticleController {
     }
 
     /**
+     * 上传图片，为什么重复呢？因为element-ui的问题
+     * @param multipartFile 文件
+     * @return
+     */
+    @PostMapping("/uploadImg")
+    public Result uploadImg(@RequestParam("file") MultipartFile multipartFile){
+        if (multipartFile == null) {
+            return new Result(UploadStatus.FILE_ISNULL.getCode(), UploadStatus.FILE_ISNULL.getMessage(), null);
+        }
+        UploadStatus uploadStatus = AliyunOssUtil.uploadImage(oss, multipartFile, properties.getBucketName());
+        String message = uploadStatus.getCode() == 200 ? properties.getHost() + uploadStatus.getMessage() : uploadStatus.getMessage();
+        return new Result(uploadStatus.getCode(), message, null);
+    }
+
+    /**
      * 验证article是否满足条件
      * @param article
      * @return
