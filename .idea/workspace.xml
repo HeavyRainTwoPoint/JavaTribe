@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,14 +23,30 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/po/Student.java" afterDir="false" />
+    <list default="true" id="6721e80d-a39a-4b2d-9552-68ed7947da36" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/annotation/AdminAuthentication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/annotation/ApiAuthentication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/annotation/SuperAuthentication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/annotation/TokenFreeAnnotation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/core/constant/GDUFHost.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/dto/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/interceptor/TokenInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/interceptor/role/UserType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/util/EncodeUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/util/HttpUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/util/JwtUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/util/Methods.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/util/conwork.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/resources/application-dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/resources/generatorConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/resources/log4j.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/RegisterTeamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/RegisterTeamController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/po/RegisterTeam.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/po/RegisterTeam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/po/RegisterTeamOfFront.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/po/RegisterTeamOfFront.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/RegisterTeamImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/RegisterTeamImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/RegisterTeamMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/RegisterTeamMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +57,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Alibaba Cloud ROS Template (YAML)" />
-        <option value="Interface" />
         <option value="JUnit5 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -57,6 +76,9 @@
     </file-type-list>
   </component>
   <component name="ProjectId" id="1n10eodkBiGPGBRYZYjcBT9FVRf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -93,19 +115,43 @@
     <property name="show.run.dashboard.notification" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.javatribe.apicompetition.service.impl" />
-      <recent name="com.javatribe.apicompetition.service" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\ASUS\Desktop\个人项目\server\部落官网\api-parent\api-competition\src\main\resources\sql" />
       <recent name="D:\ASUS\Desktop\个人项目\server\部落官网\api-parent\api-competition\src\main\resources" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.javatribe.apicompetition.service.impl" />
+      <recent name="com.javatribe.apicompetition.service" />
+    </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.ApiStarterApplication">
+  <component name="RunManager" selected="Application.HttpUtil">
+    <configuration name="HttpUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.javatribe.apicommon.util.HttpUtil" />
+      <module name="api-common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.javatribe.apicommon.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="generated-requests#102" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="102" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -120,22 +166,6 @@
       <option name="PACKAGE_NAME" value="com.javatribe.apicompetition.service.impl" />
       <option name="MAIN_CLASS_NAME" value="com.javatribe.apicompetition.service.impl.CompetitionIntroductionServiceImplTest" />
       <option name="METHOD_NAME" value="firstPageShow" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CompetitionIntroductionServiceImplTest.insertCompetitionInfo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="api-competition" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.javatribe.apicompetition.service.impl.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.javatribe.apicompetition.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.javatribe.apicompetition.service.impl.CompetitionIntroductionServiceImplTest" />
-      <option name="METHOD_NAME" value="insertCompetitionInfo" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -179,15 +209,15 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.HttpUtil" />
         <item itemvalue="Spring Boot.WebTest" />
         <item itemvalue="HTTP Request.generated-requests#102" />
         <item itemvalue="JUnit.CompetitionIntroductionServiceImplTest.firstPageShow" />
         <item itemvalue="JUnit.TribeStyleShowServiceImplTest.insertOne" />
-        <item itemvalue="JUnit.CompetitionIntroductionServiceImplTest.insertCompetitionInfo" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
   <component name="SshConsoleOptionsProvider">
     <option name="myEncoding" value="UTF-8" />
   </component>
@@ -318,56 +348,6 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="783" y="225" key="#com.intellij.ide.util.MemberChooser" timestamp="1615800467504">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="783" y="225" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1615800467504" />
-    <state x="132" y="122" width="1693" height="838" key="DiffContextDialog" timestamp="1615800468239">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="132" y="122" width="1693" height="838" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1615800468239" />
-    <state width="1833" height="287" key="GridCell.Tab.0.bottom" timestamp="1615800111981">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1833" height="287" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1615800111981" />
-    <state width="1833" height="287" key="GridCell.Tab.0.center" timestamp="1615800111981">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1833" height="287" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1615800111981" />
-    <state width="1833" height="287" key="GridCell.Tab.0.left" timestamp="1615800111981">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1833" height="287" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1615800111981" />
-    <state width="1833" height="287" key="GridCell.Tab.0.right" timestamp="1615800111981">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1833" height="287" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1615800111981" />
-    <state x="782" y="242" key="RollbackChangesDialog" timestamp="1615800093083">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="782" y="242" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1615800093083" />
-    <state x="458" y="115" key="SettingsEditor" timestamp="1615800148212">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="458" y="115" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1615800148212" />
-    <state x="132" y="122" width="1693" height="838" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1615800287747">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="132" y="122" width="1693" height="838" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1615800287747" />
-    <state x="680" y="244" width="1034" height="594" key="find.popup" timestamp="1615800596723">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="680" y="244" width="1034" height="594" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1615800596723" />
-    <state x="634" y="253" key="run.anything.popup" timestamp="1615800150208">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="634" y="253" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1615800150208" />
-    <state x="641" y="250" width="672" height="678" key="search.everywhere.popup" timestamp="1615800506559">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="641" y="250" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1615800506559" />
   </component>
   <component name="se.expertsystem.intellij.aop.aspectj.AspectJProjectComponent">
     <setting name="isActivated" value="false" />
