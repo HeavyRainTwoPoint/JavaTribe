@@ -11,7 +11,6 @@ public class ActivityDTO {
     private Integer id;
     private String actTitle;
     private String actContent;
-    private Long actTime;
     private String[] imgs;
 
 }

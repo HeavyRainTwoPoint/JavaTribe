@@ -20,13 +20,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/controller/admin/AdminArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/controller/admin/AdminArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/controller/admin/AdminTagController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/controller/admin/AdminTagController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/service/impl/TagServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/service/impl/TagServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-share/src/main/resources/mappers/TagMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-share/src/main/resources/mappers/TagMapper.xml" afterDir="false" />
-    </list>
+    <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -250,11 +244,12 @@
       <workItem from="1615210575732" duration="27000" />
       <workItem from="1615266531810" duration="11000" />
       <workItem from="1615604240563" duration="709000" />
+      <workItem from="1615950513528" duration="586000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -308,23 +303,26 @@
                   </entry>
                 </map>
               </option>
+              <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="OPEN_GENERIC_TABS">
-      <map>
-        <entry key="1" value="TOOL_WINDOW" />
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="296" y="36" key="#ApiStarterApplication" timestamp="1615951229224">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="296" y="36" key="#ApiStarterApplication/0.0.1536.824@0.0.1536.824" timestamp="1615951229224" />
     <state x="783" y="225" key="#com.intellij.ide.util.MemberChooser" timestamp="1615800467504">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="783" y="225" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1615800467504" />
+    <state x="614" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1615951093110">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="614" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1615951093110" />
     <state x="132" y="122" width="1693" height="838" key="DiffContextDialog" timestamp="1615800468239">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
