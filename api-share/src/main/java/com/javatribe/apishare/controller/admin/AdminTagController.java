@@ -35,7 +35,7 @@ public class AdminTagController {
 
     /**
      * 删除标签
-     * @param tagId 待删除的标签的tagId
+     * @param map 包含待删除的标签的tagId
      * @return
      */
     @PostMapping("/deleteTag")
@@ -52,9 +52,10 @@ public class AdminTagController {
         if (result == -1) {
             r.setCode(ApiInfo.OK.getCode());
             r.setMessage("该标签已存在！不允许重复插入！");
-        } else if (result == 1) {
+        } else if (result > 1) {
             r.setMessage("插入成功！");
             r.setCode(ApiInfo.OK.getCode());
+            r.setData(tag);
         } else {
             r.setCode(ApiInfo.BASIC_ERROR.getCode());
             r.setMessage("插入失败！请刷新后重试！");

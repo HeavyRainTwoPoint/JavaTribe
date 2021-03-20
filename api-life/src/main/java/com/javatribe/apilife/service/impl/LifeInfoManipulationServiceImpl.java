@@ -27,7 +27,7 @@ public class LifeInfoManipulationServiceImpl implements LifeInfoManipulation {
 
     @Override
     public void insertActivity(ActivityDTO dto) throws SqlException {
-        if (dto.getActTime() == null || StringUtils.isEmpty(dto.getActTitle())
+        if (StringUtils.isEmpty(dto.getActTitle())
                 || StringUtils.isEmpty(dto.getActContent()) || dto.getImgs() == null
                 || dto.getImgs().length == 0) {
             throw new SqlException("信息不全");
@@ -41,7 +41,7 @@ public class LifeInfoManipulationServiceImpl implements LifeInfoManipulation {
         BeanUtils.copyProperties(dto, activity);
         activity.setActImgURL(join(dto.getImgs(), ","));
         activity.setPriority(activityDao.latestPriority() + 1);
-        activity.setActTime(new Timestamp(dto.getActTime()));
+        activity.setActTime(now);
         activity.setGmtCreate(now);
         activity.setGmtModify(now);
         activity.setDeleteStatus(0);
@@ -60,9 +60,6 @@ public class LifeInfoManipulationServiceImpl implements LifeInfoManipulation {
         }
         Activity activity = new Activity();
         BeanUtils.copyProperties(dto, activity);
-        if (dto.getActTime() != null) {
-            activity.setActTime(new Timestamp(dto.getActTime()));
-        }
         activity.setActImgURL(join(dto.getImgs(), ","));
         activity.setGmtModify(new Timestamp(System.currentTimeMillis()));
         activityDao.updateById(activity);

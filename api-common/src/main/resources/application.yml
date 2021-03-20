@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    url: jdbc:mysql://47.92.200.8:3306/javatribe?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+    password: pBcrDNAMFr7ifb7e
+    username: javatribe
+    driver-class-name: com.mysql.jdbc.Driver
+  servlet:
+    multipart:
+      max-file-size: 200MB #最大 上传 2G
+      max-request-size: 200MB
+  mvc:
+    throw-exception-if-no-handler-found: true
+  jackson:
+    time-zone: GMT+8
+    serialization: {WRITE_DATES_AS_TIMESTAMPS: true}
+  profiles:
+    active: dev
+
+
+mybatis:
+  mapper-locations: classpath*:/mapping/**/*.xml, classpath*:/mapper/**/*.xml
+  type-aliases-package: com.javatribe.apienroll.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+oss:
+  access-key-id: LTAI4GL5YbDREf9WSAv6xo5a
+  access-key-secret: L5QB1ls2XSBfAnTq1I1naG6RRG1cFT
+  bucket-name: javatribe
+  endpoint: oss-cn-guangzhou.aliyuncs.com
+  host: https://${oss.bucket-name}.${oss.endpoint}
+
+
+

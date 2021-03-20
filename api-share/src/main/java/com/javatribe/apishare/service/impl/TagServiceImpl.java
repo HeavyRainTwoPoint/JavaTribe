@@ -39,7 +39,9 @@ public class TagServiceImpl implements TagService {
         if (count > 0) {
             return -1;
         }
-        return tagMapper.insertTag(tag);
+        int result = tagMapper.insertTag(tag) == 1 ? tag.getTagId() : 0;
+        System.out.println("回填的字段：" + result);
+        return result;
     }
 
     /**
