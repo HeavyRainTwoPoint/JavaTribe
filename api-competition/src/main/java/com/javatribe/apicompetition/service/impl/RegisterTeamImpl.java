@@ -7,6 +7,7 @@ import com.javatribe.apicompetition.pojo.po.RegisterTeam;
 import com.javatribe.apicompetition.pojo.po.RegisterTeamOfFront;
 import com.javatribe.apicompetition.pojo.po.Student;
 import com.javatribe.apicompetition.service.RegisterTeamService;
+import com.javatribe.apicompetition.util.StudentIdUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.client.utils.DateUtils;
 import org.springframework.aop.framework.AopContext;
@@ -46,12 +47,23 @@ public class RegisterTeamImpl implements RegisterTeamService {
             return "手机号码错误，请重新填写";
         }
         //其次判断学号
+        String regex = "(^"+ StudentIdUtil.getStudentId() +".*?(?:0[1-9]|[1-5][0-9])$)";
+        Pattern studentIdRegex = Pattern.compile(regex);
         String teamLeaderStudentId = registerTeam.getTeamLeaderStudentId();
-
+        if (StringUtils.isEmpty(teamLeaderStudentId)){
+            return "队长学号未填写";
+        }else if (!studentIdRegex.matcher(teamLeaderStudentId.trim()).matches()){
+            return "队长学号填写出错，请重新填写";
+        }
         if(registerTeam.getTeamUserList()!=null && registerTeam.getTeamUserId()==null) {
             return "队员学号不能为空";
         }else if(registerTeam.getTeamUserId()!=null){
             String[] teamUserIds = registerTeam.getTeamUserId().split(",");
+            for (int i=0 ; i<teamUserIds.length ; i++){
+                if (!studentIdRegex.matcher(teamUserIds[i].trim()).matches()){
+                    return "队员学号填写错误";
+                }
+            }
         }
         return null;
     }
