@@ -46,10 +46,13 @@ public class RegisterTeamImpl implements RegisterTeamService {
             return "手机号码错误，请重新填写";
         }
         //其次判断学号
-//        String studentId = registerTeam.getTeamLeaderStudentId();
-//        if(){
-//            return "队长学号填写出错，请重新填写";
-//        }
+        String teamLeaderStudentId = registerTeam.getTeamLeaderStudentId();
+
+        if(registerTeam.getTeamUserList()!=null && registerTeam.getTeamUserId()==null) {
+            return "队员学号不能为空";
+        }else if(registerTeam.getTeamUserId()!=null){
+            String[] teamUserIds = registerTeam.getTeamUserId().split(",");
+        }
         return null;
     }
 
@@ -57,11 +60,11 @@ public class RegisterTeamImpl implements RegisterTeamService {
     public String toValidateNoSameNameOrSameLeaderName(RegisterTeam registerTeam) {
         //首先检查是否有同名队伍 规则：在同一届 同一个比赛中 不能存在相同的队伍
         String year = DateUtils.formatDate(registerTeam.getRegisterTime(),"yyyy");
-        int i = registerTeamMapper.selectSameTeamName(year, registerTeam.getCompetitionId(), registerTeam.getTeamName());
+        int i = registerTeamMapper.selectSameTeamName(year, registerTeam.getCompetitionId(), registerTeam.getTeamName(),registerTeam.getRegisterId());
         if (i>0){
             return "队伍名字重复，请重新填写";
         }
-        i = registerTeamMapper.selectSameTeamLeaderName(year,registerTeam.getCompetitionId(),registerTeam.getTeamLeaderName());
+        i = registerTeamMapper.selectSameTeamLeaderName(year,registerTeam.getCompetitionId(),registerTeam.getTeamLeaderName(),registerTeam.getRegisterId());
         if (i>0){
             return "您作为队长已经报过名了，请勿重复报名";
         }
@@ -85,7 +88,9 @@ public class RegisterTeamImpl implements RegisterTeamService {
         result.setCode(200);
         List<RegisterTeam> registerTeam = registerTeamMapper.queryRegisterList(competitionId);
         if (registerTeam!=null && registerTeam.size()!=0){
-            List<RegisterTeamOfFront> datas = Arrays.stream(registerTeam.toArray(new RegisterTeam[registerTeam.size()])).map((o) -> {
+            List<RegisterTeamOfFront> datas = new ArrayList<>();
+            for (int i=0 ; i<registerTeam.size() ; i++) {
+                RegisterTeam o = registerTeam.get(i);
                 RegisterTeamOfFront registerTeamOfFront = new RegisterTeamOfFront();
                 registerTeamOfFront.setCompetitionId(o.getCompetitionId());
                 registerTeamOfFront.setOrder(o.getOrder());
@@ -97,20 +102,20 @@ public class RegisterTeamImpl implements RegisterTeamService {
                 registerTeamOfFront.setTeamLeaderWechat(o.getTeamLeaderWechat());
                 registerTeamOfFront.setTeamName(o.getTeamName());
                 registerTeamOfFront.setRegisterTime(o.getRegisterTime());
-                if (!StringUtils.isEmpty(o.getTeamUserList())){
+                if (!StringUtils.isEmpty(o.getTeamUserList())) {
                     String[] teamUser = o.getTeamUserList().split(",");
                     String[] teamUserId = o.getTeamUserId().split(",");
                     List<Student> students = new ArrayList<>();
-                    for (int i=0 ; i<teamUser.length ; i++){
+                    for (int j = 0; j < teamUser.length; j++) {
                         Student tempData = new Student();
-                        tempData.setStudentId(teamUserId[i]);
-                        tempData.setStudentName(teamUser[i]);
+                        tempData.setStudentId(teamUserId[j]);
+                        tempData.setStudentName(teamUser[j]);
                         students.add(tempData);
                     }
                     registerTeamOfFront.setTeamUserList(students);
                 }
-                return registerTeamOfFront;
-            }).collect(Collectors.toList());
+                datas.add(registerTeamOfFront);
+            }
             result.setData(JSONObject.toJSONString(datas));
         }else{
             result.setMessage("没有数据");
@@ -160,13 +165,13 @@ public class RegisterTeamImpl implements RegisterTeamService {
         }
         if(user!="") {
             user = user.substring(0, user.length() - 1);
-            userId = user.substring(0,userId.length()-1);
+            userId = userId.substring(0,userId.length()-1);
         }
         registerTeamOfData.setTeamUserList(user);
         registerTeamOfData.setTeamUserId(userId);
         //如果编辑的时候手机号码为空，那么就不需要再次判断。
         String message = null;
-        if (!(StringUtils.isEmpty(registerTeam.getTeamLeaderPhone())&&"编辑".equals(type))) {
+        if (!(StringUtils.isEmpty(registerTeam.getTeamLeaderPhone()) || (StringUtils.isEmpty(registerTeam.getTeamLeaderPhone())&&"编辑".equals(type)))) {
             message = toValidateMessage(registerTeamOfData);
             if (!Objects.isNull(message)) {
                 result.setCode(401);
