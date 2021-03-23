@@ -65,7 +65,7 @@ public class CooperationController {
             if (cooperation == null) {
                 return ApiResults.badRequest("id所在数据不存在");
             }
-            BeanUtils.copyProperties(cooperation, cooperationBO);
+            BeanUtils.copyProperties(cooperationBO, cooperation);
             //todo  添加操作人信息
             cooperation.setUpdateBy(1);
             cooperationService.update(cooperation);

@@ -59,7 +59,7 @@ public class NewsController {
             if (newsBO.getPriority() != NewsType.HeightPriority.getType() || newsBO.getPriority() != NewsType.LowPriority.getType()) {
                 newsBO.setPriority(NewsType.LowPriority.getType());
             }
-            BeanUtils.copyProperties(news, newsBO);
+            BeanUtils.copyProperties(newsBO, news);
             //todo  添加操作人信息
             news.setUpdateBy(1);
             newsService.update(news);
