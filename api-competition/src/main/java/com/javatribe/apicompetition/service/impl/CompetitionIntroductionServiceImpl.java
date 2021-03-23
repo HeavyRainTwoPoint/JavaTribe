@@ -78,32 +78,38 @@ public class CompetitionIntroductionServiceImpl implements CompetitionIntroducti
 
     @Override
     public Result addCompetition(CompetitionIntroduction competition) {
-        Result result = new Result();
-        if (Objects.isNull(competition.getCompetitionName())){
-            result.setCode(401);
-            result.setMessage("比赛名字为空，请重新填写");
-            return result;
-        }
-        //判断是否有相同比赛名字
-        String competitionName = competition.getCompetitionName();
-        int i = competitionIntroductionMapper.selectByCompetitionName(competitionName);
-        if (i>0){
-            result.setCode(401);
-            result.setMessage("添加出错，比赛名字重复");
-            return result;
-        }
-        competition.setDeleteStatus(false);
-        competition.setSignUp(1);
-        competition.setGmtCreate(new Date());
-        int insertRow = competitionIntroductionMapper.insert(competition);
-        if (insertRow>0){
-            return Result.success();
-        }else{
-            result.setCode(401);
-            result.setMessage("插入失败");
-            return result;
-        }
+        insertCompetitionInfo(competition);
+        return Result.success();
     }
+
+    // @Override
+    // public Result addCompetition(CompetitionIntroduction competition) {
+    //     Result result = new Result();
+    //     if (Objects.isNull(competition.getCompetitionName())){
+    //         result.setCode(401);
+    //         result.setMessage("比赛名字为空，请重新填写");
+    //         return result;
+    //     }
+    //     //判断是否有相同比赛名字
+    //     String competitionName = competition.getCompetitionName();
+    //     int i = competitionIntroductionMapper.selectByCompetitionName(competitionName);
+    //     if (i>0){
+    //         result.setCode(401);
+    //         result.setMessage("添加出错，比赛名字重复");
+    //         return result;
+    //     }
+    //     competition.setDeleteStatus(false);
+    //     competition.setSignUp(1);
+    //     competition.setGmtCreate(new Date());
+    //     int insertRow = competitionIntroductionMapper.insert(competition);
+    //     if (insertRow>0){
+    //         return Result.success();
+    //     }else{
+    //         result.setCode(401);
+    //         result.setMessage("插入失败");
+    //         return result;
+    //     }
+    // }
 
 
     /**

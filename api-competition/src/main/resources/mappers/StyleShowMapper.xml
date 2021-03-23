@@ -17,10 +17,100 @@
     <result column="team_end_time" jdbcType="TIMESTAMP" property="teamEndTime" />
     <result column="the_year" jdbcType="VARCHAR" property="theYear" />
     <result column="year_id" jdbcType="INTEGER" property="yearId" />
+    <result column="team_master_name" jdbcType="VARCHAR" property="teamMasterName" />
   </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    show_id, competition_id, gmt_create, gmt_modified, show_status, delete_status, show_order, 
+    imgs, project_name, team_name, team_members, team_begin_time, team_end_time, the_year, 
+    year_id, team_master_name
+  </sql>
+  <select id="selectByExample" parameterType="com.javatribe.apicompetition.pojo.po.StyleShowExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_style_show
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_style_show
+    where show_id = #{showId,jdbcType=BIGINT}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_style_show
     where show_id = #{showId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.javatribe.apicompetition.pojo.po.StyleShowExample">
+    delete from t_style_show
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
   </delete>
   <insert id="insert" parameterType="com.javatribe.apicompetition.pojo.po.StyleShow">
     <selectKey keyProperty="showId" order="AFTER" resultType="java.lang.Long">
@@ -30,13 +120,250 @@
       show_status, delete_status, show_order, 
       imgs, project_name, team_name, 
       team_members, team_begin_time, team_end_time, 
-      the_year, year_id)
+      the_year, year_id, team_master_name
+      )
     values (#{competitionId,jdbcType=BIGINT}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
       #{showStatus,jdbcType=BIT}, #{deleteStatus,jdbcType=BIT}, #{showOrder,jdbcType=INTEGER}, 
       #{imgs,jdbcType=VARCHAR}, #{projectName,jdbcType=VARCHAR}, #{teamName,jdbcType=VARCHAR}, 
       #{teamMembers,jdbcType=VARCHAR}, #{teamBeginTime,jdbcType=TIMESTAMP}, #{teamEndTime,jdbcType=TIMESTAMP}, 
-      #{theYear,jdbcType=VARCHAR}, #{yearId,jdbcType=INTEGER})
+      #{theYear,jdbcType=VARCHAR}, #{yearId,jdbcType=INTEGER}, #{teamMasterName,jdbcType=VARCHAR}
+      )
   </insert>
+  <insert id="insertSelective" parameterType="com.javatribe.apicompetition.pojo.po.StyleShow">
+    <selectKey keyProperty="showId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_style_show
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="competitionId != null">
+        competition_id,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="showStatus != null">
+        show_status,
+      </if>
+      <if test="deleteStatus != null">
+        delete_status,
+      </if>
+      <if test="showOrder != null">
+        show_order,
+      </if>
+      <if test="imgs != null">
+        imgs,
+      </if>
+      <if test="projectName != null">
+        project_name,
+      </if>
+      <if test="teamName != null">
+        team_name,
+      </if>
+      <if test="teamMembers != null">
+        team_members,
+      </if>
+      <if test="teamBeginTime != null">
+        team_begin_time,
+      </if>
+      <if test="teamEndTime != null">
+        team_end_time,
+      </if>
+      <if test="theYear != null">
+        the_year,
+      </if>
+      <if test="yearId != null">
+        year_id,
+      </if>
+      <if test="teamMasterName != null">
+        team_master_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="competitionId != null">
+        #{competitionId,jdbcType=BIGINT},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="showStatus != null">
+        #{showStatus,jdbcType=BIT},
+      </if>
+      <if test="deleteStatus != null">
+        #{deleteStatus,jdbcType=BIT},
+      </if>
+      <if test="showOrder != null">
+        #{showOrder,jdbcType=INTEGER},
+      </if>
+      <if test="imgs != null">
+        #{imgs,jdbcType=VARCHAR},
+      </if>
+      <if test="projectName != null">
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="teamName != null">
+        #{teamName,jdbcType=VARCHAR},
+      </if>
+      <if test="teamMembers != null">
+        #{teamMembers,jdbcType=VARCHAR},
+      </if>
+      <if test="teamBeginTime != null">
+        #{teamBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teamEndTime != null">
+        #{teamEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="theYear != null">
+        #{theYear,jdbcType=VARCHAR},
+      </if>
+      <if test="yearId != null">
+        #{yearId,jdbcType=INTEGER},
+      </if>
+      <if test="teamMasterName != null">
+        #{teamMasterName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.javatribe.apicompetition.pojo.po.StyleShowExample" resultType="java.lang.Long">
+    select count(*) from t_style_show
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_style_show
+    <set>
+      <if test="record.showId != null">
+        show_id = #{record.showId,jdbcType=BIGINT},
+      </if>
+      <if test="record.competitionId != null">
+        competition_id = #{record.competitionId,jdbcType=BIGINT},
+      </if>
+      <if test="record.gmtCreate != null">
+        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.gmtModified != null">
+        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.showStatus != null">
+        show_status = #{record.showStatus,jdbcType=BIT},
+      </if>
+      <if test="record.deleteStatus != null">
+        delete_status = #{record.deleteStatus,jdbcType=BIT},
+      </if>
+      <if test="record.showOrder != null">
+        show_order = #{record.showOrder,jdbcType=INTEGER},
+      </if>
+      <if test="record.imgs != null">
+        imgs = #{record.imgs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectName != null">
+        project_name = #{record.projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teamName != null">
+        team_name = #{record.teamName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teamMembers != null">
+        team_members = #{record.teamMembers,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teamBeginTime != null">
+        team_begin_time = #{record.teamBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.teamEndTime != null">
+        team_end_time = #{record.teamEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.theYear != null">
+        the_year = #{record.theYear,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yearId != null">
+        year_id = #{record.yearId,jdbcType=INTEGER},
+      </if>
+      <if test="record.teamMasterName != null">
+        team_master_name = #{record.teamMasterName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_style_show
+    set show_id = #{record.showId,jdbcType=BIGINT},
+      competition_id = #{record.competitionId,jdbcType=BIGINT},
+      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      show_status = #{record.showStatus,jdbcType=BIT},
+      delete_status = #{record.deleteStatus,jdbcType=BIT},
+      show_order = #{record.showOrder,jdbcType=INTEGER},
+      imgs = #{record.imgs,jdbcType=VARCHAR},
+      project_name = #{record.projectName,jdbcType=VARCHAR},
+      team_name = #{record.teamName,jdbcType=VARCHAR},
+      team_members = #{record.teamMembers,jdbcType=VARCHAR},
+      team_begin_time = #{record.teamBeginTime,jdbcType=TIMESTAMP},
+      team_end_time = #{record.teamEndTime,jdbcType=TIMESTAMP},
+      the_year = #{record.theYear,jdbcType=VARCHAR},
+      year_id = #{record.yearId,jdbcType=INTEGER},
+      team_master_name = #{record.teamMasterName,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.javatribe.apicompetition.pojo.po.StyleShow">
+    update t_style_show
+    <set>
+      <if test="competitionId != null">
+        competition_id = #{competitionId,jdbcType=BIGINT},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="showStatus != null">
+        show_status = #{showStatus,jdbcType=BIT},
+      </if>
+      <if test="deleteStatus != null">
+        delete_status = #{deleteStatus,jdbcType=BIT},
+      </if>
+      <if test="showOrder != null">
+        show_order = #{showOrder,jdbcType=INTEGER},
+      </if>
+      <if test="imgs != null">
+        imgs = #{imgs,jdbcType=VARCHAR},
+      </if>
+      <if test="projectName != null">
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="teamName != null">
+        team_name = #{teamName,jdbcType=VARCHAR},
+      </if>
+      <if test="teamMembers != null">
+        team_members = #{teamMembers,jdbcType=VARCHAR},
+      </if>
+      <if test="teamBeginTime != null">
+        team_begin_time = #{teamBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teamEndTime != null">
+        team_end_time = #{teamEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="theYear != null">
+        the_year = #{theYear,jdbcType=VARCHAR},
+      </if>
+      <if test="yearId != null">
+        year_id = #{yearId,jdbcType=INTEGER},
+      </if>
+      <if test="teamMasterName != null">
+        team_master_name = #{teamMasterName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where show_id = #{showId,jdbcType=BIGINT}
+  </update>
   <update id="updateByPrimaryKey" parameterType="com.javatribe.apicompetition.pojo.po.StyleShow">
     update t_style_show
     set competition_id = #{competitionId,jdbcType=BIGINT},
@@ -52,20 +379,22 @@
       team_begin_time = #{teamBeginTime,jdbcType=TIMESTAMP},
       team_end_time = #{teamEndTime,jdbcType=TIMESTAMP},
       the_year = #{theYear,jdbcType=VARCHAR},
-      year_id = #{yearId,jdbcType=INTEGER}
+      year_id = #{yearId,jdbcType=INTEGER},
+      team_master_name = #{teamMasterName,jdbcType=VARCHAR}
     where show_id = #{showId,jdbcType=BIGINT}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select show_id, competition_id, gmt_create, gmt_modified, show_status, delete_status, 
-    show_order, imgs, project_name, team_name, team_members, team_begin_time, team_end_time, 
-    the_year, year_id
+  <select id="selectByExampleWithRowbounds" parameterType="com.javatribe.apicompetition.pojo.po.StyleShowExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
     from t_style_show
-    where show_id = #{showId,jdbcType=BIGINT}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select show_id, competition_id, gmt_create, gmt_modified, show_status, delete_status, 
-    show_order, imgs, project_name, team_name, team_members, team_begin_time, team_end_time, 
-    the_year, year_id
-    from t_style_show
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
   </select>
 </mapper>

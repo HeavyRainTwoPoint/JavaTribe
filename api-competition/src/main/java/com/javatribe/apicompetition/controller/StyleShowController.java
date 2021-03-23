@@ -66,6 +66,15 @@ public class StyleShowController {
         return Result.success(list);
     }
 
+    // /**
+    //  * 根据比赛 ID 获取风采展示的届数
+    //  * @param competitionId
+    //  * @return
+    //  */
+    // @GetMapping("/styleShowYears")
+    // public Result<List<Integer>> getAllStyleShowTheYears(@RequestParam Integer competitionId) {
+    //     return styleShowService.getAllStyleShowYears(competitionId);
+    // }
     /**
      * 根据比赛 ID 获取风采展示的届数
      * @param competitionId
@@ -76,9 +85,11 @@ public class StyleShowController {
         return styleShowService.getAllStyleShowYears(competitionId);
     }
 
+
+
     @GetMapping("/styleShow_searchBy")
-    public Result<List<StyleShowVO>> getStyleShowByCompetitionIdAndTheYear(@RequestParam String theYear, @RequestParam Integer competitionId) {
-        return styleShowService.getAllStyleShowVOByCompetitionIdAndTheYear(theYear,competitionId);
+    public Result<List<StyleShowVO>> getStyleShowByCompetitionIdAndTheYear(@RequestParam Integer yearId, @RequestParam Integer competitionId) {
+        return styleShowService.getAllStyleShowVOByCompetitionIdAndTheYear(yearId,competitionId);
     }
 
     // /**

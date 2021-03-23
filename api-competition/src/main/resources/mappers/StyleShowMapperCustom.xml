@@ -47,7 +47,7 @@
           and style_show.delete_status = 0
         and style_show.competition_id = #{comId}
 
-        and style_show.the_year = #{theYear}
+        and style_show.year_id = #{theYear}
 
     </select>
     <select id="getAllTheYearByCompetitionId" resultType="java.lang.Integer">

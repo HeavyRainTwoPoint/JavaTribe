@@ -22,6 +22,6 @@ class StyleShowMapperCustomTest {
 
     @Test
     void getByCompetitionIdAndYearId() {
-        styleShowMapperCustom.getByCompetitionIdAndYearId(3,"4");
+        //styleShowMapperCustom.getByCompetitionIdAndYearId(3,"4");
     }
 }

@@ -5,11 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api-starter/src/test/java/com/javatribe/apistarter/TribeStyleShowServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/CompetitionIntroductionMapperCustom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/CompetitionIntroductionMapperCustom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/test/java/com/javatribe/apicompetition/service/impl/CompetitionIntroductionServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/test/java/com/javatribe/apicompetition/service/impl/CompetitionIntroductionServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/test/java/com/javatribe/apicompetition/service/impl/TribeStyleShowServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/test/java/com/javatribe/apicompetition/service/impl/TribeStyleShowServiceImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/ext/CompetitionYearsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/StyleShowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/StyleShowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/mapper/CompetitionIntroductionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/mapper/CompetitionIntroductionMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/mapper/StyleShowMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/mapper/StyleShowMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/mapper/StyleShowMapperCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/mapper/StyleShowMapperCustom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/po/CompetitionIntroduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/po/CompetitionIntroduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/po/StyleShow.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/po/StyleShow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/TribeStyleShowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/TribeStyleShowService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/CompetitionIntroductionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/CompetitionIntroductionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/TribeStyleShowServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/TribeStyleShowServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/resources/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/CompetitionIntroductionMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/StyleShowMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/StyleShowMapperCustom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/StyleShowMapperCustom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/test/java/com/javatribe/apicompetition/mapper/StyleShowMapperCustomTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/test/java/com/javatribe/apicompetition/mapper/StyleShowMapperCustomTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +31,8 @@
       <list>
         <option value="Alibaba Cloud ROS Template (YAML)" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -67,6 +77,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="rest.client.default.execution.environment" value="dev" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="show.run.dashboard.notification" value="false" />
   </component>
@@ -78,6 +89,9 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\ASUS\Desktop\my_demo\server\部落官网\api-parent\api-competition\src\main\resources\mappers" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.javatribe.apicompetition.mapper" />
       <recent name="com.javatribe.apicompetition.service.impl" />
@@ -88,7 +102,7 @@
       <recent name="com.javatribe.apicompetition.util" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TribeStyleShowServiceImplTest.insertOne (1)">
+  <component name="RunManager" selected="Spring Boot.ApiStarterApplication">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -264,7 +278,10 @@
       <workItem from="1616482155414" duration="2315000" />
       <workItem from="1616489373340" duration="31000" />
       <workItem from="1616500477398" duration="76000" />
-      <workItem from="1616501500632" duration="637000" />
+      <workItem from="1616501500632" duration="803000" />
+      <workItem from="1616505861223" duration="71000" />
+      <workItem from="1616508322322" duration="6000" />
+      <workItem from="1616514366670" duration="1790000" />
     </task>
     <servers />
   </component>
@@ -276,7 +293,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/api-starter/src/test/java/com/javatribe/apistarter/TribeStyleShowServiceImplTest.java</url>
-          <line>53</line>
+          <line>54</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

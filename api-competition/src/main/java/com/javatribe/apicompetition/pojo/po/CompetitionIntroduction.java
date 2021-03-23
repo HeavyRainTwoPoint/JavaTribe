@@ -1,8 +1,5 @@
 package com.javatribe.apicompetition.pojo.po;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -15,10 +12,8 @@ public class CompetitionIntroduction implements Serializable {
 
     private Boolean deleteStatus;
 
-    @JSONField(format = "yyyy-MM-dd")
     private Date gmtCreate;
 
-    @JSONField(format = "yyyy-MM-dd")
     private Date gmtModified;
 
     private Integer signUp;

@@ -24,7 +24,7 @@ public interface StyleShowMapperCustom {
      * @param theYear
      * @return
      */
-    List<StyleShowVO> getByCompetitionIdAndYearId(@Param("comId") Integer comId,@Param("theYear") String theYear);
+    List<StyleShowVO> getByCompetitionIdAndYearId(@Param("comId") Integer comId,@Param("theYear") Integer yearId);
 
     List<Integer> getAllTheYearByCompetitionId(@Param("comId") Integer comId);
 }

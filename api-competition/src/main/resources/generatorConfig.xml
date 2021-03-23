@@ -6,7 +6,7 @@
 <generatorConfiguration>
 
 
-    <context id="mysqlTable" targetRuntime="MyBatis3Simple"     defaultModelType="flat">
+    <context id="mysqlTable" targetRuntime="MyBatis3"     defaultModelType="flat">
         <plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin" />
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
@@ -61,6 +61,11 @@
         <table tableName="t_style_show" domainObjectName="StyleShow" >
 
             <generatedKey column="show_id"  sqlStatement="Mysql"  identity="true" />
+        </table>
+
+        <table tableName="t_competition_years" domainObjectName="CompetitionYear" >
+
+            <generatedKey column="year_id"  sqlStatement="Mysql"  identity="true" />
         </table>
 
 
