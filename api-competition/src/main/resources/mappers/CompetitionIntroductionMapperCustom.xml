@@ -45,7 +45,7 @@
 
     <select id="selectFirstPageShow" resultMap="BaseResultMap">
         select
-            <include refid="field_1" />
+            <include refid="field_all" />
         from t_competition_introduction
 
             where  delete_status = 0 limit 30

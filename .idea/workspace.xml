@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="" />
+    <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/api-starter/src/test/java/com/javatribe/apistarter/TribeStyleShowServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/CompetitionIntroductionMapperCustom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/CompetitionIntroductionMapperCustom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/test/java/com/javatribe/apicompetition/service/impl/CompetitionIntroductionServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/test/java/com/javatribe/apicompetition/service/impl/CompetitionIntroductionServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/test/java/com/javatribe/apicompetition/service/impl/TribeStyleShowServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/test/java/com/javatribe/apicompetition/service/impl/TribeStyleShowServiceImplTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,35 +84,18 @@
       <recent name="com.javatribe.apicompetition.service" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.javatribe.apistarter" />
       <recent name="com.javatribe.apicompetition.util" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.ApiStarterApplication">
-    <configuration name="MarkdownUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.javatribe.apicompetition.util.MarkdownUtils" />
-      <module name="api-competition" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.javatribe.apicompetition.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CompetitionIntroductionMapperCustomTest.getDetailInfoById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="api-competition" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.javatribe.apicompetition.mapper.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.javatribe.apicompetition.mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.javatribe.apicompetition.mapper.CompetitionIntroductionMapperCustomTest" />
-      <option name="METHOD_NAME" value="getDetailInfoById" />
-      <option name="TEST_OBJECT" value="method" />
+  <component name="RunManager" selected="JUnit.TribeStyleShowServiceImplTest.insertOne (1)">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -159,6 +148,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TribeStyleShowServiceImplTest.insertOne (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="api-starter" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.javatribe.apistarter.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.javatribe.apistarter" />
+      <option name="MAIN_CLASS_NAME" value="com.javatribe.apistarter.TribeStyleShowServiceImplTest" />
+      <option name="METHOD_NAME" value="insertOne" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TribeStyleShowServiceImplTest.insertOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="api-competition" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.javatribe.apicompetition.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.javatribe.apicompetition.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.javatribe.apicompetition.service.impl.TribeStyleShowServiceImplTest" />
+      <option name="METHOD_NAME" value="insertOne" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ApiStarterApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="api-starter" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.javatribe.apistarter.ApiStarterApplication" />
@@ -168,11 +189,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TribeStyleShowServiceImplTest.insertOne (1)" />
+        <item itemvalue="JUnit.TribeStyleShowServiceImplTest.insertOne" />
         <item itemvalue="JUnit.StyleShowMapperCustomTest.getByCompetitionIdAndYearId" />
         <item itemvalue="JUnit.TribeStyleShowServiceImplTest.getAllStyleShow" />
         <item itemvalue="JUnit.CompetitionIntroductionServiceImplTest.firstPageShow" />
-        <item itemvalue="JUnit.CompetitionIntroductionMapperCustomTest.getDetailInfoById" />
-        <item itemvalue="Application.MarkdownUtils" />
       </list>
     </recent_temporary>
   </component>
@@ -242,11 +263,24 @@
       <workItem from="1616475191634" duration="5361000" />
       <workItem from="1616482155414" duration="2315000" />
       <workItem from="1616489373340" duration="31000" />
+      <workItem from="1616500477398" duration="76000" />
+      <workItem from="1616501500632" duration="637000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/api-starter/src/test/java/com/javatribe/apistarter/TribeStyleShowServiceImplTest.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="se.expertsystem.intellij.aop.aspectj.AspectJProjectComponent">
     <setting name="isActivated" value="false" />

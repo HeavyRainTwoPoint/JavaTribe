@@ -22,11 +22,11 @@ spring:
 
 
 mybatis:
-<<<<<<< HEAD
-  mapper-locations: classpath:/mapper/**/*.xml,classpath:/mappers/**/*.xml
-=======
+#<<<<<<< HEAD
+#  mapper-locations: classpath:/mapper/**/*.xml,classpath:/mappers/**/*.xml
+#=======
   mapper-locations: classpath:/mappers/*.xml
->>>>>>> e09ca9097fc5f346ac394677f64181b5aa27bb98
+#>>>>>>> e09ca9097fc5f346ac394677f64181b5aa27bb98
   type-aliases-package: com.javatribe.apicompetition.pojo.po
   configuration:
     map-underscore-to-camel-case: true
