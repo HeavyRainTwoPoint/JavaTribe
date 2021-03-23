@@ -1,5 +1,6 @@
 package com.javatribe.apicompetition.service;
 
+import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.pojo.po.StyleShow;
 import com.javatribe.apicompetition.pojo.vo.StyleShowVO;
 
@@ -36,5 +37,21 @@ public interface TribeStyleShowService {
      * @param id
      */
     void deleteById(Long id);
+
+
+    /**
+     * 根据比赛 ID 获取部落风采展示的届数
+     * @param compId
+     * @return
+     */
+    Result<List<Integer>> getAllStyleShowYears(Integer compId);
+
+    /**
+     *
+     * @param theYear       第几届    第9届，比如
+     * @param competitionId  比赛 ID ,蓝桥杯，软设等
+     * @return
+     */
+    Result<List<StyleShowVO> > getAllStyleShowVOByCompetitionIdAndTheYear(String theYear ,Integer competitionId);
 
 }

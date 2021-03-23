@@ -3,6 +3,21 @@
 <mapper namespace="com.javatribe.apicompetition.mapper.CompetitionIntroductionMapperCustom">
     <resultMap id="BaseResultMap" type="com.javatribe.apicompetition.pojo.po.CompetitionIntroduction" extends="com.javatribe.apicompetition.mapper.CompetitionIntroductionMapper.BaseResultMap">
     </resultMap>
+
+
+
+    <sql id="field_1"> competition_id , competition_name , gmt_create , gmt_modified , sign_up </sql>
+    <sql id="field_all"> competition_id , competition_name , show_content , delete_status , gmt_create , gmt_modified , sign_up </sql>
+
+    <sql id="table_name" >
+        t_competition_introduction
+    </sql>
+    <sql id="table_id" >
+        competition_id
+    </sql>
+
+
+
     <update id="updateSelective">
         update t_competition_introduction
         <set>
@@ -26,10 +41,23 @@
         </set>
         where  competition_id= #{ competitionId }
     </update>
-    <select id="selectFirstPageShow" resultType="com.javatribe.apicompetition.pojo.po.CompetitionIntroduction">
-        select * from t_competition_introduction
+
+
+    <select id="selectFirstPageShow" resultMap="BaseResultMap">
+        select
+            <include refid="field_1" />
+        from t_competition_introduction
 
             where  delete_status = 0 limit 30
     </select>
+    <select id="getDetailInfoById" resultMap="BaseResultMap">
+        SELECT <include refid="field_all" />
+        from  <include refid="table_name" />
+        where <include refid="table_id" /> = #{competitionId}
+    </select>
+<!--    <select id="getAllYearNumbers" resultType="java.lang.Integer">-->
+
+<!--    </select>-->
+
 
 </mapper>

@@ -5,7 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/api-starter/src/main/java/com/javatribe/apistarter/ApiStarterApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-starter/src/main/java/com/javatribe/apistarter/ApiStarterApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/FileApiExtController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/util/MarkdownUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/util/OssFileUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-competition/src/test/java/com/javatribe/apicompetition/mapper/CompetitionIntroductionMapperCustomTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-competition/src/test/java/com/javatribe/apicompetition/mapper/StyleShowMapperCustomTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/CompetitionIntroductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/CompetitionIntroductionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/StyleShowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/StyleShowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/mapper/CompetitionIntroductionMapperCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/mapper/CompetitionIntroductionMapperCustom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/mapper/StyleShowMapperCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/mapper/StyleShowMapperCustom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/dto/CompetitionIntroductionDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/dto/CompetitionIntroductionDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/vo/StyleShowVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/vo/StyleShowVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/CompetitionIntroductionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/CompetitionIntroductionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/TribeStyleShowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/TribeStyleShowService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/CompetitionIntroductionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/CompetitionIntroductionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/TribeStyleShowServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/TribeStyleShowServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/CompetitionIntroductionMapperCustom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/CompetitionIntroductionMapperCustom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/StyleShowMapperCustom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/StyleShowMapperCustom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/test/java/com/javatribe/apicompetition/service/impl/TribeStyleShowServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/test/java/com/javatribe/apicompetition/service/impl/TribeStyleShowServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +37,8 @@
       <list>
         <option value="Alibaba Cloud ROS Template (YAML)" />
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -67,32 +87,51 @@
     <property name="show.run.dashboard.notification" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.javatribe.apicompetition.service.impl" />
-      <recent name="com.javatribe.apicompetition.service" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\ASUS\Desktop\个人项目\server\部落官网\api-parent\api-competition\src\main\resources\sql" />
       <recent name="D:\ASUS\Desktop\个人项目\server\部落官网\api-parent\api-competition\src\main\resources" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.javatribe.apicompetition.mapper" />
+      <recent name="com.javatribe.apicompetition.service.impl" />
+      <recent name="com.javatribe.apicompetition.service" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.javatribe.apicompetition.util" />
+    </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ApiStarterApplication">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
+    <configuration name="MarkdownUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.javatribe.apicompetition.util.MarkdownUtils" />
+      <module name="api-competition" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.javatribe.apicompetition.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="generated-requests#102" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="102" runType="Run single request">
-      <method v="2" />
+    <configuration name="CompetitionIntroductionMapperCustomTest.getDetailInfoById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="api-competition" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.javatribe.apicompetition.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.javatribe.apicompetition.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.javatribe.apicompetition.mapper.CompetitionIntroductionMapperCustomTest" />
+      <option name="METHOD_NAME" value="getDetailInfoById" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="CompetitionIntroductionServiceImplTest.firstPageShow" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="api-competition" />
@@ -110,23 +149,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CompetitionIntroductionServiceImplTest.insertCompetitionInfo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="StyleShowMapperCustomTest.getByCompetitionIdAndYearId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="api-competition" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.javatribe.apicompetition.service.impl.*" />
+          <option name="PATTERN" value="com.javatribe.apicompetition.mapper.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.javatribe.apicompetition.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.javatribe.apicompetition.service.impl.CompetitionIntroductionServiceImplTest" />
-      <option name="METHOD_NAME" value="insertCompetitionInfo" />
+      <option name="PACKAGE_NAME" value="com.javatribe.apicompetition.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.javatribe.apicompetition.mapper.StyleShowMapperCustomTest" />
+      <option name="METHOD_NAME" value="getByCompetitionIdAndYearId" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TribeStyleShowServiceImplTest.insertOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TribeStyleShowServiceImplTest.getAllStyleShow" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="api-competition" />
       <extension name="coverage">
         <pattern>
@@ -136,7 +175,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.javatribe.apicompetition.service.impl" />
       <option name="MAIN_CLASS_NAME" value="com.javatribe.apicompetition.service.impl.TribeStyleShowServiceImplTest" />
-      <option name="METHOD_NAME" value="insertOne" />
+      <option name="METHOD_NAME" value="getAllStyleShow" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -149,26 +188,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WebTest" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="api-competition" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.javatribe.apicompetition.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.javatribe.apicompetition.WebTest" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.WebTest" />
-        <item itemvalue="HTTP Request.generated-requests#102" />
+        <item itemvalue="JUnit.StyleShowMapperCustomTest.getByCompetitionIdAndYearId" />
+        <item itemvalue="JUnit.TribeStyleShowServiceImplTest.getAllStyleShow" />
         <item itemvalue="JUnit.CompetitionIntroductionServiceImplTest.firstPageShow" />
-        <item itemvalue="JUnit.TribeStyleShowServiceImplTest.insertOne" />
-        <item itemvalue="JUnit.CompetitionIntroductionServiceImplTest.insertCompetitionInfo" />
+        <item itemvalue="JUnit.CompetitionIntroductionMapperCustomTest.getDetailInfoById" />
+        <item itemvalue="Application.MarkdownUtils" />
       </list>
     </recent_temporary>
   </component>
@@ -233,7 +259,10 @@
       <workItem from="1615209038007" duration="579000" />
       <workItem from="1615210575732" duration="27000" />
       <workItem from="1615266531810" duration="11000" />
-      <workItem from="1615604240563" duration="709000" />
+      <workItem from="1615604240563" duration="1075000" />
+      <workItem from="1615642090164" duration="41000" />
+      <workItem from="1616475191634" duration="5361000" />
+      <workItem from="1616482155414" duration="1830000" />
     </task>
     <servers />
   </component>

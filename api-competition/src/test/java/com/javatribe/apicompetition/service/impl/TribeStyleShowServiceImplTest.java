@@ -34,6 +34,7 @@ class TribeStyleShowServiceImplTest {
 
     @Test
     void getAllStyleShow() {
+        System.out.println(tribeStyleShowService.getAllStyleShow());
     }
 
     @Test

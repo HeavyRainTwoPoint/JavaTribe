@@ -6,6 +6,7 @@ import com.javatribe.apicompetition.mapper.CompetitionIntroductionMapperCustom;
 import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
 import com.javatribe.apicompetition.service.CompetitionIntroductionService;
 import com.javatribe.apicompetition.util.InsertUtil;
+import com.javatribe.apicompetition.util.MarkdownUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -103,4 +104,42 @@ public class CompetitionIntroductionServiceImpl implements CompetitionIntroducti
             return result;
         }
     }
+
+
+    /**
+     * 管理员 编辑的  markdwon 格式的比赛
+     * @return
+     */
+    @Override
+    public CompetitionIntroduction getCompetitionDetailWithRawData(Integer competitionId) {
+        return competitionIntroductionMapperCustom.getDetailInfoById(competitionId);
+    }
+
+    /**
+     * 前端需要富文本展示，后台将 markdown 转 HTML 方便展示
+     * @param competitionId
+     * @return
+     */
+    @Override
+    public CompetitionIntroduction getCompetitionDetailInfoWithHtml(Integer competitionId) {
+         CompetitionIntroduction x = competitionIntroductionMapperCustom.getDetailInfoById(competitionId);
+         if (x==null) {
+             return  x;
+         }
+         String html = MarkdownUtils.markdownToHtml(x.getShowContent());
+         x.setShowContent(html);
+         return x;
+    }
+
+
+    // /**
+    //  * 前端 传 比赛 ID，后端查出比赛 有第几届
+    //  * @param competitionId
+    //  * @return
+    //  */
+    // public List<Integer> getAllYearNumber(Integer competitionId) {
+    //     return null;
+    // }
+
+
 }
