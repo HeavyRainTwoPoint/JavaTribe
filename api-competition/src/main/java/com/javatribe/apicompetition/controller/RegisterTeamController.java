@@ -55,7 +55,7 @@ public class RegisterTeamController {
      * @return
      */
     @RequestMapping(value = "/sign_up",method = RequestMethod.POST)
-    public Result singUp(RegisterTeamOfFront registerTeam) {
+    public Result singUp(@RequestBody RegisterTeamOfFront registerTeam) {
         Result result = new Result();
         //首先判断是否为空
         String message = registerTeamService.toValidateMessageIsNull(registerTeam);

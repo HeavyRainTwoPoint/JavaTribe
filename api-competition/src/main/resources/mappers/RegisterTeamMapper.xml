@@ -25,11 +25,11 @@
     insert into t_register_team (competition_id, team_name, team_leader_name, 
       team_leader_phone, team_leader_student_id, team_leader_wechat, 
       team_leader_college, team_user_list, delete_status, 
-      register_time)
+      register_time,team_user_id)
     values (#{competitionId,jdbcType=BIGINT}, #{teamName,jdbcType=VARCHAR}, #{teamLeaderName,jdbcType=VARCHAR}, 
       #{teamLeaderPhone,jdbcType=VARCHAR}, #{teamLeaderStudentId,jdbcType=VARCHAR}, #{teamLeaderWechat,jdbcType=VARCHAR}, 
       #{teamLeaderCollege,jdbcType=VARCHAR}, #{teamUserList,jdbcType=VARCHAR}, #{deleteStatus,jdbcType=INTEGER}, 
-      #{registerTime,jdbcType=TIMESTAMP})
+      #{registerTime,jdbcType=TIMESTAMP},#{teamUserId})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.javatribe.apicompetition.pojo.po.RegisterTeam">
     update t_register_team
@@ -62,7 +62,10 @@
             delete_status = #{deleteStatus,jdbcType=INTEGER},
         </if>
         <if test="registerTime!=null">
-            register_time = #{registerTime,jdbcType=TIMESTAMP}
+            register_time = #{registerTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="teamUserId!=null and teamUserId!=''">
+            team_user_id = #{teamUserId}
         </if>
     </trim>
     where register_id = #{registerId,jdbcType=BIGINT}
@@ -100,6 +103,9 @@
 	STR_TO_DATE( date_format( register_time, '%Y-%m-%d' ), '%Y' ) = STR_TO_DATE( #{year}, '%Y' )
 	AND competition_id = #{competitionId}
 	AND team_name = #{teamName}
+	<if test="registerId!=null and registerId!=''">
+        register_id!=#{registerId}
+    </if>
   </select>
 
   <select id="selectSameTeamLeaderName" resultType="java.lang.Integer">
@@ -111,6 +117,9 @@
 	STR_TO_DATE( date_format( register_time, '%Y-%m-%d' ), '%Y' ) = STR_TO_DATE( #{year}, '%Y' )
 	AND competition_id = 1
 	AND team_leader_name = #{teamLeaderName}
+	<if test="registerId!=null and registerId!=''">
+        register_id!=#{registerId}
+    </if>
   </select>
 
   <select id="queryRegisterList" resultType="com.javatribe.apicompetition.pojo.po.RegisterTeam">
@@ -129,6 +138,7 @@
 	team_leader_wechat,
 	team_leader_college,
 	team_user_list,
+	team_user_id,
 	delete_status,
 	register_time
 FROM

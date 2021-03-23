@@ -9,9 +9,9 @@
         set delete_status = 1, gmt_modify = CURRENT_TIMESTAMP
     </sql>
 
-    <insert id="insertTag" parameterType="com.javatribe.apishare.po.Tag">
-    insert into t_tag(tag_id, tag_name, tag_parent)
-    values (#{tagId}, #{tagName}, #{tagParent})
+    <insert id="insertTag" parameterType="com.javatribe.apishare.po.Tag" keyProperty="tagId" useGeneratedKeys="true">
+    insert into t_tag(tag_name, tag_parent)
+    values (#{tagName}, #{tagParent})
     </insert>
 
     <update id="deleteTagById">

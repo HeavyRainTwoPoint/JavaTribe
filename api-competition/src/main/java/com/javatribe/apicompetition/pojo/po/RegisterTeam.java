@@ -26,6 +26,8 @@ public class RegisterTeam implements Serializable {
 
     private String teamUserList;
 
+    private String teamUserId;
+
     private Integer deleteStatus;
 
     @JSONField(format = "yyyy-MM-dd")
@@ -193,6 +195,14 @@ public class RegisterTeam implements Serializable {
 
     public void setOrder(Long order) {
         this.order = order;
+    }
+
+    public String getTeamUserId() {
+        return teamUserId;
+    }
+
+    public void setTeamUserId(String teamUserId) {
+        this.teamUserId = teamUserId;
     }
 
     @Override
