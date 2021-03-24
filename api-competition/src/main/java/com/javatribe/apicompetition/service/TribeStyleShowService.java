@@ -4,6 +4,7 @@ import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.pojo.po.CompetitionYear;
 import com.javatribe.apicompetition.pojo.po.NumberOfSessions;
 import com.javatribe.apicompetition.pojo.po.StyleShow;
+import com.javatribe.apicompetition.pojo.vo.FrontStyleShowVO;
 import com.javatribe.apicompetition.pojo.vo.StyleShowVO;
 
 import java.util.List;
@@ -14,8 +15,14 @@ import java.util.List;
  * @create 2021/1/16 15:49
  */
 public interface TribeStyleShowService {
+    /**
+     * 部落官网前端 获取风采展示
+     * @return
+     */
+    List<FrontStyleShowVO> getAllStyleShowFronted();
 
     /**
+     * 管理员端
      * @return 部落官网首页获取风采展示
      */
     List<StyleShowVO> getAllStyleShow();
@@ -48,6 +55,14 @@ public interface TribeStyleShowService {
      */
     @Deprecated
     Result<List<Integer>> getAllStyleShowYears(Integer compId);
+
+    /**
+     * 根据比赛 ID 获取部落风采展示的届数
+     * 代替上面接口
+     * @param compId
+     * @return
+     */
+    Result<List<CompetitionYear> > getAllCompetitionYear(Integer compId);
 
     /**
      * @param compId  比赛ID

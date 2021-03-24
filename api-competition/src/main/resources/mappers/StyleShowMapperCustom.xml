@@ -5,19 +5,31 @@
                type="com.javatribe.apicompetition.pojo.po.StyleShow">
 
     </resultMap>
+
+
+
+
     <resultMap id="style_show_vo" extends="BaseResultMap" type="com.javatribe.apicompetition.pojo.vo.StyleShowVO">
 
-<!--        <association property="styleShow" resultMap="BaseResultMap"/>-->
-<!--        <association property="competition"-->
-<!--                     resultMap="com.javatribe.apicompetition.mapper.CompetitionIntroductionMapper.BaseResultMap"/>-->
+        <!--        <association property="styleShow" resultMap="BaseResultMap"/>-->
+        <!--        <association property="competition"-->
+        <!--                     resultMap="com.javatribe.apicompetition.mapper.CompetitionIntroductionMapper.BaseResultMap"/>-->
+
+    </resultMap>
+
+    <resultMap id="front_style_show_vo"
+               type="com.javatribe.apicompetition.pojo.vo.FrontStyleShowVO">
+
+        <association property="styleShow" resultMap="BaseResultMap"  />
+<!--        <association property="year" resultMap="com.javatribe.apicompetition.mapper.CompetitionYearMapper.BaseResultMap"  />-->
+        <association property="competition"
+                     resultMap="com.javatribe.apicompetition.mapper.CompetitionIntroductionMapper.BaseResultMap"/>
 
     </resultMap>
 
 
-
-
-    <sql id="field_all" > show_id , competition_id , gmt_create , gmt_modified , show_status , delete_status , show_order , imgs , project_name , team_name , team_members , team_begin_time , team_end_time , the_year , year_id </sql>
-<!--    <sql id="field_all"> show_id , competition_id , gmt_create , gmt_modified , show_status , delete_status , show_order , imgs , project_name , team_name , team_members , team_begin_time , team_end_time , the_year , year_id </sql>-->
+    <sql id="field_all"> show_id , competition_id , gmt_create , gmt_modified , show_status , delete_status , show_order , imgs , project_name , team_name , team_members , team_begin_time , team_end_time , the_year , year_id </sql>
+    <!--    <sql id="field_all"> show_id , competition_id , gmt_create , gmt_modified , show_status , delete_status , show_order , imgs , project_name , team_name , team_members , team_begin_time , team_end_time , the_year , year_id </sql>-->
 
 
     <select id="getFirstPage" resultMap="style_show_vo">
@@ -45,13 +57,28 @@
 
         where style_show.show_status = 1
           and style_show.delete_status = 0
-        and style_show.competition_id = #{comId}
+          and style_show.competition_id = #{comId}
 
-        and style_show.year_id = #{theYear}
+          and style_show.year_id = #{theYear}
 
     </select>
     <select id="getAllTheYearByCompetitionId" resultType="java.lang.Integer">
-        SELECT   DISTINCT  the_year FROM `t_style_show`  where competition_id = #{comId}
+        SELECT DISTINCT the_year
+        FROM `t_style_show`
+        where competition_id = #{comId}
+    </select>
+    <select id="getFrontStyleShowVO" resultMap="front_style_show_vo">
+        select style_show.*, competition.competition_name
+        from t_style_show style_show
+
+                 left join t_competition_introduction competition
+                           on style_show.competition_id = competition.competition_id
+
+
+        where style_show.show_status = 1
+          and style_show.delete_status = 0
+
+
     </select>
 
 </mapper>

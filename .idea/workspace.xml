@@ -5,21 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/ext/CompetitionYearsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/ext/FrontStyleShowController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/vo/FrontStyleShowVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/StyleShowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/StyleShowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/mapper/CompetitionIntroductionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/mapper/CompetitionIntroductionMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/mapper/StyleShowMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/mapper/StyleShowMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/ext/CompetitionYearsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/ext/CompetitionYearsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/mapper/StyleShowMapperCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/mapper/StyleShowMapperCustom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/po/CompetitionIntroduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/po/CompetitionIntroduction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/po/StyleShow.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/po/StyleShow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/vo/StyleShowVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/vo/StyleShowVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/TribeStyleShowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/TribeStyleShowService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/CompetitionIntroductionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/CompetitionIntroductionServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/TribeStyleShowServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/TribeStyleShowServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/resources/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/CompetitionIntroductionMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/StyleShowMapper.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/StyleShowMapperCustom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/StyleShowMapperCustom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/test/java/com/javatribe/apicompetition/mapper/StyleShowMapperCustomTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/test/java/com/javatribe/apicompetition/mapper/StyleShowMapperCustomTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,13 +99,15 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ApiStarterApplication">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -281,12 +279,36 @@
       <workItem from="1616501500632" duration="803000" />
       <workItem from="1616505861223" duration="71000" />
       <workItem from="1616508322322" duration="6000" />
-      <workItem from="1616514366670" duration="1790000" />
+      <workItem from="1616514366670" duration="1846000" />
+      <workItem from="1616592436627" duration="8852000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -295,6 +317,14 @@
           <url>file://$PROJECT_DIR$/api-starter/src/test/java/com/javatribe/apistarter/TribeStyleShowServiceImplTest.java</url>
           <line>54</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/TribeStyleShowService.java</url>
+          <line>21</line>
+          <properties class="com.javatribe.apicompetition.service.TribeStyleShowService" method="getAllStyleShowFronted">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

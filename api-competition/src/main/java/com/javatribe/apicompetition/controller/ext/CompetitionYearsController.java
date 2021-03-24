@@ -27,6 +27,7 @@ public class CompetitionYearsController {
         tribeStyleShowService.updateOrInsertCompetitionYears(json);
         return Result.success();
     }
+
     @DeleteMapping("/del_years")
     public Result deleteYears(@RequestParam Integer yearId) {
         tribeStyleShowService.deleteStyleShowCompetitionYears(yearId);

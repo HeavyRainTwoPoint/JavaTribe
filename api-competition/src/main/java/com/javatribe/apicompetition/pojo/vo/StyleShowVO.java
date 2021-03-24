@@ -45,6 +45,8 @@ public class StyleShowVO {
     private Integer yearId;
     private Integer signUp;
 
+
+    private String competitionName;
     // private StyleShow styleShow;
     // private CompetitionIntroduction competition;
 }

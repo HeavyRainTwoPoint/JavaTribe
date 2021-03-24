@@ -10,6 +10,7 @@ import com.javatribe.apicompetition.pojo.po.CompetitionYear;
 import com.javatribe.apicompetition.pojo.po.CompetitionYearExample;
 import com.javatribe.apicompetition.pojo.po.NumberOfSessions;
 import com.javatribe.apicompetition.pojo.po.StyleShow;
+import com.javatribe.apicompetition.pojo.vo.FrontStyleShowVO;
 import com.javatribe.apicompetition.pojo.vo.StyleShowVO;
 import com.javatribe.apicompetition.service.TribeStyleShowService;
 import com.javatribe.apicompetition.util.InsertUtil;
@@ -33,6 +34,16 @@ public class TribeStyleShowServiceImpl implements TribeStyleShowService {
     final StyleShowMapperCustom styleShowMapperCustom;
     // final Numberof
     final CompetitionYearMapper competitionYearMapper;
+
+    /**
+     * 部落官网前端 获取风采展示
+     *
+     * @return
+     */
+    @Override
+    public List<FrontStyleShowVO> getAllStyleShowFronted() {
+        return styleShowMapperCustom.getFrontStyleShowVO();
+    }
 
     /**
      * @return 获取风采暂时
@@ -88,6 +99,23 @@ public class TribeStyleShowServiceImpl implements TribeStyleShowService {
         return Result.success(styleShowMapperCustom.getAllTheYearByCompetitionId(compId));
     }
 
+    /**
+     * 根据比赛 ID 获取部落风采展示的届数
+     * 代替上面接口
+     *
+     * @param compId
+     * @return
+     */
+    @Override
+    public Result<List<CompetitionYear>> getAllCompetitionYear(Integer compId) {
+        CompetitionYearExample x = new CompetitionYearExample();
+        x.createCriteria()
+                .andCompetitionIdEqualTo(compId);
+        //获取比赛 id 下面 的 比赛届数
+        final List<CompetitionYear> competitionYears = competitionYearMapper.selectByExample(x);
+
+        return Result.success(competitionYears);
+    }
     // /**
     //  * @param compId 比赛ID
     //  * @return

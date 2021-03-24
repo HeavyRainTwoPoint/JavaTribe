@@ -2,6 +2,7 @@ package com.javatribe.apicompetition.controller;
 
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.pojo.dto.StyleShowDTO;
+import com.javatribe.apicompetition.pojo.po.CompetitionYear;
 import com.javatribe.apicompetition.pojo.vo.StyleShowVO;
 import com.javatribe.apicompetition.service.TribeStyleShowService;
 import com.javatribe.apicompetition.util.BeanMapperUtils;
@@ -75,16 +76,19 @@ public class StyleShowController {
     // public Result<List<Integer>> getAllStyleShowTheYears(@RequestParam Integer competitionId) {
     //     return styleShowService.getAllStyleShowYears(competitionId);
     // }
-    /**
-     * 根据比赛 ID 获取风采展示的届数
-     * @param competitionId
-     * @return
-     */
+    // /**
+    //  * 根据比赛 ID 获取风采展示的届数
+    //  * @param competitionId
+    //  * @return
+    //  */
+    // @GetMapping("/styleShowYears")
+    // public Result<List<Integer>> getAllStyleShowTheYears(@RequestParam Integer competitionId) {
+    //     return styleShowService.getAllStyleShowYears(competitionId);
+    // }
     @GetMapping("/styleShowYears")
-    public Result<List<Integer>> getAllStyleShowTheYears(@RequestParam Integer competitionId) {
-        return styleShowService.getAllStyleShowYears(competitionId);
+    public Result<List<CompetitionYear>> getAllStyleShowTheYears001(@RequestParam Integer competitionId) {
+        return styleShowService.getAllCompetitionYear(competitionId);
     }
-
 
 
     @GetMapping("/styleShow_searchBy")
