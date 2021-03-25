@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/po/CompetitionYear.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/po/CompetitionYear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/po/CompetitionYearExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/po/CompetitionYearExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/TribeStyleShowServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/TribeStyleShowServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/CompetitionYearMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/CompetitionIntroductionMapperCustom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/CompetitionIntroductionMapperCustom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,17 +92,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ApiStarterApplication">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="CompetitionIntroductionMapperCustomTest.listAllCompetitionAndYears" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="api-competition" />
       <extension name="coverage">
@@ -277,7 +263,8 @@
       <workItem from="1616592436627" duration="9581000" />
       <workItem from="1616637568919" duration="3001000" />
       <workItem from="1616665660312" duration="4385000" />
-      <workItem from="1616672305867" duration="2651000" />
+      <workItem from="1616672305867" duration="3441000" />
+      <workItem from="1616682291212" duration="1023000" />
     </task>
     <servers />
   </component>

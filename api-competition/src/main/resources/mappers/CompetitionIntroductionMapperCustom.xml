@@ -73,7 +73,7 @@
 
                 where c.delete_status = 0   and y.delete_status = 0
 
-                    order by y.show_order desc , y.year_id desc
+                    order by y.the_year desc , y.year_id desc
 
     </select>
     <!--    <select id="getAllYearNumbers" resultType="java.lang.Integer">-->
