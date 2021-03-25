@@ -48,4 +48,11 @@ public interface TagMapper {
      * @return 0表示失败，1表示成功
      */
     int checkTag(String tagName);
+
+    /**
+     * 根据标签Id获取标签名
+     * @param tagId
+     * @return
+     */
+    String getTagNameById(int tagId);
 }

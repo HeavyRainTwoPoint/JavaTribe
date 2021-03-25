@@ -22,6 +22,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
         "com.javatribe.introduction.mapper",
         "com.javatribe.apilife.dao",
         "com.javatribe.apienroll.dao",
+        "com.javatribe.apicommon.dao",
         "com.javatribe.apienroll.mapper",
         "com.javatribe.apicompetition.mapper"
 })

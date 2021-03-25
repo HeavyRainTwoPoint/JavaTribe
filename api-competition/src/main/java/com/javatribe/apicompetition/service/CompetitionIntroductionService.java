@@ -2,6 +2,7 @@ package com.javatribe.apicompetition.service;
 
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
+import com.javatribe.apicompetition.pojo.vo.CompetitionAndYearsVO;
 
 import java.util.List;
 
@@ -36,4 +37,20 @@ public interface CompetitionIntroductionService {
     void updateCompetitionInfo(CompetitionIntroduction competitionIntroduction);
 
     Result addCompetition(CompetitionIntroduction competition);
+
+    /**
+     * 后台 markdown 直接 返回，前端自定义解析
+     * @param competitionId
+     * @return
+     */
+    CompetitionIntroduction getCompetitionDetailWithRawData(Integer competitionId);
+
+    /**
+     * 后台 markdwon 转 HTML
+     * @param competitionId
+     * @return
+     */
+    CompetitionIntroduction getCompetitionDetailInfoWithHtml(Integer competitionId);
+
+    List<CompetitionAndYearsVO> listCompetitionAndYearsVo();
 }

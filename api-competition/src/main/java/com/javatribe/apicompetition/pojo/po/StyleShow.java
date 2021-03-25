@@ -34,6 +34,8 @@ public class StyleShow implements Serializable {
 
     private Integer yearId;
 
+    private String teamMasterName;
+
     private static final long serialVersionUID = 1L;
 
     public Long getShowId() {
@@ -231,6 +233,19 @@ public class StyleShow implements Serializable {
         this.yearId = yearId;
     }
 
+    public String getTeamMasterName() {
+        return teamMasterName;
+    }
+
+    public StyleShow withTeamMasterName(String teamMasterName) {
+        this.setTeamMasterName(teamMasterName);
+        return this;
+    }
+
+    public void setTeamMasterName(String teamMasterName) {
+        this.teamMasterName = teamMasterName == null ? null : teamMasterName.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -252,6 +267,7 @@ public class StyleShow implements Serializable {
         sb.append(", teamEndTime=").append(teamEndTime);
         sb.append(", theYear=").append(theYear);
         sb.append(", yearId=").append(yearId);
+        sb.append(", teamMasterName=").append(teamMasterName);
         sb.append("]");
         return sb.toString();
     }

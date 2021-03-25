@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableCaching
-@MapperScan("com.javatribe.apicompetition.mapper")
+@MapperScan({"com.javatribe.apicompetition.mapper","com.javatribe.apicommon.dao"})
 public class CompetitionModuleConfig {
 
 }

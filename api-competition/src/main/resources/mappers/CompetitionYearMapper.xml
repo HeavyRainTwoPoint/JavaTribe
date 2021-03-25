@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javatribe.apicompetition.mapper.CompetitionYearMapper">
+  <resultMap id="BaseResultMap" type="com.javatribe.apicompetition.pojo.po.CompetitionYear">
+    <id column="year_id" jdbcType="INTEGER" property="yearId" />
+    <result column="the_year" jdbcType="INTEGER" property="theYear" />
+    <result column="delete_status" jdbcType="BIT" property="deleteStatus" />
+    <result column="active_status" jdbcType="INTEGER" property="activeStatus" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="year_start_time" jdbcType="TIMESTAMP" property="yearStartTime" />
+    <result column="year_end_time" jdbcType="TIMESTAMP" property="yearEndTime" />
+    <result column="competition_id" jdbcType="INTEGER" property="competitionId" />
+    <result column="show_order" jdbcType="INTEGER" property="showOrder" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    year_id, the_year, delete_status, active_status, gmt_create, gmt_modified, year_start_time, 
+    year_end_time, competition_id, show_order
+  </sql>
+  <select id="selectByExample" parameterType="com.javatribe.apicompetition.pojo.po.CompetitionYearExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_competition_years
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_competition_years
+    where year_id = #{yearId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_competition_years
+    where year_id = #{yearId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.javatribe.apicompetition.pojo.po.CompetitionYearExample">
+    delete from t_competition_years
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.javatribe.apicompetition.pojo.po.CompetitionYear">
+    <selectKey keyProperty="yearId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_competition_years (the_year, delete_status, active_status, 
+      gmt_create, gmt_modified, year_start_time, 
+      year_end_time, competition_id, show_order
+      )
+    values (#{theYear,jdbcType=INTEGER}, #{deleteStatus,jdbcType=BIT}, #{activeStatus,jdbcType=INTEGER}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{yearStartTime,jdbcType=TIMESTAMP}, 
+      #{yearEndTime,jdbcType=TIMESTAMP}, #{competitionId,jdbcType=INTEGER}, #{showOrder,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.javatribe.apicompetition.pojo.po.CompetitionYear">
+    <selectKey keyProperty="yearId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_competition_years
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="theYear != null">
+        the_year,
+      </if>
+      <if test="deleteStatus != null">
+        delete_status,
+      </if>
+      <if test="activeStatus != null">
+        active_status,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="yearStartTime != null">
+        year_start_time,
+      </if>
+      <if test="yearEndTime != null">
+        year_end_time,
+      </if>
+      <if test="competitionId != null">
+        competition_id,
+      </if>
+      <if test="showOrder != null">
+        show_order,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="theYear != null">
+        #{theYear,jdbcType=INTEGER},
+      </if>
+      <if test="deleteStatus != null">
+        #{deleteStatus,jdbcType=BIT},
+      </if>
+      <if test="activeStatus != null">
+        #{activeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yearStartTime != null">
+        #{yearStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yearEndTime != null">
+        #{yearEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="competitionId != null">
+        #{competitionId,jdbcType=INTEGER},
+      </if>
+      <if test="showOrder != null">
+        #{showOrder,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.javatribe.apicompetition.pojo.po.CompetitionYearExample" resultType="java.lang.Long">
+    select count(*) from t_competition_years
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_competition_years
+    <set>
+      <if test="record.yearId != null">
+        year_id = #{record.yearId,jdbcType=INTEGER},
+      </if>
+      <if test="record.theYear != null">
+        the_year = #{record.theYear,jdbcType=INTEGER},
+      </if>
+      <if test="record.deleteStatus != null">
+        delete_status = #{record.deleteStatus,jdbcType=BIT},
+      </if>
+      <if test="record.activeStatus != null">
+        active_status = #{record.activeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.gmtCreate != null">
+        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.gmtModified != null">
+        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.yearStartTime != null">
+        year_start_time = #{record.yearStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.yearEndTime != null">
+        year_end_time = #{record.yearEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.competitionId != null">
+        competition_id = #{record.competitionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.showOrder != null">
+        show_order = #{record.showOrder,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_competition_years
+    set year_id = #{record.yearId,jdbcType=INTEGER},
+      the_year = #{record.theYear,jdbcType=INTEGER},
+      delete_status = #{record.deleteStatus,jdbcType=BIT},
+      active_status = #{record.activeStatus,jdbcType=INTEGER},
+      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      year_start_time = #{record.yearStartTime,jdbcType=TIMESTAMP},
+      year_end_time = #{record.yearEndTime,jdbcType=TIMESTAMP},
+      competition_id = #{record.competitionId,jdbcType=INTEGER},
+      show_order = #{record.showOrder,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.javatribe.apicompetition.pojo.po.CompetitionYear">
+    update t_competition_years
+    <set>
+      <if test="theYear != null">
+        the_year = #{theYear,jdbcType=INTEGER},
+      </if>
+      <if test="deleteStatus != null">
+        delete_status = #{deleteStatus,jdbcType=BIT},
+      </if>
+      <if test="activeStatus != null">
+        active_status = #{activeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yearStartTime != null">
+        year_start_time = #{yearStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yearEndTime != null">
+        year_end_time = #{yearEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="competitionId != null">
+        competition_id = #{competitionId,jdbcType=INTEGER},
+      </if>
+      <if test="showOrder != null">
+        show_order = #{showOrder,jdbcType=INTEGER},
+      </if>
+    </set>
+    where year_id = #{yearId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.javatribe.apicompetition.pojo.po.CompetitionYear">
+    update t_competition_years
+    set the_year = #{theYear,jdbcType=INTEGER},
+      delete_status = #{deleteStatus,jdbcType=BIT},
+      active_status = #{activeStatus,jdbcType=INTEGER},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      year_start_time = #{yearStartTime,jdbcType=TIMESTAMP},
+      year_end_time = #{yearEndTime,jdbcType=TIMESTAMP},
+      competition_id = #{competitionId,jdbcType=INTEGER},
+      show_order = #{showOrder,jdbcType=INTEGER}
+    where year_id = #{yearId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.javatribe.apicompetition.pojo.po.CompetitionYearExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_competition_years
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

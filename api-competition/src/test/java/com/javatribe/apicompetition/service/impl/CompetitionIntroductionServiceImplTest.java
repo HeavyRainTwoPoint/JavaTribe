@@ -46,7 +46,7 @@ class CompetitionIntroductionServiceImplTest {
                 .withDeleteStatus(false)
                 .withSignUp(0)
                 .withCompetitionName("蓝桥杯")
-                .withShowContent("蓝桥杯啦啦   <script>alert()</script>");
+                .withShowContent("蓝桥杯啦啦   ");
     }
     @Test
     // @Transactional(propagation = Propagation.NEVER)

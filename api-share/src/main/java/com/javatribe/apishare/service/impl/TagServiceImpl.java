@@ -97,4 +97,17 @@ public class TagServiceImpl implements TagService {
         return tagMapper.updateTag(tag);
     }
 
+    /**
+     * 根据标签id获取标签名
+     * @param tagId
+     * @return 如果标签id非法则返回null， 否则返回查询到的数据
+     */
+    @Override
+    public String getTagNameById(int tagId) {
+        if (tagId < 0) {
+            return null;
+        }
+        return tagMapper.getTagNameById(tagId);
+    }
+
 }

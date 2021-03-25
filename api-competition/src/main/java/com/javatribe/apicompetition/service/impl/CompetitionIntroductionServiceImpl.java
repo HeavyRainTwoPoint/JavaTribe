@@ -4,8 +4,10 @@ import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.mapper.CompetitionIntroductionMapper;
 import com.javatribe.apicompetition.mapper.CompetitionIntroductionMapperCustom;
 import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
+import com.javatribe.apicompetition.pojo.vo.CompetitionAndYearsVO;
 import com.javatribe.apicompetition.service.CompetitionIntroductionService;
 import com.javatribe.apicompetition.util.InsertUtil;
+import com.javatribe.apicompetition.util.MarkdownUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -77,30 +79,79 @@ public class CompetitionIntroductionServiceImpl implements CompetitionIntroducti
 
     @Override
     public Result addCompetition(CompetitionIntroduction competition) {
-        Result result = new Result();
-        if (Objects.isNull(competition.getCompetitionName())){
-            result.setCode(401);
-            result.setMessage("比赛名字为空，请重新填写");
-            return result;
-        }
-        //判断是否有相同比赛名字
-        String competitionName = competition.getCompetitionName();
-        int i = competitionIntroductionMapper.selectByCompetitionName(competitionName);
-        if (i>0){
-            result.setCode(401);
-            result.setMessage("添加出错，比赛名字重复");
-            return result;
-        }
-        competition.setDeleteStatus(false);
-        competition.setSignUp(1);
-        competition.setGmtCreate(new Date());
-        int insertRow = competitionIntroductionMapper.insert(competition);
-        if (insertRow>0){
-            return Result.success();
-        }else{
-            result.setCode(401);
-            result.setMessage("插入失败");
-            return result;
-        }
+        insertCompetitionInfo(competition);
+        return Result.success();
     }
+
+    // @Override
+    // public Result addCompetition(CompetitionIntroduction competition) {
+    //     Result result = new Result();
+    //     if (Objects.isNull(competition.getCompetitionName())){
+    //         result.setCode(401);
+    //         result.setMessage("比赛名字为空，请重新填写");
+    //         return result;
+    //     }
+    //     //判断是否有相同比赛名字
+    //     String competitionName = competition.getCompetitionName();
+    //     int i = competitionIntroductionMapper.selectByCompetitionName(competitionName);
+    //     if (i>0){
+    //         result.setCode(401);
+    //         result.setMessage("添加出错，比赛名字重复");
+    //         return result;
+    //     }
+    //     competition.setDeleteStatus(false);
+    //     competition.setSignUp(1);
+    //     competition.setGmtCreate(new Date());
+    //     int insertRow = competitionIntroductionMapper.insert(competition);
+    //     if (insertRow>0){
+    //         return Result.success();
+    //     }else{
+    //         result.setCode(401);
+    //         result.setMessage("插入失败");
+    //         return result;
+    //     }
+    // }
+
+
+    /**
+     * 管理员 编辑的  markdwon 格式的比赛
+     * @return
+     */
+    @Override
+    public CompetitionIntroduction getCompetitionDetailWithRawData(Integer competitionId) {
+        return competitionIntroductionMapperCustom.getDetailInfoById(competitionId);
+    }
+
+    /**
+     * 前端需要富文本展示，后台将 markdown 转 HTML 方便展示
+     * @param competitionId
+     * @return
+     */
+    @Override
+    public CompetitionIntroduction getCompetitionDetailInfoWithHtml(Integer competitionId) {
+         CompetitionIntroduction x = competitionIntroductionMapperCustom.getDetailInfoById(competitionId);
+         if (x==null) {
+             return  x;
+         }
+         String html = MarkdownUtils.markdownToHtml(x.getShowContent());
+         x.setShowContent(html);
+         return x;
+    }
+
+
+
+    @Override
+    public List<CompetitionAndYearsVO> listCompetitionAndYearsVo() {
+        return competitionIntroductionMapperCustom.listAllCompetitionAndYears();
+    }
+    // /**
+    //  * 前端 传 比赛 ID，后端查出比赛 有第几届
+    //  * @param competitionId
+    //  * @return
+    //  */
+    // public List<Integer> getAllYearNumber(Integer competitionId) {
+    //     return null;
+    // }
+
+
 }

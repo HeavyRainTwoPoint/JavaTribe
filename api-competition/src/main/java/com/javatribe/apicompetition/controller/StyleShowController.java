@@ -2,15 +2,14 @@ package com.javatribe.apicompetition.controller;
 
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.pojo.dto.StyleShowDTO;
+import com.javatribe.apicompetition.pojo.po.CompetitionYear;
 import com.javatribe.apicompetition.pojo.po.StyleShow;
 import com.javatribe.apicompetition.pojo.vo.StyleShowVO;
 import com.javatribe.apicompetition.service.TribeStyleShowService;
 import com.javatribe.apicompetition.util.BeanMapperUtils;
 import lombok.RequiredArgsConstructor;
-import org.mapstruct.factory.Mappers;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 
 /**
@@ -70,6 +69,35 @@ public class StyleShowController {
     }
 
     // /**
+    //  * 根据比赛 ID 获取风采展示的届数
+    //  * @param competitionId
+    //  * @return
+    //  */
+    // @GetMapping("/styleShowYears")
+    // public Result<List<Integer>> getAllStyleShowTheYears(@RequestParam Integer competitionId) {
+    //     return styleShowService.getAllStyleShowYears(competitionId);
+    // }
+    // /**
+    //  * 根据比赛 ID 获取风采展示的届数
+    //  * @param competitionId
+    //  * @return
+    //  */
+    // @GetMapping("/styleShowYears")
+    // public Result<List<Integer>> getAllStyleShowTheYears(@RequestParam Integer competitionId) {
+    //     return styleShowService.getAllStyleShowYears(competitionId);
+    // }
+    @GetMapping("/styleShowYears")
+    public Result<List<CompetitionYear>> getAllStyleShowTheYears001(@RequestParam Integer competitionId) {
+        return styleShowService.getAllCompetitionYear(competitionId);
+    }
+
+
+    @GetMapping("/styleShow_searchBy")
+    public Result<List<StyleShowVO>> getStyleShowByCompetitionIdAndTheYear(@RequestParam Integer yearId, @RequestParam Integer competitionId) {
+        return styleShowService.getAllStyleShowVOByCompetitionIdAndTheYear(yearId,competitionId);
+    }
+
+    // /**
     //  * 管理员更新后台队伍风采数据
     //  * @param styleShow
     //  * @return
@@ -86,12 +114,20 @@ public class StyleShowController {
      */
     @PostMapping("/styleShow")
     public Result insertOneStyleShowItem(@RequestBody StyleShowDTO styleShow) {
+        //自动生成yearId
+        styleShowService.resetYearId(styleShow);
+        // final Long competitionId = styleShow.getCompetitionId();
+        // final Integer yearId = styleShow.getYearId();
+        // final CompetitionYear year = styleShowService.getYearByCompetitionIdAndYearText(yearId, competitionId.intValue());
+        // //生成 yearId
+        // styleShow.setYearId(year.getYearId());
+        StyleShow xx = beanMapperUtils.from(styleShow);
         if (styleShow.getShowId()==null) {
             //id  不为 null 就更新数据
-            styleShowService.insertOne(beanMapperUtils.from(styleShow));
+            styleShowService.insertOne(xx);
         }else {
 
-            styleShowService.updateById(beanMapperUtils.from(styleShow));
+            styleShowService.updateById(xx);
         }
         return Result.success();
     }

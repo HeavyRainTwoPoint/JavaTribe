@@ -31,10 +31,10 @@ public class CooperationController {
      */
     @PostMapping("insert")
     public ApiResult insert(@RequestBody CooperationBO cooperationBO) {
-        if (!checkCooperationType(cooperationBO)) {
+        if (checkCooperationType(cooperationBO)) {
             return ApiResults.badRequest("类型有误");
         }
-        if (!checkCooperationItems(cooperationBO)) {
+        if (checkCooperationItems(cooperationBO)) {
             return ApiResults.badRequest("交流事项不能为空");
         }
         cooperationBO.setId(null);
@@ -55,17 +55,17 @@ public class CooperationController {
         if (cooperationBO.getId() == null) {
             return ApiResults.badRequest("要修改的数据id不存在");
         } else {
-            if (!checkCooperationType(cooperationBO)) {
+            if (checkCooperationType(cooperationBO)) {
                 return ApiResults.badRequest("类型有误");
             }
-            if (!checkCooperationItems(cooperationBO)) {
+            if (checkCooperationItems(cooperationBO)) {
                 return ApiResults.badRequest("交流事项不能为空");
             }
             Cooperation cooperation = cooperationService.get(cooperationBO.getId());
             if (cooperation == null) {
                 return ApiResults.badRequest("id所在数据不存在");
             }
-            BeanUtils.copyProperties(cooperation, cooperationBO);
+            BeanUtils.copyProperties(cooperationBO, cooperation);
             //todo  添加操作人信息
             cooperation.setUpdateBy(1);
             cooperationService.update(cooperation);
@@ -75,14 +75,14 @@ public class CooperationController {
 
     private boolean checkCooperationItems(CooperationBO cooperationBO) {
         if (cooperationBO.getType() == CooperationType.InCooperation.getType()) {
-            return cooperationBO.getItems() != null && !cooperationBO.getItems().equals("");
+            return cooperationBO.getItems() == null || cooperationBO.getItems().equals("");
         }
         return false;
     }
 
     private boolean checkCooperationType(CooperationBO cooperationBO) {
-        return cooperationBO.getType() == CooperationType.InCooperation.getType()
-                || cooperationBO.getType() == CooperationType.OutCooperation.getType();
+        return cooperationBO.getType() != CooperationType.InCooperation.getType()
+                && cooperationBO.getType() != CooperationType.OutCooperation.getType();
     }
 
 
