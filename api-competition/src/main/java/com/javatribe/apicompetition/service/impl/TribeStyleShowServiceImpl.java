@@ -1,5 +1,6 @@
 package com.javatribe.apicompetition.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicommon.exception.BusinessException;
 import com.javatribe.apicommon.exception.ServiceException;
@@ -19,7 +20,9 @@ import org.checkerframework.checker.units.qual.C;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -113,9 +116,13 @@ public class TribeStyleShowServiceImpl implements TribeStyleShowService {
     public Result<List<CompetitionYear>> getAllCompetitionYear(Integer compId) {
         CompetitionYearExample x = new CompetitionYearExample();
         x.createCriteria()
-                .andCompetitionIdEqualTo(compId);
+                .andCompetitionIdEqualTo(compId)
+
+        ;
+        PageHelper.orderBy("the_year");
         //获取比赛 id 下面 的 比赛届数
         final List<CompetitionYear> competitionYears = competitionYearMapper.selectByExample(x);
+        // Arrays.sort(competitionYears,(CompetitionYear i,CompetitionYear j)->i.getCom);
 
         return Result.success(competitionYears);
     }
@@ -215,7 +222,7 @@ public class TribeStyleShowServiceImpl implements TribeStyleShowService {
         competitionYearExample
                 .createCriteria()
                 .andCompetitionIdEqualTo(compId)
-                .andTheYearEqualTo(yearNum.toString());
+                .andTheYearEqualTo(yearNum);
 
         List<CompetitionYear> res =  competitionYearMapper.selectByExample(competitionYearExample);
         if (res==null||res.size()==0) return null;
@@ -235,16 +242,19 @@ public class TribeStyleShowServiceImpl implements TribeStyleShowService {
         ex.createCriteria()
                 .andCompetitionIdEqualTo(styleShow.getCompetitionId().intValue())
                 //比赛Id
-                .andTheYearEqualTo(yearId +"");
+                .andTheYearEqualTo(yearId);
 
         final List<CompetitionYear> styleShows = competitionYearMapper.selectByExample(ex);
         if (styleShows==null|| styleShows.size()==0) {
             //没有
             final CompetitionYear competitionYear = new CompetitionYear()
                     .withActiveStatus(1)
+                    //比赛ID
                     .withCompetitionId(styleShow.getCompetitionId().intValue())
+                    //没有被删除
                     .withDeleteStatus(false)
-                    .withTheYear(yearId + "");
+                    // 年份 届数
+                    .withTheYear(yearId);
             competitionYearMapper.insertSelective(
                     competitionYear
             );

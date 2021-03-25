@@ -175,62 +175,52 @@ public class CompetitionYearExample {
             return (Criteria) this;
         }
 
-        public Criteria andTheYearEqualTo(String value) {
+        public Criteria andTheYearEqualTo(Integer value) {
             addCriterion("the_year =", value, "theYear");
             return (Criteria) this;
         }
 
-        public Criteria andTheYearNotEqualTo(String value) {
+        public Criteria andTheYearNotEqualTo(Integer value) {
             addCriterion("the_year <>", value, "theYear");
             return (Criteria) this;
         }
 
-        public Criteria andTheYearGreaterThan(String value) {
+        public Criteria andTheYearGreaterThan(Integer value) {
             addCriterion("the_year >", value, "theYear");
             return (Criteria) this;
         }
 
-        public Criteria andTheYearGreaterThanOrEqualTo(String value) {
+        public Criteria andTheYearGreaterThanOrEqualTo(Integer value) {
             addCriterion("the_year >=", value, "theYear");
             return (Criteria) this;
         }
 
-        public Criteria andTheYearLessThan(String value) {
+        public Criteria andTheYearLessThan(Integer value) {
             addCriterion("the_year <", value, "theYear");
             return (Criteria) this;
         }
 
-        public Criteria andTheYearLessThanOrEqualTo(String value) {
+        public Criteria andTheYearLessThanOrEqualTo(Integer value) {
             addCriterion("the_year <=", value, "theYear");
             return (Criteria) this;
         }
 
-        public Criteria andTheYearLike(String value) {
-            addCriterion("the_year like", value, "theYear");
-            return (Criteria) this;
-        }
-
-        public Criteria andTheYearNotLike(String value) {
-            addCriterion("the_year not like", value, "theYear");
-            return (Criteria) this;
-        }
-
-        public Criteria andTheYearIn(List<String> values) {
+        public Criteria andTheYearIn(List<Integer> values) {
             addCriterion("the_year in", values, "theYear");
             return (Criteria) this;
         }
 
-        public Criteria andTheYearNotIn(List<String> values) {
+        public Criteria andTheYearNotIn(List<Integer> values) {
             addCriterion("the_year not in", values, "theYear");
             return (Criteria) this;
         }
 
-        public Criteria andTheYearBetween(String value1, String value2) {
+        public Criteria andTheYearBetween(Integer value1, Integer value2) {
             addCriterion("the_year between", value1, value2, "theYear");
             return (Criteria) this;
         }
 
-        public Criteria andTheYearNotBetween(String value1, String value2) {
+        public Criteria andTheYearNotBetween(Integer value1, Integer value2) {
             addCriterion("the_year not between", value1, value2, "theYear");
             return (Criteria) this;
         }

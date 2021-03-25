@@ -6,7 +6,7 @@ import java.util.Date;
 public class CompetitionYear implements Serializable {
     private Integer yearId;
 
-    private String theYear;
+    private Integer theYear;
 
     private Boolean deleteStatus;
 
@@ -39,17 +39,17 @@ public class CompetitionYear implements Serializable {
         this.yearId = yearId;
     }
 
-    public String getTheYear() {
+    public Integer getTheYear() {
         return theYear;
     }
 
-    public CompetitionYear withTheYear(String theYear) {
+    public CompetitionYear withTheYear(Integer theYear) {
         this.setTheYear(theYear);
         return this;
     }
 
-    public void setTheYear(String theYear) {
-        this.theYear = theYear == null ? null : theYear.trim();
+    public void setTheYear(Integer theYear) {
+        this.theYear = theYear;
     }
 
     public Boolean getDeleteStatus() {
