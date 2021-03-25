@@ -14,8 +14,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class InterceptorConfig implements WebMvcConfigurer {
     /**
      * 设置请求头的拦截器，拦截所有的请求，除了请求页面的之外
-     * 设置抽奖的拦截器，拦截非法登录的请求、无效的请求等
-     * 设置登录的拦截器，拦截企图重复登录的请求
      *
      * @param registry
      */
