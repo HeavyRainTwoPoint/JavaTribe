@@ -45,6 +45,6 @@
     <select id="getTagNameById" resultType="string">
         select tag_name from t_tag
         <include refid="condition"/>
-        and tagId = #{tagId}
+        and tag_id = #{tagId}
     </select>
 </mapper>

@@ -65,8 +65,10 @@ public class ArticleServiceImpl implements ArticleService {
         int tagId = articleAndTags.getTags().get(0).getTagParent();
         String tagName = tagService.getTagNameById(tagId);
         if (tagName == null) {
-            return 0;             //防止获取标签名这里返回null数据而出现异常
+            //防止获取标签名这里返回null数据而出现异常
+            return 0;
         }
+        article.setArtTagName(tagName);
         articleAndTags.getTags().forEach(tag -> {
             tags.add(tag.getTagId());
         });
