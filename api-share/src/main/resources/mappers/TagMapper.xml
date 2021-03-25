@@ -41,4 +41,10 @@
     <select id="checkTag" resultType="java.lang.Integer">
         select count(*) from t_tag <include refid="condition" /> and tag_name = #{tagName}
     </select>
+
+    <select id="getTagNameById" resultType="string">
+        select tag_name from t_tag
+        <include refid="condition"/>
+        and tagId = #{tagId}
+    </select>
 </mapper>

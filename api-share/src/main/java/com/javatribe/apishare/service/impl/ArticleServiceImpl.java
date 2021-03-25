@@ -5,6 +5,7 @@ import com.javatribe.apishare.mapper.ArtTagMapper;
 import com.javatribe.apishare.mapper.ArticleMapper;
 import com.javatribe.apishare.po.Article;
 import com.javatribe.apishare.service.ArticleService;
+import com.javatribe.apishare.service.TagService;
 import com.javatribe.apishare.utils.ArticleNoGenerator;
 import com.javatribe.apishare.vo.ArticleAndTags;
 import com.javatribe.apishare.vo.TagsRelationship;
@@ -28,6 +29,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Autowired(required = false)
     private ArtTagMapper artTagMapper;
+
+    @Autowired(required = false)
+    private TagService tagService;
 
     /**
      * 根据文章No对文章进行逻辑删除
@@ -57,12 +61,16 @@ public class ArticleServiceImpl implements ArticleService {
         String artNo = ArticleNoGenerator.createNo();
         List<Integer> tags  = new ArrayList<>(articleAndTags.getTags().size());
         article.setArtNo(artNo);
+        //PS：这里是为了获取一级标签的名字，需要借助二级标签的id来查询数据
+        int tagId = articleAndTags.getTags().get(0).getTagParent();
+        String tagName = tagService.getTagNameById(tagId);
+        if (tagName == null) {
+            return 0;             //防止获取标签名这里返回null数据而出现异常
+        }
         articleAndTags.getTags().forEach(tag -> {
-            if (tag.getTagParent() == 0) {
-                article.setArtTagName(tag.getTagName());
-            }
             tags.add(tag.getTagId());
         });
+        //以上逻辑可以修改为更简洁的，只是项目后期修改牵一发动全身
         int result = articleMapper.insertArticle(article);
         if (result == 1) {
             artTagMapper.insertTags(new TagsRelationship(article.getArtId(), tags));
