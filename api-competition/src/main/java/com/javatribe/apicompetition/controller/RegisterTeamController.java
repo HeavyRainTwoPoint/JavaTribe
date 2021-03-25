@@ -1,6 +1,7 @@
 package com.javatribe.apicompetition.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.javatribe.apicompetition.aop.annotation.ActionHandler;
 import com.javatribe.apicompetition.mapper.RegisterTeamMapper;
 import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
 import com.javatribe.apicompetition.pojo.po.RegisterTeam;
@@ -85,21 +86,25 @@ public class RegisterTeamController {
      * @return
      */
     @GetMapping("/registerList")
+    @ActionHandler
     public Result queryRegisterList(@RequestParam("competitionId") Long competitionId){
         return registerTeamService.queryRegisterList(competitionId);
     }
 
     @PutMapping("/editRegisterData")
+    @ActionHandler
     public Result editRegisterData(RegisterTeamOfFront registerTeamOfFront){
         return registerTeamService.editRegisterData(registerTeamOfFront);
     }
 
     @DeleteMapping("/deleteRegisterData")
+    @ActionHandler
     public Result deleteRegisterData(Long registerId){
         return registerTeamService.deleteRegisterData(registerId);
     }
 
     @PostMapping("/addRegisterData")
+    @ActionHandler
     public void addRegisterData(HttpServletRequest request, HttpServletResponse response){
         try {
             request.getRequestDispatcher("sign_up").forward(request,response);
