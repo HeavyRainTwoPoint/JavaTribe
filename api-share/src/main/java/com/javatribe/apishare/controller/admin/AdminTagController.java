@@ -50,7 +50,7 @@ public class AdminTagController {
         int result = tagService.insertTag(tag);
         Result r = new Result();
         if (result == -1) {
-            r.setCode(ApiInfo.OK.getCode());
+            r.setCode(ApiInfo.BAD_REQUEST.getCode());
             r.setMessage("该标签已存在！不允许重复插入！");
         } else if (result > 1) {
             r.setMessage("插入成功！");

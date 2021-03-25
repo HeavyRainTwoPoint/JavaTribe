@@ -95,7 +95,18 @@ public interface TribeStyleShowService {
     List<CompetitionYear> getCompetitionYearsByCompetitionId(Integer compId);
 
 
-
-
+    /**
+     * 获取比赛 以及对于的届数
+     * @return
+     */
     List<CompetitionAndYearsVO> getCompetitionAndYearsData();
+
+
+    /**
+     * 通过 ID 获取 所有的 风采
+     * @param competitionId
+     * @return
+     */
+    List<StyleShow> listStyleShowByCompetition(Integer competitionId);
+
 }

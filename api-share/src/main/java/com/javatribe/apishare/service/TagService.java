@@ -45,4 +45,11 @@ public interface TagService {
      */
     int updateTag(Tag tag);
 
+    /**
+     * 根据标签id获取标签名
+     * @param tagId
+     * @return
+     */
+    String getTagNameById(int tagId);
+
 }

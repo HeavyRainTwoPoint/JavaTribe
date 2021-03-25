@@ -5,7 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/FileApiExtController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/FileApiExtController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/ext/CompetitionYearsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/ext/CompetitionYearsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/TribeStyleShowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/TribeStyleShowService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/TribeStyleShowServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/TribeStyleShowServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/config/InterceptorConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/config/InterceptorConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/controller/admin/AdminArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/controller/admin/AdminArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/controller/admin/AdminTagController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/controller/admin/AdminTagController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/mapper/TagMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/mapper/TagMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/service/TagService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/service/TagService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/service/impl/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/service/impl/ArticleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/service/impl/TagServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/service/impl/TagServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-share/src/main/resources/mappers/TagMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-share/src/main/resources/mappers/TagMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-starter/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-starter/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +44,9 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1n10eodkBiGPGBRYZYjcBT9FVRf" />
   <component name="ProjectViewState">
@@ -89,13 +104,15 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ApiStarterApplication">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -270,6 +287,7 @@
       <workItem from="1616514366670" duration="1846000" />
       <workItem from="1616592436627" duration="9581000" />
       <workItem from="1616637568919" duration="3001000" />
+      <workItem from="1616665660312" duration="579000" />
     </task>
     <servers />
   </component>

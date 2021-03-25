@@ -46,6 +46,9 @@ public class AdminArticleController {
         if (!OK.equals(valid)) {
             return Result.fail(valid);
         }
+        if (articleAndTags == null || articleAndTags.getTags().size() <= 0) {
+            return  Result.fail("未选择标签！");
+        }
         int result = articleService.insertArticle(articleAndTags);
         return result == 1 ? Result.success() : Result.fail("发生内部错误，文章上传失败！请重试！");
     }

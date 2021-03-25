@@ -7,10 +7,7 @@ import com.javatribe.apicompetition.mapper.CompetitionIntroductionMapperCustom;
 import com.javatribe.apicompetition.mapper.CompetitionYearMapper;
 import com.javatribe.apicompetition.mapper.StyleShowMapper;
 import com.javatribe.apicompetition.mapper.StyleShowMapperCustom;
-import com.javatribe.apicompetition.pojo.po.CompetitionYear;
-import com.javatribe.apicompetition.pojo.po.CompetitionYearExample;
-import com.javatribe.apicompetition.pojo.po.NumberOfSessions;
-import com.javatribe.apicompetition.pojo.po.StyleShow;
+import com.javatribe.apicompetition.pojo.po.*;
 import com.javatribe.apicompetition.pojo.vo.CompetitionAndYearsVO;
 import com.javatribe.apicompetition.pojo.vo.FrontStyleShowVO;
 import com.javatribe.apicompetition.pojo.vo.StyleShowVO;
@@ -21,6 +18,7 @@ import org.checkerframework.checker.units.qual.C;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -185,5 +183,23 @@ public class TribeStyleShowServiceImpl implements TribeStyleShowService {
     public List<CompetitionAndYearsVO> getCompetitionAndYearsData() {
 
         return null;
+    }
+
+    /**
+     * 通过 ID 获取 所有的 风采
+     *
+     * @param competitionId
+     * @return
+     */
+    @Override
+    public List<StyleShow> listStyleShowByCompetition(Integer competitionId) {
+        if (competitionId==null) return Collections.emptyList();
+        StyleShowExample example = new StyleShowExample();
+        //比赛 id = compeId  并且没有被删除的 数据
+        example.createCriteria()
+                .andCompetitionIdEqualTo((long) competitionId)
+                .andDeleteStatusEqualTo(false);
+
+        return styleShowMapper.selectByExample(example);
     }
 }
