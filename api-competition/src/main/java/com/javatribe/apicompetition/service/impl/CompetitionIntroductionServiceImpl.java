@@ -4,6 +4,7 @@ import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.mapper.CompetitionIntroductionMapper;
 import com.javatribe.apicompetition.mapper.CompetitionIntroductionMapperCustom;
 import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
+import com.javatribe.apicompetition.pojo.vo.CompetitionAndYearsVO;
 import com.javatribe.apicompetition.service.CompetitionIntroductionService;
 import com.javatribe.apicompetition.util.InsertUtil;
 import com.javatribe.apicompetition.util.MarkdownUtils;
@@ -138,6 +139,11 @@ public class CompetitionIntroductionServiceImpl implements CompetitionIntroducti
     }
 
 
+
+    @Override
+    public List<CompetitionAndYearsVO> listCompetitionAndYearsVo() {
+        return competitionIntroductionMapperCustom.listAllCompetitionAndYears();
+    }
     // /**
     //  * 前端 传 比赛 ID，后端查出比赛 有第几届
     //  * @param competitionId

@@ -4,6 +4,7 @@ import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.pojo.po.CompetitionYear;
 import com.javatribe.apicompetition.pojo.po.NumberOfSessions;
 import com.javatribe.apicompetition.pojo.po.StyleShow;
+import com.javatribe.apicompetition.pojo.vo.CompetitionAndYearsVO;
 import com.javatribe.apicompetition.pojo.vo.FrontStyleShowVO;
 import com.javatribe.apicompetition.pojo.vo.StyleShowVO;
 
@@ -92,4 +93,9 @@ public interface TribeStyleShowService {
     void deleteStyleShowCompetitionYears(Integer yearID);
 
     List<CompetitionYear> getCompetitionYearsByCompetitionId(Integer compId);
+
+
+
+
+    List<CompetitionAndYearsVO> getCompetitionAndYearsData();
 }

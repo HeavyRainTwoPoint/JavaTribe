@@ -50,18 +50,18 @@
 
 
 
-        <table tableName="t_competition_introduction" domainObjectName="CompetitionIntroduction" >
+<!--        <table tableName="t_competition_introduction" domainObjectName="CompetitionIntroduction" >-->
 
-            <generatedKey column="competition_id"  sqlStatement="Mysql"  identity="true" />
-        </table>
-<!--        <table tableName="t_register_team" domainObjectName="RegisterTeam" >-->
-
-<!--            <generatedKey column="register_id"  sqlStatement="Mysql"  identity="true" />-->
+<!--            <generatedKey column="competition_id"  sqlStatement="Mysql"  identity="true" />-->
 <!--        </table>-->
-        <table tableName="t_style_show" domainObjectName="StyleShow" >
+<!--&lt;!&ndash;        <table tableName="t_register_team" domainObjectName="RegisterTeam" >&ndash;&gt;-->
 
-            <generatedKey column="show_id"  sqlStatement="Mysql"  identity="true" />
-        </table>
+<!--&lt;!&ndash;            <generatedKey column="register_id"  sqlStatement="Mysql"  identity="true" />&ndash;&gt;-->
+<!--&lt;!&ndash;        </table>&ndash;&gt;-->
+<!--        <table tableName="t_style_show" domainObjectName="StyleShow" >-->
+
+<!--            <generatedKey column="show_id"  sqlStatement="Mysql"  identity="true" />-->
+<!--        </table>-->
 
         <table tableName="t_competition_years" domainObjectName="CompetitionYear" >
 

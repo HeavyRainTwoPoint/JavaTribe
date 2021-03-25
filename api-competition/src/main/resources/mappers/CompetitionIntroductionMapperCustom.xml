@@ -4,6 +4,16 @@
     <resultMap id="BaseResultMap" type="com.javatribe.apicompetition.pojo.po.CompetitionIntroduction" extends="com.javatribe.apicompetition.mapper.CompetitionIntroductionMapper.BaseResultMap">
     </resultMap>
 
+    <resultMap id="competitoinAndYearVO" extends="BaseResultMap" type="com.javatribe.apicompetition.pojo.vo.CompetitionAndYearsVO">
+        <collection property="years"
+                    resultMap="com.javatribe.apicompetition.mapper.CompetitionYearMapper.BaseResultMap"
+                    javaType="java.util.ArrayList"
+
+        >
+
+        </collection>
+    </resultMap>
+
 
 
     <sql id="field_1"> competition_id , competition_name , gmt_create , gmt_modified , sign_up </sql>
@@ -55,7 +65,18 @@
         from  <include refid="table_name" />
         where <include refid="table_id" /> = #{competitionId}
     </select>
-<!--    <select id="getAllYearNumbers" resultType="java.lang.Integer">-->
+    <select id="listAllCompetitionAndYears"
+            resultMap="competitoinAndYearVO">
+
+            select c.*, y.* from  t_competition_introduction  c   join t_competition_years y
+                on c.competition_id = y.competition_id
+
+                where c.delete_status = 0   and y.delete_status = 0
+
+                    order by y.show_order desc , y.year_id desc
+
+    </select>
+    <!--    <select id="getAllYearNumbers" resultType="java.lang.Integer">-->
 
 <!--    </select>-->
 

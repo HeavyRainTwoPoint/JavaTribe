@@ -1,7 +1,5 @@
 package com.javatribe.apicompetition.pojo.vo;
 
-import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
-import com.javatribe.apicompetition.pojo.po.StyleShow;
 import lombok.Data;
 import lombok.experimental.Accessors;
 

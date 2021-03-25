@@ -3,6 +3,7 @@ package com.javatribe.apicompetition.service.impl;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicommon.exception.BusinessException;
 import com.javatribe.apicommon.exception.ServiceException;
+import com.javatribe.apicompetition.mapper.CompetitionIntroductionMapperCustom;
 import com.javatribe.apicompetition.mapper.CompetitionYearMapper;
 import com.javatribe.apicompetition.mapper.StyleShowMapper;
 import com.javatribe.apicompetition.mapper.StyleShowMapperCustom;
@@ -10,6 +11,7 @@ import com.javatribe.apicompetition.pojo.po.CompetitionYear;
 import com.javatribe.apicompetition.pojo.po.CompetitionYearExample;
 import com.javatribe.apicompetition.pojo.po.NumberOfSessions;
 import com.javatribe.apicompetition.pojo.po.StyleShow;
+import com.javatribe.apicompetition.pojo.vo.CompetitionAndYearsVO;
 import com.javatribe.apicompetition.pojo.vo.FrontStyleShowVO;
 import com.javatribe.apicompetition.pojo.vo.StyleShowVO;
 import com.javatribe.apicompetition.service.TribeStyleShowService;
@@ -34,6 +36,8 @@ public class TribeStyleShowServiceImpl implements TribeStyleShowService {
     final StyleShowMapperCustom styleShowMapperCustom;
     // final Numberof
     final CompetitionYearMapper competitionYearMapper;
+
+    final CompetitionIntroductionMapperCustom competitionIntroductionMapperCustom;
 
     /**
      * 部落官网前端 获取风采展示
@@ -175,5 +179,11 @@ public class TribeStyleShowServiceImpl implements TribeStyleShowService {
                 .andCompetitionIdEqualTo(compId);
         return competitionYearMapper.selectByExample(competitionYearExample);
 
+    }
+
+    @Override
+    public List<CompetitionAndYearsVO> getCompetitionAndYearsData() {
+
+        return null;
     }
 }

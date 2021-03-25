@@ -2,6 +2,7 @@ package com.javatribe.apicompetition.service;
 
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
+import com.javatribe.apicompetition.pojo.vo.CompetitionAndYearsVO;
 
 import java.util.List;
 
@@ -50,4 +51,6 @@ public interface CompetitionIntroductionService {
      * @return
      */
     CompetitionIntroduction getCompetitionDetailInfoWithHtml(Integer competitionId);
+
+    List<CompetitionAndYearsVO> listCompetitionAndYearsVo();
 }

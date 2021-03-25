@@ -22,6 +22,8 @@ public class CompetitionYear implements Serializable {
 
     private Integer competitionId;
 
+    private Integer showOrder;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getYearId() {
@@ -141,6 +143,19 @@ public class CompetitionYear implements Serializable {
         this.competitionId = competitionId;
     }
 
+    public Integer getShowOrder() {
+        return showOrder;
+    }
+
+    public CompetitionYear withShowOrder(Integer showOrder) {
+        this.setShowOrder(showOrder);
+        return this;
+    }
+
+    public void setShowOrder(Integer showOrder) {
+        this.showOrder = showOrder;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -156,6 +171,7 @@ public class CompetitionYear implements Serializable {
         sb.append(", yearStartTime=").append(yearStartTime);
         sb.append(", yearEndTime=").append(yearEndTime);
         sb.append(", competitionId=").append(competitionId);
+        sb.append(", showOrder=").append(showOrder);
         sb.append("]");
         return sb.toString();
     }

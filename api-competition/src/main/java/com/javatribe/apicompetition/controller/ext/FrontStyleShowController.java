@@ -32,6 +32,13 @@ public class FrontStyleShowController {
         return Result.success( styleShowService.getAllStyleShowFronted());
     }
 
+    /**
+     *
+     * 分页查询前端风采
+     * @param page
+     * @param size
+     * @return
+     */
     @GetMapping("/resultList")
     public Result<?> getByPage(@RequestParam Integer page, @RequestParam Integer size) {
         PageHelper.startPage(page,size);

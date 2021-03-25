@@ -38,4 +38,9 @@ class CompetitionIntroductionMapperCustomTest {
     void getDetailInfoById() {
         this.dao.getDetailInfoById(1);
     }
+
+    @Test
+    void listAllCompetitionAndYears() {
+        System.out.println(dao.listAllCompetitionAndYears());
+    }
 }
