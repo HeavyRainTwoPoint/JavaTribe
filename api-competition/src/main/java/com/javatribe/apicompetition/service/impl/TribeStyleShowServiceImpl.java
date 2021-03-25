@@ -7,6 +7,7 @@ import com.javatribe.apicompetition.mapper.CompetitionIntroductionMapperCustom;
 import com.javatribe.apicompetition.mapper.CompetitionYearMapper;
 import com.javatribe.apicompetition.mapper.StyleShowMapper;
 import com.javatribe.apicompetition.mapper.StyleShowMapperCustom;
+import com.javatribe.apicompetition.pojo.dto.StyleShowDTO;
 import com.javatribe.apicompetition.pojo.po.*;
 import com.javatribe.apicompetition.pojo.vo.CompetitionAndYearsVO;
 import com.javatribe.apicompetition.pojo.vo.FrontStyleShowVO;
@@ -66,13 +67,13 @@ public class TribeStyleShowServiceImpl implements TribeStyleShowService {
      */
     @Override
     public int updateById(StyleShow styleShow) {
-        return styleShowMapper.updateByPrimaryKey(styleShow);
+        return styleShowMapper.updateByPrimaryKeySelective(styleShow);
     }
 
     @Override
     public void insertOne(StyleShow styleShow) {
         InsertUtil.setDefaultValue(styleShow);
-        styleShowMapper.insert(styleShow);
+        styleShowMapper.insertSelective(styleShow);
 
     }
 
@@ -201,5 +202,57 @@ public class TribeStyleShowServiceImpl implements TribeStyleShowService {
                 .andDeleteStatusEqualTo(false);
 
         return styleShowMapper.selectByExample(example);
+    }
+
+    /**
+     * @param yearNum 第几届
+     * @param compId  比赛ID
+     * @return
+     */
+    @Override
+    public  CompetitionYear getYearByCompetitionIdAndYearText(Integer yearNum, Integer compId) {
+        final CompetitionYearExample competitionYearExample = new CompetitionYearExample();
+        competitionYearExample
+                .createCriteria()
+                .andCompetitionIdEqualTo(compId)
+                .andTheYearEqualTo(yearNum.toString());
+
+        List<CompetitionYear> res =  competitionYearMapper.selectByExample(competitionYearExample);
+        if (res==null||res.size()==0) return null;
+        return res.get(0);
+    }
+
+    /**
+     * 自动生成前端 的风采展示的 第几届
+     *
+     * @param styleShow
+     */
+    @Override
+    public void resetYearId(StyleShowDTO styleShow) {
+        //修改 yearId
+        int yearId= styleShow.getYearId();
+        CompetitionYearExample ex = new  CompetitionYearExample();
+        ex.createCriteria()
+                .andCompetitionIdEqualTo(styleShow.getCompetitionId().intValue())
+                //比赛Id
+                .andTheYearEqualTo(yearId +"");
+
+        final List<CompetitionYear> styleShows = competitionYearMapper.selectByExample(ex);
+        if (styleShows==null|| styleShows.size()==0) {
+            //没有
+            final CompetitionYear competitionYear = new CompetitionYear()
+                    .withActiveStatus(1)
+                    .withCompetitionId(styleShow.getCompetitionId().intValue())
+                    .withDeleteStatus(false)
+                    .withTheYear(yearId + "");
+            competitionYearMapper.insertSelective(
+                    competitionYear
+            );
+            //没有就插入一条 第几届的数据
+            styleShow.setYearId(competitionYear.getYearId());
+
+        }else{
+            styleShow.setYearId(styleShows.get(0).getYearId());
+        }
     }
 }

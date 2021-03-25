@@ -1,6 +1,7 @@
 package com.javatribe.apicompetition.service;
 
 import com.javatribe.apicommon.dto.Result;
+import com.javatribe.apicompetition.pojo.dto.StyleShowDTO;
 import com.javatribe.apicompetition.pojo.po.CompetitionYear;
 import com.javatribe.apicompetition.pojo.po.NumberOfSessions;
 import com.javatribe.apicompetition.pojo.po.StyleShow;
@@ -109,4 +110,18 @@ public interface TribeStyleShowService {
      */
     List<StyleShow> listStyleShowByCompetition(Integer competitionId);
 
+
+    /**
+     * @param yearNum 第几届
+     * @param compId  比赛ID
+     * @return
+     */
+    CompetitionYear getYearByCompetitionIdAndYearText(Integer yearNum,Integer compId);
+
+
+    /**
+     * 自动生成前端 的风采展示的 第几届
+     * @param styleShow
+     */
+    void resetYearId(StyleShowDTO styleShow);
 }
