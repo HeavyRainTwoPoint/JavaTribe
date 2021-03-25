@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/CompetitionIntroductionMapperCustom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/CompetitionIntroductionMapperCustom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -264,7 +262,7 @@
       <workItem from="1616637568919" duration="3001000" />
       <workItem from="1616665660312" duration="4385000" />
       <workItem from="1616672305867" duration="3441000" />
-      <workItem from="1616682291212" duration="1023000" />
+      <workItem from="1616682291212" duration="1352000" />
     </task>
     <servers />
   </component>
