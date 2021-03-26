@@ -2,7 +2,6 @@ package com.javatribe.apicompetition.controller.ext;
 
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.pojo.po.CompetitionYear;
-import com.javatribe.apicompetition.pojo.po.StyleShow;
 import com.javatribe.apicompetition.service.TribeStyleShowService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
