@@ -278,7 +278,7 @@
       <workItem from="1616672305867" duration="3441000" />
       <workItem from="1616682291212" duration="1772000" />
       <workItem from="1616685612785" duration="285000" />
-      <workItem from="1616719155047" duration="4955000" />
+      <workItem from="1616719155047" duration="5677000" />
     </task>
     <servers />
   </component>
@@ -348,6 +348,14 @@
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/TribeStyleShowService.java</url>
+          <line>80</line>
+          <properties class="com.javatribe.apicompetition.service.TribeStyleShowService" method="getAllStyleShowVOByCompetitionIdAndTheYear">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

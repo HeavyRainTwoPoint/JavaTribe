@@ -102,6 +102,7 @@
         where c.delete_status = 0    and (y.delete_status = 0 or y.delete_status is NULL )
 
 
+
     </select>
     <select id="listAllCompetitionAndYears2"
             resultMap="competitoinAndYearVO2">
@@ -112,7 +113,7 @@
         where c.delete_status = 0    and (y.delete_status = 0 or y.delete_status is NULL )
 
 
-
+        order by c.competition_id , y.the_year desc
     </select>
     <!--    <select id="getAllYearNumbers" resultType="java.lang.Integer">-->
 

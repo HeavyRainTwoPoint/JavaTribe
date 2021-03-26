@@ -1,5 +1,6 @@
 package com.javatribe.apicompetition.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.mapper.CompetitionIntroductionMapper;
 import com.javatribe.apicompetition.mapper.CompetitionIntroductionMapperCustom;
@@ -166,6 +167,7 @@ public class CompetitionIntroductionServiceImpl implements CompetitionIntroducti
     @Transactional(readOnly = true)
     @Override
     public List<YearAndCompetitionVO> listYearAndCompetitionVO() {
+
         List<YearAndCompetitionVO> resultList = competitionIntroductionMapperCustom.listAllCompetitionAndYears2();
         if (resultList==null|| resultList.isEmpty()) {
             //判空
