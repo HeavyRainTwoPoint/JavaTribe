@@ -5,12 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/dto/YearAndStyleShowVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/vo/YearAndCompetitionVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/ext/CompetitionYearsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/ext/CompetitionYearsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/front/StyleShowInformationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/front/StyleShowInformationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/mapper/CompetitionIntroductionMapperCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/mapper/CompetitionIntroductionMapperCustom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/CompetitionIntroductionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/CompetitionIntroductionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/CompetitionIntroductionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/CompetitionIntroductionServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/CompetitionIntroductionMapperCustom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/CompetitionIntroductionMapperCustom.xml" afterDir="false" />
     </list>
@@ -284,7 +278,7 @@
       <workItem from="1616672305867" duration="3441000" />
       <workItem from="1616682291212" duration="1772000" />
       <workItem from="1616685612785" duration="285000" />
-      <workItem from="1616719155047" duration="3771000" />
+      <workItem from="1616719155047" duration="4955000" />
     </task>
     <servers />
   </component>

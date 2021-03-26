@@ -175,11 +175,20 @@ public class CompetitionIntroductionServiceImpl implements CompetitionIntroducti
         for (YearAndCompetitionVO yearAndCompetitionVO: resultList) {
             final List<YearAndStyleShowVO> yearList = yearAndCompetitionVO.getYearList();
             Long competitionId = yearAndCompetitionVO.getCompetitionId();
+            //去掉 mybatis 映射的 null 值
+            if (yearList.size()==1) {
+                if (yearList.get(0).getYearId()==null) {
+                    //id 为null ，清掉，为 空数组
+                    yearAndCompetitionVO.setYearList(Collections.emptyList());
+                }
+            }
             if (yearList!=null  && yearList.size()>0 && competitionId!=null) {
                 for (YearAndStyleShowVO yearAndStyle: yearList) {
-                    Result<List<StyleShowVO>> styleList = tribeStyleShowService.getAllStyleShowVOByCompetitionIdAndTheYear(yearAndStyle.getYearId(),competitionId.intValue());
-                    if (styleList!=null) {
-                        yearAndStyle.setStyleShowList(styleList.getData());
+                    if (yearAndStyle.getYearId()!=null) {
+                        Result<List<StyleShowVO>> styleList = tribeStyleShowService.getAllStyleShowVOByCompetitionIdAndTheYear(yearAndStyle.getYearId(),competitionId.intValue());
+                        if (styleList!=null) {
+                            yearAndStyle.setStyleShowList(styleList.getData());
+                        }
                     }
                 }
             }

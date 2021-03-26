@@ -96,23 +96,21 @@
     <select id="listAllCompetitionAndYears"
             resultMap="competitoinAndYearVO">
 
-            select c.*, y.* from  t_competition_introduction  c   join t_competition_years y
-                on c.competition_id = y.competition_id
+        select c.*, y.* from  t_competition_introduction  c left  join t_competition_years y
+                                                                       on c.competition_id = y.competition_id
 
-                where c.delete_status = 0   and y.delete_status = 0
+        where c.delete_status = 0    and (y.delete_status = 0 or y.delete_status is NULL )
 
-                    order by y.the_year desc , y.year_id desc
 
     </select>
     <select id="listAllCompetitionAndYears2"
             resultMap="competitoinAndYearVO2">
 
-        select c.*, y.* from  t_competition_introduction  c   join t_competition_years y
-                                                                   on c.competition_id = y.competition_id
+        select c.*, y.* from  t_competition_introduction  c left  join t_competition_years y
+                                                                       on c.competition_id = y.competition_id
 
-        where c.delete_status = 0   and y.delete_status = 0
+        where c.delete_status = 0    and (y.delete_status = 0 or y.delete_status is NULL )
 
-        order by y.the_year desc , y.year_id desc
 
 
     </select>
