@@ -187,7 +187,7 @@ public class RegisterTeamImpl implements RegisterTeamService {
             }
         }
         registerTeamOfData.setDeleteStatus(0);
-        if (registerTeamOfData.getRegisterTime()==null) {
+        if (!"编辑".equals(type) && registerTeamOfData.getRegisterTime()==null) {
             registerTeamOfData.setRegisterTime(new Date());
         }
         message = toValidateNoSameNameOrSameLeaderName(registerTeamOfData);
