@@ -71,12 +71,11 @@ public class RegisterTeamImpl implements RegisterTeamService {
     @Override
     public String toValidateNoSameNameOrSameLeaderName(RegisterTeam registerTeam) {
         //首先检查是否有同名队伍 规则：在同一届 同一个比赛中 不能存在相同的队伍
-        String year = DateUtils.formatDate(registerTeam.getRegisterTime(),"yyyy");
-        int i = registerTeamMapper.selectSameTeamName(year, registerTeam.getCompetitionId(), registerTeam.getTeamName(),registerTeam.getRegisterId());
+        int i = registerTeamMapper.selectSameTeamName(registerTeam.getCompetitionId(), registerTeam.getTeamName(),registerTeam.getRegisterId());
         if (i>0){
             return "队伍名字重复，请重新填写";
         }
-        i = registerTeamMapper.selectSameTeamLeaderName(year,registerTeam.getCompetitionId(),registerTeam.getTeamLeaderName(),registerTeam.getRegisterId());
+        i = registerTeamMapper.selectSameTeamLeaderName(registerTeam.getCompetitionId(),registerTeam.getTeamLeaderName(),registerTeam.getRegisterId());
         if (i>0){
             return "您作为队长已经报过名了，请勿重复报名";
         }
@@ -131,7 +130,7 @@ public class RegisterTeamImpl implements RegisterTeamService {
             result.setData(JSONObject.toJSONString(datas));
         }else{
             result.setMessage("没有数据");
-            result.setData(null);
+            result.setCode(500);
         }
         return result;
     }

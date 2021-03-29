@@ -95,30 +95,34 @@
   </select>
 
   <select id="selectSameTeamName" resultType="java.lang.Integer">
+    SET @date=IF(#{registerId} is not null and #{registerId}!='',(select register_time from
+    t_register_team where register_id=#{registerId}),now());
     SELECT
 	count( register_id )
     FROM
 	`t_register_team`
     WHERE
-	STR_TO_DATE( date_format( register_time, '%Y-%m-%d' ), '%Y' ) = STR_TO_DATE( #{year}, '%Y' )
+	STR_TO_DATE( date_format( register_time, '%Y-%m-%d' ), '%Y' ) = STR_TO_DATE( @date, '%Y' )
 	AND competition_id = #{competitionId}
 	AND team_name = #{teamName}
 	<if test="registerId!=null and registerId!=''">
-        register_id!=#{registerId}
+    AND register_id!=#{registerId}
     </if>
   </select>
 
   <select id="selectSameTeamLeaderName" resultType="java.lang.Integer">
-    SELECT
+      SET @date=IF(#{registerId} is not null and #{registerId}!='',(select register_time
+      from t_register_team where register_id=#{registerId}),now());
+      SELECT
 	count( register_id )
     FROM
 	`t_register_team`
     WHERE
-	STR_TO_DATE( date_format( register_time, '%Y-%m-%d' ), '%Y' ) = STR_TO_DATE( #{year}, '%Y' )
-	AND competition_id = 1
+	STR_TO_DATE( date_format( register_time, '%Y-%m-%d' ), '%Y' ) = STR_TO_DATE( @date, '%Y' )
+	AND competition_id = #{competitionId}
 	AND team_leader_name = #{teamLeaderName}
 	<if test="registerId!=null and registerId!=''">
-        register_id!=#{registerId}
+    AND register_id!=#{registerId}
     </if>
   </select>
 
