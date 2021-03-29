@@ -2,6 +2,7 @@ package com.javatribe.apicompetition.mapper;
 
 import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
 import com.javatribe.apicompetition.pojo.vo.CompetitionAndYearsVO;
+import com.javatribe.apicompetition.pojo.vo.YearAndCompetitionVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -29,6 +30,14 @@ public interface CompetitionIntroductionMapperCustom {
      * @return
      */
     List<CompetitionAndYearsVO> listAllCompetitionAndYears();
+
+
+    /**
+     * 和上面一样的。
+     * 前端懒
+     * @return 和
+     */
+    List<YearAndCompetitionVO> listAllCompetitionAndYears2();
 
     // List<Integer> getAllYearNumbers(@Param("competitionId") Integer competitionId);
 }

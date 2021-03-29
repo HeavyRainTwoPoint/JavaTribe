@@ -14,6 +14,34 @@
         </collection>
     </resultMap>
 
+    <!--
+        年份 和 比赛ID
+    -->
+    <resultMap id="year_and_style" type="com.javatribe.apicompetition.pojo.dto.YearAndStyleShowVO">
+        <id column="year_id" jdbcType="INTEGER" property="yearId" />
+        <result column="the_year" jdbcType="INTEGER" property="theYear" />
+        <result column="delete_status" jdbcType="BIT" property="deleteStatus" />
+        <result column="active_status" jdbcType="INTEGER" property="activeStatus" />
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+        <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+        <result column="year_start_time" jdbcType="TIMESTAMP" property="yearStartTime" />
+        <result column="year_end_time" jdbcType="TIMESTAMP" property="yearEndTime" />
+        <result column="competition_id" jdbcType="INTEGER" property="competitionId" />
+        <result column="show_order" jdbcType="INTEGER" property="showOrder" />
+    </resultMap>
+
+    <resultMap id="competitoinAndYearVO2" extends="BaseResultMap" type="com.javatribe.apicompetition.pojo.vo.YearAndCompetitionVO">
+        <collection property="yearList"
+
+                    resultMap="year_and_style"
+                    javaType="java.util.ArrayList"
+
+        >
+
+        </collection>
+    </resultMap>
+
+
 
 
     <sql id="field_1"> competition_id , competition_name , gmt_create , gmt_modified , sign_up </sql>
@@ -68,13 +96,24 @@
     <select id="listAllCompetitionAndYears"
             resultMap="competitoinAndYearVO">
 
-            select c.*, y.* from  t_competition_introduction  c   join t_competition_years y
-                on c.competition_id = y.competition_id
+        select c.*, y.* from  t_competition_introduction  c left  join t_competition_years y
+                                                                       on c.competition_id = y.competition_id
 
-                where c.delete_status = 0   and y.delete_status = 0
+        where c.delete_status = 0    and (y.delete_status = 0 or y.delete_status is NULL )
 
-                    order by y.show_order desc , y.year_id desc
 
+
+    </select>
+    <select id="listAllCompetitionAndYears2"
+            resultMap="competitoinAndYearVO2">
+
+        select c.*, y.* from  t_competition_introduction  c left  join t_competition_years y
+                                                                       on c.competition_id = y.competition_id
+
+        where c.delete_status = 0    and (y.delete_status = 0 or y.delete_status is NULL )
+
+
+        order by c.competition_id , y.the_year desc
     </select>
     <!--    <select id="getAllYearNumbers" resultType="java.lang.Integer">-->
 
