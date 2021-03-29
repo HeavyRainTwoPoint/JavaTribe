@@ -139,11 +139,6 @@ public class RegisterTeamImpl implements RegisterTeamService {
     @Override
     public Result editRegisterData(RegisterTeamOfFront registerTeam) {
         Result result = new Result();
-        if (registerTeam.getRegisterTime()==null){
-            result.setCode(401);
-            result.setMessage("registerTime参数为空，修改失败");
-            return result;
-        }
         RegisterTeam registerTeamOfData = new RegisterTeam(registerTeam.getRegisterId(), registerTeam.getCompetitionId(), registerTeam.getTeamName(), registerTeam.getTeamLeaderName(), registerTeam.getTeamLeaderPhone(), registerTeam.getTeamLeaderStudentId(), registerTeam.getTeamLeaderWechat(), registerTeam.getTeamLeaderCollege());
         registerTeamOfData.setRegisterTime(registerTeam.getRegisterTime());
         result = ((RegisterTeamService)AopContext.currentProxy()).validateEditAndSignRegisterTeam(registerTeam, result, "编辑", registerTeamOfData);
