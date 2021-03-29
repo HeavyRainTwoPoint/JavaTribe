@@ -123,9 +123,8 @@
   </select>
 
   <select id="queryRegisterList" resultType="com.javatribe.apicompetition.pojo.po.RegisterTeam">
-    SET @date =( str_to_date(( SELECT date_format( team_begin_time, '%Y' ) FROM t_winner_team ORDER BY team_begin_time DESC LIMIT 1 ),
-	'%Y'
-    ));
+    SET @date=(str_to_date((select date_format(nos.year_start_time,'%Y') from t_winner_team as twt inner join number_of_sessions as nos on twt.the_year=nos.year_id
+    where twt.competition_id=#{competitionId} order by year_id desc limit 1),'%Y'));
     SET @index = 0;
     SELECT
 	@index:=@index + 1 AS `order`,
