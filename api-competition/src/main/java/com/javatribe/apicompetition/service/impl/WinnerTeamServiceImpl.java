@@ -4,6 +4,7 @@ import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.mapper.WinnerTeamMapper;
 import com.javatribe.apicompetition.pojo.po.*;
 import com.javatribe.apicompetition.service.WinnerTeamService;
+import com.javatribe.apicompetition.util.MatcherRegexUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,12 +84,26 @@ public class WinnerTeamServiceImpl implements WinnerTeamService {
     @Override
     public Result addSessionNum(NumberOfSessions sessions) {
         Result result = new Result();
-        if (Objects.isNull(sessions.getYearStartTime()) || Objects.isNull(sessions.getYearEndTime())){
+        if (Objects.isNull(sessions.getYearStartTime()) || Objects.isNull(sessions.getYearEndTime()) ||
+                StringUtils.isEmpty(sessions.getTheYear())){
             result.setCode(401);
-            result.setMessage("届数的开始/结束时间为空，请重新填写");
+            result.setMessage("届数的名字/开始/结束时间为空，请重新填写");
+            return result;
+        }
+        if (StringUtils.isEmpty(sessions.getCompetitionId())){
+            result.setCode(401);
+            result.setMessage("届数对应的比赛id不能为空，请重新填写");
+            return result;
+        }
+        if (!MatcherRegexUtil.standardSessionsNum(sessions.getTheYear().trim())){
+            result.setCode(401);
+            result.setMessage("届数格式出错，格式为【第几届】");
             return result;
         }
         try{
+            sessions.setGmtCreate(new Date());
+            sessions.setDeleteStatus(0);
+            sessions.setActiveStatus(1);
             winnerTeamMapper.addSessionNum(sessions);
         }catch (Exception e){
             result.setCode(401);
@@ -215,6 +230,11 @@ public class WinnerTeamServiceImpl implements WinnerTeamService {
         if (StringUtils.isEmpty(sessions.getTheYear()) &&
                 Objects.isNull(sessions.getYearStartTime()) &&
                 Objects.isNull(sessions.getYearEndTime())){
+            return result;
+        }
+        if (!StringUtils.isEmpty(sessions.getTheYear()) && !MatcherRegexUtil.standardSessionsNum(sessions.getTheYear().trim())){
+            result.setCode(401);
+            result.setMessage("届数格式出错，格式为【第几届】");
             return result;
         }
         try {

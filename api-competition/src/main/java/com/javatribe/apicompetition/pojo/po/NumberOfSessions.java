@@ -12,7 +12,7 @@ public class NumberOfSessions {
 
     private String theYear;
 
-    private Integer delete_status;
+    private Integer deleteStatus;
 
     private Integer activeStatus;
 
@@ -26,12 +26,14 @@ public class NumberOfSessions {
     @DateTimeFormat(pattern = "yyyy.MM.dd")
     private Date yearEndTime;
 
-    public Integer getDelete_status() {
-        return delete_status;
+    private Integer competitionId;
+
+    public Integer getDeleteStatus() {
+        return deleteStatus;
     }
 
-    public void setDelete_status(Integer delete_status) {
-        this.delete_status = delete_status;
+    public void setDeleteStatus(Integer delete_status) {
+        this.deleteStatus = delete_status;
     }
 
     public Integer getActiveStatus() {
@@ -88,5 +90,13 @@ public class NumberOfSessions {
 
     public void setTheYear(String theYear) {
         this.theYear = theYear;
+    }
+
+    public Integer getCompetitionId() {
+        return competitionId;
+    }
+
+    public void setCompetitionId(Integer competitionId) {
+        this.competitionId = competitionId;
     }
 }

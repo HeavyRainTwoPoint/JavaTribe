@@ -59,7 +59,13 @@ public class WinnerTeamController {
         return winnerTeamService.deleteGetPrizesData(winnerTeam);
     }
 
+    /**
+     * 暂时无用
+     * @param sessions
+     * @return
+     */
     @PutMapping(value = "/editSessionNum")
+    @ActionHandler
     public Result editSessionNum(NumberOfSessions sessions){
         return winnerTeamService.editSessionNum(sessions);
     }
