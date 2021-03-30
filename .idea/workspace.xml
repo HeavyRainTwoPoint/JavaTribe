@@ -29,19 +29,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="更新修改报名信息的接口 2021-03-29">
-      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/config/properties/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/dto/ResponseStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/dto/ResponseStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/interceptor/TokenInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/interceptor/TokenInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-common/src/main/resources/mappers/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-enroll/src/main/java/com/javatribe/apienroll/ApiEnrollApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-enroll/src/main/java/com/javatribe/apienroll/ApiEnrollApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-enroll/src/main/java/com/javatribe/apienroll/controller/openapi/EnrollOpenApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-enroll/src/main/java/com/javatribe/apienroll/controller/openapi/EnrollOpenApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-starter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-starter/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-starter/src/main/java/com/javatribe/apistarter/ApiStarterApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-starter/src/main/java/com/javatribe/apistarter/ApiStarterApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-starter/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-starter/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-common/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/src/main/resources/mappers/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-enroll/src/main/resources/mapper/EnrollOpenApiMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-enroll/src/main/resources/mappers/EnrollOpenApiMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-introduction/src/test/java/com/javatribe/introduction/CodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-introduction/src/test/java/com/javatribe/introduction/CodeGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -330,7 +321,7 @@
       <workItem from="1616719155047" duration="5677000" />
       <workItem from="1617005676319" duration="889000" />
       <workItem from="1617013966675" duration="1879000" />
-      <workItem from="1617089400107" duration="5462000" />
+      <workItem from="1617089400107" duration="6667000" />
     </task>
     <task id="LOCAL-00001" summary="更正搜索参数比赛成员的代码 2021-03-29">
       <created>1617004305899</created>
@@ -353,7 +344,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617006146768</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="20210330">
+      <created>1617095015841</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1617095015841</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -376,7 +374,8 @@
     <MESSAGE value="更正搜索参数比赛成员的代码 2021-03-29" />
     <MESSAGE value="更正配置文件的数据库连接参数 2021-03-29" />
     <MESSAGE value="更新修改报名信息的接口 2021-03-29" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新修改报名信息的接口 2021-03-29" />
+    <MESSAGE value="20210330" />
+    <option name="LAST_COMMIT_MESSAGE" value="20210330" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
