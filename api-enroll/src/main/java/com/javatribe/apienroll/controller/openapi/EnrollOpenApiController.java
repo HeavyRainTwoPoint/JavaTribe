@@ -1,8 +1,9 @@
 package com.javatribe.apienroll.controller.openapi;
 
+import com.javatribe.apicommon.annotation.ApiAuthentication;
 import com.javatribe.apicommon.dto.Response;
-import com.javatribe.apicommon.dto.ResponseStatus;
 import com.javatribe.apienroll.dto.EnrollNoticeDTO;
+import com.javatribe.apienroll.dto.TestNoticeDTO;
 import com.javatribe.apienroll.entity.TestNotice;
 import com.javatribe.apienroll.service.openapi.EnrollOpenApiService;
 import com.javatribe.apienroll.utils.NumberUtil;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Liang.Yong.hui
@@ -32,6 +32,7 @@ public class EnrollOpenApiController {
      * @param n 默认为4
      * @return
      */
+//    @ApiAuthentication
     @GetMapping("/test_name")
     public Response<List<TestNotice>> getLastNTestNameOnDirection(@RequestParam(value = "last_n",required = false) Integer n, @RequestParam("direction_code") Integer directionCode) {
         if (NumberUtil.isInValidNum(n)) {
@@ -56,7 +57,7 @@ public class EnrollOpenApiController {
      * @return
      */
     @GetMapping("/test_notice")
-    public Response getTestNoticeOnDirectionCode(@RequestParam(value = "direction_code") Integer directionCode) {
+    public Response<List<TestNoticeDTO>> getTestNoticeOnDirectionCode(@RequestParam(value = "direction_code") Integer directionCode) {
         return enrollOpenApiService.getTestNoticeOnDirection(directionCode);
     }
 

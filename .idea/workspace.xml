@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -26,10 +29,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="更新修改报名信息的接口 2021-03-29">
+      <change afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/config/properties/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/mapper/RegisterTeamMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/mapper/RegisterTeamMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/RegisterTeamImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/RegisterTeamImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/RegisterTeamMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/RegisterTeamMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/dto/ResponseStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/dto/ResponseStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/interceptor/TokenInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/interceptor/TokenInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-common/src/main/resources/mappers/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-enroll/src/main/java/com/javatribe/apienroll/ApiEnrollApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-enroll/src/main/java/com/javatribe/apienroll/ApiEnrollApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-enroll/src/main/java/com/javatribe/apienroll/controller/openapi/EnrollOpenApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-enroll/src/main/java/com/javatribe/apienroll/controller/openapi/EnrollOpenApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-starter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-starter/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-starter/src/main/java/com/javatribe/apistarter/ApiStarterApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-starter/src/main/java/com/javatribe/apistarter/ApiStarterApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-starter/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-starter/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,8 +72,9 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="$PROJECT_DIR$/../../BaiduNetdiskDownload/maven3.3.9/apache-maven-3.3.9" />
-        <option name="userSettingsFile" value="D:\BaiduNetdiskDownload\maven3.3.9\apache-maven-3.3.9\conf\settings.xml" />
+        <option name="localRepository" value="D:\my_maven\maven_repository" />
+        <option name="mavenHome" value="D:\Program Files\JetBrains\IntelliJ IDEA 2020.2\plugins\maven\lib\maven3" />
+        <option name="userSettingsFile" value="D:\my_maven\apache-maven-3.5.2\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -89,7 +102,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/api-common/src/main/resources/mapper" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -104,6 +117,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\work\javatribe\some-wa-tribe\api-common\src\main\resources\mapper" />
+      <recent name="C:\work\javatribe\some-wa-tribe\api-common\src\main\java\com\javatribe\apicommon" />
       <recent name="D:\ASUS\Desktop\个人项目\server\部落官网\api-parent\api-competition\src\main\resources\sql" />
       <recent name="D:\ASUS\Desktop\个人项目\server\部落官网\api-parent\api-competition\src\main\resources" />
     </key>
@@ -119,6 +134,9 @@
       <recent name="com.javatribe.apicompetition.service" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.javatribe.apienroll.controller.openapi" />
+      <recent name="com.javatribe.apicommon.dto" />
+      <recent name="com.javatribe.apicommon.config.properties" />
       <recent name="com.javatribe.apistarter" />
       <recent name="com.javatribe.apicompetition.util" />
     </key>
@@ -129,7 +147,7 @@
       <command value="mvn clean" />
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.WebTest">
+  <component name="RunManager" selected="Spring Boot.ApiStarterApplication">
     <configuration name="MatcherRegexUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.javatribe.apicompetition.util.MatcherRegexUtil" />
       <module name="api-competition" />
@@ -139,6 +157,17 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -175,18 +204,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TribeStyleShowServiceImplTest.insertOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="api-competition" />
+    <configuration name="ApiEnrollApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="api-enroll" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.javatribe.apicompetition.service.impl.*" />
+          <option name="PATTERN" value="com.javatribe.apienroll.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.javatribe.apicompetition.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.javatribe.apicompetition.service.impl.TribeStyleShowServiceImplTest" />
-      <option name="METHOD_NAME" value="insertOne" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.javatribe.apienroll.ApiEnrollApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -213,15 +239,15 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.ApiEnrollApplication" />
         <item itemvalue="Spring Boot.WebTest" />
         <item itemvalue="Application.MatcherRegexUtil" />
         <item itemvalue="JUnit.CompetitionIntroductionMapperCustomTest.listAllCompetitionAndYears" />
         <item itemvalue="JUnit.TribeStyleShowServiceImplTest.insertOne (1)" />
-        <item itemvalue="JUnit.TribeStyleShowServiceImplTest.insertOne" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SshConsoleOptionsProvider">
     <option name="myEncoding" value="UTF-8" />
   </component>
@@ -304,6 +330,7 @@
       <workItem from="1616719155047" duration="5677000" />
       <workItem from="1617005676319" duration="889000" />
       <workItem from="1617013966675" duration="1879000" />
+      <workItem from="1617089400107" duration="5462000" />
     </task>
     <task id="LOCAL-00001" summary="更正搜索参数比赛成员的代码 2021-03-29">
       <created>1617004305899</created>
@@ -330,7 +357,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -350,72 +377,6 @@
     <MESSAGE value="更正配置文件的数据库连接参数 2021-03-29" />
     <MESSAGE value="更新修改报名信息的接口 2021-03-29" />
     <option name="LAST_COMMIT_MESSAGE" value="更新修改报名信息的接口 2021-03-29" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser" timestamp="1616999910822">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1616999910822" />
-    <state x="708" y="298" key="FileChooserDialogImpl" timestamp="1616999506231">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="708" y="298" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1616999506231" />
-    <state width="1860" height="423" key="GridCell.Tab.0.bottom" timestamp="1617015838272">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1860" height="423" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1617015838272" />
-    <state width="1860" height="423" key="GridCell.Tab.0.center" timestamp="1617015838272">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1860" height="423" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1617015838272" />
-    <state width="1860" height="423" key="GridCell.Tab.0.left" timestamp="1617015838272">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1860" height="423" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1617015838272" />
-    <state width="1860" height="423" key="GridCell.Tab.0.right" timestamp="1617015838272">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1860" height="423" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1617015838272" />
-    <state width="1860" height="423" key="GridCell.Tab.1.bottom" timestamp="1617015838272">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1860" height="423" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1617015838272" />
-    <state width="1860" height="423" key="GridCell.Tab.1.center" timestamp="1617015838272">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1860" height="423" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1617015838272" />
-    <state width="1860" height="423" key="GridCell.Tab.1.left" timestamp="1617015838272">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1860" height="423" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1617015838272" />
-    <state width="1860" height="423" key="GridCell.Tab.1.right" timestamp="1617015838272">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1860" height="423" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1617015838272" />
-    <state x="184" y="90" key="MergeDialog" timestamp="1617002653004">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="184" y="90" key="MergeDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1617002653004" />
-    <state x="429" y="188" key="SettingsEditor" timestamp="1616999522821">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="429" y="188" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1616999522821" />
-    <state x="580" y="274" key="Vcs.Push.Dialog.v2" timestamp="1617006148336">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="580" y="274" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1617006148336" />
-    <state x="782" y="454" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1616676003102">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="782" y="454" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080@0.0.1920.1080" timestamp="1616676003102" />
-    <state x="662" y="243" width="599" height="594" key="find.popup" timestamp="1617005824599">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="662" y="243" width="599" height="594" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1617005824599" />
-    <state x="616" y="250" width="672" height="677" key="run.anything.popup" timestamp="1617014150983">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="616" y="250" width="672" height="677" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1617014150983" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
