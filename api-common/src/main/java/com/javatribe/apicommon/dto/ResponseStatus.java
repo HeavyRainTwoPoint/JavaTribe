@@ -10,6 +10,7 @@ public enum ResponseStatus {
     ERROR(5000,"系统出错"),
     PARAMS_ERROR(6000,"参数不合法"),
     FILE_DOWNLOAD_ERROR(7000,"文件下载失败"),
+    COMMAND_ERROR(8000,"操作失败"),
     ;
 
     public Integer status;
