@@ -136,7 +136,7 @@ public class RegisterTeamImpl implements RegisterTeamService {
     @Override
     public Result editRegisterData(RegisterTeamOfFront registerTeam) {
         Result result = new Result();
-        if(registerTeam.getRegisterId()==null){
+        if(registerTeam.getCompetitionId()==null){
             result.setMessage("需要填写比赛id");
             result.setCode(401);
             return result;
