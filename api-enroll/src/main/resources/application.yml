@@ -18,7 +18,7 @@ spring:
 
 
 mybatis:
-  mapper-locations: classpath*:/mapping/**/*.xml, classpath*:/mapper/**/*.xml
+  mapper-locations: classpath*:/mapping/**/*.xml, classpath*:/mappers/**/*.xml
   type-aliases-package: com.javatribe.apienroll.entity
   configuration:
     map-underscore-to-camel-case: true

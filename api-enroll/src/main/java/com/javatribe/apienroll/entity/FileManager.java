@@ -1,27 +1,38 @@
 package com.javatribe.apienroll.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class FileManager implements Serializable {
     private Long id;
 
+    @JsonProperty("file_name")
     private String fileName;
 
+    @JsonProperty("file_name")
     private String contenType;
 
+    @JsonProperty("file_name")
     private String fileUrl;
 
+    @JsonProperty("file_name")
     private Integer fileType;
 
+    @JsonProperty("uploader")
     private String uploader;
 
+    @JsonProperty("download_count")
     private Integer downloadCount;
 
+    @JsonProperty("gmt_modified")
     private Date gmtModified;
 
+    @JsonProperty("gmt_created")
     private Date gmtCreated;
 
+    @JsonProperty("delete_mark")
     private Integer deleteMark;
 
     private static final long serialVersionUID = 1L;

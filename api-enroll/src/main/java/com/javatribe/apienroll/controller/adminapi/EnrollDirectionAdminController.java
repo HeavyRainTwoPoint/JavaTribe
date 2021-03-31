@@ -23,7 +23,7 @@ public class EnrollDirectionAdminController {
 
     // 添加
     @PostMapping("/add")
-    public Response<Integer> add(EnrollDirection enrollDirection) {
+    public Response<Integer> add(@RequestBody EnrollDirection enrollDirection) {
         return enrollDirectionAdminService.add(enrollDirection);
     }
 

@@ -1,21 +1,29 @@
 package com.javatribe.apienroll.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class TestNotice implements Serializable {
     private Long id;
 
+    @JsonProperty("test_name")
     private String testName;
 
+    @JsonProperty("test_direction")
     private Integer testDirection;
 
+    @JsonProperty("notice_file")
     private String noticeFile;
 
+    @JsonProperty("delete_mark")
     private Integer deleteMark;
 
+    @JsonProperty("gmt_created")
     private Date gmtCreated;
 
+    @JsonProperty("gmt_modified")
     private Date gmtModified;
 
     private static final long serialVersionUID = 1L;
