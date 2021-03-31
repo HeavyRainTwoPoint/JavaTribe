@@ -93,7 +93,7 @@ public class RegisterTeamController {
 
     @PutMapping("/editRegisterData")
     @ActionHandler
-    public Result editRegisterData(RegisterTeamOfFront registerTeamOfFront){
+    public Result editRegisterData(@RequestBody RegisterTeamOfFront registerTeamOfFront){
         return registerTeamService.editRegisterData(registerTeamOfFront);
     }
 

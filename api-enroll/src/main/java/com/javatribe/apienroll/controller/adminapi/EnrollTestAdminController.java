@@ -26,7 +26,7 @@ public class EnrollTestAdminController {
 
     // 添加
     @PostMapping("/add")
-    public Response<Integer> add(EnrollTest enrollTest) {
+    public Response<Integer> add(@RequestBody EnrollTest enrollTest) {
         return enrollTestAdminService.add(enrollTest);
     }
 
@@ -49,7 +49,7 @@ public class EnrollTestAdminController {
     }
 
     @GetMapping("/query_list")
-    public Response<List<EnrollTest>> query(EnrollTest enrollTest) {
+    public Response<List<EnrollTest>> query(@RequestBody EnrollTest enrollTest) {
         if (ObjectUtil.isNull(enrollTest))  return Response.fail(ResponseStatus.PARAMS_ERROR);
 
         EnrollTestQTO qto = new EnrollTestQTO();
@@ -61,7 +61,7 @@ public class EnrollTestAdminController {
     }
 
     @PostMapping("/update")
-    public Response update(EnrollTest enrollTest) {
+    public Response update(@RequestBody EnrollTest enrollTest) {
         return enrollTestAdminService.update(enrollTest);
     }
 

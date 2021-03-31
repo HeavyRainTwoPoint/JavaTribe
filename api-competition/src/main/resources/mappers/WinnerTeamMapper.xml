@@ -34,7 +34,7 @@
     from t_winner_team
   </select>
 
-  <select id="selectTeamOfCompetition" resultType="com.javatribe.apicompetition.pojo.po.WinnerTeamAndCompetition">
+  <select id="selectTeamOfCompetition" resultType="com.javatribe.apicompetition.pojo.po.WinnerTeam">
     SELECT
     tci.competition_id,
     tci.competition_name,
@@ -50,7 +50,7 @@
         INNER JOIN t_competition_introduction AS tci ON twt.competition_id = tci.competition_id
         INNER JOIN number_of_sessions AS nos ON nos.year_id = twt.the_year
     WHERE
-        twt.delete_status = 0 and nos.delete_status = 0
+        twt.delete_status = 0 and nos.delete_status = 0 and twt.competition_id=#{competitionId} and twt.the_year=#{yearId}
     ORDER BY
     twt.competition_id,
     STR_TO_DATE( date_format( nos.year_start_time, '%Y-%m-%d' ), '%Y' ) DESC,
@@ -58,9 +58,10 @@
   </select>
 
    <insert id="addSessionNum" parameterType="com.javatribe.apicompetition.pojo.po.NumberOfSessions" useGeneratedKeys="true" keyProperty="yearId">
-        INSERT INTO number_of_sessions (the_year,year_start_time,year_end_time)
+        INSERT INTO number_of_sessions (the_year,year_start_time,year_end_time,delete_status,
+        active_status,gmt_create,competition_id)
         VALUES
-	    (#{theYear},#{yearStartTime},#{yearEndTime});
+	    (#{theYear},#{yearStartTime},#{yearEndTime},#{deleteStatus},#{activeStatus},#{gmtCreate},#{competitionId});
    </insert>
 
   <select id="queryRegisterTeamByNameAndTheYear" resultType="com.javatribe.apicompetition.pojo.po.RegisterTeam">
@@ -128,7 +129,16 @@
         <if test="gmtModified!=null">
             gmt_modified=#{gmtModified}
         </if>
+        <if test="competitionId!=null">
+            competition_id=#{competitionId}
+        </if>
     </trim>
     where year_id=#{yearId}
   </update>
+
+    <select id="querySessionNumByCompetition" parameterType="java.lang.Long" resultType="com.javatribe.apicompetition.pojo.po.NumberOfSessions">
+        select year_id,the_year,year_start_time,year_end_time,competition_id
+            from number_of_sessions where competition_id=#{competitionId} and delete_status=0
+        and active_status=1 order by year_start_time desc
+    </select>
 </mapper>

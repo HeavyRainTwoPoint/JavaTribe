@@ -17,7 +17,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 // @MapperScan()
 // =======
 @MapperScan({
-
         "com.javatribe.apishare.mapper",
         "com.javatribe.introduction.mapper",
         "com.javatribe.apilife.dao",

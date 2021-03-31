@@ -1,21 +1,25 @@
 package com.javatribe.apienroll.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class EnrollDirection implements Serializable {
     private Long id;
 
+    @JsonProperty("direction_img")
     private String directionImg;
 
+    @JsonProperty("direction_img")
     private String directionName;
-
+    @JsonProperty("direction_code")
     private Integer directionCode;
-
+    @JsonProperty("gmt_created")
     private Date gmtCreated;
-
+    @JsonProperty("gmt_modified")
     private Date gmtModified;
-
+    @JsonProperty("delete_mark")
     private Integer deleteMark;
 
     private static final long serialVersionUID = 1L;

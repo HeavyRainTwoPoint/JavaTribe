@@ -1,5 +1,7 @@
 package com.javatribe.apicommon.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -8,16 +10,21 @@ public class User implements Serializable {
 
     private String account;
 
+    @JsonProperty("real_name")
     private String realName;
 
     private String password;
 
+    @JsonProperty("user_type")
     private Integer userType;
 
+    @JsonProperty("gmt_created")
     private Date gmtCreated;
 
+    @JsonProperty("gmt_modified")
     private Date gmtModified;
 
+    @JsonProperty("delete_mark")
     private Integer deleteMark;
 
     private static final long serialVersionUID = 1L;
