@@ -1,5 +1,6 @@
 package com.javatribe.apicompetition.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.mapper.RegisterTeamMapper;
@@ -98,8 +99,8 @@ public class RegisterTeamImpl implements RegisterTeamService {
         Result result = new Result();
         result.setCode(200);
         List<RegisterTeam> registerTeam = registerTeamMapper.queryRegisterList(competitionId);
+        List<RegisterTeamOfFront> datas = new ArrayList<>();
         if (registerTeam!=null && registerTeam.size()!=0){
-            List<RegisterTeamOfFront> datas = new ArrayList<>();
             for (int i=0 ; i<registerTeam.size() ; i++) {
                 RegisterTeam o = registerTeam.get(i);
                 RegisterTeamOfFront registerTeamOfFront = new RegisterTeamOfFront();
@@ -127,17 +128,19 @@ public class RegisterTeamImpl implements RegisterTeamService {
                 }
                 datas.add(registerTeamOfFront);
             }
-            result.setData(JSONObject.toJSONString(datas));
-        }else{
-            result.setMessage("没有数据");
-            result.setCode(500);
         }
+        result.setData(JSON.toJSONString(datas));
         return result;
     }
 
     @Override
     public Result editRegisterData(RegisterTeamOfFront registerTeam) {
         Result result = new Result();
+        if(registerTeam.getRegisterId()==null){
+            result.setMessage("需要填写比赛id");
+            result.setCode(401);
+            return result;
+        }
         RegisterTeam registerTeamOfData = new RegisterTeam(registerTeam.getRegisterId(), registerTeam.getCompetitionId(), registerTeam.getTeamName(), registerTeam.getTeamLeaderName(), registerTeam.getTeamLeaderPhone(), registerTeam.getTeamLeaderStudentId(), registerTeam.getTeamLeaderWechat(), registerTeam.getTeamLeaderCollege());
         registerTeamOfData.setRegisterTime(registerTeam.getRegisterTime());
         result = ((RegisterTeamService)AopContext.currentProxy()).validateEditAndSignRegisterTeam(registerTeam, result, "编辑", registerTeamOfData);

@@ -3,7 +3,6 @@ package com.javatribe.apicompetition.controller;
 import com.alibaba.fastjson.JSON;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.aop.annotation.ActionHandler;
-import com.javatribe.apicompetition.pojo.po.AllWinnerTeamToDisplay;
 import com.javatribe.apicompetition.pojo.po.NumberOfSessions;
 import com.javatribe.apicompetition.pojo.po.WinnerTeam;
 import com.javatribe.apicompetition.service.WinnerTeamService;
@@ -24,10 +23,10 @@ public class WinnerTeamController {
     WinnerTeamService winnerTeamService;
 
     @GetMapping("/listOfWinners")
-    public Result listOfWinners(){
+    public Result listOfWinners(Long competitionId,Long yearId){
         Result result = new Result();
-        List<AllWinnerTeamToDisplay> allWinnerTeamToDisplays = new ArrayList<>();
-        allWinnerTeamToDisplays = winnerTeamService.queryWinnerTeamOfCompetition();
+        List<WinnerTeam> allWinnerTeamToDisplays = new ArrayList<>();
+        allWinnerTeamToDisplays = winnerTeamService.queryWinnerTeamOfCompetition(competitionId,yearId);
         result.setCode(200);
         result.setData(JSON.toJSONString(allWinnerTeamToDisplays));
         return result;
@@ -57,6 +56,11 @@ public class WinnerTeamController {
     @ActionHandler
     public Result deleteGetPrizesData(WinnerTeam winnerTeam){
         return winnerTeamService.deleteGetPrizesData(winnerTeam);
+    }
+
+    @GetMapping(value = "/getSessionNumByCompetition")
+    public Result getSessionNumByCompetition(Long competitionId){
+        return winnerTeamService.querySessionNumByCompetition(competitionId);
     }
 
     /**

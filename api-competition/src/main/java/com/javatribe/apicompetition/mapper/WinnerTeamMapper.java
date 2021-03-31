@@ -15,7 +15,7 @@ public interface WinnerTeamMapper {
 
     List<WinnerTeam> selectAll();
 
-    List<WinnerTeamAndCompetition> selectTeamOfCompetition();
+    List<WinnerTeam> selectTeamOfCompetition(@Param("competitionId") Long competitionId,@Param("yearId") Long yearId);
 
     int addSessionNum(NumberOfSessions numberOfSessions);
 
@@ -29,4 +29,6 @@ public interface WinnerTeamMapper {
     int deletePrizesData(WinnerTeam winnerTeam);
 
     int editSessionNum(NumberOfSessions sessions);
+
+    List<NumberOfSessions> querySessionNumByCompetition(@Param("competitionId") Long competitionId);
 }
