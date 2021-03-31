@@ -32,13 +32,6 @@ public class WinnerTeamController {
         return result;
     }
 
-    //添加届数
-    @PostMapping(value = "/addSession")
-    @ActionHandler
-    public Result addSessionNum(@RequestBody NumberOfSessions sessions){
-        return winnerTeamService.addSessionNum(sessions);
-    }
-
     //添加获奖数据
     @PostMapping(value = "/addGetPrizesData")
     @ActionHandler
@@ -56,11 +49,6 @@ public class WinnerTeamController {
     @ActionHandler
     public Result deleteGetPrizesData(@RequestBody WinnerTeam winnerTeam){
         return winnerTeamService.deleteGetPrizesData(winnerTeam);
-    }
-
-    @GetMapping(value = "/getSessionNumByCompetition")
-    public Result getSessionNumByCompetition(Long competitionId){
-        return winnerTeamService.querySessionNumByCompetition(competitionId);
     }
 
     /**

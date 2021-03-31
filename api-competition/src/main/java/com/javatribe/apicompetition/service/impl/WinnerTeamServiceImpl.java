@@ -34,41 +34,6 @@ public class WinnerTeamServiceImpl implements WinnerTeamService {
     }
 
     @Override
-    public Result addSessionNum(NumberOfSessions sessions) {
-        Result result = new Result();
-        if (Objects.isNull(sessions.getYearStartTime()) || Objects.isNull(sessions.getYearEndTime()) ||
-                StringUtils.isEmpty(sessions.getTheYear())){
-            result.setCode(401);
-            result.setMessage("届数的名字/开始/结束时间为空，请重新填写");
-            return result;
-        }
-        if (StringUtils.isEmpty(sessions.getCompetitionId())){
-            result.setCode(401);
-            result.setMessage("届数对应的比赛id不能为空，请重新填写");
-            return result;
-        }
-        if (!MatcherRegexUtil.standardSessionsNum(sessions.getTheYear().trim())){
-            result.setCode(401);
-            result.setMessage("届数格式出错，格式为【第几届】");
-            return result;
-        }
-        try{
-            sessions.setGmtCreate(new Date());
-            sessions.setDeleteStatus(0);
-            sessions.setActiveStatus(1);
-            winnerTeamMapper.addSessionNum(sessions);
-        }catch (Exception e){
-            result.setCode(401);
-            result.setMessage("执行出错!!");
-            logger.error(e.getMessage(),e);
-            return result;
-        }
-        result.setCode(200);
-        result.setMessage("插入届数成功");
-        return result;
-    }
-
-    @Override
     public Result addGetPrizesData(WinnerTeam winnerTeam) {
         Result result = new Result();
         if (Objects.isNull(winnerTeam.getTheYear())){
@@ -197,15 +162,6 @@ public class WinnerTeamServiceImpl implements WinnerTeamService {
             result.setMessage("修改出错");
             logger.error(e.getMessage(),e);
         }
-        return result;
-    }
-
-    @Override
-    public Result querySessionNumByCompetition(Long competitionId) {
-        Result result = new Result();
-        List<NumberOfSessions> numberOfSessions = winnerTeamMapper.querySessionNumByCompetition(competitionId);
-        result.setCode(200);
-        result.setData(JSON.toJSONString(numberOfSessions));
         return result;
     }
 }

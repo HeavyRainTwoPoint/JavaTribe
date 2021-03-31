@@ -17,8 +17,6 @@ public interface WinnerTeamMapper {
 
     List<WinnerTeam> selectTeamOfCompetition(@Param("competitionId") Long competitionId,@Param("yearId") Long yearId);
 
-    int addSessionNum(NumberOfSessions numberOfSessions);
-
     RegisterTeam queryRegisterTeamByNameAndTheYear(@Param("teamName") String teamName,
                                                    @Param("year") String year, @Param("competitionId") Long competitionId);
 
@@ -30,5 +28,4 @@ public interface WinnerTeamMapper {
 
     int editSessionNum(NumberOfSessions sessions);
 
-    List<NumberOfSessions> querySessionNumByCompetition(@Param("competitionId") Long competitionId);
 }

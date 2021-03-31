@@ -10,15 +10,11 @@ public interface WinnerTeamService {
 
     List<WinnerTeam> queryWinnerTeamOfCompetition(Long competitionId,Long yearId);
 
-    Result addSessionNum(NumberOfSessions sessions);
-
     Result addGetPrizesData(WinnerTeam winnerTeam);
 
     Result editGetPrizesData(WinnerTeam winnerTeam);
 
     Result deleteGetPrizesData(WinnerTeam winnerTeam);
-
-    Result querySessionNumByCompetition(Long competitionId);
 
     Result editSessionNum(NumberOfSessions sessions);
 }
