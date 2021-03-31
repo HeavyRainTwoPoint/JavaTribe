@@ -1,6 +1,8 @@
 package com.javatribe.apicompetition.controller.ext;
 
+import com.javatribe.apicommon.core.constant.enums.ApiInfo;
 import com.javatribe.apicommon.dto.Result;
+import com.javatribe.apicommon.exception.ServiceException;
 import com.javatribe.apicompetition.pojo.po.CompetitionYear;
 import com.javatribe.apicompetition.service.TribeStyleShowService;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +38,12 @@ public class CompetitionYearsController {
 
     @PostMapping("/years")
     public Result  updateOrInsert(@RequestBody CompetitionYear json) {
+        //接口校验
+        if (json.getYearEndTime()==null ||  json.getYearStartTime()==null) {
+            throw new ServiceException(ApiInfo.BAD_REQUEST, "没有添加届数开始时间 或者 结束时间，无法插入数据");
+        }
+
+
         tribeStyleShowService.updateOrInsertCompetitionYears(json);
         return Result.success();
     }

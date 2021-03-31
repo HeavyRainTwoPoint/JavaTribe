@@ -10,9 +10,9 @@ import com.javatribe.apicommon.core.constant.enums.ApiInfo;
  * @create 2020/11/10 23:22
  */
 public class RequestBodyErrorException extends ServiceException{
-    public RequestBodyErrorException(int code, String message, Throwable cause) {
-        super(code, message, cause);
-    }
+    // public RequestBodyErrorException(int code, String message, Throwable cause) {
+    //     super(code, message, cause);
+    // }
 
     public RequestBodyErrorException(String message, int code, String message1) {
         super(message, code, message1);
