@@ -26,7 +26,7 @@ public class TestNoticeAdminController {
 
     // 添加
     @PostMapping("/add")
-    public Response<Integer> add(TestNotice testNotice) {
+    public Response<Integer> add(@RequestBody TestNotice testNotice) {
         return testNoticeAdminService.add(testNotice);
     }
 
@@ -49,7 +49,7 @@ public class TestNoticeAdminController {
     }
 
     @GetMapping("/query_list")
-    public Response<List<TestNotice>> query(TestNotice testNotice) {
+    public Response<List<TestNotice>> query(@RequestBody TestNotice testNotice) {
         if (ObjectUtil.isNull(testNotice)) return Response.fail(ResponseStatus.PARAMS_ERROR);
         TestNoticeQTO qto = new TestNoticeQTO();
         // 根据方向查询
@@ -60,7 +60,7 @@ public class TestNoticeAdminController {
     }
 
     @PostMapping("/update")
-    public Response update(TestNotice testNotice) {
+    public Response update(@RequestBody TestNotice testNotice) {
         return testNoticeAdminService.update(testNotice);
     }
 

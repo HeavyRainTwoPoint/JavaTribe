@@ -25,7 +25,11 @@ public class EnrollNoticeAdminController {
 
     // 添加
     @PostMapping("/add")
-    public Response<Integer> add(EnrollNotice enrollNotice) {
+    public Response<Integer> add(@RequestBody EnrollNotice enrollNotice) {
+        System.out.println(enrollNotice.getContent());
+        System.out.println(enrollNotice.getTitle());
+        System.out.println(enrollNotice.getDirectionCode());
+
         return enrollNoticeAdminService.add(enrollNotice);
     }
 
@@ -48,14 +52,14 @@ public class EnrollNoticeAdminController {
     }
 
     @GetMapping("/query_list")
-    public Response<List<EnrollNotice>> query(EnrollNotice enrollNotice) {
+    public Response<List<EnrollNotice>> query(@RequestBody EnrollNotice enrollNotice) {
         if (ObjectUtil.isNull(enrollNotice)) return Response.fail(ResponseStatus.PARAMS_ERROR);
         EnrollNoticeQTO qto = new EnrollNoticeQTO();
         return enrollNoticeAdminService.query(qto);
     }
 
     @PostMapping("/update")
-    public Response update(EnrollNotice enrollNotice) {
+    public Response update(@RequestBody EnrollNotice enrollNotice) {
         return enrollNoticeAdminService.update(enrollNotice);
     }
 
