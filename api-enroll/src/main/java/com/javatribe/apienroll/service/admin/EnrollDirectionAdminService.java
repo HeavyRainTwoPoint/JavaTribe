@@ -16,4 +16,9 @@ public interface EnrollDirectionAdminService {
     Response<List<EnrollDirection>> query(EnrollDirectionQTO qto);
     // 添加
     Response<Integer> add(EnrollDirection enrollDirection);
+
+    Response<Integer> deleteById(EnrollDirection enrollDirection);
+
+
+    Response update(EnrollDirection enrollDirection);
 }
