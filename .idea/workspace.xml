@@ -1,33 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </select>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="bug修改 2021-03-31">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/RegisterTeamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/RegisterTeamController.java" afterDir="false" />
+    <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/CompetitionIntroductionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/CompetitionIntroductionServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,15 +33,6 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="localRepository" value="D:\BaiduNetdiskDownload\mavenData" />
-        <option name="mavenHome" value="$PROJECT_DIR$/../../BaiduNetdiskDownload/maven3.3.9/apache-maven-3.3.9" />
-        <option name="userSettingsFile" value="D:\BaiduNetdiskDownload\maven3.3.9\apache-maven-3.3.9\conf\settings.xml" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="ProblemsViewState">
     <option name="selectedIndex" value="1" />
   </component>
@@ -88,7 +57,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/api-common/src/main/resources/mapper" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -97,14 +66,12 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="rest.client.default.execution.environment" value="dev" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="show.run.dashboard.notification" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\work\javatribe\some-wa-tribe\api-common\src\main\resources\mapper" />
-      <recent name="C:\work\javatribe\some-wa-tribe\api-common\src\main\java\com\javatribe\apicommon" />
       <recent name="D:\ASUS\Desktop\个人项目\server\部落官网\api-parent\api-competition\src\main\resources\sql" />
       <recent name="D:\ASUS\Desktop\个人项目\server\部落官网\api-parent\api-competition\src\main\resources" />
     </key>
@@ -120,33 +87,11 @@
       <recent name="com.javatribe.apicompetition.service" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.javatribe.apienroll.controller.openapi" />
-      <recent name="com.javatribe.apicommon.dto" />
-      <recent name="com.javatribe.apicommon.config.properties" />
       <recent name="com.javatribe.apistarter" />
       <recent name="com.javatribe.apicompetition.util" />
     </key>
   </component>
-  <component name="RunAnythingCache">
-    <option name="myCommands">
-      <command value="mvn clean install -DskipTests" />
-      <command value="mvn clean" />
-    </option>
-  </component>
-  <component name="RunManager" selected="Spring Boot.WebTest">
-    <configuration name="MatcherRegexUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.javatribe.apicompetition.util.MatcherRegexUtil" />
-      <module name="api-competition" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.javatribe.apicompetition.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Spring Boot.ApiStarterApplication">
     <configuration name="CompetitionIntroductionMapperCustomTest.listAllCompetitionAndYears" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="api-competition" />
       <extension name="coverage">
@@ -158,6 +103,38 @@
       <option name="PACKAGE_NAME" value="com.javatribe.apicompetition.mapper" />
       <option name="MAIN_CLASS_NAME" value="com.javatribe.apicompetition.mapper.CompetitionIntroductionMapperCustomTest" />
       <option name="METHOD_NAME" value="listAllCompetitionAndYears" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StyleShowMapperCustomTest.getByCompetitionIdAndYearId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="api-competition" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.javatribe.apicompetition.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.javatribe.apicompetition.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.javatribe.apicompetition.mapper.StyleShowMapperCustomTest" />
+      <option name="METHOD_NAME" value="getByCompetitionIdAndYearId" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TribeStyleShowServiceImplTest.getAllStyleShow" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="api-competition" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.javatribe.apicompetition.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.javatribe.apicompetition.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.javatribe.apicompetition.service.impl.TribeStyleShowServiceImplTest" />
+      <option name="METHOD_NAME" value="getAllStyleShow" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -179,15 +156,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ApiEnrollApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="api-enroll" />
+    <configuration name="TribeStyleShowServiceImplTest.insertOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="api-competition" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.javatribe.apienroll.*" />
+          <option name="PATTERN" value="com.javatribe.apicompetition.service.impl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.javatribe.apienroll.ApiEnrollApplication" />
+      <option name="PACKAGE_NAME" value="com.javatribe.apicompetition.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.javatribe.apicompetition.service.impl.TribeStyleShowServiceImplTest" />
+      <option name="METHOD_NAME" value="insertOne" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -199,30 +179,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WebTest" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="api-competition" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.javatribe.apicompetition.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.javatribe.apicompetition.WebTest" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.WebTest" />
-        <item itemvalue="Spring Boot.ApiEnrollApplication" />
-        <item itemvalue="Application.MatcherRegexUtil" />
         <item itemvalue="JUnit.CompetitionIntroductionMapperCustomTest.listAllCompetitionAndYears" />
         <item itemvalue="JUnit.TribeStyleShowServiceImplTest.insertOne (1)" />
+        <item itemvalue="JUnit.TribeStyleShowServiceImplTest.insertOne" />
+        <item itemvalue="JUnit.StyleShowMapperCustomTest.getByCompetitionIdAndYearId" />
+        <item itemvalue="JUnit.TribeStyleShowServiceImplTest.getAllStyleShow" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SshConsoleOptionsProvider">
     <option name="myEncoding" value="UTF-8" />
   </component>
@@ -296,130 +263,42 @@
       <workItem from="1616592436627" duration="9581000" />
       <workItem from="1616637568919" duration="3001000" />
       <workItem from="1616665660312" duration="4385000" />
-      <workItem from="1616672305867" duration="2651000" />
-      <workItem from="1616995154583" duration="96000" />
-      <workItem from="1616999381524" duration="3085000" />
       <workItem from="1616672305867" duration="3441000" />
       <workItem from="1616682291212" duration="1772000" />
       <workItem from="1616685612785" duration="285000" />
-      <workItem from="1616719155047" duration="5677000" />
-      <workItem from="1617005676319" duration="889000" />
-      <workItem from="1617013966675" duration="1879000" />
-      <workItem from="1617089400107" duration="6667000" />
-      <workItem from="1617159438333" duration="2662000" />
-      <workItem from="1617194032159" duration="146000" />
+      <workItem from="1616719155047" duration="6642000" />
+      <workItem from="1616731796737" duration="40000" />
+      <workItem from="1617107020909" duration="359000" />
+      <workItem from="1617195294371" duration="303000" />
     </task>
-    <task id="LOCAL-00001" summary="更正搜索参数比赛成员的代码 2021-03-29">
-      <created>1617004305899</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1617004305900</updated>
-    </task>
-    <task id="LOCAL-00002" summary="更正配置文件的数据库连接参数 2021-03-29">
-      <created>1617004670333</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1617004670333</updated>
-    </task>
-    <task id="LOCAL-00003" summary="更新修改报名信息的接口 2021-03-29">
-      <created>1617006146768</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1617006146768</updated>
-    </task>
-    <task id="LOCAL-00004" summary="20210330">
-      <created>1617095015841</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1617095015841</updated>
-    </task>
-    <task id="LOCAL-00005" summary="bug修改 2021-03-31">
-      <created>1617159627746</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1617159627746</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="更正添加届数的代码 2021-03-29" />
-    <MESSAGE value="更正搜索参数比赛成员的代码 2021-03-29" />
-    <MESSAGE value="更正配置文件的数据库连接参数 2021-03-29" />
-    <MESSAGE value="更新修改报名信息的接口 2021-03-29" />
-    <MESSAGE value="20210330" />
-    <MESSAGE value="bug修改 2021-03-31" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug修改 2021-03-31" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="690" y="369" key="FileChooserDialogImpl" timestamp="1617159781350">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="690" y="369" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1617159781350" />
-    <state width="1779" height="406" key="GridCell.Tab.0.bottom" timestamp="1617194154420">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1779" height="406" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1617194154420" />
-    <state width="1779" height="406" key="GridCell.Tab.0.center" timestamp="1617194154418">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1779" height="406" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1617194154418" />
-    <state width="1779" height="406" key="GridCell.Tab.0.left" timestamp="1617194154417">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1779" height="406" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1617194154417" />
-    <state width="1779" height="406" key="GridCell.Tab.0.right" timestamp="1617194154419">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1779" height="406" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1617194154419" />
-    <state width="1779" height="406" key="GridCell.Tab.1.bottom" timestamp="1617194122629">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1779" height="406" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1617194122629" />
-    <state width="1779" height="406" key="GridCell.Tab.1.center" timestamp="1617194122629">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1779" height="406" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1617194122629" />
-    <state width="1779" height="406" key="GridCell.Tab.1.left" timestamp="1617194122629">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1779" height="406" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1617194122629" />
-    <state width="1779" height="406" key="GridCell.Tab.1.right" timestamp="1617194122629">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1779" height="406" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1617194122629" />
-    <state x="411" y="259" key="SettingsEditor" timestamp="1617159812027">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="411" y="259" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1617159812027" />
-    <state x="552" y="273" key="Vcs.Push.Dialog.v2" timestamp="1617159690199">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="552" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1617159690199" />
-    <state x="616" y="250" width="672" height="677" key="run.anything.popup" timestamp="1617194122471">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="616" y="250" width="672" height="677" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1617194122471" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -432,7 +311,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/TribeStyleShowService.java</url>
           <line>23</line>
-          <properties class="com.javatribe.apicompetition.service.TribeStyleShowService">
+          <properties class="com.javatribe.apicompetition.service.TribeStyleShowService" method="getAllStyleShowFronted">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="2" />
@@ -440,7 +319,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/TribeStyleShowService.java</url>
           <line>42</line>
-          <properties class="com.javatribe.apicompetition.service.TribeStyleShowService">
+          <properties class="com.javatribe.apicompetition.service.TribeStyleShowService" method="insertOne">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="4" />
@@ -448,7 +327,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/TribeStyleShowService.java</url>
           <line>36</line>
-          <properties class="com.javatribe.apicompetition.service.TribeStyleShowService">
+          <properties class="com.javatribe.apicompetition.service.TribeStyleShowService" method="updateById">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="5" />
@@ -456,7 +335,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/CompetitionIntroductionService.java</url>
           <line>27</line>
-          <properties class="com.javatribe.apicompetition.service.CompetitionIntroductionService">
+          <properties class="com.javatribe.apicompetition.service.CompetitionIntroductionService" method="insertCompetitionInfo">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="6" />
@@ -464,7 +343,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/TribeStyleShowService.java</url>
           <line>80</line>
-          <properties class="com.javatribe.apicompetition.service.TribeStyleShowService">
+          <properties class="com.javatribe.apicompetition.service.TribeStyleShowService" method="getAllStyleShowVOByCompetitionIdAndTheYear">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="7" />

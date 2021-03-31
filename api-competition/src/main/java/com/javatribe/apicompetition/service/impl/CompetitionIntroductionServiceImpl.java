@@ -6,6 +6,7 @@ import com.javatribe.apicompetition.mapper.CompetitionIntroductionMapper;
 import com.javatribe.apicompetition.mapper.CompetitionIntroductionMapperCustom;
 import com.javatribe.apicompetition.pojo.dto.YearAndStyleShowVO;
 import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
+import com.javatribe.apicompetition.pojo.po.CompetitionYear;
 import com.javatribe.apicompetition.pojo.po.StyleShow;
 import com.javatribe.apicompetition.pojo.vo.CompetitionAndYearsVO;
 import com.javatribe.apicompetition.pojo.vo.StyleShowVO;
@@ -162,7 +163,23 @@ public class CompetitionIntroductionServiceImpl implements CompetitionIntroducti
     @Override
 
     public List<CompetitionAndYearsVO> listCompetitionAndYearsVo() {
-        return competitionIntroductionMapperCustom.listAllCompetitionAndYears();
+        //预处理一下
+
+
+        List<CompetitionAndYearsVO> res = competitionIntroductionMapperCustom.listAllCompetitionAndYears();
+        if (res==null || res.isEmpty()) return Collections.emptyList();
+        for (CompetitionAndYearsVO x: res) {
+            if (x.getYears()!=null) {
+                List<CompetitionYear> list = x.getYears();
+                if (list!=null && list.size()==1) {
+                    if (list.get(0).getTheYear()==null) {
+                        //没有具体年份【 mybatis 框架映射问题，修改返回数据】
+                        x.setYears(Collections.emptyList());
+                    }
+                }
+            }
+        }
+        return  res;
     }
     @Transactional(readOnly = true)
     @Override
