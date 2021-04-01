@@ -56,7 +56,7 @@ public class RegisterTeamImpl implements RegisterTeamService {
         }else if (!studentIdRegex.matcher(teamLeaderStudentId.trim()).matches()){
             return "队长学号填写出错，请重新填写";
         }
-        if(registerTeam.getTeamUserList()!=null && registerTeam.getTeamUserId()==null) {
+        if(StringUtils.isEmpty(registerTeam.getTeamUserList()) || StringUtils.isEmpty(registerTeam.getTeamUserId())) {
             return "队员学号不能为空";
         }else if(registerTeam.getTeamUserId()!=null){
             String[] teamUserIds = registerTeam.getTeamUserId().split(",");
@@ -70,13 +70,16 @@ public class RegisterTeamImpl implements RegisterTeamService {
     }
 
     @Override
-    public String toValidateNoSameNameOrSameLeaderName(RegisterTeam registerTeam) {
+    public String toValidateNoSameNumberOrSameLeaderName(RegisterTeam registerTeam) {
+        if(registerTeam.getTeamLeaderStudentId()==null){
+            return "队长学号必须填写";
+        }
         //首先检查是否有同名队伍 规则：在同一届 同一个比赛中 不能存在相同的队伍
-        int i = registerTeamMapper.selectSameTeamName(registerTeam.getCompetitionId(), registerTeam.getTeamName(),registerTeam.getRegisterId());
+        int i = registerTeamMapper.selectSameTeamName(registerTeam.getCompetitionId(), registerTeam.getTeamLeaderStudentId(),registerTeam.getRegisterId());
         if (i>0){
             return "队伍名字重复，请重新填写";
         }
-        i = registerTeamMapper.selectSameTeamLeaderName(registerTeam.getCompetitionId(),registerTeam.getTeamLeaderName(),registerTeam.getRegisterId());
+        i = registerTeamMapper.selectSameTeamLeaderStudentId(registerTeam.getCompetitionId(),registerTeam.getTeamLeaderStudentId(),registerTeam.getRegisterId());
         if (i>0){
             return "您作为队长已经报过名了，请勿重复报名";
         }
@@ -192,7 +195,7 @@ public class RegisterTeamImpl implements RegisterTeamService {
         if (!"编辑".equals(type) && registerTeamOfData.getRegisterTime()==null) {
             registerTeamOfData.setRegisterTime(new Date());
         }
-        message = toValidateNoSameNameOrSameLeaderName(registerTeamOfData);
+        message = toValidateNoSameNumberOrSameLeaderName(registerTeamOfData);
         if (!Objects.isNull(message)){
             result.setCode(401);
             result.setMessage(type+"失败："+message);
