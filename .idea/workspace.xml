@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/exception/ServiceException.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/exception/ServiceException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/handler/ExHandlerAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/handler/ExHandlerAdvice.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/ext/CompetitionYearsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/ext/CompetitionYearsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/po/CompetitionYear.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/pojo/po/CompetitionYear.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,13 +93,15 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ApiStarterApplication">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -283,7 +284,8 @@
       <workItem from="1616731796737" duration="40000" />
       <workItem from="1617107020909" duration="359000" />
       <workItem from="1617195294371" duration="418000" />
-      <workItem from="1617199646518" duration="413000" />
+      <workItem from="1617199646518" duration="668000" />
+      <workItem from="1617244675932" duration="960000" />
     </task>
     <servers />
   </component>
