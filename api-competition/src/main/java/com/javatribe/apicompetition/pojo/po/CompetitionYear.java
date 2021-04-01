@@ -21,10 +21,10 @@ public class CompetitionYear implements Serializable {
     private Date gmtModified;
 
 
-    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd")
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy 年 MM 月 dd 日")
     private Date yearStartTime;
 
-    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd")
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy 年 MM 月 dd 日")
     private Date yearEndTime;
 
     private Integer competitionId;

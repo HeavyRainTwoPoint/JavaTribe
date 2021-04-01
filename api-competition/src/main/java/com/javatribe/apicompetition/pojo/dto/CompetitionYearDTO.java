@@ -7,6 +7,7 @@ import lombok.Data;
 import java.util.Date;
 
 /**
+ * 前端 转过来的数据
  * @Author lyr
  * @create 2021/4/1 14:59
  */

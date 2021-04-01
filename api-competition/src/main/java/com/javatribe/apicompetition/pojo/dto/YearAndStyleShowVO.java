@@ -1,5 +1,6 @@
 package com.javatribe.apicompetition.pojo.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.javatribe.apicompetition.pojo.po.StyleShow;
 import com.javatribe.apicompetition.pojo.vo.StyleShowVO;
@@ -33,12 +34,17 @@ public class YearAndStyleShowVO {
     /**
      * 开始时间
      */
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy 年 MM 月 dd 日")
     private Date yearStartTime;
 
-    /**
-     * 结束时间
-     */
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy 年 MM 月 dd 日")
     private Date yearEndTime;
+    // private Date yearStartTime;
+    //
+    // /**
+    //  * 结束时间
+    //  */
+    // private Date yearEndTime;
 
     private Integer competitionId;
 
