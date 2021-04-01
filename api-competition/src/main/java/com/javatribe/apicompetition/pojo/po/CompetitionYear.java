@@ -1,6 +1,7 @@
 package com.javatribe.apicompetition.pojo.po;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
@@ -10,9 +11,9 @@ public class CompetitionYear implements Serializable {
     private Integer yearId;
 
     private Integer theYear;
-
+    @JsonIgnore
     private Boolean deleteStatus;
-
+    @JsonIgnore
     private Integer activeStatus;
 
     private Date gmtCreate;
