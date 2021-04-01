@@ -116,6 +116,7 @@ public class TribeStyleShowServiceImpl implements TribeStyleShowService {
     public Result<List<CompetitionYear>> getAllCompetitionYear(Integer compId) {
         CompetitionYearExample x = new CompetitionYearExample();
         x.createCriteria()
+                .andDeleteStatusEqualTo(false)
                 .andCompetitionIdEqualTo(compId)
 
         ;
@@ -182,6 +183,8 @@ public class TribeStyleShowServiceImpl implements TribeStyleShowService {
     public List<CompetitionYear> getCompetitionYearsByCompetitionId(Integer compId) {
         final CompetitionYearExample competitionYearExample = new CompetitionYearExample();
         competitionYearExample.createCriteria()
+                //没有被删除的
+                .andDeleteStatusEqualTo(false)
                 .andCompetitionIdEqualTo(compId);
         return competitionYearMapper.selectByExample(competitionYearExample);
 
@@ -221,6 +224,7 @@ public class TribeStyleShowServiceImpl implements TribeStyleShowService {
         final CompetitionYearExample competitionYearExample = new CompetitionYearExample();
         competitionYearExample
                 .createCriteria()
+                .andDeleteStatusEqualTo(false)
                 .andCompetitionIdEqualTo(compId)
                 .andTheYearEqualTo(yearNum);
 
