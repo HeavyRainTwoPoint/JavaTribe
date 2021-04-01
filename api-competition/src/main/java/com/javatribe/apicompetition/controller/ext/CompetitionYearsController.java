@@ -42,7 +42,7 @@ public class CompetitionYearsController {
 
     @PostMapping("/years")
     public Result  updateOrInsert(@RequestBody CompetitionYearDTO json) {
-        //接口校验  第一次插入，需要 设置
+        //接口校验  第一次插入，需要 设置 【时间】
         if (json.getYearId()==null  && (json.getYearEndTime()==null ||  json.getYearStartTime()==null  ) ) {
             throw new ServiceException(ApiInfo.BAD_REQUEST, "没有添加届数开始时间 或者 结束时间，无法插入数据");
         }
