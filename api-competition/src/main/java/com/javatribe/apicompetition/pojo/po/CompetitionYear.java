@@ -1,5 +1,9 @@
 package com.javatribe.apicompetition.pojo.po;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,17 +11,20 @@ public class CompetitionYear implements Serializable {
     private Integer yearId;
 
     private Integer theYear;
-
+    @JsonIgnore
     private Boolean deleteStatus;
-
+    @JsonIgnore
     private Integer activeStatus;
 
     private Date gmtCreate;
 
     private Date gmtModified;
 
+
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy 年 MM 月 dd 日")
     private Date yearStartTime;
 
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy 年 MM 月 dd 日")
     private Date yearEndTime;
 
     private Integer competitionId;

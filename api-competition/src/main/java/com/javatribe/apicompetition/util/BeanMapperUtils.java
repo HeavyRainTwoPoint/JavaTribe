@@ -1,8 +1,10 @@
 package com.javatribe.apicompetition.util;
 
 import com.javatribe.apicompetition.pojo.dto.CompetitionIntroductionDTO;
+import com.javatribe.apicompetition.pojo.dto.CompetitionYearDTO;
 import com.javatribe.apicompetition.pojo.dto.StyleShowDTO;
 import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
+import com.javatribe.apicompetition.pojo.po.CompetitionYear;
 import com.javatribe.apicompetition.pojo.po.StyleShow;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -59,4 +61,19 @@ public interface BeanMapperUtils {
     //  * @return
     //  */
     // List<StyleShowDTO> styleShowEntity2DTO(List<StyleShow> list);
+
+    @Mappings({
+            @Mapping(source = "yearId",target = "yearId"),
+            @Mapping(source = "theYear",target = "theYear"),
+            @Mapping(source = "deleteStatus",target = "deleteStatus"),
+            @Mapping(source = "activeStatus",target = "activeStatus"),
+            @Mapping(source = "gmtCreate",target = "gmtCreate"),
+            @Mapping(source = "gmtModified",target = "gmtModified"),
+            @Mapping(source = "yearStartTime",target = "yearStartTime"),
+            @Mapping(source = "yearEndTime",target = "yearEndTime"),
+            @Mapping(source = "competitionId",target = "competitionId"),
+            @Mapping(source = "showOrder",target = "showOrder"),
+
+    })
+    CompetitionYear  from(CompetitionYearDTO dto);
 }

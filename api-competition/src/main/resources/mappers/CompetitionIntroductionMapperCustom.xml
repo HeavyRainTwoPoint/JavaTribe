@@ -91,7 +91,7 @@
     <select id="getDetailInfoById" resultMap="BaseResultMap">
         SELECT <include refid="field_all" />
         from  <include refid="table_name" />
-        where <include refid="table_id" /> = #{competitionId}
+        where <include refid="table_id" /> = #{competitionId}  and delete_status = 0
     </select>
     <select id="listAllCompetitionAndYears"
             resultMap="competitoinAndYearVO">
