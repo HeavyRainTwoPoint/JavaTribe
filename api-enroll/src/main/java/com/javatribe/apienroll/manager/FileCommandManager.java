@@ -1,6 +1,7 @@
 package com.javatribe.apienroll.manager;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.model.OSSObject;
+import com.javatribe.apicommon.config.properties.AliOssProperties;
 import com.javatribe.apicommon.core.constant.OSSBucketName;
 import com.javatribe.apicommon.core.constant.OSSHost;
 import com.javatribe.apicommon.core.constant.enums.FileType;
@@ -30,7 +31,7 @@ public class FileCommandManager {
 
 
     @Resource
-    OSS oss;
+    AliOssProperties aliOssProperties;
 
     @Resource
     HttpServletResponse httpServletResponse;
@@ -48,7 +49,9 @@ public class FileCommandManager {
     }
 
     private boolean beginUpload(MultipartFile file, FileUploadDTO dto, FileType fileType) {
+        OSS oss = aliOssProperties.getOSSClient();
         try {
+
             if (oss.doesBucketExist(OSSBucketName.JAVA_TRIBE)) {
                 logger.info("the bucket " + OSSBucketName.JAVA_TRIBE + "is already exist.");
             } else {
@@ -82,6 +85,7 @@ public class FileCommandManager {
             logger.info("不合法");
             return Response.fail(ResponseStatus.PARAMS_ERROR);
         }
+        OSS oss = aliOssProperties.getOSSClient();
         // ossObject包含文件所在的存储空间名称、文件名称、文件元信息以及一个输入流。
         OSSObject ossObject = oss.getObject(OSSBucketName.JAVA_TRIBE, fileManager.getFileUrl());
 

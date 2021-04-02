@@ -38,6 +38,7 @@ public class EnrollOpenApiController {
         if (NumberUtil.isInValidNum(n)) {
             n = 4;
         }
+        System.out.println(directionCode);
         return enrollOpenApiService.getLastNTestNameOnDirection(n,directionCode);
     }
 

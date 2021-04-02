@@ -57,7 +57,7 @@ public class EnrollNoticeAdminServiceImpl implements EnrollNoticeAdminService {
             return Response.fail(ResponseStatus.PARAMS_ERROR);
         }
         enrollNotice.setGmtModified(new Date());
-        return new Response<Integer>(enrollNoticeMapper.updateByPrimaryKey(enrollNotice));
+        return new Response<Integer>(enrollNoticeMapper.updateByPrimaryKeySelective(enrollNotice));
     }
 
     @Override

@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/TribeStyleShowServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/service/impl/TribeStyleShowServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/CompetitionIntroductionMapperCustom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/resources/mappers/CompetitionIntroductionMapperCustom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,6 +90,17 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ApiStarterApplication">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CompetitionIntroductionMapperCustomTest.listAllCompetitionAndYears" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="api-competition" />
       <extension name="coverage">
@@ -276,7 +284,11 @@
       <workItem from="1617246446765" duration="70000" />
       <workItem from="1617260343598" duration="992000" />
       <workItem from="1617262937288" duration="947000" />
-      <workItem from="1617264016248" duration="325000" />
+      <workItem from="1617264016248" duration="557000" />
+      <workItem from="1617266025750" duration="149000" />
+      <workItem from="1617343707903" duration="26000" />
+      <workItem from="1617344039392" duration="651000" />
+      <workItem from="1617348236713" duration="400000" />
     </task>
     <servers />
   </component>

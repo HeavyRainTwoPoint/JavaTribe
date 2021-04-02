@@ -4,8 +4,10 @@ import com.javatribe.apicommon.core.constant.enums.FileType;
 import com.javatribe.apicommon.dto.FileUploadDTO;
 import com.javatribe.apicommon.dto.Response;
 import com.javatribe.apicommon.dto.ResponseStatus;
+import com.javatribe.apienroll.dao.FileManagerMapper;
 import com.javatribe.apienroll.entity.EnrollTest;
 import com.javatribe.apienroll.entity.FileManager;
+import com.javatribe.apienroll.entity.FileManagerQTO;
 import com.javatribe.apienroll.manager.FileCommandManager;
 import com.javatribe.apienroll.service.admin.EnrollTestAdminService;
 import com.javatribe.apienroll.service.common.FileManagerCommonService;
@@ -18,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author Liang.Yong.hui
@@ -31,6 +34,9 @@ public class FileCommandController {
 
     @Resource
     private FileCommandManager fileCommandManager;
+
+    @Resource
+    private FileManagerMapper fileManagerMapper;
 
     @Resource
     private FileManagerCommonService fileManagerCommonService;
@@ -74,28 +80,39 @@ public class FileCommandController {
 
             return new Response<>(dto);
         }
-        return Response.fail(ResponseStatus.PARAMS_ERROR);
+        return Response.fail(ResponseStatus.OSS_ERROR);
     }
 
     @GetMapping("/download_file")
     @Transactional
-    public Response download(FileManager fileManager) {
-        if (ObjectUtil.isNull(fileManager)) {
+    public Response download(@RequestBody FileManager fileManager) {
+        if (ObjectUtil.isNull(fileManager) || ObjectUtil.isNull(fileManager.getFileUrl())) {
             logger.info("参数不合法->{}",fileManager);
             return Response.fail(ResponseStatus.PARAMS_ERROR);
         }
         Boolean download;
         try {
             download = fileCommandManager.download(fileManager).getData();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return Response.fail(ResponseStatus.FILE_DOWNLOAD_ERROR);
         }
-        if (download) {
-            // 执行下载数量+1
-            fileManager.setDownloadCount(fileManager.getDownloadCount() + 1);
-            return fileManagerCommonService.update(fileManager);
+        try {
+            if (download) {
+                FileManagerQTO qto = new FileManagerQTO();
+                qto.createCriteria().andDeleteMarkEqualTo(0).andFileUrlEqualTo(fileManager.getFileUrl());
+                List<FileManager> fileManagers = fileManagerMapper.selectByExample(qto);
+                if (!fileManagers.isEmpty()) {
+                    // 执行下载数量+1
+                    fileManager.setDownloadCount(fileManagers.get(0).getDownloadCount() + 1);
+                }
+
+                return fileManagerCommonService.update(fileManager);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
         return Response.fail(ResponseStatus.FILE_DOWNLOAD_ERROR);
     }
 

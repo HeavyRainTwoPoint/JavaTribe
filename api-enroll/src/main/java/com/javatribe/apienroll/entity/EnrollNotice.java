@@ -12,16 +12,12 @@ public class EnrollNotice implements Serializable {
 
     private String content;
 
-    @JsonProperty("direction_code")
     private Integer directionCode;
 
-    @JsonProperty("delete_mark")
     private Integer deleteMark;
 
-    @JsonProperty("gmt_created")
     private Date gmtCreated;
 
-    @JsonProperty("gmt_modified")
     private Date gmtModified;
 
     private static final long serialVersionUID = 1L;
