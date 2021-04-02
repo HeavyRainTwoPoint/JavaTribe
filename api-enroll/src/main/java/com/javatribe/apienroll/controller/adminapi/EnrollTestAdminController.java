@@ -49,14 +49,13 @@ public class EnrollTestAdminController {
     }
 
     @GetMapping("/query_list")
-    public Response<List<EnrollTest>> query(@RequestBody EnrollTest enrollTest) {
-        if (ObjectUtil.isNull(enrollTest))  return Response.fail(ResponseStatus.PARAMS_ERROR);
-
+    public Response<List<EnrollTest>> query(@RequestParam("direction_code") Integer directionCode) {
+        if (ObjectUtil.isNull(directionCode))  directionCode = 1;
         EnrollTestQTO qto = new EnrollTestQTO();
         // 根据方向查询
         qto.createCriteria()
                 .andDeleteMarkEqualTo(0)
-                .andDirectionCodeEqualTo(enrollTest.getDirectionCode());
+                .andDirectionCodeEqualTo(directionCode);
         return enrollTestAdminService.query(qto);
     }
 

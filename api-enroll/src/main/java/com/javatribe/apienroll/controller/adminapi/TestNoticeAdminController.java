@@ -49,13 +49,13 @@ public class TestNoticeAdminController {
     }
 
     @GetMapping("/query_list")
-    public Response<List<TestNotice>> query(@RequestBody TestNotice testNotice) {
-        if (ObjectUtil.isNull(testNotice)) return Response.fail(ResponseStatus.PARAMS_ERROR);
+    public Response<List<TestNotice>> query(@RequestParam("direction_code") Integer directionCode) {
+        if (ObjectUtil.isNull(directionCode)) directionCode = 1;
         TestNoticeQTO qto = new TestNoticeQTO();
         // 根据方向查询
         qto.createCriteria()
                 .andDeleteMarkEqualTo(0)
-                .andTestDirectionEqualTo(testNotice.getTestDirection());
+                .andTestDirectionEqualTo(directionCode);
         return testNoticeAdminService.query(qto);
     }
 
