@@ -159,6 +159,9 @@ public class TribeStyleShowServiceImpl implements TribeStyleShowService {
             if (info.getCompetitionId()==null) {
                 throw new ServiceException("对不起，没有 比赛ID",666,"没有比赛ID。。。");
             }
+            if (info.getTheYear()==null) {
+                throw  new ServiceException(ApiInfo.BAD_REQUEST,"对不起，没有选择届数");
+            }
             //如果是插入的话，还要判断  是否插入了重复届数
             //思路： 查询  theYear=theYear and competitionId = compId  and deleteStatus = false
             final CompetitionYearExample queryDTO = new CompetitionYearExample();
