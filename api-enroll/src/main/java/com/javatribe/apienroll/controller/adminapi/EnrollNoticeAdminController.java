@@ -52,9 +52,9 @@ public class EnrollNoticeAdminController {
     }
 
     @GetMapping("/query_list")
-    public Response<List<EnrollNotice>> query(@RequestBody EnrollNotice enrollNotice) {
-        if (ObjectUtil.isNull(enrollNotice)) return Response.fail(ResponseStatus.PARAMS_ERROR);
+    public Response<List<EnrollNotice>> query() {
         EnrollNoticeQTO qto = new EnrollNoticeQTO();
+        qto.createCriteria().andDeleteMarkEqualTo(0);
         return enrollNoticeAdminService.query(qto);
     }
 
