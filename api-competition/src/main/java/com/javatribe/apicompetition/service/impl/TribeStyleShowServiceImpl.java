@@ -157,17 +157,17 @@ public class TribeStyleShowServiceImpl implements TribeStyleShowService {
         // competitionYearMapper.updateByPrimaryKey()
         if (info.getYearId()==null) {
             if (info.getCompetitionId()==null) {
-                throw new ServiceException("对不起，没有 比赛ID",666,"没有比赛ID。。。");
+                throw new ServiceException(ApiInfo.BAD_REQUEST,"没有比赛ID。。。【对不起，没有 比赛ID】 competitionId is null");
             }
             if (info.getTheYear()==null) {
-                throw  new ServiceException(ApiInfo.BAD_REQUEST,"对不起，没有选择届数");
+                throw  new ServiceException(ApiInfo.BAD_REQUEST,"对不起，没有选择届数 ,theYear is null");
             }
             //如果是插入的话，还要判断  是否插入了重复届数
             //思路： 查询  theYear=theYear and competitionId = compId  and deleteStatus = false
             final CompetitionYearExample queryDTO = new CompetitionYearExample();
             queryDTO.createCriteria()
                     .andDeleteStatusEqualTo(false)
-                    .andCompetitionIdEqualTo(info.getCompetitionId())
+                    .andCompetitionIdEqualTo(info.getCompetitionId() )
                     .andTheYearEqualTo( info.getTheYear() );
             //已经有这个届数的话，报异常，阻止重复届数
             final List<CompetitionYear> competitionYears = competitionYearMapper.selectByExample(queryDTO);
