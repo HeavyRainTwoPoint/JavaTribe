@@ -70,7 +70,7 @@ public class RegisterTeamImpl implements RegisterTeamService {
     }
 
     @Override
-    public String toValidateNoSameNumberOrSameLeaderName(RegisterTeam registerTeam) {
+    public String toValidateNoSameNumberOrSameLeaderName(RegisterTeam registerTeam,String type) {
         if(registerTeam.getTeamLeaderStudentId()==null){
             return "队长学号必须填写";
         }
@@ -79,9 +79,12 @@ public class RegisterTeamImpl implements RegisterTeamService {
         if (i>0){
             return "队伍名字重复，请重新填写";
         }
-        i = registerTeamMapper.selectSameTeamLeaderStudentId(registerTeam.getCompetitionId(),registerTeam.getTeamLeaderStudentId(),registerTeam.getRegisterId());
-        if (i>0){
-            return "您作为队长已经报过名了，请勿重复报名";
+        //编辑不需要判断学号是否出错
+        if(!"编辑".equals(type)) {
+            i = registerTeamMapper.selectSameTeamLeaderStudentId(registerTeam.getCompetitionId(), registerTeam.getTeamLeaderStudentId(), registerTeam.getRegisterId());
+            if (i > 0) {
+                return "您作为队长已经报过名了，请勿重复报名";
+            }
         }
         return null;
     }
@@ -195,7 +198,7 @@ public class RegisterTeamImpl implements RegisterTeamService {
         if (!"编辑".equals(type) && registerTeamOfData.getRegisterTime()==null) {
             registerTeamOfData.setRegisterTime(new Date());
         }
-        message = toValidateNoSameNumberOrSameLeaderName(registerTeamOfData);
+        message = toValidateNoSameNumberOrSameLeaderName(registerTeamOfData,type);
         if (!Objects.isNull(message)){
             result.setCode(401);
             result.setMessage(type+"失败："+message);

@@ -67,7 +67,7 @@
 	team_name = #{teamName}
 	AND competition_id = #{competitionId}
 	AND STR_TO_DATE( date_format( register_time, '%Y-%m-%d' ), '%Y' )= STR_TO_DATE(
-		date_format(( SELECT year_start_time FROM t_competition_years WHERE the_year = #{year} ), '%Y-%m-%d' ),
+		date_format(( SELECT year_start_time FROM t_competition_years WHERE the_year = #{year}  and competition_id=#{competitionId}), '%Y-%m-%d' ),
 	'%Y'
 	)
   </select>
@@ -77,7 +77,7 @@
     set @time_start = now();
     set @time_end = now();
     select @year_id := year_id,@time_start := year_start_time,@time_end := year_end_time
-    from t_competition_years where the_year=#{theYear};
+    from t_competition_years where the_year=#{theYear} limit 1;
     insert into t_winner_team(team_id, team_name, team_user_list, gmt_create,
     gmt_modified, the_year, team_begin_time, team_end_time, competition_id,
     team_order_num, team_order_text)

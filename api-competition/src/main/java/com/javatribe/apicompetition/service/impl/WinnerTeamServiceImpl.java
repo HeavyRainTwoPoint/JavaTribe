@@ -50,11 +50,6 @@ public class WinnerTeamServiceImpl implements WinnerTeamService {
         //根据队伍注册时间与第几届的开始时间 竞赛id 队伍名来判断是否有这个队伍
         String teamName = winnerTeam.getTeamName();
         RegisterTeam registerTeam = winnerTeamMapper.queryRegisterTeamByNameAndTheYear(teamName, winnerTeam.getTheYear(), winnerTeam.getCompetitionId());
-        if (Objects.isNull(registerTeam)){
-            result.setCode(401);
-            result.setMessage("此队伍并未被注册过，禁止添加");
-            return result;
-        }
         int order = 0;
         if ("一等奖".equals(winnerTeam.getTeamOrder())){
             order = 1;
@@ -67,7 +62,9 @@ public class WinnerTeamServiceImpl implements WinnerTeamService {
         }
         winnerTeam.setTeamOrderNum(order);
         winnerTeam.setTeamOrderText(winnerTeam.getTeamOrder());
-        winnerTeam.setTeamId(registerTeam.getRegisterId());
+        if (registerTeam!=null) {
+            winnerTeam.setTeamId(registerTeam.getRegisterId());
+        }
         winnerTeam.setGmtCreate(new Date());
         winnerTeam.setGmtModified(new Date());
         winnerTeamMapper.addGetPrizesData(winnerTeam);
