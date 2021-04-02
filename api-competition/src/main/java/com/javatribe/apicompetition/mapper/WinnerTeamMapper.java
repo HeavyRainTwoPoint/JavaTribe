@@ -17,9 +17,6 @@ public interface WinnerTeamMapper {
 
     List<WinnerTeam> selectTeamOfCompetition(@Param("competitionId") Long competitionId,@Param("yearId") Long yearId);
 
-    RegisterTeam queryRegisterTeamByNameAndTheYear(@Param("teamName") String teamName,
-                                                   @Param("year") String year, @Param("competitionId") Long competitionId);
-
     int addGetPrizesData(WinnerTeam winnerTeam);
 
     int updatePrizesData(WinnerTeam winnerTeam);

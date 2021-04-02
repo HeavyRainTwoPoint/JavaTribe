@@ -35,11 +35,11 @@ public class ServiceException extends RuntimeException{
         message = info.getMessage();
     }
 
-    public ServiceException(ApiInfo info,String message) {
+    public ServiceException(ApiInfo info,String extraMessage) {
         code = info.getCode();
         message = info.getMessage();
         //其他信息
-        this.extraMessage = message;
+        this.extraMessage = extraMessage;
     }
 
 }

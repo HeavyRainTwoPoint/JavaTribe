@@ -11,7 +11,7 @@ public interface RegisterTeamService {
 
     String toValidateMessage(RegisterTeam registerTeam);
 
-    String toValidateNoSameNumberOrSameLeaderName(RegisterTeam registerTeam);
+    String toValidateNoSameNumberOrSameLeaderName(RegisterTeam registerTeam,String type);
 
     String toValidateMessageIsNull(RegisterTeamOfFront registerTeam);
 
