@@ -23,7 +23,7 @@ public interface RegisterTeamMapper {
 
     int selectSameTeamName(@Param("competitionId") Long competitionId, @Param("teamName") String teamName,@Param("registerId")Long registerId);
 
-    int selectSameTeamLeaderName(@Param("competitionId") Long competitionId,@Param("teamLeaderName") String teamLeaderName,@Param("registerId")Long registerId);
+    int selectSameTeamLeaderStudentId(@Param("competitionId") Long competitionId,@Param("studentId") String studentId,@Param("registerId")Long registerId);
 
     List<RegisterTeam> queryRegisterList(@Param("competitionId") Long competitionId);
 }
