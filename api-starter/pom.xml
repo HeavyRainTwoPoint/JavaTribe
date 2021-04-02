@@ -33,6 +33,12 @@
             <groupId>com.javatribe</groupId>
             <artifactId>api-introduction</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jsqlparser</artifactId>
+                    <groupId>com.github.jsqlparser</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.javatribe</groupId>
