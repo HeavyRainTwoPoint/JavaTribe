@@ -63,7 +63,7 @@
     set @time_start = now();
     set @time_end = now();
     select @year_id := year_id,@time_start := year_start_time,@time_end := year_end_time
-    from t_competition_years where the_year=#{theYear} limit 1;
+    from t_competition_years where the_year=#{theYear} and competition_id=#{competitionId} limit 1;
     insert into t_winner_team(team_name, team_user_list, gmt_create,
     gmt_modified, the_year, team_begin_time, team_end_time, competition_id,
     team_order_num, team_order_text)
@@ -73,7 +73,7 @@
 
   <update id="updatePrizesData" parameterType="com.javatribe.apicompetition.pojo.po.WinnerTeam">
     set @year_id = 0;
-    select @year_id := year_id from t_competition_years where the_year=#{theYear};
+    select @year_id := year_id from t_competition_years where the_year=#{theYear} and competition_id=#{competitionId};
     update t_winner_team
     <trim prefix="set" suffixOverrides=",">
         <if test="teamName!=null and teamName!=''">
@@ -95,7 +95,7 @@
 
   <delete id="deletePrizesData" parameterType="com.javatribe.apicompetition.pojo.po.WinnerTeam">
     set @year_id = 0;
-    select @year_id := year_id from t_competition_years where the_year=#{theYear};
+    select @year_id := year_id from t_competition_years where the_year=#{theYear} and competition_id=#{competitionId} ;
     delete from t_winner_team where prize_id=#{prizeId} and
     the_year=@year_id and competition_id=#{competitionId} limit 1
   </delete>

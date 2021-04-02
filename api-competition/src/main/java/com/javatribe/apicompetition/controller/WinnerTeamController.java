@@ -47,7 +47,7 @@ public class WinnerTeamController {
 
     @DeleteMapping(value = "/deleteGetPrizesData")
     @ActionHandler
-    public Result deleteGetPrizesData(@RequestBody WinnerTeam winnerTeam){
+    public Result deleteGetPrizesData(WinnerTeam winnerTeam){
         return winnerTeamService.deleteGetPrizesData(winnerTeam);
     }
 
