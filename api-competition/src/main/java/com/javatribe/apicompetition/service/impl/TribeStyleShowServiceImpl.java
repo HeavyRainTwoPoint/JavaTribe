@@ -1,6 +1,7 @@
 package com.javatribe.apicompetition.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.javatribe.apicommon.core.constant.enums.ApiInfo;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicommon.exception.BusinessException;
 import com.javatribe.apicommon.exception.ServiceException;
@@ -158,6 +159,20 @@ public class TribeStyleShowServiceImpl implements TribeStyleShowService {
             if (info.getCompetitionId()==null) {
                 throw new ServiceException("对不起，没有 比赛ID",666,"没有比赛ID。。。");
             }
+            //如果是插入的话，还要判断  是否插入了重复届数
+            //思路： 查询  theYear=theYear and competitionId = compId  and deleteStatus = false
+            final CompetitionYearExample queryDTO = new CompetitionYearExample();
+            queryDTO.createCriteria()
+                    .andDeleteStatusEqualTo(false)
+                    .andCompetitionIdEqualTo(info.getCompetitionId())
+                    .andTheYearEqualTo( info.getTheYear() );
+            //已经有这个届数的话，报异常，阻止重复届数
+            final List<CompetitionYear> competitionYears = competitionYearMapper.selectByExample(queryDTO);
+            if (competitionYears!=null && competitionYears.size() > 0) {
+                //数据不为空
+                throw new ServiceException(ApiInfo.BAD_REQUEST,"已经有这一届了，不能重复插入");
+            }
+
             competitionYearMapper.insertSelective(info);
         }else{
             competitionYearMapper.updateByPrimaryKeySelective(info);

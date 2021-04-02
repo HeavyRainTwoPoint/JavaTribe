@@ -220,6 +220,8 @@ public class ExHandlerAdvice {
                 .setMessage(e.getMessage())
                 .setCode(e.getCode())
                 .put(ERROR_INFO,e.getMessage())
-                .put("tips","接口数据有问题");
+                .put("tips","接口数据有问题")
+                .put("extraMsg",e.getExtraMessage())
+                ;
     }
 }
