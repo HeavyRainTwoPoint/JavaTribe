@@ -54,7 +54,7 @@ public class EnrollTestAdminServiceImpl implements EnrollTestAdminService {
             return Response.fail(ResponseStatus.PARAMS_ERROR);
         }
         enrollTest.setGmtModified(new Date());
-        return new Response<Integer>(enrollTestMapper.updateByPrimaryKey(enrollTest));
+        return new Response<Integer>(enrollTestMapper.updateByPrimaryKeySelective(enrollTest));
     }
 
     @Override

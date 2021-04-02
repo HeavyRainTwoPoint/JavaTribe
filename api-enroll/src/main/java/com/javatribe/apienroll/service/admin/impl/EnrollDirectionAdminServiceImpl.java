@@ -42,6 +42,16 @@ public class EnrollDirectionAdminServiceImpl implements EnrollDirectionAdminServ
             logger.info("参数不合法->{}",enrollDirection);
             return Response.fail(ResponseStatus.PARAMS_ERROR);
         }
+        final int[] max = {0};
+        List<EnrollDirection> enrollDirections = enrollDirectionMapper.selectByExample(new EnrollDirectionQTO());
+        if (!enrollDirections.isEmpty()) {
+            enrollDirections.forEach(x -> {
+                if (x.getDirectionCode() > max[0]) {
+                    max[0] = x.getDirectionCode();
+                }
+            });
+        }
+        enrollDirection.setDirectionCode(max[0] + 1);
         return new Response<>(enrollDirectionMapper.insertSelective(enrollDirection));
     }
 
@@ -65,7 +75,7 @@ public class EnrollDirectionAdminServiceImpl implements EnrollDirectionAdminServ
             return Response.fail(ResponseStatus.PARAMS_ERROR);
         }
         enrollDirection.setGmtModified(new Date());
-        return new Response<Integer>(enrollDirectionMapper.updateByPrimaryKey(enrollDirection));
+        return new Response<Integer>(enrollDirectionMapper.updateByPrimaryKeySelective(enrollDirection));
 
     }
 

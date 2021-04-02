@@ -1,5 +1,6 @@
 package com.javatribe.apienroll.dto;
 
+import com.javatribe.apienroll.entity.FileManager;
 import com.javatribe.apienroll.entity.TestNotice;
 import lombok.Data;
 
@@ -14,5 +15,5 @@ import java.util.List;
 @Data
 public class TestNoticeDTO extends TestNotice implements Serializable {
     private static final long serialVersionUID = 630973080815620028L;
-    private List<String> noticeFileList; // 链接列表
+    private List<FileManager> noticeFileList; // 链接列表
 }

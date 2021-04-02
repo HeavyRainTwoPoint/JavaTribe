@@ -54,7 +54,7 @@ public class TestNoticeAdminServiceImpl implements TestNoticeAdminService {
             return Response.fail(ResponseStatus.PARAMS_ERROR);
         }
         testNotice.setGmtModified(new Date());
-        return new Response<Integer>(testNoticeMapper.updateByPrimaryKey(testNotice));
+        return new Response<Integer>(testNoticeMapper.updateByPrimaryKeySelective(testNotice));
     }
 
     @Override
