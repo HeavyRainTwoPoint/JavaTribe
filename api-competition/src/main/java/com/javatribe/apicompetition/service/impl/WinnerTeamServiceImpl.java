@@ -2,6 +2,7 @@ package com.javatribe.apicompetition.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.javatribe.apicommon.dto.Result;
+import com.javatribe.apicompetition.enumeration.PrizeEnum;
 import com.javatribe.apicompetition.mapper.WinnerTeamMapper;
 import com.javatribe.apicompetition.pojo.po.*;
 import com.javatribe.apicompetition.service.WinnerTeamService;
@@ -46,25 +47,14 @@ public class WinnerTeamServiceImpl implements WinnerTeamService {
             result.setMessage("比赛传输为空，请求出错");
             return result;
         }
-        //添加获奖记录，首先需要判断在数据库中是否有对应的队名
-        //根据队伍注册时间与第几届的开始时间 竞赛id 队伍名来判断是否有这个队伍
-        String teamName = winnerTeam.getTeamName();
-        RegisterTeam registerTeam = winnerTeamMapper.queryRegisterTeamByNameAndTheYear(teamName, winnerTeam.getTheYear(), winnerTeam.getCompetitionId());
-        int order = 0;
-        if ("一等奖".equals(winnerTeam.getTeamOrder())){
-            order = 1;
-        }else if ("二等奖".equals(winnerTeam.getTeamOrder())){
-            order = 2;
-        }else if ("三等奖".equals(winnerTeam.getTeamOrder())){
-            order = 3;
-        }else{
-            order = 4;
+        int order = PrizeEnum.getOrder(winnerTeam.getTeamOrder());
+        if (order==-1){
+            result.setCode(401);
+            result.setMessage("奖项是必填，操作失败");
+            return result;
         }
         winnerTeam.setTeamOrderNum(order);
         winnerTeam.setTeamOrderText(winnerTeam.getTeamOrder());
-        if (registerTeam!=null) {
-            winnerTeam.setTeamId(registerTeam.getRegisterId());
-        }
         winnerTeam.setGmtCreate(new Date());
         winnerTeam.setGmtModified(new Date());
         winnerTeamMapper.addGetPrizesData(winnerTeam);
@@ -75,9 +65,9 @@ public class WinnerTeamServiceImpl implements WinnerTeamService {
     public Result editGetPrizesData(WinnerTeam winnerTeam) {
         //根据 teamId 和 theYear和比赛id
         Result result = Result.success();
-        if (Objects.isNull(winnerTeam.getTeamId())){
+        if (Objects.isNull(winnerTeam.getPrizeId())){
             result.setCode(401);
-            result.setMessage("修改出错，队伍唯一标识为空");
+            result.setMessage("修改出错，获奖队伍唯一标识为空");
             return result;
         }
         if (StringUtils.isEmpty(winnerTeam.getTheYear())){
@@ -90,8 +80,14 @@ public class WinnerTeamServiceImpl implements WinnerTeamService {
             result.setMessage("修改出错，比赛唯一标识为空");
             return result;
         }
-        if (StringUtils.isEmpty(winnerTeam.getTeamName())&&StringUtils.isEmpty(winnerTeam.getTeamUserList())){
+        int order = PrizeEnum.getOrder(winnerTeam.getTeamOrder());
+        //如果三个必须要修改的数据，都无需修改，那么直接返回
+        if (StringUtils.isEmpty(winnerTeam.getTeamName())&&StringUtils.isEmpty(winnerTeam.getTeamUserList())&&(order==-1)){
             return result;
+        }
+        if (order!=-1){
+            winnerTeam.setTeamOrderNum(order);
+            winnerTeam.setTeamOrderText(winnerTeam.getTeamOrder());
         }
         try {
             winnerTeamMapper.updatePrizesData(winnerTeam);
@@ -107,9 +103,9 @@ public class WinnerTeamServiceImpl implements WinnerTeamService {
     public Result deleteGetPrizesData(WinnerTeam winnerTeam) {
         //根据 teamId 和 theYear和比赛id
         Result result = Result.success();
-        if (Objects.isNull(winnerTeam.getTeamId())){
+        if (Objects.isNull(winnerTeam.getPrizeId())){
             result.setCode(401);
-            result.setMessage("删除出错，队伍唯一标识为空");
+            result.setMessage("删除出错，获奖队伍唯一标识为空");
             return result;
         }
         if (StringUtils.isEmpty(winnerTeam.getTheYear())){

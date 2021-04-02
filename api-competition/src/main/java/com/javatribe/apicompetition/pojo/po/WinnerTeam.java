@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class WinnerTeam implements Serializable {
-    private Long teamId;
+    private Long prizeId;
 
     private String teamName;
 
@@ -51,17 +51,12 @@ public class WinnerTeam implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Long getTeamId() {
-        return teamId;
+    public Long getPrizeId() {
+        return prizeId;
     }
 
-    public WinnerTeam withTeamId(Long teamId) {
-        this.setTeamId(teamId);
-        return this;
-    }
-
-    public void setTeamId(Long teamId) {
-        this.teamId = teamId;
+    public void setPrizeId(Long prizeId) {
+        this.prizeId = prizeId;
     }
 
     public String getTeamName() {
@@ -213,7 +208,7 @@ public class WinnerTeam implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", teamId=").append(teamId);
+        sb.append(", teamId=").append(prizeId);
         sb.append(", teamName=").append(teamName);
         sb.append(", teamUserList=").append(teamUserList);
         sb.append(", gmtCreate=").append(gmtCreate);
