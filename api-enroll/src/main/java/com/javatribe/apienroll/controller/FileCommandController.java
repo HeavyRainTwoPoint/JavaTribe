@@ -137,5 +137,25 @@ public class FileCommandController {
 
     }
 
+    @Transactional
+    @PostMapping("/upload")
+    public Response<FileUploadDTO> uploadFile(@RequestPart("file") MultipartFile multipartFile) {
+        FileUploadDTO dto = fileCommandManager.upload(multipartFile, FileType.ZIP).getData();
+
+        // 上传成功
+        if (dto.isSuccess()) {
+            FileManager fileManager = new FileManager();
+            fileManager.setFileName(dto.getFileName());
+            fileManager.setFileUrl(dto.getUri());
+            fileManager.setUploader("default");
+            fileManager.setContenType(dto.getContentType());
+            fileManager.setFileType(FileType.ZIP.getType());
+            return Response.success(dto);
+        }
+
+        return Response.fail(null);
+
+    }
+
 
 }
