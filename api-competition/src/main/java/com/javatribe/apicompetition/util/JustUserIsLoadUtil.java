@@ -7,13 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 public class JustUserIsLoadUtil {
 
     public static boolean userIsLoad(HttpServletRequest request){
-//        String token = request.getParameter("token");
-//        if (StringUtils.isEmpty(token)){
-//            return false;
-//        }else {
-//            return true;
-//        }
-        return true;
+        String token = request.getParameter("token");
+        if (StringUtils.isEmpty(token)){
+            return false;
+        }else {
+            return true;
+        }
     }
 
 }
