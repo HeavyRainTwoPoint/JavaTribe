@@ -83,7 +83,7 @@ public class FileCommandController {
         return Response.fail(ResponseStatus.OSS_ERROR);
     }
 
-    @GetMapping("/download_file")
+    @PostMapping("/download_file")
     @Transactional
     public Response download(@RequestBody FileManager fileManager) {
         if (ObjectUtil.isNull(fileManager) || ObjectUtil.isNull(fileManager.getFileUrl())) {
@@ -130,6 +130,7 @@ public class FileCommandController {
             fileManager.setUploader(ownerName);
             fileManager.setContenType(dto.getContentType());
             fileManager.setFileType(FileType.ZIP.getType());
+            fileManagerCommonService.add(fileManager);
             return Response.success(dto);
         }
 
@@ -150,12 +151,16 @@ public class FileCommandController {
             fileManager.setUploader("default");
             fileManager.setContenType(dto.getContentType());
             fileManager.setFileType(FileType.ZIP.getType());
+            fileManagerCommonService.add(fileManager);
             return Response.success(dto);
         }
 
         return Response.fail(null);
 
     }
+
+
+
 
 
 }

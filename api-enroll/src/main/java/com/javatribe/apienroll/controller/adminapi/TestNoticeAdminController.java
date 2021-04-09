@@ -2,9 +2,11 @@ package com.javatribe.apienroll.controller.adminapi;
 
 import com.javatribe.apicommon.dto.Response;
 import com.javatribe.apicommon.dto.ResponseStatus;
+import com.javatribe.apienroll.dto.FileDataDTO;
 import com.javatribe.apienroll.entity.TestNotice;
 import com.javatribe.apienroll.entity.TestNoticeQTO;
 import com.javatribe.apienroll.service.admin.TestNoticeAdminService;
+import com.javatribe.apienroll.utils.NumberUtil;
 import com.javatribe.apienroll.utils.ObjectUtil;
 import org.springframework.web.bind.annotation.*;
 
@@ -62,6 +64,15 @@ public class TestNoticeAdminController {
     @PostMapping("/update")
     public Response update(@RequestBody TestNotice testNotice) {
         return testNoticeAdminService.update(testNotice);
+    }
+
+
+    @GetMapping("/file_data")
+    public Response<FileDataDTO> getFileDataByTestNoticeId(@RequestParam("id") Long id) {
+        if (NumberUtil.isInValidNum(id)) return Response.fail(ResponseStatus.PARAMS_ERROR);
+        TestNoticeQTO qto = new TestNoticeQTO();
+        qto.createCriteria().andDeleteMarkEqualTo(0).andIdEqualTo(id);
+        return Response.success(testNoticeAdminService.getFileData(qto));
     }
 
 }
