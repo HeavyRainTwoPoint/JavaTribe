@@ -104,7 +104,7 @@ public class TestNoticeAdminServiceImpl implements TestNoticeAdminService {
                     FileDataDTO dto = new FileDataDTO();
                     dto.setFileName(fileManagers.get(0).getFileName());
                     dto.setId(fileManagers.get(0).getId());
-                    dto.setFileUrl(fileManagers.get(0).getFileUrl());
+                    dto.setUrl(fileManagers.get(0).getFileUrl());
                     res.add(dto);
                 }
             });

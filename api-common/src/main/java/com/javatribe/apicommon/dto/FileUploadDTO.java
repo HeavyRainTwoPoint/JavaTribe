@@ -11,7 +11,7 @@ import java.util.Date;
  */
 @Data
 public class FileUploadDTO {
-    private String uri; // 资源地址
+    private String url; // 资源地址
     private String fileTypeName; // 文件类型名称
     private String contentType; // 文件contentType
     private Date uploadDate; // 上传时间

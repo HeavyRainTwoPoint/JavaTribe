@@ -66,14 +66,14 @@ public class FileCommandController {
             FileManager fileManager = new FileManager();
             fileManager.setFileName(dto.getFileName());
             fileManager.setUploader(ownerName);
-            fileManager.setFileUrl(dto.getUri());
+            fileManager.setFileUrl(dto.getUrl());
             fileManager.setContenType(dto.getContentType());
             fileManager.setFileType(FileType.ZIP.getType());
             fileManagerCommonService.add(fileManager);
 
             EnrollTest test = new EnrollTest();
             test.setTestName(multipartFile.getOriginalFilename());
-            test.setFileUrl(dto.getUri());
+            test.setFileUrl(dto.getUrl());
             test.setOwnnerName(ownerName);
             test.setDirectionCode(directionCode);
             enrollTestAdminService.add(test);
@@ -126,7 +126,7 @@ public class FileCommandController {
         if (dto.isSuccess()) {
             FileManager fileManager = new FileManager();
             fileManager.setFileName(dto.getFileName());
-            fileManager.setFileUrl(dto.getUri());
+            fileManager.setFileUrl(dto.getUrl());
             fileManager.setUploader(ownerName);
             fileManager.setContenType(dto.getContentType());
             fileManager.setFileType(FileType.ZIP.getType());
@@ -147,7 +147,7 @@ public class FileCommandController {
         if (dto.isSuccess()) {
             FileManager fileManager = new FileManager();
             fileManager.setFileName(dto.getFileName());
-            fileManager.setFileUrl(dto.getUri());
+            fileManager.setFileUrl(dto.getUrl());
             fileManager.setUploader("default");
             fileManager.setContenType(dto.getContentType());
             fileManager.setFileType(FileType.ZIP.getType());

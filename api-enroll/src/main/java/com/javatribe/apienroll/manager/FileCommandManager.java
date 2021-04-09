@@ -65,7 +65,7 @@ public class FileCommandManager {
             oss.putObject(OSSBucketName.JAVA_TRIBE, fileUri, file.getInputStream());
 
             dto.setUploadDate(new Date());
-            dto.setUri(fileUri);
+            dto.setUrl(fileUri);
             dto.setFileTypeName(FileType.ZIP.getTypeName());
             dto.setFileName(file.getOriginalFilename());
             dto.setSuccess(true);

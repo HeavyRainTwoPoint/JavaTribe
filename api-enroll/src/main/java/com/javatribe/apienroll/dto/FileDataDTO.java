@@ -17,6 +17,6 @@ public class FileDataDTO implements Serializable {
 
     private String fileName;
 
-    private String fileUrl;
+    private String url;
 
 }
