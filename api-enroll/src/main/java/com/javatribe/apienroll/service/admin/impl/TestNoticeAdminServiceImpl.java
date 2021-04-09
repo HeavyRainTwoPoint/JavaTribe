@@ -36,6 +36,7 @@ public class TestNoticeAdminServiceImpl implements TestNoticeAdminService {
     @Resource
     private TestNoticeMapper testNoticeMapper;
 
+    @Resource
     private FileManagerMapper fileManagerMapper;
 
     @Override
@@ -87,25 +88,30 @@ public class TestNoticeAdminServiceImpl implements TestNoticeAdminService {
 
     @Override
     public List<FileDataDTO> getFileData(TestNoticeQTO qto) {
-        List<TestNotice> testNotices = testNoticeMapper.selectByExample(qto);
-        if (testNotices.isEmpty()) return null;
-        List<String> strings = JSONTools.toList(new JSONArray(testNotices.get(0).getNoticeFile()), String.class);
-        if (strings.isEmpty()) return null;
         List<FileDataDTO> res = new ArrayList<>();
-        strings.forEach(x -> {
-            FileManagerQTO qto1 = new FileManagerQTO();
-            qto1.createCriteria().andDeleteMarkEqualTo(0).andFileUrlEqualTo(x);
-            List<FileManager> fileManagers = fileManagerMapper.selectByExample(qto1);
-            if ("".equals(x) || x == null ||fileManagers.isEmpty()) {
+        try {
+            List<TestNotice> testNotices = testNoticeMapper.selectByExample(qto);
+            if (testNotices.isEmpty()) return null;
+            List<String> strings = JSONTools.toList(new JSONArray(testNotices.get(0).getNoticeFile()), String.class);
+            if (strings.isEmpty()) return null;
+            strings.forEach(x -> {
+                FileManagerQTO qto1 = new FileManagerQTO();
+                qto1.createCriteria().andDeleteMarkEqualTo(0).andFileUrlEqualTo(x);
+                List<FileManager> fileManagers = fileManagerMapper.selectByExample(qto1);
+                if ("".equals(x) || x == null ||fileManagers.isEmpty()) {
 
-            } else {
-                FileDataDTO dto = new FileDataDTO();
-                dto.setFileName(fileManagers.get(0).getFileName());
-                dto.setId(fileManagers.get(0).getId());
-                dto.setFileUrl(fileManagers.get(0).getFileUrl());
-                res.add(dto);
-            }
-        });
+                } else {
+                    FileDataDTO dto = new FileDataDTO();
+                    dto.setFileName(fileManagers.get(0).getFileName());
+                    dto.setId(fileManagers.get(0).getId());
+                    dto.setFileUrl(fileManagers.get(0).getFileUrl());
+                    res.add(dto);
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return res;
     }
 
