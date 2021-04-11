@@ -68,6 +68,7 @@ public class ArticleController {
     @GetMapping("/detail")
     public Result<ArticleAndTags> detail(@PathParam("artNo")String artNo) {
         if (artNo == null || "".equals(artNo.trim())) {
+            ViewCountCache.update(artNo);
             return new Result(ApiInfo.BASIC_ERROR.getCode(), "文章的编号不能为空！", null);
         }
         return Result.success(articleService.selectOneByArtNo(artNo));
