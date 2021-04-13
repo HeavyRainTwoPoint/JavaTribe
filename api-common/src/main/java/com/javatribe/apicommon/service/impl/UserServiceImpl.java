@@ -33,7 +33,12 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public Response<UserDTO> login(User user) {
-        UserDTO userDTO = HttpUtil.doGDUFGet(GDUFHost.HOST.replace(GDUFHost.PARAM1, user.getAccount()).replace(GDUFHost.PARAM2, user.getPassword()));
+        UserDTO userDTO = null;
+        try {
+            userDTO = HttpUtil.doGDUFGet(GDUFHost.HOST.replace(GDUFHost.PARAM1, user.getAccount()).replace(GDUFHost.PARAM2, user.getPassword()));
+        } catch (Exception e) {
+            return Response.fail(ResponseStatus.PARAMS_ERROR);
+        }
         if (userDTO == null || userDTO.getToken().equals("-1")) {
             userDTO.setStatus(-1); // 未登录
             return new Response<>(userDTO);
@@ -47,16 +52,16 @@ public class UserServiceImpl implements UserService {
                 user.setRealName(userDTO.getUserRealName());
                 userMapper.insertSelective(user);
                 // 生成token
-                Map<String,String> map = new HashMap<>();
-                map.put("STU_NUMBER",user.getAccount()); //  在token里放数据
+                Map<String, String> map = new HashMap<>();
+                map.put("STU_NUMBER", user.getAccount()); //  在token里放数据
                 userDTO.setToken(JwtUtil.getUserToken(map));
                 userDTO.setStatus(1);
                 userDTO.setSchoolNumber(user.getAccount());
                 return new Response<>(userDTO);
             } else { // 已经存在了
                 // 生成token
-                Map<String,String> map = new HashMap<>();
-                map.put("STU_NUMBER",user.getAccount()); //  在token里放数据
+                Map<String, String> map = new HashMap<>();
+                map.put("STU_NUMBER", user.getAccount()); //  在token里放数据
                 // 查看用户类型
                 UserQTO qto = new UserQTO();
                 qto.createCriteria().andAccountEqualTo(user.getAccount());
@@ -82,7 +87,7 @@ public class UserServiceImpl implements UserService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-      return null;
+        return null;
     }
 
     @Override
@@ -90,7 +95,7 @@ public class UserServiceImpl implements UserService {
         UserQTO qto = new UserQTO();
         qto.createCriteria().andAccountEqualTo(user.getAccount());
         if (userMapper.countByExample(qto) > 0) {
-            if (userMapper.updateByExampleSelective(user,qto) > 0) {
+            if (userMapper.updateByExampleSelective(user, qto) > 0) {
                 return Response.success(ResponseStatus.SUCCESS);
             }
         }

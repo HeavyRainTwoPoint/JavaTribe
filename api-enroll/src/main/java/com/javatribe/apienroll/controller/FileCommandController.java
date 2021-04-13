@@ -1,5 +1,6 @@
 package com.javatribe.apienroll.controller;
 
+import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.apicommon.core.constant.enums.FileType;
 import com.javatribe.apicommon.dto.FileUploadDTO;
 import com.javatribe.apicommon.dto.Response;
@@ -52,6 +53,7 @@ public class FileCommandController {
      * @return
      */
     @Transactional
+    @TokenFreeAnnotation
     @PostMapping("/upload/enroll_test")
     public Response<FileUploadDTO> uploadEnrollTestFile(@RequestPart("file") MultipartFile multipartFile,
                                                   @RequestParam("owner_name") String ownerName, @RequestParam("direction_code") Integer directionCode) {
@@ -83,15 +85,18 @@ public class FileCommandController {
         return Response.fail(ResponseStatus.OSS_ERROR);
     }
 
-    @PostMapping("/download_file")
+    @GetMapping("/download_file")
+    @TokenFreeAnnotation
     @Transactional
-    public Response download(@RequestBody FileManager fileManager) {
-        if (ObjectUtil.isNull(fileManager) || ObjectUtil.isNull(fileManager.getFileUrl())) {
-            logger.info("参数不合法->{}",fileManager);
+    public Response download(@RequestParam("fileUrl") String fileUrl) {
+        if (ObjectUtil.isNull(fileUrl) || ObjectUtil.isNull(fileUrl)) {
+            logger.info("参数不合法->{}",fileUrl);
             return Response.fail(ResponseStatus.PARAMS_ERROR);
         }
         Boolean download;
         try {
+            FileManager fileManager = new FileManager();
+            fileManager.setFileUrl(fileUrl);
             download = fileCommandManager.download(fileManager).getData();
         } catch (Exception e) {
             e.printStackTrace();
@@ -100,14 +105,14 @@ public class FileCommandController {
         try {
             if (download) {
                 FileManagerQTO qto = new FileManagerQTO();
-                qto.createCriteria().andDeleteMarkEqualTo(0).andFileUrlEqualTo(fileManager.getFileUrl());
+                qto.createCriteria().andDeleteMarkEqualTo(0).andFileUrlEqualTo(fileUrl);
                 List<FileManager> fileManagers = fileManagerMapper.selectByExample(qto);
                 if (!fileManagers.isEmpty()) {
                     // 执行下载数量+1
-                    fileManager.setDownloadCount(fileManagers.get(0).getDownloadCount() + 1);
+                    fileManagers.get(0).setDownloadCount(fileManagers.get(0).getDownloadCount() + 1);
                 }
 
-                return fileManagerCommonService.update(fileManager);
+                return fileManagerCommonService.update(fileManagers.get(0));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -117,6 +122,7 @@ public class FileCommandController {
     }
 
     @Transactional
+    @TokenFreeAnnotation
     @PostMapping("/upload/file")
     public Response<FileUploadDTO> uploadFile(@RequestPart("file") MultipartFile multipartFile,
                                                         @RequestParam("uploader") String ownerName) {
@@ -139,6 +145,7 @@ public class FileCommandController {
     }
 
     @Transactional
+    @TokenFreeAnnotation
     @PostMapping("/upload")
     public Response<FileUploadDTO> uploadFile(@RequestPart("file") MultipartFile multipartFile) {
         FileUploadDTO dto = fileCommandManager.upload(multipartFile, FileType.ZIP).getData();

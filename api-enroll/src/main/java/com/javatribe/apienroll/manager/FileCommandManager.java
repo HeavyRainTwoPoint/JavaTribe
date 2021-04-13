@@ -1,6 +1,8 @@
 package com.javatribe.apienroll.manager;
+import cn.hutool.core.date.DateTime;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.model.OSSObject;
+import com.aliyun.oss.model.PutObjectResult;
 import com.javatribe.apicommon.config.properties.AliOssProperties;
 import com.javatribe.apicommon.core.constant.OSSBucketName;
 import com.javatribe.apicommon.core.constant.OSSHost;
@@ -12,6 +14,7 @@ import com.javatribe.apienroll.entity.FileManager;
 import com.javatribe.apienroll.utils.ObjectUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
@@ -36,6 +39,9 @@ public class FileCommandManager {
     @Resource
     HttpServletResponse httpServletResponse;
 
+    @Autowired
+    private OSS oss;
+
     // 文件上传
     public Response<FileUploadDTO> upload(MultipartFile file, FileType fileType) {
         FileUploadDTO dto = new FileUploadDTO();
@@ -49,7 +55,6 @@ public class FileCommandManager {
     }
 
     private boolean beginUpload(MultipartFile file, FileUploadDTO dto, FileType fileType) {
-        OSS oss = aliOssProperties.getOSSClient();
         try {
 
             if (oss.doesBucketExist(OSSBucketName.JAVA_TRIBE)) {
@@ -58,12 +63,12 @@ public class FileCommandManager {
                 logger.info("create bucket name " + OSSBucketName.JAVA_TRIBE);
                 oss.createBucket(OSSBucketName.JAVA_TRIBE);
             }
+            String fileName = getNewFileName(fileType.getTypeName());
             // 要上传到的oss地址
-            String fileUri = OSSHost.JAVA_TRIBE + File.separator + fileType.getTypeName()
-                    + File.separator + UUID.randomUUID();
+            String fileUri = OSSHost.JAVA_TRIBE
+                    + "/" + fileName;
             // 上传
-            oss.putObject(OSSBucketName.JAVA_TRIBE, fileUri, file.getInputStream());
-
+            oss.putObject(OSSBucketName.JAVA_TRIBE, fileName,new ByteArrayInputStream(file.getBytes()));
             dto.setUploadDate(new Date());
             dto.setUrl(fileUri);
             dto.setFileTypeName(FileType.ZIP.getTypeName());
@@ -75,7 +80,7 @@ public class FileCommandManager {
             logger.info("upload file fail -> {}", file.getOriginalFilename());
             e.printStackTrace();
         } finally {
-            oss.shutdown();
+//            oss.shutdown();
         }
         return false;
     }
@@ -111,4 +116,30 @@ public class FileCommandManager {
         return new Response<>(true);
 
     }
+
+
+    /**
+     * 将原先的文件名替换为时间序列
+     * @param fileType
+     * @return
+     */
+    private static String getNewFileName(String fileType){
+        DateTime dateTime = new DateTime();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(fileType + "/");
+        stringBuilder.append(dateTime.toString("yyyyMMddHHmmss"));
+        stringBuilder.append(getMillTime(dateTime));
+        return stringBuilder.toString();
+    }
+
+    /**
+     * 获取格式化之后剩下的毫秒值
+     * @param dateTime
+     * @return
+     */
+    private static long getMillTime(DateTime dateTime){
+        long time = dateTime.getTime() % 10000;
+        return time;
+    }
+
 }

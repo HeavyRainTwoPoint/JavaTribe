@@ -1,6 +1,7 @@
 package com.javatribe.apicommon.controller;
 
 import cn.hutool.core.util.ObjectUtil;
+import com.javatribe.apicommon.annotation.AdminAuthentication;
 import com.javatribe.apicommon.annotation.SuperAuthentication;
 import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.apicommon.dto.Response;
@@ -22,6 +23,8 @@ import java.util.List;
 @RequestMapping("/javatribe/common/user")
 public class UserController {
 
+
+
     @Resource
     private UserService userService;
 
@@ -42,7 +45,7 @@ public class UserController {
         return userService.addOrUpdateAdmin(user);
     }
 
-    @SuperAuthentication
+    @TokenFreeAnnotation
     @GetMapping("/user_type")
     public Response<Integer> queryUserType(@RequestParam("account") String account) {
         return userService.queryUserType(account);
