@@ -63,7 +63,7 @@ public class FileCommandManager {
                 logger.info("create bucket name " + OSSBucketName.JAVA_TRIBE);
                 oss.createBucket(OSSBucketName.JAVA_TRIBE);
             }
-            String fileName = getNewFileName(fileType.getTypeName());
+            String fileName = getNewFileName(fileType.getTypeName(),file);
             // 要上传到的oss地址
             String fileUri = OSSHost.JAVA_TRIBE
                     + "/" + fileName;
@@ -121,14 +121,16 @@ public class FileCommandManager {
     /**
      * 将原先的文件名替换为时间序列
      * @param fileType
+     * @param file
      * @return
      */
-    private static String getNewFileName(String fileType){
+    private static String getNewFileName(String fileType, MultipartFile file){
         DateTime dateTime = new DateTime();
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(fileType + "/");
         stringBuilder.append(dateTime.toString("yyyyMMddHHmmss"));
         stringBuilder.append(getMillTime(dateTime));
+        stringBuilder.append("_" + file.getOriginalFilename());
         return stringBuilder.toString();
     }
 
