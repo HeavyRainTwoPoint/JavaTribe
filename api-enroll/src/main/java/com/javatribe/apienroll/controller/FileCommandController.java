@@ -1,5 +1,6 @@
 package com.javatribe.apienroll.controller;
 
+import com.javatribe.apicommon.annotation.ApiAuthentication;
 import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.apicommon.core.constant.enums.FileType;
 import com.javatribe.apicommon.dto.FileUploadDTO;
@@ -53,7 +54,7 @@ public class FileCommandController {
      * @return
      */
     @Transactional
-    @TokenFreeAnnotation
+    @ApiAuthentication
     @PostMapping("/upload/enroll_test")
     public Response<FileUploadDTO> uploadEnrollTestFile(@RequestPart("file") MultipartFile multipartFile,
                                                   @RequestParam("owner_name") String ownerName, @RequestParam("direction_code") Integer directionCode) {
@@ -86,7 +87,7 @@ public class FileCommandController {
     }
 
     @GetMapping("/download_file")
-    @TokenFreeAnnotation
+    @ApiAuthentication
     @Transactional
     public Response download(@RequestParam("fileUrl") String fileUrl) {
         if (ObjectUtil.isNull(fileUrl) || ObjectUtil.isNull(fileUrl)) {
@@ -122,7 +123,7 @@ public class FileCommandController {
     }
 
     @Transactional
-    @TokenFreeAnnotation
+    @ApiAuthentication
     @PostMapping("/upload/file")
     public Response<FileUploadDTO> uploadFile(@RequestPart("file") MultipartFile multipartFile,
                                                         @RequestParam("uploader") String ownerName) {
@@ -145,7 +146,7 @@ public class FileCommandController {
     }
 
     @Transactional
-    @TokenFreeAnnotation
+    @ApiAuthentication
     @PostMapping("/upload")
     public Response<FileUploadDTO> uploadFile(@RequestPart("file") MultipartFile multipartFile) {
         FileUploadDTO dto = fileCommandManager.upload(multipartFile, FileType.ZIP).getData();

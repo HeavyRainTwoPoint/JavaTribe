@@ -40,6 +40,10 @@ public class UserServiceImpl implements UserService {
             return Response.fail(ResponseStatus.PARAMS_ERROR);
         }
         if (userDTO == null || userDTO.getToken().equals("-1")) {
+            System.out.println("===============");
+            System.out.println(userDTO);
+            System.out.println(userDTO.getToken());
+            System.out.println("===============");
             userDTO.setStatus(-1); // 未登录
             return new Response<>(userDTO);
         }
@@ -78,6 +82,7 @@ public class UserServiceImpl implements UserService {
                     }
                     userDTO.setStatus(1);
                 } else {
+                    System.out.println("here");
                     userDTO.setStatus(-1); // 未登录
                 }
 

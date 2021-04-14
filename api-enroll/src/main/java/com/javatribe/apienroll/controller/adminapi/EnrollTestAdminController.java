@@ -1,5 +1,6 @@
 package com.javatribe.apienroll.controller.adminapi;
 
+import com.javatribe.apicommon.annotation.AdminAuthentication;
 import com.javatribe.apicommon.dto.Response;
 import com.javatribe.apicommon.dto.ResponseStatus;
 import com.javatribe.apienroll.entity.EnrollTest;
@@ -26,12 +27,14 @@ public class EnrollTestAdminController {
 
     // 添加
     @PostMapping("/add")
+    @AdminAuthentication
     public Response<Integer> add(@RequestBody EnrollTest enrollTest) {
         return enrollTestAdminService.add(enrollTest);
     }
 
     // 根据id删除
     @GetMapping("/delete_by_id")
+    @AdminAuthentication
     public Response<Integer> deleteById(Long id) {
         EnrollTest enrollTest = new EnrollTest();
         enrollTest.setId(id);
@@ -40,6 +43,7 @@ public class EnrollTestAdminController {
 
     // 根据id批量删除（,分割）
     @GetMapping("/delete")
+    @AdminAuthentication
     public Response<Integer> delete(@RequestParam("ids") String ids) {
         EnrollTestQTO qto = new EnrollTestQTO();
         qto.createCriteria().andIdIn(
@@ -49,6 +53,7 @@ public class EnrollTestAdminController {
     }
 
     @GetMapping("/query_list")
+    @AdminAuthentication
     public Response<List<EnrollTest>> query(@RequestParam("direction_code") Integer directionCode) {
         if (ObjectUtil.isNull(directionCode))  directionCode = 1;
         EnrollTestQTO qto = new EnrollTestQTO();
@@ -60,6 +65,7 @@ public class EnrollTestAdminController {
     }
 
     @PostMapping("/update")
+    @AdminAuthentication
     public Response update(@RequestBody EnrollTest enrollTest) {
         return enrollTestAdminService.update(enrollTest);
     }

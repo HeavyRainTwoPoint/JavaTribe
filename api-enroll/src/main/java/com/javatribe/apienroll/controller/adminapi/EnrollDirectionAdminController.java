@@ -1,5 +1,7 @@
 package com.javatribe.apienroll.controller.adminapi;
 
+import com.javatribe.apicommon.annotation.AdminAuthentication;
+import com.javatribe.apicommon.annotation.ApiAuthentication;
 import com.javatribe.apicommon.dto.Response;
 import com.javatribe.apicommon.dto.ResponseStatus;
 import com.javatribe.apienroll.entity.EnrollDirection;
@@ -29,12 +31,14 @@ public class EnrollDirectionAdminController {
 
     // 添加
     @PostMapping("/add")
+    @AdminAuthentication
     public Response<Integer> add(@RequestBody EnrollDirection enrollDirection) {
         return enrollDirectionAdminService.add(enrollDirection);
     }
 
 
     @GetMapping("/query_list")
+    @ApiAuthentication
     public Response<List<EnrollDirection>> query() {
         EnrollDirectionQTO qto = new EnrollDirectionQTO();
         return enrollDirectionAdminService.query(qto);
@@ -42,6 +46,7 @@ public class EnrollDirectionAdminController {
 
     // 根据id删除
     @GetMapping("/delete_by_id")
+    @AdminAuthentication
     public Response<Integer> deleteById(Long id) {
         EnrollDirection enrollNotice = new EnrollDirection();
         enrollNotice.setId(id);
@@ -51,6 +56,7 @@ public class EnrollDirectionAdminController {
 
 
     @PostMapping("/update")
+    @AdminAuthentication
     public Response update(@RequestBody EnrollDirection enrollDirection) {
         return enrollDirectionAdminService.update(enrollDirection);
     }
