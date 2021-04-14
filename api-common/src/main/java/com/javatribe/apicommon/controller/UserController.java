@@ -37,8 +37,9 @@ public class UserController {
     }
 
 
-    @SuperAuthentication
+
     @PostMapping("/update")
+    @SuperAuthentication
     public Response<Object> addOrUpdateAdmin(@RequestBody(required = false) User user) {
         if (ObjectUtil.isNull(user))
             return Response.fail(ResponseStatus.PARAMS_ERROR);
@@ -51,8 +52,9 @@ public class UserController {
         return userService.queryUserType(account);
     }
 
-    @SuperAuthentication
+
     @GetMapping("/admin/list")
+    @SuperAuthentication
     public Response<List<User>> queryList() {
         return userService.queryList();
     }

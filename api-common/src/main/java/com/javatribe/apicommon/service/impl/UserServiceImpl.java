@@ -98,6 +98,9 @@ public class UserServiceImpl implements UserService {
             if (userMapper.updateByExampleSelective(user, qto) > 0) {
                 return Response.success(ResponseStatus.SUCCESS);
             }
+        } else {
+            userMapper.insertSelective(user);
+            return Response.success(ResponseStatus.SUCCESS);
         }
         return Response.fail(ResponseStatus.COMMAND_ERROR);
     }

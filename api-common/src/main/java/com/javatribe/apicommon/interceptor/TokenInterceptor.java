@@ -36,6 +36,7 @@ public class TokenInterceptor implements HandlerInterceptor {
             TokenFreeAnnotation tokenFreeAnnotation = handlerMethod.getMethodAnnotation(TokenFreeAnnotation.class);
             SuperAuthentication superAuthentication = handlerMethod.getMethodAnnotation(SuperAuthentication.class);
 
+            logger.info("quanxian-->{},{},{},{}",apiAuthentication,adminAuthentication,tokenFreeAnnotation,superAuthentication);
             //获取请求头里的token
             String token = request.getHeader(JwtUtil.TOKEN_HEADER);
 
