@@ -3,6 +3,7 @@ package com.javatribe.apishare.controller.visitor;
 import com.javatribe.apicommon.core.constant.enums.ApiInfo;
 import com.javatribe.apicommon.dto.PageEntity;
 import com.javatribe.apicommon.dto.Result;
+import com.javatribe.apishare.cache.ViewCountCache;
 import com.javatribe.apishare.po.Article;
 import com.javatribe.apishare.service.ArticleService;
 import com.javatribe.apishare.vo.ArticleAndTags;
@@ -68,6 +69,7 @@ public class ArticleController {
     @GetMapping("/detail")
     public Result<ArticleAndTags> detail(@PathParam("artNo")String artNo) {
         if (artNo == null || "".equals(artNo.trim())) {
+            ViewCountCache.update(artNo);
             return new Result(ApiInfo.BASIC_ERROR.getCode(), "文章的编号不能为空！", null);
         }
         return Result.success(articleService.selectOneByArtNo(artNo));
