@@ -34,7 +34,7 @@ public class NewsController {
     @PostMapping("insert")
     @AdminAuthentication
     public ApiResult insert(@RequestBody NewsBO newsBO) {
-        if (newsBO.getPriority() != NewsType.HeightPriority.getType() || newsBO.getPriority() != NewsType.LowPriority.getType()) {
+        if (newsBO.getPriority() != NewsType.HeightPriority.getType() && newsBO.getPriority() != NewsType.LowPriority.getType()) {
             newsBO.setPriority(NewsType.LowPriority.getType());
         }
         newsBO.setId(null);
@@ -60,8 +60,8 @@ public class NewsController {
             if (news == null) {
                 return ApiResults.badRequest("id所在数据不存在");
             }
-            if (newsBO.getPriority() != NewsType.HeightPriority.getType() || newsBO.getPriority() != NewsType.LowPriority.getType()) {
-                newsBO.setPriority(NewsType.LowPriority.getType());
+            if (newsBO.getPriority() != NewsType.HeightPriority.getType() && newsBO.getPriority() != NewsType.LowPriority.getType()) {
+                newsBO.setPriority(news.getPriority());
             }
             BeanUtils.copyProperties(newsBO, news);
             //todo  添加操作人信息
