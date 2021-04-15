@@ -8,7 +8,6 @@ import com.javatribe.apicompetition.pojo.po.CompetitionYear;
 import com.javatribe.apicompetition.service.TribeStyleShowService;
 import com.javatribe.apicompetition.util.BeanMapperUtils;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

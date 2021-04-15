@@ -1,7 +1,6 @@
 package com.javatribe.apicommon.controller;
 
 import cn.hutool.core.util.ObjectUtil;
-import com.javatribe.apicommon.annotation.AdminAuthentication;
 import com.javatribe.apicommon.annotation.SuperAuthentication;
 import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.apicommon.dto.Response;
