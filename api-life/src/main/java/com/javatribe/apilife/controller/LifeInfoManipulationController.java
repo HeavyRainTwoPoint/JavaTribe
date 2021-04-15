@@ -1,5 +1,7 @@
 package com.javatribe.apilife.controller;
 
+import com.javatribe.apicommon.annotation.AdminAuthentication;
+import com.javatribe.apicommon.annotation.SuperAuthentication;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apilife.dto.ActivityDTO;
 import com.javatribe.apilife.expt.SqlException;
@@ -15,6 +17,8 @@ public class LifeInfoManipulationController {
     @Autowired
     LifeInfoManipulation lifeInfoManipulation;
 
+    @AdminAuthentication
+    @SuperAuthentication
     @PostMapping("/life-info")
     public Result insertLifeInfo(@RequestBody(required = false) ActivityDTO dto) {
         try {
@@ -25,6 +29,8 @@ public class LifeInfoManipulationController {
         return Result.success();
     }
 
+    @AdminAuthentication
+    @SuperAuthentication
     @PutMapping("/life-info/")
     public Result updateLifeInfo(@RequestBody(required = false) ActivityDTO dto) {
         try {
@@ -35,14 +41,15 @@ public class LifeInfoManipulationController {
         return Result.success();
     }
 
-
+    @AdminAuthentication
+    @SuperAuthentication
     @DeleteMapping("/life-info/{id}")
     public Result deleteLifeInfoById(@PathVariable("id") int id) {
         lifeInfoManipulation.deleteActivityById(id);
         return Result.success();
     }
 
-    @PutMapping("/priority/move-up/{id}")
+    //    @PutMapping("/priority/move-up/{id}")
     public Result moveUp(@PathVariable("id") int id) {
         try {
             lifeInfoManipulation.priorityMoveUp(id);
@@ -55,7 +62,7 @@ public class LifeInfoManipulationController {
         return Result.success();
     }
 
-    @PutMapping("/priority/move-down/{id}")
+    //    @PutMapping("/priority/move-down/{id}")
     public Result moveDown(@PathVariable("id") int id) {
         try {
             lifeInfoManipulation.priorityMoveDown(id);
@@ -69,7 +76,7 @@ public class LifeInfoManipulationController {
     }
 
 
-    @PutMapping("/priority/swap")
+    //    @PutMapping("/priority/swap")
     public Result moveDown(@RequestParam("a") int a, @RequestParam("b") int b) {
         lifeInfoManipulation.prioritySwap(a, b);
         return Result.success();

@@ -1,6 +1,8 @@
 package com.javatribe.apishare.controller.admin;
 
 import com.aliyun.oss.OSS;
+import com.javatribe.apicommon.annotation.AdminAuthentication;
+import com.javatribe.apicommon.annotation.SuperAuthentication;
 import com.javatribe.apicommon.config.properties.AliOssProperties;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apishare.po.Article;
@@ -39,6 +41,8 @@ public class AdminArticleController {
      * @param articleAndTags
      * @return
      */
+    @AdminAuthentication
+    @SuperAuthentication
     @PutMapping("/add")
     public Result add(@RequestBody ArticleAndTags articleAndTags) {
         Article article = articleAndTags.getArticle();
@@ -58,6 +62,8 @@ public class AdminArticleController {
      * @param article
      * @return
      */
+    @AdminAuthentication
+    @SuperAuthentication
     @PostMapping("/update")
     public Result update(@RequestBody Article article) {
         String valid = isValid(article);
@@ -76,6 +82,8 @@ public class AdminArticleController {
      * @param map 提供 artNo 参数
      * @return
      */
+    @AdminAuthentication
+    @SuperAuthentication
     @PostMapping("delete")
     public Result delete(@RequestBody Map<String, String> map) {
         String artNo = map.get("artNo");
@@ -91,6 +99,8 @@ public class AdminArticleController {
      * @param multipartFile
      * @return
      */
+    @AdminAuthentication
+    @SuperAuthentication
     @PostMapping("/upload")
     public Result upload(@RequestParam("image")MultipartFile multipartFile) {
         if (multipartFile == null) {
@@ -106,6 +116,8 @@ public class AdminArticleController {
      * @param multipartFile 文件
      * @return
      */
+    @AdminAuthentication
+    @SuperAuthentication
     @PostMapping("/uploadImg")
     public Result uploadImg(@RequestParam("file") MultipartFile multipartFile){
         if (multipartFile == null) {
