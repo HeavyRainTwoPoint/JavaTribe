@@ -1,23 +1,30 @@
 package com.javatribe.apicompetition.pojo.po;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class CompetitionYear implements Serializable {
     private Integer yearId;
 
-    private String theYear;
-
+    private Integer theYear;
+    @JsonIgnore
     private Boolean deleteStatus;
-
+    @JsonIgnore
     private Integer activeStatus;
 
     private Date gmtCreate;
 
     private Date gmtModified;
 
+
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy 年 MM 月 dd 日")
     private Date yearStartTime;
 
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy 年 MM 月 dd 日")
     private Date yearEndTime;
 
     private Integer competitionId;
@@ -39,17 +46,17 @@ public class CompetitionYear implements Serializable {
         this.yearId = yearId;
     }
 
-    public String getTheYear() {
+    public Integer getTheYear() {
         return theYear;
     }
 
-    public CompetitionYear withTheYear(String theYear) {
+    public CompetitionYear withTheYear(Integer theYear) {
         this.setTheYear(theYear);
         return this;
     }
 
-    public void setTheYear(String theYear) {
-        this.theYear = theYear == null ? null : theYear.trim();
+    public void setTheYear(Integer theYear) {
+        this.theYear = theYear;
     }
 
     public Boolean getDeleteStatus() {

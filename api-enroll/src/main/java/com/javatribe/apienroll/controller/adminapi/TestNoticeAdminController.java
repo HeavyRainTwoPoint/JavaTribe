@@ -1,10 +1,13 @@
 package com.javatribe.apienroll.controller.adminapi;
 
+import com.javatribe.apicommon.annotation.AdminAuthentication;
 import com.javatribe.apicommon.dto.Response;
 import com.javatribe.apicommon.dto.ResponseStatus;
+import com.javatribe.apienroll.dto.FileDataDTO;
 import com.javatribe.apienroll.entity.TestNotice;
 import com.javatribe.apienroll.entity.TestNoticeQTO;
 import com.javatribe.apienroll.service.admin.TestNoticeAdminService;
+import com.javatribe.apienroll.utils.NumberUtil;
 import com.javatribe.apienroll.utils.ObjectUtil;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,12 +29,14 @@ public class TestNoticeAdminController {
 
     // 添加
     @PostMapping("/add")
-    public Response<Integer> add(TestNotice testNotice) {
+    @AdminAuthentication
+    public Response<Integer> add(@RequestBody TestNotice testNotice) {
         return testNoticeAdminService.add(testNotice);
     }
 
     // 根据id删除
     @GetMapping("/delete_by_id")
+    @AdminAuthentication
     public Response<Integer> deleteById(Long id) {
         TestNotice testNotice = new TestNotice();
         testNotice.setId(id);
@@ -40,6 +45,7 @@ public class TestNoticeAdminController {
 
     // 根据id批量删除（,分割）
     @GetMapping("/delete")
+    @AdminAuthentication
     public Response<Integer> delete(@RequestParam("ids") String ids) {
         TestNoticeQTO qto = new TestNoticeQTO();
         qto.createCriteria().andIdIn(
@@ -49,19 +55,31 @@ public class TestNoticeAdminController {
     }
 
     @GetMapping("/query_list")
-    public Response<List<TestNotice>> query(TestNotice testNotice) {
-        if (ObjectUtil.isNull(testNotice)) return Response.fail(ResponseStatus.PARAMS_ERROR);
+    @AdminAuthentication
+    public Response<List<TestNotice>> query(@RequestParam("direction_code") Integer directionCode) {
+        if (ObjectUtil.isNull(directionCode)) directionCode = 1;
         TestNoticeQTO qto = new TestNoticeQTO();
         // 根据方向查询
         qto.createCriteria()
                 .andDeleteMarkEqualTo(0)
-                .andTestDirectionEqualTo(testNotice.getTestDirection());
+                .andTestDirectionEqualTo(directionCode);
         return testNoticeAdminService.query(qto);
     }
 
     @PostMapping("/update")
-    public Response update(TestNotice testNotice) {
+    @AdminAuthentication
+    public Response update(@RequestBody TestNotice testNotice) {
         return testNoticeAdminService.update(testNotice);
+    }
+
+
+    @GetMapping("/file_data")
+    @AdminAuthentication
+    public Response<FileDataDTO> getFileDataByTestNoticeId(@RequestParam("id") Long id) {
+        if (NumberUtil.isInValidNum(id)) return Response.fail(ResponseStatus.PARAMS_ERROR);
+        TestNoticeQTO qto = new TestNoticeQTO();
+        qto.createCriteria().andDeleteMarkEqualTo(0).andIdEqualTo(id);
+        return Response.success(testNoticeAdminService.getFileData(qto));
     }
 
 }

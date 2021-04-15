@@ -1,12 +1,13 @@
 package com.javatribe.apicompetition.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.javatribe.apicommon.annotation.AdminAuthentication;
+import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.apicompetition.mapper.RegisterTeamMapper;
 import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
 import com.javatribe.apicompetition.pojo.po.RegisterTeam;
 import com.javatribe.apicompetition.pojo.po.RegisterTeamOfFront;
 import com.javatribe.apicompetition.service.RegisterTeamService;
-import org.apache.http.HttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -41,6 +41,7 @@ public class RegisterTeamController {
      * @return
      */
     @RequestMapping("/signUpKindsGet")
+    @TokenFreeAnnotation
     public Result toGetSignUpKind(){
         Result result = new Result();
         List<CompetitionIntroduction> competitionIntroductions = registerTeamMapper.querySignUpKinds();
@@ -55,6 +56,7 @@ public class RegisterTeamController {
      * @return
      */
     @RequestMapping(value = "/sign_up",method = RequestMethod.POST)
+    @TokenFreeAnnotation
     public Result singUp(@RequestBody RegisterTeamOfFront registerTeam) {
         Result result = new Result();
         //首先判断是否为空
@@ -85,21 +87,25 @@ public class RegisterTeamController {
      * @return
      */
     @GetMapping("/registerList")
+    @AdminAuthentication
     public Result queryRegisterList(@RequestParam("competitionId") Long competitionId){
         return registerTeamService.queryRegisterList(competitionId);
     }
 
     @PutMapping("/editRegisterData")
-    public Result editRegisterData(RegisterTeamOfFront registerTeamOfFront){
+    @AdminAuthentication
+    public Result editRegisterData(@RequestBody RegisterTeamOfFront registerTeamOfFront){
         return registerTeamService.editRegisterData(registerTeamOfFront);
     }
 
     @DeleteMapping("/deleteRegisterData")
+    @AdminAuthentication
     public Result deleteRegisterData(Long registerId){
         return registerTeamService.deleteRegisterData(registerId);
     }
 
     @PostMapping("/addRegisterData")
+    @AdminAuthentication
     public void addRegisterData(HttpServletRequest request, HttpServletResponse response){
         try {
             request.getRequestDispatcher("sign_up").forward(request,response);

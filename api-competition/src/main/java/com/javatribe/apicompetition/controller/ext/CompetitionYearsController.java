@@ -1,9 +1,14 @@
 package com.javatribe.apicompetition.controller.ext;
 
+import com.javatribe.apicommon.core.constant.enums.ApiInfo;
 import com.javatribe.apicommon.dto.Result;
+import com.javatribe.apicommon.exception.ServiceException;
+import com.javatribe.apicompetition.pojo.dto.CompetitionYearDTO;
 import com.javatribe.apicompetition.pojo.po.CompetitionYear;
 import com.javatribe.apicompetition.service.TribeStyleShowService;
+import com.javatribe.apicompetition.util.BeanMapperUtils;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +25,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CompetitionYearsController {
     final TribeStyleShowService tribeStyleShowService;
+    // final
+    final BeanMapperUtils beanMapperUtils;
 
     /**
      *
@@ -34,8 +41,15 @@ public class CompetitionYearsController {
     }
 
     @PostMapping("/years")
-    public Result  updateOrInsert(@RequestBody CompetitionYear json) {
-        tribeStyleShowService.updateOrInsertCompetitionYears(json);
+    public Result  updateOrInsert(@RequestBody CompetitionYearDTO json) {
+        //接口校验  第一次插入，需要 设置 【时间】
+        if (json.getYearId()==null  && (json.getYearEndTime()==null ||  json.getYearStartTime()==null  ) ) {
+            throw new ServiceException(ApiInfo.BAD_REQUEST, "没有添加届数开始时间 或者 结束时间，无法插入数据");
+        }
+
+
+
+        tribeStyleShowService.updateOrInsertCompetitionYears(beanMapperUtils.from(json));
         return Result.success();
     }
 
@@ -49,5 +63,11 @@ public class CompetitionYearsController {
         tribeStyleShowService.deleteStyleShowCompetitionYears(yearId);
         return Result.success();
     }
+
+
+
+
+
+
 
 }

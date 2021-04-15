@@ -2,6 +2,7 @@ package com.javatribe.apicompetition.pojo.dto;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -57,6 +58,7 @@ public class StyleShowDTO {
     /**
      * 第几届的 ID
      */
+    @NotNull(message = "yearId 不能为空")
     private Integer yearId;
 
 

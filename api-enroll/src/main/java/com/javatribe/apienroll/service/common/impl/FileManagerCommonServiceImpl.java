@@ -1,10 +1,15 @@
 package com.javatribe.apienroll.service.common.impl;
 
 import com.javatribe.apicommon.dto.Response;
+import com.javatribe.apicommon.dto.ResponseStatus;
+import com.javatribe.apienroll.dao.FileManagerMapper;
+import com.javatribe.apienroll.entity.EnrollNotice;
 import com.javatribe.apienroll.entity.FileManager;
 import com.javatribe.apienroll.entity.FileManagerQTO;
 import com.javatribe.apienroll.manager.FileCommandManager;
 import com.javatribe.apienroll.service.common.FileManagerCommonService;
+import com.javatribe.apienroll.utils.NumberUtil;
+import com.javatribe.apienroll.utils.ObjectUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -24,6 +29,8 @@ public class FileManagerCommonServiceImpl implements FileManagerCommonService {
 
     @Resource
     private FileCommandManager fileCommandManager;
+    @Resource
+    private FileManagerMapper fileManagerMapper;
 
 
     @Override
@@ -33,12 +40,14 @@ public class FileManagerCommonServiceImpl implements FileManagerCommonService {
 
     @Override
     public Response<Integer> add(FileManager fileManager) {
-        return null;
+        if (ObjectUtil.isNull(fileManager)) return Response.fail(ResponseStatus.PARAMS_ERROR);
+        return Response.success(fileManagerMapper.insertSelective(fileManager));
     }
 
     @Override
     public Response<Integer> update(FileManager fileManager) {
-        return null;
+        if (ObjectUtil.isNull(fileManager) || NumberUtil.isInValidNum(fileManager.getId())) return Response.fail(ResponseStatus.PARAMS_ERROR);
+        return Response.success(fileManagerMapper.updateByPrimaryKeySelective(fileManager));
     }
 
     @Override
@@ -48,7 +57,9 @@ public class FileManagerCommonServiceImpl implements FileManagerCommonService {
 
     @Override
     public Response<Integer> deleteById(FileManager fileManager) {
-        return null;
+        if (ObjectUtil.isNull(fileManager) || NumberUtil.isInValidNum(fileManager.getId())) return Response.fail(ResponseStatus.PARAMS_ERROR);
+        fileManager.setDeleteMark(1);
+        return new Response<>(fileManagerMapper.updateByPrimaryKeySelective(fileManager));
     }
 
 
@@ -99,6 +110,6 @@ public class FileManagerCommonServiceImpl implements FileManagerCommonService {
 //        enrollTest.setDeleteMark(1);
 //        return new Response<Integer>(enrollTestMapper.updateByPrimaryKeySelective(enrollTest));
 //    }
-
+//
 
 }

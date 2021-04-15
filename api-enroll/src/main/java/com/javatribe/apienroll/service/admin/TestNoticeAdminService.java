@@ -1,6 +1,7 @@
 package com.javatribe.apienroll.service.admin;
 
 import com.javatribe.apicommon.dto.Response;
+import com.javatribe.apienroll.dto.FileDataDTO;
 import com.javatribe.apienroll.entity.TestNotice;
 import com.javatribe.apienroll.entity.TestNoticeQTO;
 
@@ -22,4 +23,7 @@ public interface TestNoticeAdminService {
     Response<Integer> delete(TestNoticeQTO qto);
     // 根据主键删除
     Response<Integer> deleteById(TestNotice testNotice);
+
+    // 查询文件
+    List<FileDataDTO> getFileData(TestNoticeQTO qto);
 }

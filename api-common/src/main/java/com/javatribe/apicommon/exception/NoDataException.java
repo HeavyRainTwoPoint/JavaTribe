@@ -9,9 +9,9 @@ import com.javatribe.apicommon.core.constant.enums.ApiInfo;
  * @create 2020/11/1 17:23
  */
 public class NoDataException extends ServiceException{
-    public NoDataException(int code, String message, Throwable cause) {
-        super(code, message, cause);
-    }
+    // public NoDataException(int code, String message, Throwable cause) {
+    //     super(code, message, cause);
+    // }
 
     public NoDataException(String message, int code, String message1) {
         super(message, code, message1);

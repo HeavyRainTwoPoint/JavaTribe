@@ -6,18 +6,15 @@
     SELECT
             id,test_direction,test_name
     FROM
-            test_notice WHERE test_direction = 1 ORDER BY gmt_created DESC LIMIT 4
+            test_notice WHERE test_direction = #{direction_code} ORDER BY gmt_created DESC LIMIT #{n}
   </select>
   <select id="getEnrollNoticeLastNYears" resultType="com.javatribe.apienroll.dto.EnrollNoticeDTO">
     SELECT *,YEAR(a.`gmt_created`) AS `year`
     FROM enroll_notice a
-    WHERE a.delete_mark = 0
-    <if test="n >= 0">
-      AND YEAR(a.`gmt_created`)
-      >=
-      YEAR(NOW()) - #{n}
-    </if>
-    ORDER BY a.gmt_created DESC
+    WHERE
+            a.delete_mark = 0
+      AND
+            YEAR(a.`gmt_created`) >= (YEAR(NOW()) - #{n} + 1) ORDER BY a.gmt_created DESC
 
   </select>
   <select id="getTestNoticeOnDirection" resultType="com.javatribe.apienroll.entity.TestNotice">

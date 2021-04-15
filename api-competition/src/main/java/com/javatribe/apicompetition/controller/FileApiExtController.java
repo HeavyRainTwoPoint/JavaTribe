@@ -1,9 +1,7 @@
 package com.javatribe.apicompetition.controller;
 
-import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.RestController;
-
 /**
+ * 图片接口
  * @Author lyr
  * @create 2021/3/23 13:36
  */

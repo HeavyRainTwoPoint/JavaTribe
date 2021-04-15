@@ -3,8 +3,11 @@ package com.javatribe.apienroll.service.openapi.impl;
 import cn.hutool.json.JSONArray;
 import com.javatribe.apicommon.dto.Response;
 import com.javatribe.apicommon.dto.ResponseStatus;
+import com.javatribe.apienroll.dao.FileManagerMapper;
 import com.javatribe.apienroll.dto.EnrollNoticeDTO;
 import com.javatribe.apienroll.dto.TestNoticeDTO;
+import com.javatribe.apienroll.entity.FileManager;
+import com.javatribe.apienroll.entity.FileManagerQTO;
 import com.javatribe.apienroll.entity.TestNotice;
 import com.javatribe.apienroll.mapper.EnrollOpenApiMapper;
 import com.javatribe.apienroll.service.openapi.EnrollOpenApiService;
@@ -29,6 +32,9 @@ public class EnrollOpenApiServiceImpl implements EnrollOpenApiService {
     @Resource
     private EnrollOpenApiMapper enrollOpenApiMapper;
 
+    @Resource
+    private FileManagerMapper fileManagerMapper;
+
     @Override
     public Response<List<TestNotice>> getLastNTestNameOnDirection(Integer n, Integer directionCode) {
         if (NumberUtil.isInValidNum(n) || NumberUtil.isInValidNum(directionCode)) {
@@ -48,17 +54,17 @@ public class EnrollOpenApiServiceImpl implements EnrollOpenApiService {
             return new Response<>();
         }
         List<List<EnrollNoticeDTO>> res = new ArrayList<>();
-        Map<Integer,List<EnrollNoticeDTO>> resData = new HashMap<>();
+        Map<Integer, List<EnrollNoticeDTO>> resData = new HashMap<>();
         dtoList.forEach(x -> {
             if (resData.containsKey(x.getYear())) {
                 resData.get(x.getYear()).add(x);
             } else {
                 List<EnrollNoticeDTO> list = new ArrayList<>();
                 list.add(x);
-                resData.put(x.getYear(),list);
+                resData.put(x.getYear(), list);
             }
         });
-        resData.forEach((k,v) -> {
+        resData.forEach((k, v) -> {
             res.add(v);
         });
 
@@ -81,7 +87,13 @@ public class EnrollOpenApiServiceImpl implements EnrollOpenApiService {
             dto.setTestDirection(x.getTestDirection());
             dto.setDeleteMark(x.getDeleteMark());
             dto.setGmtCreated(x.getGmtCreated());
-            dto.setNoticeFileList(JSONTools.toList(new JSONArray(x.getNoticeFile()),String.class));
+            List<String> urls = JSONTools.toList(new JSONArray(x.getNoticeFile()), String.class);
+            if (!urls.isEmpty()) {
+                FileManagerQTO qto = new FileManagerQTO();
+                qto.createCriteria().andFileUrlIn(urls).andDeleteMarkEqualTo(0);
+                List<FileManager> fileManagers = fileManagerMapper.selectByExample(qto);
+                dto.setNoticeFileList(fileManagers);
+            }
             resData.add(dto);
         });
 

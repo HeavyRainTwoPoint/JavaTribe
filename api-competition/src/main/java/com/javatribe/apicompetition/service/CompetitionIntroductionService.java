@@ -3,6 +3,8 @@ package com.javatribe.apicompetition.service;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
 import com.javatribe.apicompetition.pojo.vo.CompetitionAndYearsVO;
+import com.javatribe.apicompetition.pojo.vo.YearAndCompetitionVO;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -53,4 +55,8 @@ public interface CompetitionIntroductionService {
     CompetitionIntroduction getCompetitionDetailInfoWithHtml(Integer competitionId);
 
     List<CompetitionAndYearsVO> listCompetitionAndYearsVo();
+
+
+    @Transactional(readOnly = true)
+    List<YearAndCompetitionVO> listYearAndCompetitionVO();
 }

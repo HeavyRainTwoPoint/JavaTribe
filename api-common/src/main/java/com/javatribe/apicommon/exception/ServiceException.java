@@ -14,7 +14,14 @@ import lombok.Getter;
 @AllArgsConstructor
 public class ServiceException extends RuntimeException{
     int code;
+    /**
+     * 接口信息
+     */
     String message;
+    /**
+     * 其他信息
+     */
+    String extraMessage;
     Throwable cause;
 
 
@@ -26,6 +33,13 @@ public class ServiceException extends RuntimeException{
     public ServiceException(ApiInfo info) {
         code = info.getCode();
         message = info.getMessage();
+    }
+
+    public ServiceException(ApiInfo info,String extraMessage) {
+        code = info.getCode();
+        message = info.getMessage();
+        //其他信息
+        this.extraMessage = extraMessage;
     }
 
 }

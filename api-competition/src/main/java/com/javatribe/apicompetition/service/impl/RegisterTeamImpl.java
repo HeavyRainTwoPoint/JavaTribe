@@ -1,5 +1,6 @@
 package com.javatribe.apicompetition.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.mapper.RegisterTeamMapper;
@@ -55,7 +56,7 @@ public class RegisterTeamImpl implements RegisterTeamService {
         }else if (!studentIdRegex.matcher(teamLeaderStudentId.trim()).matches()){
             return "队长学号填写出错，请重新填写";
         }
-        if(registerTeam.getTeamUserList()!=null && registerTeam.getTeamUserId()==null) {
+        if(StringUtils.isEmpty(registerTeam.getTeamUserList()) || StringUtils.isEmpty(registerTeam.getTeamUserId())) {
             return "队员学号不能为空";
         }else if(registerTeam.getTeamUserId()!=null){
             String[] teamUserIds = registerTeam.getTeamUserId().split(",");
@@ -69,16 +70,21 @@ public class RegisterTeamImpl implements RegisterTeamService {
     }
 
     @Override
-    public String toValidateNoSameNameOrSameLeaderName(RegisterTeam registerTeam) {
+    public String toValidateNoSameNumberOrSameLeaderName(RegisterTeam registerTeam,String type) {
+        if(registerTeam.getTeamLeaderStudentId()==null){
+            return "队长学号必须填写";
+        }
         //首先检查是否有同名队伍 规则：在同一届 同一个比赛中 不能存在相同的队伍
-        String year = DateUtils.formatDate(registerTeam.getRegisterTime(),"yyyy");
-        int i = registerTeamMapper.selectSameTeamName(year, registerTeam.getCompetitionId(), registerTeam.getTeamName(),registerTeam.getRegisterId());
+        int i = registerTeamMapper.selectSameTeamName(registerTeam.getCompetitionId(), registerTeam.getTeamLeaderStudentId(),registerTeam.getRegisterId());
         if (i>0){
             return "队伍名字重复，请重新填写";
         }
-        i = registerTeamMapper.selectSameTeamLeaderName(year,registerTeam.getCompetitionId(),registerTeam.getTeamLeaderName(),registerTeam.getRegisterId());
-        if (i>0){
-            return "您作为队长已经报过名了，请勿重复报名";
+        //编辑不需要判断学号是否出错
+        if(!"编辑".equals(type)) {
+            i = registerTeamMapper.selectSameTeamLeaderStudentId(registerTeam.getCompetitionId(), registerTeam.getTeamLeaderStudentId(), registerTeam.getRegisterId());
+            if (i > 0) {
+                return "您作为队长已经报过名了，请勿重复报名";
+            }
         }
         return null;
     }
@@ -99,8 +105,8 @@ public class RegisterTeamImpl implements RegisterTeamService {
         Result result = new Result();
         result.setCode(200);
         List<RegisterTeam> registerTeam = registerTeamMapper.queryRegisterList(competitionId);
+        List<RegisterTeamOfFront> datas = new ArrayList<>();
         if (registerTeam!=null && registerTeam.size()!=0){
-            List<RegisterTeamOfFront> datas = new ArrayList<>();
             for (int i=0 ; i<registerTeam.size() ; i++) {
                 RegisterTeam o = registerTeam.get(i);
                 RegisterTeamOfFront registerTeamOfFront = new RegisterTeamOfFront();
@@ -128,20 +134,17 @@ public class RegisterTeamImpl implements RegisterTeamService {
                 }
                 datas.add(registerTeamOfFront);
             }
-            result.setData(JSONObject.toJSONString(datas));
-        }else{
-            result.setMessage("没有数据");
-            result.setData(null);
         }
+        result.setData(JSON.toJSONString(datas));
         return result;
     }
 
     @Override
     public Result editRegisterData(RegisterTeamOfFront registerTeam) {
         Result result = new Result();
-        if (registerTeam.getRegisterTime()==null){
+        if(registerTeam.getCompetitionId()==null){
+            result.setMessage("需要填写比赛id");
             result.setCode(401);
-            result.setMessage("registerTime参数为空，修改失败");
             return result;
         }
         RegisterTeam registerTeamOfData = new RegisterTeam(registerTeam.getRegisterId(), registerTeam.getCompetitionId(), registerTeam.getTeamName(), registerTeam.getTeamLeaderName(), registerTeam.getTeamLeaderPhone(), registerTeam.getTeamLeaderStudentId(), registerTeam.getTeamLeaderWechat(), registerTeam.getTeamLeaderCollege());
@@ -192,10 +195,10 @@ public class RegisterTeamImpl implements RegisterTeamService {
             }
         }
         registerTeamOfData.setDeleteStatus(0);
-        if (registerTeamOfData.getRegisterTime()==null) {
+        if (!"编辑".equals(type) && registerTeamOfData.getRegisterTime()==null) {
             registerTeamOfData.setRegisterTime(new Date());
         }
-        message = toValidateNoSameNameOrSameLeaderName(registerTeamOfData);
+        message = toValidateNoSameNumberOrSameLeaderName(registerTeamOfData,type);
         if (!Objects.isNull(message)){
             result.setCode(401);
             result.setMessage(type+"失败："+message);

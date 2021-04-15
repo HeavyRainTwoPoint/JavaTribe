@@ -1,5 +1,6 @@
 package com.javatribe.apienroll.entity;
 
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -15,7 +16,7 @@ public class TestNotice implements Serializable {
     private Integer deleteMark;
 
     private Date gmtCreated;
-
+    
     private Date gmtModified;
 
     private static final long serialVersionUID = 1L;

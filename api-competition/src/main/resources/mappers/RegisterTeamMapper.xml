@@ -95,37 +95,39 @@
   </select>
 
   <select id="selectSameTeamName" resultType="java.lang.Integer">
+    SET @date=IF(#{registerId} is not null and #{registerId}!='',(select register_time from
+    t_register_team where register_id=#{registerId}),now());
     SELECT
 	count( register_id )
     FROM
 	`t_register_team`
     WHERE
-	STR_TO_DATE( date_format( register_time, '%Y-%m-%d' ), '%Y' ) = STR_TO_DATE( #{year}, '%Y' )
+	STR_TO_DATE( date_format( register_time, '%Y-%m-%d' ), '%Y' ) = STR_TO_DATE( @date, '%Y' )
 	AND competition_id = #{competitionId}
 	AND team_name = #{teamName}
 	<if test="registerId!=null and registerId!=''">
-        register_id!=#{registerId}
+    AND register_id!=#{registerId}
     </if>
   </select>
 
-  <select id="selectSameTeamLeaderName" resultType="java.lang.Integer">
-    SELECT
+  <select id="selectSameTeamLeaderStudentId" resultType="java.lang.Integer">
+      SET @date=IF(#{registerId} is not null and #{registerId}!='',(select register_time
+      from t_register_team where register_id=#{registerId}),now());
+      SELECT
 	count( register_id )
     FROM
 	`t_register_team`
     WHERE
-	STR_TO_DATE( date_format( register_time, '%Y-%m-%d' ), '%Y' ) = STR_TO_DATE( #{year}, '%Y' )
-	AND competition_id = 1
-	AND team_leader_name = #{teamLeaderName}
+	STR_TO_DATE( date_format( register_time, '%Y-%m-%d' ), '%Y' ) = STR_TO_DATE( @date, '%Y' )
+	AND competition_id = #{competitionId}
+	AND team_leader_student_id = #{studentId}
 	<if test="registerId!=null and registerId!=''">
-        register_id!=#{registerId}
+    AND register_id!=#{registerId}
     </if>
   </select>
 
   <select id="queryRegisterList" resultType="com.javatribe.apicompetition.pojo.po.RegisterTeam">
-    SET @date =( str_to_date(( SELECT date_format( team_begin_time, '%Y' ) FROM t_winner_team ORDER BY team_begin_time DESC LIMIT 1 ),
-	'%Y'
-    ));
+    SET @date=subdate(now(),interval 1 year);
     SET @index = 0;
     SELECT
 	@index:=@index + 1 AS `order`,

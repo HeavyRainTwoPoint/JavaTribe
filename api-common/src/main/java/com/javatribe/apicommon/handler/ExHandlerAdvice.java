@@ -6,6 +6,7 @@ import com.javatribe.apicommon.dto.ViewObject;
 import com.javatribe.apicommon.exception.BusinessException;
 import com.javatribe.apicommon.exception.NoDataException;
 import com.javatribe.apicommon.exception.RequestBodyErrorException;
+import com.javatribe.apicommon.exception.ServiceException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.context.annotation.Lazy;
@@ -206,4 +207,21 @@ public class ExHandlerAdvice {
                 .put("tips","请求体不符合要求，不是json或者不是formData");
     }
 
+
+    /**
+     * json 格式异常
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(ServiceException.class)
+    public ViewObject serviceEX(ServiceException e) {
+
+        return ViewObject.of(ApiInfo.BAD_REQUEST)
+                .setMessage(e.getMessage())
+                .setCode(e.getCode())
+                .put(ERROR_INFO,e.getMessage())
+                .put("tips","接口数据有问题")
+                .put("extraMsg",e.getExtraMessage())
+                ;
+    }
 }

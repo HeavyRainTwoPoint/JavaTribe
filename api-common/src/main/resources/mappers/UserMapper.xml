@@ -74,10 +74,6 @@
   </sql>
   <select id="selectByExample" parameterType="com.javatribe.apicommon.entity.UserQTO" resultMap="BaseResultMap">
     select
-    <if test="distinct">
-      distinct
-    </if>
-    'true' as QUERYID,
     <include refid="Base_Column_List" />
     from user
     <if test="_parameter != null">

@@ -11,9 +11,9 @@ import com.javatribe.apicommon.core.constant.enums.ApiInfo;
 public class BusinessException extends ServiceException{
 
 
-    public BusinessException(int code, String message, Throwable cause) {
-        super(code, message, cause);
-    }
+    // public BusinessException(int code, String message, Throwable cause) {
+    //     super(code, message, cause);
+    // }
 
     public BusinessException(String message, int code, String message1) {
         super(message, code, message1);

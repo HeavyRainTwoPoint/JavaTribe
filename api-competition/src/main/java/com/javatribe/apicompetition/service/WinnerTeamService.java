@@ -1,7 +1,6 @@
 package com.javatribe.apicompetition.service;
 
 import com.javatribe.apicommon.dto.Result;
-import com.javatribe.apicompetition.pojo.po.AllWinnerTeamToDisplay;
 import com.javatribe.apicompetition.pojo.po.NumberOfSessions;
 import com.javatribe.apicompetition.pojo.po.WinnerTeam;
 
@@ -9,9 +8,7 @@ import java.util.List;
 
 public interface WinnerTeamService {
 
-    List<AllWinnerTeamToDisplay> queryWinnerTeamOfCompetition();
-
-    Result addSessionNum(NumberOfSessions sessions);
+    List<WinnerTeam> queryWinnerTeamOfCompetition(Long competitionId,Long yearId);
 
     Result addGetPrizesData(WinnerTeam winnerTeam);
 

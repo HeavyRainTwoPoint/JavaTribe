@@ -3,6 +3,7 @@ package com.javatribe.apicompetition.controller;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.pojo.dto.StyleShowDTO;
 import com.javatribe.apicompetition.pojo.po.CompetitionYear;
+import com.javatribe.apicompetition.pojo.po.StyleShow;
 import com.javatribe.apicompetition.pojo.vo.StyleShowVO;
 import com.javatribe.apicompetition.service.TribeStyleShowService;
 import com.javatribe.apicompetition.util.BeanMapperUtils;
@@ -113,12 +114,20 @@ public class StyleShowController {
      */
     @PostMapping("/styleShow")
     public Result insertOneStyleShowItem(@RequestBody StyleShowDTO styleShow) {
+        //自动生成yearId
+        styleShowService.resetYearId(styleShow);
+        // final Long competitionId = styleShow.getCompetitionId();
+        // final Integer yearId = styleShow.getYearId();
+        // final CompetitionYear year = styleShowService.getYearByCompetitionIdAndYearText(yearId, competitionId.intValue());
+        // //生成 yearId
+        // styleShow.setYearId(year.getYearId());
+        StyleShow xx = beanMapperUtils.from(styleShow);
         if (styleShow.getShowId()==null) {
             //id  不为 null 就更新数据
-            styleShowService.insertOne(beanMapperUtils.from(styleShow));
+            styleShowService.insertOne(xx);
         }else {
 
-            styleShowService.updateById(beanMapperUtils.from(styleShow));
+            styleShowService.updateById(xx);
         }
         return Result.success();
     }
