@@ -1,5 +1,6 @@
 package com.javatribe.apishare.controller.visitor;
 
+import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.apicommon.core.constant.enums.ApiInfo;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apishare.service.TagService;
@@ -27,6 +28,7 @@ public class TagController {
      *
      * @return
      */
+    @TokenFreeAnnotation
     @GetMapping("/getAllParentTags")
     public Result getAllParentTags() {
         return new Result(ApiInfo.OK.getCode(), "OK", tagService.getAllParentTags());
@@ -38,6 +40,7 @@ public class TagController {
      * @param tagParent
      * @return
      */
+    @TokenFreeAnnotation
     @GetMapping("/getSonTagByParent")
     public Result getSonTagByParent(@PathParam("tagParent") int tagParent) {
         return new Result(ApiInfo.OK.getCode(), "OK", tagService.getSonTags(tagParent));

@@ -1,6 +1,8 @@
 package com.javatribe.introduction.controller;
 
 
+import com.javatribe.apicommon.annotation.AdminAuthentication;
+import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.introduction.entity.Office;
 import com.javatribe.introduction.service.OfficeService;
@@ -26,6 +28,7 @@ public class OfficeController {
     private OfficeService officeService;
 
     @GetMapping("findAll")
+    @TokenFreeAnnotation
     public Result findAll() {
         List<Office> offices = officeService.findAll();
         HashMap<String, Object> res = new HashMap<>();
@@ -34,6 +37,7 @@ public class OfficeController {
     }
 
     @PostMapping("addOffice")
+    @AdminAuthentication
     public Result addOffice(@RequestBody Office office) {
         if (officeService.addOffice(office) == 1) {
             return Result.success();
@@ -42,6 +46,7 @@ public class OfficeController {
     }
 
     @PostMapping("updateOffice")
+    @AdminAuthentication
     public Result updateOffice(@RequestBody Office office) {
         if (officeService.updateOffice(office) == 1) {
             return Result.success();
@@ -50,6 +55,7 @@ public class OfficeController {
     }
 
     @DeleteMapping("deleteOffice")
+    @AdminAuthentication
     public Result deleteOffice(@RequestParam("id") Integer id) {
         if (officeService.deleteOffice(id) == 1) {
             return Result.success();

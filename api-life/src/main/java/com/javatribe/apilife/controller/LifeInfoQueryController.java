@@ -1,5 +1,6 @@
 package com.javatribe.apilife.controller;
 
+import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apilife.pojo.Activity;
 import com.javatribe.apilife.service.LifeInfoQueryService;
@@ -18,6 +19,7 @@ public class LifeInfoQueryController {
     @Autowired
     LifeInfoQueryService lifeInfoQueryService;
 
+    @TokenFreeAnnotation
     @GetMapping("/life-infos")
     public Result allLifeInfos() {
         final List<Activity> data = lifeInfoQueryService.listActivitiesByPriority();
@@ -48,6 +50,7 @@ public class LifeInfoQueryController {
         return Result.success(data);
     }
 
+    @TokenFreeAnnotation
     @GetMapping("/life-info/exist/{title}")
     public Result isExist(@PathVariable("title") String title) {
         Result result = new Result();

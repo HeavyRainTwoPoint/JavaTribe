@@ -75,6 +75,7 @@ public class CompetitionIntroductionController {
      * @param competitionIntroduction
      * @return
      */
+    @com.javatribe.apicommon.annotation.SuperAuthentication
     @PostMapping("/competition")
     public Result setCompetition(@RequestBody CompetitionIntroductionDTO competitionIntroduction) {
 
@@ -95,6 +96,7 @@ public class CompetitionIntroductionController {
     //     competitionIntroductionService.updateCompetitionInfo(competitionIntroduction);
     //     return Result.success();
     // }
+    @com.javatribe.apicommon.annotation.SuperAuthentication
     @DeleteMapping("/competition/{id}")
     public Result deleteCompetitionById(@PathVariable Long id) {
         competitionIntroductionService.deleteCompetitionInfoById(id);

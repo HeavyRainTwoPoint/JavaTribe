@@ -1,5 +1,7 @@
 package com.javatribe.cooperation.controller;
 
+import com.javatribe.apicommon.annotation.SuperAuthentication;
+import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.cooperation.bean.bo.CooperationBO;
 import com.javatribe.cooperation.bean.dto.ApiResult;
 import com.javatribe.cooperation.bean.dto.ApiResults;
@@ -30,6 +32,7 @@ public class CooperationController {
      * 插入合作交流数据
      */
     @PostMapping("insert")
+    @SuperAuthentication
     public ApiResult insert(@RequestBody CooperationBO cooperationBO) {
         if (checkCooperationType(cooperationBO)) {
             return ApiResults.badRequest("类型有误");
@@ -51,6 +54,7 @@ public class CooperationController {
      * 更新合作交流数据
      */
     @PostMapping("update")
+    @SuperAuthentication
     public ApiResult update(@RequestBody CooperationBO cooperationBO) {
         if (cooperationBO.getId() == null) {
             return ApiResults.badRequest("要修改的数据id不存在");
@@ -90,6 +94,7 @@ public class CooperationController {
      * 删除指定id的数据
      */
     @DeleteMapping("/{id}")
+    @SuperAuthentication
     public ApiResult remove(@PathVariable Integer id) {
         cooperationService.delete(id);
         return ApiResults.success();
@@ -99,6 +104,7 @@ public class CooperationController {
      * 获取指定id的数据
      */
     @GetMapping("/{id}")
+    @TokenFreeAnnotation
     public ApiResult get(@PathVariable Integer id) {
         return ApiResults.success(cooperationService.get(id));
     }
@@ -107,6 +113,7 @@ public class CooperationController {
      * 获取全部数据
      */
     @GetMapping("getAll")
+    @TokenFreeAnnotation
     public ApiResult getAll(@RequestParam("type") Integer type) {
         return ApiResults.success(cooperationService.getAll(type));
     }
@@ -115,6 +122,7 @@ public class CooperationController {
      * 按类型分页数据
      */
     @GetMapping("page")
+    @TokenFreeAnnotation
     public ApiResult page(@RequestParam("type") Integer type, @RequestParam("page") Integer page, @RequestParam("size") Integer size) {
         return ApiResults.success(cooperationService.page(type, page, size));
     }
@@ -123,6 +131,7 @@ public class CooperationController {
      * 获取指定类型的全部数据个数
      */
     @GetMapping("getCounts")
+    @TokenFreeAnnotation
     public ApiResult getCounts(@RequestParam("type") Integer type) {
         return ApiResults.success(cooperationService.getCounts(type));
     }
@@ -131,9 +140,8 @@ public class CooperationController {
      * 获取全部数据个数
      */
     @GetMapping("getAllCounts")
+    @TokenFreeAnnotation
     public ApiResult getAllCounts() {
         return ApiResults.success(cooperationService.getAllCounts());
     }
-
-
 }

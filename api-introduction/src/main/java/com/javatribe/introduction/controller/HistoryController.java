@@ -1,6 +1,8 @@
 package com.javatribe.introduction.controller;
 
 
+import com.javatribe.apicommon.annotation.AdminAuthentication;
+import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.introduction.entity.History;
 import com.javatribe.introduction.entity.Management;
@@ -28,6 +30,7 @@ public class HistoryController {
     private HistoryService historyService;
 
     @GetMapping("findAll")
+    @TokenFreeAnnotation
     public Result findAll() {
         List<History>           histories = historyService.findAll();
         HashMap<String, Object> res       = new HashMap<>();
@@ -36,6 +39,7 @@ public class HistoryController {
     }
 
     @PostMapping("addHistory")
+    @AdminAuthentication
     public Result addHistory(@RequestBody History historie) {
         if (historyService.addHistory(historie) == 1) {
             return Result.success();
@@ -44,6 +48,7 @@ public class HistoryController {
     }
 
     @DeleteMapping("deleteHistory")
+    @AdminAuthentication
     public Result deleteHistory(@RequestParam("id") Integer id) {
         if (historyService.deleteHistory(id) == 1) {
             return Result.success();
@@ -52,6 +57,7 @@ public class HistoryController {
     }
 
     @PostMapping("updateHistory")
+    @AdminAuthentication
     public Result updateHistory(@RequestBody History history) {
         if (historyService.updateHistory(history) == 1) {
             return Result.success();

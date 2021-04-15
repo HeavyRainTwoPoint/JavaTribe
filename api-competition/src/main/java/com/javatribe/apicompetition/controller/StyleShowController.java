@@ -86,6 +86,7 @@ public class StyleShowController {
     // public Result<List<Integer>> getAllStyleShowTheYears(@RequestParam Integer competitionId) {
     //     return styleShowService.getAllStyleShowYears(competitionId);
     // }
+    // @com.javatribe.apicommon.annotation.SuperAuthentication
     @GetMapping("/styleShowYears")
     public Result<List<CompetitionYear>> getAllStyleShowTheYears001(@RequestParam Integer competitionId) {
         return styleShowService.getAllCompetitionYear(competitionId);
@@ -112,6 +113,7 @@ public class StyleShowController {
      * 插入一条记录
      * @return
      */
+    @com.javatribe.apicommon.annotation.SuperAuthentication
     @PostMapping("/styleShow")
     public Result insertOneStyleShowItem(@RequestBody StyleShowDTO styleShow) {
         //自动生成yearId
@@ -137,6 +139,7 @@ public class StyleShowController {
      * @param id     数据 主键
      * @return
      */
+    @com.javatribe.apicommon.annotation.SuperAuthentication
     @DeleteMapping("/styleShow/{id}")
     public Result deleteById(@PathVariable Long id) {
         styleShowService.deleteById(id);
