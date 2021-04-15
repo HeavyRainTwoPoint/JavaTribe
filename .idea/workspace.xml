@@ -4,32 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/interceptor/TokenInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/interceptor/TokenInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/util/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/util/JwtUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/CompetitionIntroductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/CompetitionIntroductionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/StyleShowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-competition/src/main/java/com/javatribe/apicompetition/controller/StyleShowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-cooperation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-cooperation/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-cooperation/src/main/java/com/javatribe/cooperation/controller/CooperationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-cooperation/src/main/java/com/javatribe/cooperation/controller/CooperationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-cooperation/src/main/java/com/javatribe/cooperation/controller/NewsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-cooperation/src/main/java/com/javatribe/cooperation/controller/NewsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-enroll/src/main/java/com/javatribe/apienroll/controller/FileCommandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-enroll/src/main/java/com/javatribe/apienroll/controller/FileCommandController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-enroll/src/main/java/com/javatribe/apienroll/controller/adminapi/EnrollDirectionAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-enroll/src/main/java/com/javatribe/apienroll/controller/adminapi/EnrollDirectionAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-enroll/src/main/java/com/javatribe/apienroll/controller/adminapi/EnrollNoticeAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-enroll/src/main/java/com/javatribe/apienroll/controller/adminapi/EnrollNoticeAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-enroll/src/main/java/com/javatribe/apienroll/controller/adminapi/EnrollTestAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-enroll/src/main/java/com/javatribe/apienroll/controller/adminapi/EnrollTestAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-enroll/src/main/java/com/javatribe/apienroll/controller/adminapi/TestNoticeAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-enroll/src/main/java/com/javatribe/apienroll/controller/adminapi/TestNoticeAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-enroll/src/main/java/com/javatribe/apienroll/controller/openapi/EnrollOpenApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-enroll/src/main/java/com/javatribe/apienroll/controller/openapi/EnrollOpenApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-introduction/src/main/java/com/javatribe/introduction/controller/HistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-introduction/src/main/java/com/javatribe/introduction/controller/HistoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-introduction/src/main/java/com/javatribe/introduction/controller/ManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-introduction/src/main/java/com/javatribe/introduction/controller/ManagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-introduction/src/main/java/com/javatribe/introduction/controller/OfficeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-introduction/src/main/java/com/javatribe/introduction/controller/OfficeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-introduction/src/main/java/com/javatribe/introduction/controller/PostgraduateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-introduction/src/main/java/com/javatribe/introduction/controller/PostgraduateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-life/src/main/java/com/javatribe/apilife/controller/LifeInfoManipulationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-life/src/main/java/com/javatribe/apilife/controller/LifeInfoManipulationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-life/src/main/java/com/javatribe/apilife/controller/LifeInfoQueryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-life/src/main/java/com/javatribe/apilife/controller/LifeInfoQueryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/controller/admin/AdminArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/controller/admin/AdminArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/controller/admin/AdminTagController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/controller/admin/AdminTagController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/controller/visitor/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/controller/visitor/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/controller/visitor/TagController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-share/src/main/java/com/javatribe/apishare/controller/visitor/TagController.java" afterDir="false" />
-    </list>
+    <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -115,17 +90,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ApiStarterApplication">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="CompetitionIntroductionMapperCustomTest.listAllCompetitionAndYears" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="api-competition" />
       <extension name="coverage">
@@ -324,6 +288,8 @@
       <workItem from="1618453680422" duration="462000" />
       <workItem from="1618454156896" duration="230000" />
       <workItem from="1618454400122" duration="67000" />
+      <workItem from="1618454506763" duration="163000" />
+      <workItem from="1618456766387" duration="142000" />
     </task>
     <servers />
   </component>

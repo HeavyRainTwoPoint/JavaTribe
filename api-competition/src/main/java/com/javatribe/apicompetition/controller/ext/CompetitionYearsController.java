@@ -38,7 +38,7 @@ public class CompetitionYearsController {
     public Result<List<CompetitionYear>> getALLYears(@RequestParam Integer competitionId) {
         return Result.success(tribeStyleShowService.getCompetitionYearsByCompetitionId(competitionId));
     }
-
+    @com.javatribe.apicommon.annotation.SuperAuthentication
     @PostMapping("/years")
     public Result  updateOrInsert(@RequestBody CompetitionYearDTO json) {
         //接口校验  第一次插入，需要 设置 【时间】
@@ -57,6 +57,7 @@ public class CompetitionYearsController {
      * @param yearId
      * @return
      */
+    @com.javatribe.apicommon.annotation.SuperAuthentication
     @DeleteMapping("/del_years")
     public Result deleteYears(@RequestParam Integer yearId) {
         tribeStyleShowService.deleteStyleShowCompetitionYears(yearId);
