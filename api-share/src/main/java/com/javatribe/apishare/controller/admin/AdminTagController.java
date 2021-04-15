@@ -43,7 +43,6 @@ public class AdminTagController {
      * @return
      */
     @AdminAuthentication
-    @SuperAuthentication
     @PostMapping("/deleteTag")
     public Result deleteTag(@RequestBody Map<String, Integer> map) {
         int result = tagService.deleteTagById(map.get("tagId"));
@@ -58,7 +57,6 @@ public class AdminTagController {
      * @return
      */
     @AdminAuthentication
-    @SuperAuthentication
     @PutMapping("/addTag")
     public Result addTag(@RequestBody Tag tag) {
         int result = tagService.insertTag(tag);

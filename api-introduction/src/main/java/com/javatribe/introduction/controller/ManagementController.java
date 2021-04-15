@@ -49,7 +49,7 @@ public class ManagementController {
     }
 
     @GetMapping("sessionsLeader")
-    @AdminAuthentication
+    @TokenFreeAnnotation
     public Result sessionsLeader() {
         List<Management> leaders = managementService.findLeader();
         HashMap<String, Object> res = new HashMap<>();
@@ -58,7 +58,7 @@ public class ManagementController {
     }
 
     @GetMapping("presentManager")
-    @AdminAuthentication
+    @TokenFreeAnnotation
     public Result presentManager() {
         List<Management> presents = managementService.findPresent();
         HashMap<String, Object> res = new HashMap<>();

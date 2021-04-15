@@ -1,6 +1,7 @@
 package com.javatribe.apienroll.controller.adminapi;
 
 import com.javatribe.apicommon.annotation.AdminAuthentication;
+import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.apicommon.dto.Response;
 import com.javatribe.apicommon.dto.ResponseStatus;
 import com.javatribe.apienroll.entity.*;
@@ -56,7 +57,7 @@ public class EnrollNoticeAdminController {
     }
 
     @GetMapping("/query_list")
-    @AdminAuthentication
+    @TokenFreeAnnotation
     public Response<List<EnrollNotice>> query() {
         EnrollNoticeQTO qto = new EnrollNoticeQTO();
         qto.createCriteria().andDeleteMarkEqualTo(0);

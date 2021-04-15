@@ -1,6 +1,7 @@
 package com.javatribe.apienroll.controller.adminapi;
 
 import com.javatribe.apicommon.annotation.AdminAuthentication;
+import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.apicommon.dto.Response;
 import com.javatribe.apicommon.dto.ResponseStatus;
 import com.javatribe.apienroll.dto.FileDataDTO;
@@ -55,7 +56,7 @@ public class TestNoticeAdminController {
     }
 
     @GetMapping("/query_list")
-    @AdminAuthentication
+    @TokenFreeAnnotation
     public Response<List<TestNotice>> query(@RequestParam("direction_code") Integer directionCode) {
         if (ObjectUtil.isNull(directionCode)) directionCode = 1;
         TestNoticeQTO qto = new TestNoticeQTO();

@@ -2,6 +2,7 @@ package com.javatribe.apienroll.controller.adminapi;
 
 import com.javatribe.apicommon.annotation.AdminAuthentication;
 import com.javatribe.apicommon.annotation.ApiAuthentication;
+import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.apicommon.dto.Response;
 import com.javatribe.apicommon.dto.ResponseStatus;
 import com.javatribe.apienroll.entity.EnrollDirection;
@@ -38,7 +39,7 @@ public class EnrollDirectionAdminController {
 
 
     @GetMapping("/query_list")
-    @ApiAuthentication
+    @TokenFreeAnnotation
     public Response<List<EnrollDirection>> query() {
         EnrollDirectionQTO qto = new EnrollDirectionQTO();
         return enrollDirectionAdminService.query(qto);

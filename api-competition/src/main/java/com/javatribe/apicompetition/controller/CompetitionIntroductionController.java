@@ -1,5 +1,8 @@
 package com.javatribe.apicompetition.controller;
 
+import com.javatribe.apicommon.annotation.AdminAuthentication;
+import com.javatribe.apicommon.annotation.ApiAuthentication;
+import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.pojo.dto.CompetitionIntroductionDTO;
 import com.javatribe.apicompetition.pojo.po.CompetitionIntroduction;
@@ -45,12 +48,14 @@ public class CompetitionIntroductionController {
      * @return
      */
     @GetMapping("/competition_introduce")
+    @TokenFreeAnnotation
     public Result<List<CompetitionIntroduction>> firstPageInfo() {
         return Result.success(competitionIntroductionService.firstPageShow());
     }
 
 
     @GetMapping("/competition_detail/{compId}")
+    @TokenFreeAnnotation
     public Result<CompetitionIntroduction> getCompetitionDetailInfo(@RequestParam(defaultValue = "html") String type, @PathVariable Integer compId) {
         if ("html".equalsIgnoreCase(type)) {
             //markdown 转 HTML 返回前端
@@ -75,7 +80,7 @@ public class CompetitionIntroductionController {
      * @param competitionIntroduction
      * @return
      */
-    @com.javatribe.apicommon.annotation.SuperAuthentication
+    @AdminAuthentication
     @PostMapping("/competition")
     public Result setCompetition(@RequestBody CompetitionIntroductionDTO competitionIntroduction) {
 
@@ -96,7 +101,7 @@ public class CompetitionIntroductionController {
     //     competitionIntroductionService.updateCompetitionInfo(competitionIntroduction);
     //     return Result.success();
     // }
-    @com.javatribe.apicommon.annotation.SuperAuthentication
+    @AdminAuthentication
     @DeleteMapping("/competition/{id}")
     public Result deleteCompetitionById(@PathVariable Long id) {
         competitionIntroductionService.deleteCompetitionInfoById(id);

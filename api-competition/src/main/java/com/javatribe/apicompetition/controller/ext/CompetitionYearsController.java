@@ -1,5 +1,7 @@
 package com.javatribe.apicompetition.controller.ext;
 
+import com.javatribe.apicommon.annotation.ApiAuthentication;
+import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.apicommon.core.constant.enums.ApiInfo;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicommon.exception.ServiceException;
@@ -35,10 +37,11 @@ public class CompetitionYearsController {
      * @return
      */
     @GetMapping("/years")
+    @TokenFreeAnnotation
     public Result<List<CompetitionYear>> getALLYears(@RequestParam Integer competitionId) {
         return Result.success(tribeStyleShowService.getCompetitionYearsByCompetitionId(competitionId));
     }
-    @com.javatribe.apicommon.annotation.SuperAuthentication
+    @TokenFreeAnnotation
     @PostMapping("/years")
     public Result  updateOrInsert(@RequestBody CompetitionYearDTO json) {
         //接口校验  第一次插入，需要 设置 【时间】
@@ -57,7 +60,7 @@ public class CompetitionYearsController {
      * @param yearId
      * @return
      */
-    @com.javatribe.apicommon.annotation.SuperAuthentication
+    @TokenFreeAnnotation
     @DeleteMapping("/del_years")
     public Result deleteYears(@RequestParam Integer yearId) {
         tribeStyleShowService.deleteStyleShowCompetitionYears(yearId);
