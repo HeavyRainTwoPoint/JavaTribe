@@ -77,13 +77,13 @@ public class RegisterTeamImpl implements RegisterTeamService {
         //首先检查是否有同名队伍 规则：在同一届 同一个比赛中 不能存在相同的队伍
         int i = registerTeamMapper.selectSameTeamName(registerTeam.getCompetitionId(), registerTeam.getTeamLeaderStudentId(),registerTeam.getRegisterId());
         if (i>0){
-            return "队伍名字重复，请重新填写";
+            return "队伍名字重复，请重新填写或者联系管理员进行修改";
         }
         //编辑不需要判断学号是否出错
         if(!"编辑".equals(type)) {
             i = registerTeamMapper.selectSameTeamLeaderStudentId(registerTeam.getCompetitionId(), registerTeam.getTeamLeaderStudentId(), registerTeam.getRegisterId());
             if (i > 0) {
-                return "您作为队长已经报过名了，请勿重复报名";
+                return "您作为队长已经报过名了，请勿重复报名。如果报名出错，请联系管理员进行修改";
             }
         }
         return null;
