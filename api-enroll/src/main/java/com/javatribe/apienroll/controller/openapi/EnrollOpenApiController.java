@@ -1,6 +1,7 @@
 package com.javatribe.apienroll.controller.openapi;
 
 import com.javatribe.apicommon.annotation.ApiAuthentication;
+import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.apicommon.dto.Response;
 import com.javatribe.apienroll.dto.EnrollNoticeDTO;
 import com.javatribe.apienroll.dto.TestNoticeDTO;
@@ -34,6 +35,7 @@ public class EnrollOpenApiController {
      */
 //    @ApiAuthentication
     @GetMapping("/test_name")
+    @TokenFreeAnnotation
     public Response<List<TestNotice>> getLastNTestNameOnDirection(@RequestParam(value = "last_n",required = false) Integer n, @RequestParam("direction_code") Integer directionCode) {
         if (NumberUtil.isInValidNum(n)) {
             n = 4;
@@ -48,6 +50,7 @@ public class EnrollOpenApiController {
      * @return
      */
     @GetMapping("/enroll_notice")
+    @TokenFreeAnnotation
     public Response<List<List<EnrollNoticeDTO>>>  getEnrollNoticeGroupByYear(@RequestParam(value = "last_n",required = false) Integer n) {
         return enrollOpenApiService.getEnrollNoticeGroupByYear(n);
     }
@@ -58,6 +61,7 @@ public class EnrollOpenApiController {
      * @return
      */
     @GetMapping("/test_notice")
+    @TokenFreeAnnotation
     public Response<List<TestNoticeDTO>> getTestNoticeOnDirectionCode(@RequestParam(value = "direction_code") Integer directionCode) {
         return enrollOpenApiService.getTestNoticeOnDirection(directionCode);
     }

@@ -1,5 +1,7 @@
 package com.javatribe.cooperation.controller;
 
+import com.javatribe.apicommon.annotation.AdminAuthentication;
+import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.cooperation.bean.bo.NewsBO;
 import com.javatribe.cooperation.bean.dto.ApiResult;
 import com.javatribe.cooperation.bean.dto.ApiResults;
@@ -30,8 +32,9 @@ public class NewsController {
      * 插入新闻数据
      */
     @PostMapping("insert")
+    @AdminAuthentication
     public ApiResult insert(@RequestBody NewsBO newsBO) {
-        if (newsBO.getPriority() != NewsType.HeightPriority.getType() || newsBO.getPriority() != NewsType.LowPriority.getType()) {
+        if (newsBO.getPriority() != NewsType.HeightPriority.getType() && newsBO.getPriority() != NewsType.LowPriority.getType()) {
             newsBO.setPriority(NewsType.LowPriority.getType());
         }
         newsBO.setId(null);
@@ -48,6 +51,7 @@ public class NewsController {
      *  更新新闻数据
      */
     @PostMapping("update")
+    @AdminAuthentication
     public ApiResult update(@RequestBody NewsBO newsBO) {
         if (newsBO.getId() == null) {
             return ApiResults.badRequest("要修改的数据id不存在");
@@ -56,8 +60,8 @@ public class NewsController {
             if (news == null) {
                 return ApiResults.badRequest("id所在数据不存在");
             }
-            if (newsBO.getPriority() != NewsType.HeightPriority.getType() || newsBO.getPriority() != NewsType.LowPriority.getType()) {
-                newsBO.setPriority(NewsType.LowPriority.getType());
+            if (newsBO.getPriority() != NewsType.HeightPriority.getType() && newsBO.getPriority() != NewsType.LowPriority.getType()) {
+                newsBO.setPriority(news.getPriority());
             }
             BeanUtils.copyProperties(newsBO, news);
             //todo  添加操作人信息
@@ -71,6 +75,7 @@ public class NewsController {
      * 删除新闻
      */
     @DeleteMapping("/{id}")
+    @AdminAuthentication
     public ApiResult remove(@PathVariable Integer id) {
         newsService.delete(id);
         return ApiResults.success();
@@ -80,6 +85,7 @@ public class NewsController {
      * 获取新闻的详细信息
      */
     @GetMapping("/{id}")
+    @TokenFreeAnnotation
     public ApiResult get(@PathVariable Integer id) {
         return ApiResults.success(newsService.get(id));
     }
@@ -88,6 +94,7 @@ public class NewsController {
      * 获取全部数据
      */
     @GetMapping("getAll")
+    @TokenFreeAnnotation
     public ApiResult getAll() {
         return ApiResults.success(newsService.getAll());
     }
@@ -96,6 +103,7 @@ public class NewsController {
      * 全部数据分页返回
      */
     @GetMapping("page")
+    @TokenFreeAnnotation
     public ApiResult page(@RequestParam("page") Integer page,@RequestParam("size") Integer size) {
         return ApiResults.success(newsService.page(page,size));
     }
@@ -104,6 +112,7 @@ public class NewsController {
      * 分页查询低优先级的数据
      */
     @GetMapping("getLowPriorityPage")
+    @TokenFreeAnnotation
     public ApiResult getLowPriorityPage(@RequestParam("page") Integer page,@RequestParam("size") Integer size) {
         return ApiResults.success(newsService.getLowPriorityPage(page,size));
     }
@@ -112,6 +121,7 @@ public class NewsController {
      * 获取前两条优先级高的新闻
      */
     @GetMapping("getTopNews")
+    @TokenFreeAnnotation
     public ApiResult getTopNews() {
         return ApiResults.success(newsService.getTopNews());
     }
@@ -120,6 +130,7 @@ public class NewsController {
      * 按优先级获取新闻数据个数
      */
     @GetMapping("getCounts")
+    @TokenFreeAnnotation
     public ApiResult getCounts(@RequestParam("priority") Integer priority) {
         return ApiResults.success(newsService.getCounts(priority));
     }
@@ -128,6 +139,7 @@ public class NewsController {
      * 获取全部数据个数
      */
     @GetMapping("getAllCounts")
+    @TokenFreeAnnotation
     public ApiResult getAllCounts() {
         return ApiResults.success(newsService.getAllCounts());
     }

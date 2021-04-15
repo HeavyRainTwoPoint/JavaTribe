@@ -1,5 +1,7 @@
 package com.javatribe.apicompetition.controller;
 
+import com.javatribe.apicommon.annotation.AdminAuthentication;
+import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.pojo.dto.StyleShowDTO;
 import com.javatribe.apicompetition.pojo.po.CompetitionYear;
@@ -63,6 +65,7 @@ public class StyleShowController {
      * @return
      */
     @GetMapping("style_show")
+    @TokenFreeAnnotation
     public Result<List<StyleShowVO>> styleShowPage(/*@PathParam("page") Integer page, @PathParam("size") Integer size*/) {
         List<StyleShowVO> list = styleShowService.getAllStyleShow();
         return Result.success(list);
@@ -86,13 +89,16 @@ public class StyleShowController {
     // public Result<List<Integer>> getAllStyleShowTheYears(@RequestParam Integer competitionId) {
     //     return styleShowService.getAllStyleShowYears(competitionId);
     // }
+    // @com.javatribe.apicommon.annotation.SuperAuthentication
     @GetMapping("/styleShowYears")
+    @TokenFreeAnnotation
     public Result<List<CompetitionYear>> getAllStyleShowTheYears001(@RequestParam Integer competitionId) {
         return styleShowService.getAllCompetitionYear(competitionId);
     }
 
 
     @GetMapping("/styleShow_searchBy")
+    @TokenFreeAnnotation
     public Result<List<StyleShowVO>> getStyleShowByCompetitionIdAndTheYear(@RequestParam Integer yearId, @RequestParam Integer competitionId) {
         return styleShowService.getAllStyleShowVOByCompetitionIdAndTheYear(yearId,competitionId);
     }
@@ -112,6 +118,7 @@ public class StyleShowController {
      * 插入一条记录
      * @return
      */
+    @AdminAuthentication
     @PostMapping("/styleShow")
     public Result insertOneStyleShowItem(@RequestBody StyleShowDTO styleShow) {
         //自动生成yearId
@@ -137,6 +144,7 @@ public class StyleShowController {
      * @param id     数据 主键
      * @return
      */
+    @AdminAuthentication
     @DeleteMapping("/styleShow/{id}")
     public Result deleteById(@PathVariable Long id) {
         styleShowService.deleteById(id);

@@ -1,5 +1,7 @@
 package com.javatribe.apishare.controller.admin;
 
+import com.javatribe.apicommon.annotation.AdminAuthentication;
+import com.javatribe.apicommon.annotation.SuperAuthentication;
 import com.javatribe.apicommon.core.constant.enums.ApiInfo;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apishare.po.Tag;
@@ -26,6 +28,8 @@ public class AdminTagController {
      * @param tag – 需要传递tagName，tagId两个值
      * @return
      */
+    @AdminAuthentication
+    @SuperAuthentication
     @PostMapping("/updateTagName")
     public Result updateTagName(@RequestBody Tag tag) {
         int result = tagService.updateTag(tag);
@@ -38,6 +42,7 @@ public class AdminTagController {
      * @param map 包含待删除的标签的tagId
      * @return
      */
+    @AdminAuthentication
     @PostMapping("/deleteTag")
     public Result deleteTag(@RequestBody Map<String, Integer> map) {
         int result = tagService.deleteTagById(map.get("tagId"));
@@ -45,6 +50,13 @@ public class AdminTagController {
                 : new Result(ApiInfo.BASIC_ERROR.getCode(), "删除失败！该标签下有文章存在，不能被删除！", null);
     }
 
+    /**
+     * 添加标签
+     * 成功之后把新标签数据返回去
+     * @param tag
+     * @return
+     */
+    @AdminAuthentication
     @PutMapping("/addTag")
     public Result addTag(@RequestBody Tag tag) {
         int result = tagService.insertTag(tag);

@@ -90,17 +90,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ApiStarterApplication">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="CompetitionIntroductionMapperCustomTest.listAllCompetitionAndYears" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="api-competition" />
       <extension name="coverage">
@@ -288,7 +277,19 @@
       <workItem from="1617266025750" duration="149000" />
       <workItem from="1617343707903" duration="26000" />
       <workItem from="1617344039392" duration="651000" />
-      <workItem from="1617348236713" duration="400000" />
+      <workItem from="1617348236713" duration="619000" />
+      <workItem from="1617369399564" duration="40000" />
+      <workItem from="1617369565500" duration="550000" />
+      <workItem from="1617627373145" duration="5000" />
+      <workItem from="1617956564492" duration="565000" />
+      <workItem from="1617957587229" duration="273000" />
+      <workItem from="1618227612014" duration="32000" />
+      <workItem from="1618408399424" duration="142000" />
+      <workItem from="1618453680422" duration="462000" />
+      <workItem from="1618454156896" duration="230000" />
+      <workItem from="1618454400122" duration="67000" />
+      <workItem from="1618454506763" duration="163000" />
+      <workItem from="1618456766387" duration="142000" />
     </task>
     <servers />
   </component>

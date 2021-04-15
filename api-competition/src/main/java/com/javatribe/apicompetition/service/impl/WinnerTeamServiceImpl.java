@@ -1,10 +1,10 @@
 package com.javatribe.apicompetition.service.impl;
 
-import com.alibaba.fastjson.JSON;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.enumeration.PrizeEnum;
 import com.javatribe.apicompetition.mapper.WinnerTeamMapper;
-import com.javatribe.apicompetition.pojo.po.*;
+import com.javatribe.apicompetition.pojo.po.NumberOfSessions;
+import com.javatribe.apicompetition.pojo.po.WinnerTeam;
 import com.javatribe.apicompetition.service.WinnerTeamService;
 import com.javatribe.apicompetition.util.MatcherRegexUtil;
 import org.slf4j.Logger;
@@ -13,8 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 
 @Service
 public class WinnerTeamServiceImpl implements WinnerTeamService {

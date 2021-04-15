@@ -22,6 +22,8 @@ import java.util.List;
 @RequestMapping("/javatribe/common/user")
 public class UserController {
 
+
+
     @Resource
     private UserService userService;
 
@@ -34,22 +36,24 @@ public class UserController {
     }
 
 
-    @SuperAuthentication
+
     @PostMapping("/update")
+    @SuperAuthentication
     public Response<Object> addOrUpdateAdmin(@RequestBody(required = false) User user) {
         if (ObjectUtil.isNull(user))
             return Response.fail(ResponseStatus.PARAMS_ERROR);
         return userService.addOrUpdateAdmin(user);
     }
 
-    @SuperAuthentication
+    @TokenFreeAnnotation
     @GetMapping("/user_type")
     public Response<Integer> queryUserType(@RequestParam("account") String account) {
         return userService.queryUserType(account);
     }
 
-    @SuperAuthentication
+
     @GetMapping("/admin/list")
+    @SuperAuthentication
     public Response<List<User>> queryList() {
         return userService.queryList();
     }

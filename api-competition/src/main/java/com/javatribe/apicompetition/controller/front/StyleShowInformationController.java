@@ -1,5 +1,7 @@
 package com.javatribe.apicompetition.controller.front;
 
+import com.javatribe.apicommon.annotation.ApiAuthentication;
+import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.pojo.po.StyleShow;
 import com.javatribe.apicompetition.pojo.vo.CompetitionAndYearsVO;
@@ -33,6 +35,7 @@ public class StyleShowInformationController {
      * @return
      */
     @GetMapping("/styleshow_info")
+    @TokenFreeAnnotation
     public Result<List<CompetitionAndYearsVO>> listCompetitionAndYears() {
         return Result.success(competitionIntroductionService.listCompetitionAndYearsVo());
 
@@ -45,6 +48,7 @@ public class StyleShowInformationController {
      * @return
      */
     @GetMapping("/competitions")
+    @TokenFreeAnnotation
     public Result<List<StyleShow>> getByCompetitoinId(@RequestParam Integer competitionId) {
         return Result.success(tribeStyleShowService.listStyleShowByCompetition(competitionId));
     }
@@ -56,6 +60,7 @@ public class StyleShowInformationController {
      */
     // @Transactional
     @GetMapping("/styleshow_info_items")
+    @TokenFreeAnnotation
     public Result<List<YearAndCompetitionVO>> getYearAndCompetitionVO() {
         // YearAndCompetitionVO res = new YearAndCompetitionVO();
         final List<YearAndCompetitionVO> yearAndCompetitionVOS = competitionIntroductionService.listYearAndCompetitionVO();

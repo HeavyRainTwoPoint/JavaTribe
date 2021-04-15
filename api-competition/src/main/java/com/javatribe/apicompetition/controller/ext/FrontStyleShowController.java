@@ -1,6 +1,8 @@
 package com.javatribe.apicompetition.controller.ext;
 
 import com.github.pagehelper.PageHelper;
+import com.javatribe.apicommon.annotation.ApiAuthentication;
+import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.apicommon.dto.PageEntity;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apicompetition.pojo.vo.FrontStyleShowVO;
@@ -28,6 +30,7 @@ public class FrontStyleShowController {
      * @return
      */
     @GetMapping("/all")
+    @TokenFreeAnnotation
     public Result<List<FrontStyleShowVO>> getFirstPageData() {
         return Result.success( styleShowService.getAllStyleShowFronted());
     }
@@ -40,6 +43,7 @@ public class FrontStyleShowController {
      * @return
      */
     @GetMapping("/resultList")
+    @TokenFreeAnnotation
     public Result<?> getByPage(@RequestParam Integer page, @RequestParam Integer size) {
         PageHelper.startPage(page,size);
         return Result.success(PageEntity.of(styleShowService.getAllStyleShowFronted()));

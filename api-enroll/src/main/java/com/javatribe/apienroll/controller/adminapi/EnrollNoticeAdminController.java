@@ -1,5 +1,7 @@
 package com.javatribe.apienroll.controller.adminapi;
 
+import com.javatribe.apicommon.annotation.AdminAuthentication;
+import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.apicommon.dto.Response;
 import com.javatribe.apicommon.dto.ResponseStatus;
 import com.javatribe.apienroll.entity.*;
@@ -25,6 +27,7 @@ public class EnrollNoticeAdminController {
 
     // 添加
     @PostMapping("/add")
+    @AdminAuthentication
     public Response<Integer> add(@RequestBody EnrollNotice enrollNotice) {
         System.out.println(enrollNotice.getContent());
         System.out.println(enrollNotice.getTitle());
@@ -35,6 +38,7 @@ public class EnrollNoticeAdminController {
 
     // 根据id删除
     @GetMapping("/delete_by_id")
+    @AdminAuthentication
     public Response<Integer> deleteById(Long id) {
         EnrollNotice enrollNotice = new EnrollNotice();
         enrollNotice.setId(id);
@@ -43,6 +47,7 @@ public class EnrollNoticeAdminController {
 
     // 根据id批量删除（,分割）
     @GetMapping("/delete")
+    @AdminAuthentication
     public Response<Integer> delete(@RequestParam("ids") String ids) {
         EnrollNoticeQTO qto = new EnrollNoticeQTO();
         qto.createCriteria().andIdIn(
@@ -52,6 +57,7 @@ public class EnrollNoticeAdminController {
     }
 
     @GetMapping("/query_list")
+    @TokenFreeAnnotation
     public Response<List<EnrollNotice>> query() {
         EnrollNoticeQTO qto = new EnrollNoticeQTO();
         qto.createCriteria().andDeleteMarkEqualTo(0);
@@ -59,6 +65,7 @@ public class EnrollNoticeAdminController {
     }
 
     @PostMapping("/update")
+    @AdminAuthentication
     public Response update(@RequestBody EnrollNotice enrollNotice) {
         return enrollNoticeAdminService.update(enrollNotice);
     }

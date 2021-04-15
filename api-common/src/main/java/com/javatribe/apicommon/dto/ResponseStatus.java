@@ -12,6 +12,7 @@ public enum ResponseStatus {
     PARAMS_ERROR(6000,"参数不合法"),
     FILE_DOWNLOAD_ERROR(7000,"文件下载失败"),
     COMMAND_ERROR(8000,"操作失败"),
+    GDUF_ERROR(9000,"教务系统强智的锅"),
     ;
 
     public Integer status;

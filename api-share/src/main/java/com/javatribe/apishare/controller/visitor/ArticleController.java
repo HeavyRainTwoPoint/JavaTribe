@@ -1,8 +1,10 @@
 package com.javatribe.apishare.controller.visitor;
 
+import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.apicommon.core.constant.enums.ApiInfo;
 import com.javatribe.apicommon.dto.PageEntity;
 import com.javatribe.apicommon.dto.Result;
+import com.javatribe.apishare.cache.ViewCountCache;
 import com.javatribe.apishare.po.Article;
 import com.javatribe.apishare.service.ArticleService;
 import com.javatribe.apishare.vo.ArticleAndTags;
@@ -32,6 +34,7 @@ public class ArticleController {
      * @param size
      * @return
      */
+    @TokenFreeAnnotation
     @GetMapping("/index")
     public Result<PageEntity> index(@PathParam("curPage")int curPage, @PathParam("size")int size) {
         curPage = isValid(curPage, true);
@@ -49,6 +52,7 @@ public class ArticleController {
      * @param size 页面大小。默认是10
      * @return
      */
+    @TokenFreeAnnotation
     @GetMapping("/index/explore")
     public Result<PageEntity> index(@PathParam("tagId")int tagId, @PathParam("curPage")int curPage, @PathParam("size")int size) {
         curPage = isValid(curPage, true);
@@ -65,14 +69,24 @@ public class ArticleController {
      * @param artNo 文章编号，要求非空，不为空字符串
      * @return
      */
+    @TokenFreeAnnotation
     @GetMapping("/detail")
     public Result<ArticleAndTags> detail(@PathParam("artNo")String artNo) {
         if (artNo == null || "".equals(artNo.trim())) {
+            ViewCountCache.update(artNo);
             return new Result(ApiInfo.BASIC_ERROR.getCode(), "文章的编号不能为空！", null);
         }
         return Result.success(articleService.selectOneByArtNo(artNo));
     }
 
+    /**
+     * 模糊查找标题
+     * @param artTitle
+     * @param curPage
+     * @param size
+     * @return
+     */
+    @TokenFreeAnnotation
     @GetMapping("/search")
     public Result search(@PathParam("artTitle")String artTitle, @PathParam("curPage")int curPage, @PathParam("size")int size) {
         curPage = isValid(curPage, true);

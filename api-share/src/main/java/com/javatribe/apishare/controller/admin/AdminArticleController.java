@@ -1,6 +1,9 @@
 package com.javatribe.apishare.controller.admin;
 
 import com.aliyun.oss.OSS;
+import com.javatribe.apicommon.annotation.AdminAuthentication;
+import com.javatribe.apicommon.annotation.SuperAuthentication;
+import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.apicommon.config.properties.AliOssProperties;
 import com.javatribe.apicommon.dto.Result;
 import com.javatribe.apishare.po.Article;
@@ -36,9 +39,11 @@ public class AdminArticleController {
 
     /**
      * 添加文章
+     *
      * @param articleAndTags
      * @return
      */
+    @AdminAuthentication
     @PutMapping("/add")
     public Result add(@RequestBody ArticleAndTags articleAndTags) {
         Article article = articleAndTags.getArticle();
@@ -47,7 +52,7 @@ public class AdminArticleController {
             return Result.fail(valid);
         }
         if (articleAndTags == null || articleAndTags.getTags().size() <= 0) {
-            return  Result.fail("未选择标签！");
+            return Result.fail("未选择标签！");
         }
         int result = articleService.insertArticle(articleAndTags);
         return result == 1 ? Result.success() : Result.fail("发生内部错误，文章上传失败！请重试！");
@@ -55,9 +60,11 @@ public class AdminArticleController {
 
     /**
      * 更新文章
+     *
      * @param article
      * @return
      */
+    @AdminAuthentication
     @PostMapping("/update")
     public Result update(@RequestBody Article article) {
         String valid = isValid(article);
@@ -73,9 +80,11 @@ public class AdminArticleController {
 
     /**
      * 删除文章
+     *
      * @param map 提供 artNo 参数
      * @return
      */
+    @AdminAuthentication
     @PostMapping("delete")
     public Result delete(@RequestBody Map<String, String> map) {
         String artNo = map.get("artNo");
@@ -88,11 +97,14 @@ public class AdminArticleController {
 
     /**
      * 上传图片接口 只能上传一张
+     *
      * @param multipartFile
      * @return
      */
+    @AdminAuthentication
+    @SuperAuthentication
     @PostMapping("/upload")
-    public Result upload(@RequestParam("image")MultipartFile multipartFile) {
+    public Result upload(@RequestParam("image") MultipartFile multipartFile) {
         if (multipartFile == null) {
             return new Result(UploadStatus.FILE_ISNULL.getCode(), UploadStatus.FILE_ISNULL.getMessage(), null);
         }
@@ -103,21 +115,31 @@ public class AdminArticleController {
 
     /**
      * 上传图片，为什么重复呢？因为element-ui的问题
+     *
      * @param multipartFile 文件
      * @return
      */
+
+    @TokenFreeAnnotation
     @PostMapping("/uploadImg")
-    public Result uploadImg(@RequestParam("file") MultipartFile multipartFile){
-        if (multipartFile == null) {
-            return new Result(UploadStatus.FILE_ISNULL.getCode(), UploadStatus.FILE_ISNULL.getMessage(), null);
+    public Result uploadImg(@RequestParam("file") MultipartFile multipartFile) {
+        try {
+            if (multipartFile == null) {
+                return new Result(UploadStatus.FILE_ISNULL.getCode(), UploadStatus.FILE_ISNULL.getMessage(), null);
+            }
+            UploadStatus uploadStatus = AliyunOssUtil.uploadImage(oss, multipartFile, properties.getBucketName());
+            String message = uploadStatus.getCode() == 200 ? properties.getHost() + uploadStatus.getMessage() : uploadStatus.getMessage();
+            return new Result(uploadStatus.getCode(), message, null);
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        UploadStatus uploadStatus = AliyunOssUtil.uploadImage(oss, multipartFile, properties.getBucketName());
-        String message = uploadStatus.getCode() == 200 ? properties.getHost() + uploadStatus.getMessage() : uploadStatus.getMessage();
-        return new Result(uploadStatus.getCode(), message, null);
+        return null;
     }
 
     /**
      * 验证article是否满足条件
+     *
      * @param article
      * @return
      */

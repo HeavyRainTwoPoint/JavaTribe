@@ -2,6 +2,7 @@ package com.javatribe.apienroll;
 
 import cn.hutool.json.JSONUtil;
 import com.aliyun.oss.OSS;
+import com.javatribe.apienroll.entity.FileManagerQTO;
 import com.javatribe.apienroll.entity.TestNotice;
 import com.javatribe.apienroll.entity.TestNoticeQTO;
 import com.javatribe.apienroll.service.admin.TestNoticeAdminService;
@@ -63,6 +64,9 @@ public class TestNoticeTest {
             qto.setOrderByClause("gmt_created desc");
             show(service.query(qto));
     }
+
+
+
 
 
     private void show(Object r) {

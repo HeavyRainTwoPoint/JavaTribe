@@ -8,6 +8,7 @@ import com.javatribe.apicommon.core.constant.enums.ApiInfo;
 import com.javatribe.apicommon.exception.NoTokenException;
 import com.javatribe.apicommon.interceptor.role.UserType;
 import com.javatribe.apicommon.util.JwtUtil;
+import org.aspectj.apache.bcel.generic.RET;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.method.HandlerMethod;
@@ -36,10 +37,11 @@ public class TokenInterceptor implements HandlerInterceptor {
             TokenFreeAnnotation tokenFreeAnnotation = handlerMethod.getMethodAnnotation(TokenFreeAnnotation.class);
             SuperAuthentication superAuthentication = handlerMethod.getMethodAnnotation(SuperAuthentication.class);
 
+            logger.info("quanxian-->{},{},{},{}", apiAuthentication, adminAuthentication, tokenFreeAnnotation, superAuthentication);
             //获取请求头里的token
             String token = request.getHeader(JwtUtil.TOKEN_HEADER);
 
-            logger.info("token-->{}",token);
+            logger.info("token-->{}", token);
 
             // 免token调用的接口，放行
             if (tokenFreeAnnotation != null) {

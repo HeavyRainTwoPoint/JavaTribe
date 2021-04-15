@@ -87,7 +87,7 @@ public class RegisterTeamController {
      * @return
      */
     @GetMapping("/registerList")
-    @AdminAuthentication
+    @TokenFreeAnnotation
     public Result queryRegisterList(@RequestParam("competitionId") Long competitionId){
         return registerTeamService.queryRegisterList(competitionId);
     }

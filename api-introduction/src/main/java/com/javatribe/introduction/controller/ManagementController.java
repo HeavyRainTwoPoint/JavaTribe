@@ -1,6 +1,8 @@
 package com.javatribe.introduction.controller;
 
 
+import com.javatribe.apicommon.annotation.AdminAuthentication;
+import com.javatribe.apicommon.annotation.TokenFreeAnnotation;
 import com.javatribe.introduction.entity.Management;
 import com.javatribe.introduction.service.ManagementService;
 import org.apache.ibatis.annotations.Update;
@@ -29,6 +31,7 @@ public class ManagementController {
     private ManagementService managementService;
 
     @GetMapping("findAll")
+    @TokenFreeAnnotation
     public Result findAll() {
         List<Management> managements = managementService.findAll();
         HashMap<String, Object> res = new HashMap<>();
@@ -37,6 +40,7 @@ public class ManagementController {
     }
 
     @GetMapping("findById")
+    @AdminAuthentication
     public Result findById(@RequestParam("id") String id) {
         Management management = managementService.findById(id);
         HashMap<String, Object> res = new HashMap<>();
@@ -45,6 +49,7 @@ public class ManagementController {
     }
 
     @GetMapping("sessionsLeader")
+    @TokenFreeAnnotation
     public Result sessionsLeader() {
         List<Management> leaders = managementService.findLeader();
         HashMap<String, Object> res = new HashMap<>();
@@ -53,6 +58,7 @@ public class ManagementController {
     }
 
     @GetMapping("presentManager")
+    @TokenFreeAnnotation
     public Result presentManager() {
         List<Management> presents = managementService.findPresent();
         HashMap<String, Object> res = new HashMap<>();
@@ -61,6 +67,7 @@ public class ManagementController {
     }
 
     @PostMapping("addManager")
+    @AdminAuthentication
     public Result addManager(@RequestBody Management manage) {
         if (managementService.addManager(manage) == 1) {
             return Result.success();
@@ -69,6 +76,7 @@ public class ManagementController {
     }
 
     @DeleteMapping("deleteManager")
+    @AdminAuthentication
     public Result deleteManager(@RequestParam("id") Integer id) {
         if (managementService.deleteManager(id) == 1) {
             return Result.success();
@@ -77,6 +85,7 @@ public class ManagementController {
     }
 
     @PostMapping("updateManager")
+    @AdminAuthentication
     public Result updateManager(@RequestBody Management manage) {
         if (managementService.updateManager(manage) == 1) {
             return Result.success();
