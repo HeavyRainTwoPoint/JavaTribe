@@ -17,7 +17,8 @@ public class WebConfig implements WebMvcConfigurer {
         //注册拦截器，拦截所有访问路径
         registry.addInterceptor(new TokenInterceptor()).addPathPatterns("/**")
         .excludePathPatterns("/admin/**")
-        .excludePathPatterns("/home/**");
+        .excludePathPatterns("/home/**")
+        .excludePathPatterns("/dist2/**");
 
 
     }
