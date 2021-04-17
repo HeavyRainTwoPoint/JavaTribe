@@ -30,8 +30,11 @@ public class TokenInterceptor implements HandlerInterceptor {
         if (handler instanceof HandlerMethod) {
             HandlerMethod handlerMethod = (HandlerMethod) handler;
             logger.info("拦截了方法-->{}", ((HandlerMethod) handler).getMethod().getName());
-
-
+//            String uri = request.getRequestURI();
+//            if (uri.contains("/dist")) {
+//                return true;
+//            }
+//
             ApiAuthentication apiAuthentication = handlerMethod.getMethodAnnotation(ApiAuthentication.class);
             AdminAuthentication adminAuthentication = handlerMethod.getMethodAnnotation(AdminAuthentication.class);
             TokenFreeAnnotation tokenFreeAnnotation = handlerMethod.getMethodAnnotation(TokenFreeAnnotation.class);

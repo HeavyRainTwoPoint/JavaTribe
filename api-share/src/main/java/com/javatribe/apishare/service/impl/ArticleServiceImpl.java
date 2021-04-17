@@ -57,27 +57,28 @@ public class ArticleServiceImpl implements ArticleService {
      */
     @Override
     public int insertArticle(ArticleAndTags articleAndTags) {
-        Article article = articleAndTags.getArticle();
-        String artNo = ArticleNoGenerator.createNo();
-        List<Integer> tags  = new ArrayList<>(articleAndTags.getTags().size());
-        article.setArtNo(artNo);
-        //PS：这里是为了获取一级标签的名字，需要借助二级标签的id来查询数据
-        int tagId = articleAndTags.getTags().get(0).getTagParent();
-        String tagName = tagService.getTagNameById(tagId);
-        if (tagName == null) {
-            //防止获取标签名这里返回null数据而出现异常
-            return 0;
-        }
-        article.setArtTagName(tagName);
-        articleAndTags.getTags().forEach(tag -> {
-            tags.add(tag.getTagId());
-        });
-        //以上逻辑可以修改为更简洁的，只是项目后期修改牵一发动全身
-        int result = articleMapper.insertArticle(article);
-        if (result == 1) {
-            artTagMapper.insertTags(new TagsRelationship(article.getArtId(), tags));
-        }
-        return result;
+            Article article = articleAndTags.getArticle();
+            String artNo = ArticleNoGenerator.createNo();
+            List<Integer> tags  = new ArrayList<>(articleAndTags.getTags().size());
+            article.setArtNo(artNo);
+            //PS：这里是为了获取一级标签的名字，需要借助二级标签的id来查询数据
+            int tagId = articleAndTags.getTags().get(0).getTagParent();
+            String tagName = tagService.getTagNameById(tagId);
+            if (tagName == null) {
+                //防止获取标签名这里返回null数据而出现异常
+                return 0;
+            }
+            article.setArtTagName(tagName);
+            articleAndTags.getTags().forEach(tag -> {
+                tags.add(tag.getTagId());
+            });
+            tags.add(tagId);
+            //以上逻辑可以修改为更简洁的，只是项目后期修改牵一发动全身
+            int result = articleMapper.insertArticle(article);
+            if (result == 1) {
+                artTagMapper.insertTags(new TagsRelationship(article.getArtId(), tags));
+            }
+            return result;
     }
 
 

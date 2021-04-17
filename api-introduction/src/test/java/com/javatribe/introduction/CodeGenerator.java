@@ -17,7 +17,7 @@ import org.junit.Test;
  */
 public class CodeGenerator {
 
-    @Test
+//    @Test
     public void run() {
 
         // 1、创建代码生成器
