@@ -34,27 +34,28 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public Response<UserDTO> login(User user) {
-        UserDTO userDTO = null;
-        try {
-            userDTO = HttpUtil.doGDUFGet(GDUFHost.HOST.replace(GDUFHost.PARAM1, user.getAccount()).replace(GDUFHost.PARAM2, user.getPassword()));
-        } catch (Exception e) {
-            return Response.fail(ResponseStatus.PARAMS_ERROR);
-        }
-        if (userDTO == null || userDTO.getToken().equals("-1")) {
-            System.out.println("===============");
-            System.out.println(userDTO);
-            System.out.println(userDTO.getToken());
-            System.out.println("===============");
-            userDTO.setStatus(-1); // 未登录
-            return new Response<>(userDTO);
-        }
+        UserDTO userDTO = new UserDTO();
+        userDTO.setSchoolNumber(user.getAccount());
+//        try {
+//            userDTO = HttpUtil.doGDUFGet(GDUFHost.HOST.replace(GDUFHost.PARAM1, user.getAccount()).replace(GDUFHost.PARAM2, user.getPassword()));
+//        } catch (Exception e) {
+//            return Response.fail(ResponseStatus.PARAMS_ERROR);
+//        }
+//        if (userDTO == null || userDTO.getToken().equals("-1")) {
+//            System.out.println("===============");
+//            System.out.println(userDTO);
+//            System.out.println(userDTO.getToken());
+//            System.out.println("===============");
+//            userDTO.setStatus(-1); // 未登录
+//            return new Response<>(userDTO);
+//        }
         try {
             // 如果不存在，就存入数据库
             UserQTO userQTO = new UserQTO();
             userQTO.createCriteria().andAccountEqualTo(user.getAccount()).andDeleteMarkEqualTo(0);
             if (userMapper.countByExample(userQTO) <= 0) { // 不存在
                 user.setPassword(Base64.encodeBase64String(user.getPassword().getBytes()));
-                user.setRealName(userDTO.getUserRealName());
+//                user.setRealName(userDTO.getUserRealName());
                 userMapper.insertSelective(user);
                 // 生成token
                 Map<String, String> map = new HashMap<>();
@@ -92,8 +93,9 @@ public class UserServiceImpl implements UserService {
             return new Response<>(userDTO);
         } catch (Exception e) {
             e.printStackTrace();
+            return Response.fail("login failed! retry please");
         }
-        return null;
+//        return null;
     }
 
     @Override

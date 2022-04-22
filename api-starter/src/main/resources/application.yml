@@ -2,10 +2,10 @@ server:
   port: 8090
 spring:
   datasource:
-    url: jdbc:mysql://47.92.200.8:3306/javatribe?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&allowMultiQueries=true
-    password: pBcrDNAMFr7ifb7e
-    username: javatribe
-    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://106.52.5.184:3306/javatribe?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&allowMultiQueries=true
+    password: 123456
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
   servlet:
     multipart:
       max-file-size: 200MB #最大 上传 2G

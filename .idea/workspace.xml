@@ -3,8 +3,95 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="" />
+    <list default="true" id="d73ee43e-23f5-435a-b854-00f24ecf1ce6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/admin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/app.e44ddd27.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-0f196a7a.4917f54e.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-13cc096d.bf14fe57.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-1ee1af61.5183388b.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-1f720dcb.2328cad1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-3c86caa7.b35fc6d0.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-487bb28f.1fb14930.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-4bdb5bb4.45ac21fd.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-4e3fb77a.7738f66e.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-5613308a.836403ac.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-6e8066f6.181e177b.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-6fb5ec34.da9150e2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-75212c8c.0ec2c9bc.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-7a5bf340.d27deb5c.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-7c87799e.0a14e01e.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-8ecfd96c.3b54256c.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-9177c1ee.133711bd.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-943564b4.138b7528.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-96203758.d53e036a.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-a846aca4.f50423e9.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-a9a88d42.126ac499.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-b4e21ea8.0d0b8b57.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-bf4759b2.e020fe0a.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-d2be46ae.e430c434.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-e57142ae.aea2f13f.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-fb8aca44.9940fe16.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/css/chunk-vendors.16da611a.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/fonts/element-icons.535877f5.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/fonts/element-icons.732389de.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/fonts/fontello.068ca2b3.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/fonts/fontello.8d4a4e6f.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/fonts/fontello.a782baa8.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/fonts/fontello.e73a0647.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/img/fontello.9354499c.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/app.a976d189.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-0f196a7a.20f0d689.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-13cc096d.2efbc64f.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-1ee1af61.2c54ceb2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-1f720dcb.9bcd1df3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-2fbe96b6.5f06176b.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-3c86caa7.fe78e9b0.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-487bb28f.b4364486.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-4bdb5bb4.af6392e0.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-4e3fb77a.025dd4c5.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-5613308a.913047a2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-6e8066f6.3bc481c9.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-6fb5ec34.381762f7.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-75212c8c.8e58bddc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-7a5bf340.472e3f8a.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-7c87799e.c53c98f4.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-8ecfd96c.42833190.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-9177c1ee.f5ac6896.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-943564b4.18922d86.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-96203758.e2b18674.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-a846aca4.81fd82de.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-a9a88d42.6560be2a.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-b4e21ea8.428c63e6.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-bf4759b2.887ca1a4.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-d2be46ae.8d472a2a.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-e57142ae.24fb23a4.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-fb8aca44.da934804.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-starter/src/main/resources/static/admin/static/js/chunk-vendors.23476565.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-common/src/main/java/com/javatribe/apicommon/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-starter/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-starter/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +118,17 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\jar包" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../apache-maven-3.6.2" />
+        <option name="nonRecursive" value="true" />
+        <option name="outputLevel" value="DEBUG" />
+        <option name="userSettingsFile" value="D:\apache-maven-3.6.2\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedIndex" value="1" />
   </component>
@@ -55,7 +153,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/student" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -64,20 +162,22 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="rest.client.default.execution.environment" value="dev" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="show.run.dashboard.notification" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\JavaCode(idea)\JavaTribe\api-starter\src\main\resources\static\" />
+      <recent name="D:\JavaCode(idea)\JavaTribe\api-starter\src\main\resources\static" />
       <recent name="D:\ASUS\Desktop\个人项目\server\部落官网\api-parent\api-competition\src\main\resources\sql" />
       <recent name="D:\ASUS\Desktop\个人项目\server\部落官网\api-parent\api-competition\src\main\resources" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\ASUS\Desktop\my_demo\server\部落官网\api-parent\api-competition\src\main\resources\mappers" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.javatribe.apicompetition.mapper" />
@@ -290,7 +390,36 @@
       <workItem from="1618454400122" duration="67000" />
       <workItem from="1618454506763" duration="163000" />
       <workItem from="1618456766387" duration="142000" />
+      <workItem from="1618496452850" duration="1448000" />
+      <workItem from="1618530582005" duration="648000" />
+      <workItem from="1618537983582" duration="3629000" />
+      <workItem from="1618630039251" duration="2223000" />
+      <workItem from="1618729957567" duration="170000" />
+      <workItem from="1620638267765" duration="312000" />
+      <workItem from="1620638629932" duration="2013000" />
+      <workItem from="1620707844826" duration="1373000" />
+      <workItem from="1620906261803" duration="88000" />
+      <workItem from="1623850206050" duration="634000" />
+      <workItem from="1646479076554" duration="84000" />
+      <workItem from="1646479205527" duration="52000" />
+      <workItem from="1646479462347" duration="6685000" />
+      <workItem from="1647852880822" duration="1507000" />
+      <workItem from="1648203926686" duration="7584000" />
+      <workItem from="1648221979361" duration="114000" />
+      <workItem from="1648464241769" duration="986000" />
+      <workItem from="1648885120401" duration="121000" />
+      <workItem from="1649905885576" duration="2486000" />
+      <workItem from="1650282167124" duration="880000" />
+      <workItem from="1650523791586" duration="2728000" />
     </task>
+    <task id="LOCAL-00001" summary="合并远端">
+      <created>1618630517155</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1618630517155</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,6 +448,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="合并远端" />
+    <option name="LAST_COMMIT_MESSAGE" value="合并远端" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
